@@ -1,5 +1,5 @@
 import { styled } from "styled-components";
-import { Form as SignUpForm, Field as FormField } from "formik";
+import { Form as FormikForm, Field as FormField } from "formik";
 
 export const FormWrapper = styled.div`
   width: 100%;
@@ -33,7 +33,7 @@ export const FormTitle = styled.h1`
   };
 `;
 
-export const Form = styled(SignUpForm)`
+export const Form = styled(FormikForm)`
   display: flex;
   flex-direction: column;
   gap: 24px;
@@ -74,9 +74,9 @@ export const Field = styled(FormField)`
 
   @media screen and (min-width: 768px) {
     &::placeholder {
-    font-size: 16px;
+      font-size: 16px;
+    };
   };
-  }
 `;
 
 export const FormButton = styled.button`
