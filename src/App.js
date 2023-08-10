@@ -1,12 +1,14 @@
 import { lazy } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import Layout from 'components/MainLayout/MainLayout/MainLayout';
+
 const AccountPage = lazy(() => import('pages/AccountPage'));
 const CalendarPage = lazy(() => import('pages/CalendarPage'));
 const LoginPage = lazy(() => import('pages/LoginPage'));
 const MainPage = lazy(() => import('pages/MainPage'));
 const RegisterPage = lazy(() => import('pages/RegisterPage'));
 const StatisticsPage = lazy(() => import('pages/StatisticsPage'));
+const NotFoundPage= lazy(() => import('pages/NotFoundPage'));
 
 export const App = () => {
   return (
@@ -19,6 +21,7 @@ export const App = () => {
         <Route path="/authorized/account" element={<AccountPage />} />
         <Route path="/authorized/statistics" element={<StatisticsPage />} />
       </Route>
+      <Route path="*" element={<NotFoundPage />} />
     </Routes>
   );
 };
