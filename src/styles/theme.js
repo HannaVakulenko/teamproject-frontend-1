@@ -4,6 +4,7 @@ const theme = {
     blue2Color: '#DCEBF7',
     whiteColor: '#FFFFFF',
     blackColor: '#13151A',
+    mainBGColor: '#F7F6F9',
   },
 };
 
