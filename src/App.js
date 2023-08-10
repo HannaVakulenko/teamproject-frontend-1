@@ -20,8 +20,8 @@ export const App = () => {
         <Route path="/authorized/calendar" element={<CalendarPage />} />
         <Route path="/authorized/account" element={<AccountPage />} />
         <Route path="/authorized/statistics" element={<StatisticsPage />} />
+        <Route path="/notfound" element={<NotFoundPage />} />
       </Route>
-      <Route path="*" element={<NotFoundPage />} />
     </Routes>
   );
 };
