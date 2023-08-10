@@ -1,5 +1,6 @@
 import { styled } from "styled-components";
 import { Form as FormikForm, Field as FormField } from "formik";
+import { device } from "constants";
 
 export const FormWrapper = styled.div`
   width: 100%;
@@ -10,10 +11,10 @@ export const FormWrapper = styled.div`
   border-radius: 8px;
   background-color: ${p => p.theme.colors.whiteColor};
 
-  @media screen and (min-width: 375px) and (max-width: 767px) {
+  @media screen and (min-width: ${device.mobile}px) and (max-width: ${device.tablet - 1}px) {
     width: 335px;
   };
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: ${device.tablet}px) {
     width: 480px;
     padding-left: 40px;
     padding-right: 40px;
@@ -27,7 +28,7 @@ export const FormTitle = styled.h1`
   line-height: 1.33;
   color: ${p => p.theme.colors.blue1Color};
 
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: ${device.tablet}px) {
     margin-bottom: 40px;
     font-size: 24px;
   };
@@ -38,7 +39,7 @@ export const Form = styled(FormikForm)`
   flex-direction: column;
   gap: 24px;
 
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: ${device.tablet}px) {
     gap: 18px;
   };
 `;
@@ -53,7 +54,7 @@ export const FormLabel = styled.label`
   font-size: 12px;
   font-weight: 600;
 
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: ${device.tablet}px) {
     font-size: 14px;
   }
 `;
@@ -72,7 +73,7 @@ export const Field = styled(FormField)`
     color: #DCE3E5;
   };
 
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: ${device.tablet}px) {
     &::placeholder {
       font-size: 16px;
     };
@@ -98,7 +99,7 @@ export const FormButton = styled.button`
     background-color: ${p => p.theme.colors.blue3Color};
   };
 
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: ${device.tablet}px) {
     margin-top: 30px;
     font-size: 18px;
     line-height: 1.33;

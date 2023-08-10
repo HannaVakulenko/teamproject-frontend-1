@@ -1,8 +1,9 @@
 import { LoginForm } from "components/LoginPage";
-import { PageContainer } from "components/LoginPage/LoginPage/LoginPage.styled";
+import { PageContainer, BgImage } from "components/LoginPage/LoginPage/LoginPage.styled";
 
 const LoginPage = () => (
   <PageContainer>
+    <BgImage />
     <LoginForm />
   </PageContainer>
 );
