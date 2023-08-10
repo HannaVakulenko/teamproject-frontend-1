@@ -67,6 +67,12 @@ export const Field = styled(FormField)`
   border-radius: 8px;
   border: 1px solid rgba(220, 227, 229, 0.60);
   outline: none;
+  transition: border-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  &:hover,
+  &:focus {
+    border-color: #111111;
+  }
   
   &::placeholder {
     font-size: 14px;
