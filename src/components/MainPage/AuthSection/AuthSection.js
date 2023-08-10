@@ -24,7 +24,7 @@ const AuthSection = () => {
           <Img
             src={
               isRetina
-                ? require('../../../assets/images/logo-mob-2x.png')
+                ? require('../../../assets/images/logo-mob@2x.png')
                 : require('../../../assets/images/logo-mob-1x.png')
             }
             alt="goose"
@@ -35,7 +35,7 @@ const AuthSection = () => {
           <img
             src={
               isRetina
-                ? require('../../../assets/images/logo-tabl-2x.png')
+                ? require('../../../assets/images/logo-tabl@2x.png')
                 : require('../../../assets/images/logo-tabl-1x.png')
             }
             alt="goose"
@@ -46,7 +46,7 @@ const AuthSection = () => {
           <img
             src={
               isRetina
-                ? require('../../../assets/images/logo-desk-2x.png')
+                ? require('../../../assets/images/logo-desk@2x.png')
                 : require('../../../assets/images/logo-desk-1x.png')
             }
             alt="goose"
