@@ -5,7 +5,7 @@ import { FormWrapper, FormTitle, Form, FieldWrapper, FormLabel, Field, FormButto
 const schema = yup.object().shape({
   name: yup.string().required("Name is required"),
   email: yup.string().email("This is an ERROR email").required("Email is required"),
-  password: yup.string().required("Password is required"),
+  password: yup.string().min(7, "Must be at least 7 characters long").required("Password is required"),
 });
 
 const initialValues = {
