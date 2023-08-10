@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useCallback } from 'react';
 import { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
 import { MainLayoutStyled } from './MainLayout.styled';
