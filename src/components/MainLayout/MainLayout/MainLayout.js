@@ -1,24 +1,39 @@
-// src/components/MainLayout/MainLayout/MainLayout.js
+import React, { useState, useEffect, useCallback } from 'react';
 import { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
-import Header from '../Header/Header';
-import { LayoutWrapper } from './MainLayout.styled';
-import { Spinner } from 'components/Common';
+import { MainLayoutStyled } from './MainLayout.styled';
+import { Container, Spinner } from 'components/Common';
 import SideBar from '../SideBar/SideBar';
+import Header from '../Header/Header';
 
 const MainLayout = () => {
+  const [isSidebarOpen, setSidebarOpen] = useState(false);
+
+  const toggleSidebar = useCallback(open => {
+    setSidebarOpen(open);
+  }, []);
+
+  const handleKeyDown = useCallback(
+    e => {
+      if (e.key === 'Escape' && isSidebarOpen) {
+        toggleSidebar(false);
+      }
+    },
+    [isSidebarOpen, toggleSidebar]
+  );
+
   return (
-    <LayoutWrapper>
-      <SideBar />
-      <div>
-        <Header />
+    <MainLayoutStyled onKeyDown={handleKeyDown} tabIndex="0">
+      <SideBar isOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />
+      <Container>
+        <Header toggleSidebar={toggleSidebar} />
         <main>
           <Suspense fallback={<Spinner />}>
             <Outlet />
           </Suspense>
         </main>
-      </div>
-    </LayoutWrapper>
+      </Container>
+    </MainLayoutStyled>
   );
 };
 export default MainLayout;

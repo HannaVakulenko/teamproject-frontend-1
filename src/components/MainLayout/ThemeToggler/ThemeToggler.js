@@ -1,8 +1,6 @@
 const ThemeToggler = () => {
   return (
-    <>
-      <div></div>
-    </>
+    <button type="button">O</button>
   );
 };
 export default ThemeToggler;
