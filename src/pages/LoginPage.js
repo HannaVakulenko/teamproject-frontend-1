@@ -1,7 +1,10 @@
+import { LoginForm } from "components/LoginPage";
+import { PageContainer } from "components/LoginPage/LoginPage/LoginPage.styled";
+
 const LoginPage = () => (
-  <>
-    <div>LoginPage</div>
-  </>
+  <PageContainer>
+    <LoginForm />
+  </PageContainer>
 );
 
 export default LoginPage;
