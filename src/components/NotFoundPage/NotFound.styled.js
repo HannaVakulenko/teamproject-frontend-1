@@ -73,13 +73,11 @@ export const NotFoundLink = styled(Link)`
 `;
 
 export const NotFoundImg = styled.div`
-
   width: 100px;
   height: 188px;
-  
+
   background-position: center;
   background-image: url(${goose});
-  
-
- 
+  background-repeat: no-repeat;
+  background-size: cover;
 `;
