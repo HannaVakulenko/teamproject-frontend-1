@@ -111,12 +111,28 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   body[data-theme='light'] {
-    --color-text: #111111
-    --color-calendar-text: #343434
+    --colors-text: #111111
+    --colors-calendar-text: #343434
+    --colors-btn: #3E85F3
+    --colors-active: #E3F3FF
+    --colors-task-bg: linear-gradient(0deg, rgba(220, 227, 229, 0.8), rgba(220, 227, 229, 0.8)),
+linear-gradient(0deg, #F7F6F9, #F7F6F9);
+--colors-tasks-bg: linear-gradient(0deg, rgba(220, 227, 229, 0.8), rgba(220, 227, 229, 0.8)),
+linear-gradient(0deg, #FFFFFF, #FFFFFF);
+
+
   }
 
   body[data-theme='dark'] {
-    --color-text: #FFFFFF
+    --colors-text: #FFFFFF
+    --colors-btn: #3E85F3
+    --colors-active: #3E85F3
+    --colors-task-bg: linear-gradient(0deg, #171820, #171820),
+linear-gradient(0deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.15));
+--colors-tasks-bg: linear-gradient(0deg, #21222C, #21222C),
+linear-gradient(0deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.15));
+
+
   }
 
   h1, h2, h3, h4, h5, h6 {
