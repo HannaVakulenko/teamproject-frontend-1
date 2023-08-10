@@ -8,8 +8,7 @@ import {
   NotFoundImg,
 } from './NotFound.styled';
 
-import image1x from '../../assets/images/404-mob-1x.png';
-import image2x from '../../assets/images/404-mob@2x.png';
+
 
 const NotFound = () => {
   return (
@@ -18,10 +17,9 @@ const NotFound = () => {
         <NotFoundWrapper>
           <NotFoundTitle>4</NotFoundTitle>
           <NotFoundImg
-            srcSet={`${image1x} 1x, ${image2x} 2x`}
-            src={image1x}
-            alt="Goose"
-          />
+           
+          ></NotFoundImg>
+
           <NotFoundTitle>4</NotFoundTitle>
         </NotFoundWrapper>
         <NotFoundText>

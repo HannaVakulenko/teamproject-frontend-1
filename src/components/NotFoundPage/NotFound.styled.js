@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import goose from '../../assets/images/404-mob-1x.png';
 
 export const NotFoundContainer = styled.div`
    display: flex;
@@ -8,8 +9,6 @@ export const NotFoundContainer = styled.div`
   justify-content: center;
   height: 100vh;
   text-align: center; 
-  
- 
 `;
 export const NotFoundTitle = styled.p`
 
@@ -17,9 +16,9 @@ export const NotFoundTitle = styled.p`
   font-size: 100px;
   font-weight: 700;
   line-height: 1.5;
-  letter-spacing: 0em;
   text-align: left;
   color:  rgba(62, 133, 243, 1);
+  user-select: none;
 `;
 
 export const NotFoundWrapper = styled.div`
@@ -31,7 +30,7 @@ export const NotFoundWrapper = styled.div`
 
 export const NotFoundText = styled.p`
   width: 285px;
-  margin-top: 24px;
+ 
   font-family: Inter;
   font-size: 14px;
   font-weight: 500;
@@ -39,6 +38,7 @@ export const NotFoundText = styled.p`
   letter-spacing: 0em;
   text-align: center;
   color: rgba(17, 17, 17, 0.7);
+  user-select: none;
 `;
 
 export const NotFoundLink = styled(Link)`
@@ -72,9 +72,14 @@ export const NotFoundLink = styled(Link)`
   }
 `;
 
-export const NotFoundImg = styled.img`
-  display: block;
-  width: 100%;
-  height: auto;
-  transform: 'rotate(31deg)';
+export const NotFoundImg = styled.div`
+
+  width: 100px;
+  height: 188px;
+  
+  background-position: center;
+  background-image: url(${goose});
+  
+
+ 
 `;
