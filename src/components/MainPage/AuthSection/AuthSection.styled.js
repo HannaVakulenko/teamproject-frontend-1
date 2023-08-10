@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 
 export const WrappAuthSection = styled.div`
   height: 100vh;
-  background-color: #3e85f3;
+  background-color: ${p => p.theme.colors.blue1Color};
   text-align: center;
 `;
 
@@ -17,9 +17,7 @@ export const HeroTitle = styled.h1`
   color: #fff;
   text-shadow: 0px 9.399999618530273px 57.6875px rgba(0, 0, 0, 0.04),
     0px 47px 355px rgba(0, 0, 0, 0.07);
-  font-family: Inter, sans-serif;
   font-size: 44px;
-  font-style: normal;
   font-weight: 700;
   line-height: 1.09;
 `;
@@ -37,13 +35,11 @@ export const LoginNavLink = styled(NavLink)`
   padding: 14px 32px;
 
   border-radius: 16px;
-  background: #fff;
+  background: ${p => p.theme.colors.whiteColor};
   box-shadow: 4px 2px 16px 0px rgba(136, 165, 191, 0.48);
 
-  color: #3e85f3;
-  font-family: Inter, sans-serif;
+  color: ${p => p.theme.colors.blue1Color};
   font-size: 14px;
-  font-style: normal;
   font-weight: 600;
   line-height: 1.28;
   letter-spacing: -0.28px;
@@ -60,20 +56,16 @@ export const LoginNavLink = styled(NavLink)`
 export const RegisterNavLink = styled(NavLink)`
   display: block;
   margin-top: 16px;
-  color: #fff;
+  color: ${p => p.theme.colors.whiteColor};
   text-shadow: 0px 9px 57px rgba(0, 0, 0, 0.04),
     0px 47px 355px rgba(0, 0, 0, 0.07);
-  font-family: Inter, sans-serif;
   font-size: 12px;
-  font-style: normal;
   font-weight: 600;
   line-height: 1.17;
   text-decoration-line: underline;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   &:hover,
   &:focus {
-    color: #fff;
-    text-shadow: 2px 2px 5px rgba(136, 165, 191, 0.48),
-      2px 2px 5px rgba(136, 165, 191, 0.48);
+    text-shadow: 2px 2px 4px ${p => p.theme.colors.whiteColor};
   }
 `;
