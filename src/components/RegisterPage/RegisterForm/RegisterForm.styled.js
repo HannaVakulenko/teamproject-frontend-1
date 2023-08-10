@@ -81,6 +81,9 @@ export const Field = styled(FormField)`
 `;
 
 export const FormButton = styled.button`
+  display: flex;
+  align-items: center;
+  justify-content: center;
   margin-top: 8px;
   padding: 14px 0;
   font-size: 14px;
@@ -93,6 +96,12 @@ export const FormButton = styled.button`
   border: transparent;
   cursor: pointer;
   transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  svg {
+    margin-left: 11px;
+    stroke: currentColor;
+    fill: none;
+  }
 
   &:hover,
   &:focus {

@@ -1,7 +1,7 @@
 import { Formik } from "formik";
 import * as yup from "yup";
 import { FormWrapper, FormTitle, Form, FieldWrapper, FormLabel, Field, FormButton } from "components/RegisterPage/RegisterForm/RegisterForm.styled";
-// import LoginIcon from "assets/icons/symbol-defs.svg#icon-login";
+import icon from "assets/icons/symbol-defs.svg";
 
 const schema = yup.object().shape({
   email: yup.string().email("This is an ERROR email").required("Email is required"),
@@ -38,7 +38,10 @@ const LoginForm = () => {
             <Field id="password" name="password" type="password" placeholder="Enter password" />
           </FieldWrapper>
           <FormButton type="submit">
-            Log In
+            <span>Log In</span>
+            <svg width="20" height="20">
+              <use href={icon + "#icon-login"}></use>
+            </svg>
           </FormButton>
         </Form>
       </Formik>

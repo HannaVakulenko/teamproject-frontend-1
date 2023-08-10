@@ -1,6 +1,7 @@
 import { Formik } from "formik";
 import * as yup from "yup";
 import { FormWrapper, FormTitle, Form, FieldWrapper, FormLabel, Field, FormButton } from "./RegisterForm.styled";
+import icon from "assets/icons/symbol-defs.svg";
 
 const schema = yup.object().shape({
   name: yup.string().required("Name is required"),
@@ -42,7 +43,12 @@ const RegisterForm = () => {
             <FormLabel htmlFor="password">Password</FormLabel>
             <Field id="password" name="password" type="password" placeholder="Enter password" />
           </FieldWrapper>
-          <FormButton type="submit">Sign Up</FormButton>
+          <FormButton type="submit">
+            <span>Sign Up</span>
+            <svg width="20" height="20">
+              <use href={icon + "#icon-login"}></use>
+            </svg>
+          </FormButton>
         </Form>
       </Formik>
     </FormWrapper>
