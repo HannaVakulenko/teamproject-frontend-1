@@ -1,7 +1,7 @@
 const ReviewsSlider = () => {
   return (
     <>
-      <div></div>
+      <div>ReviewsSlider</div>
     </>
   );
 };
