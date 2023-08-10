@@ -7,7 +7,7 @@ export const ItemDescription = styled.li``;
 export const WrappInfo = styled.div``;
 
 export const Number = styled.p`
-margin-bottom: 14px;
+  margin-bottom: 14px;
   color: ${p => p.theme.colors.blue1Color};
   font-size: 80px;
   font-weight: 700;
@@ -46,5 +46,5 @@ export const TextDescription = styled.p`
 `;
 
 export const ImgDescription = styled.img`
-margin-top: 40px;
+  margin-top: 40px;
 `;

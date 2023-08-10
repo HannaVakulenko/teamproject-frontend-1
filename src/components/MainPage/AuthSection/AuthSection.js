@@ -12,7 +12,6 @@ const AuthSection = () => {
   const isDesktop = useMediaQuery({
     query: `(min-width: ${device.desktop}px)`,
   });
-
   const isTablet = useMediaQuery({
     query: `(min-width: ${device.tablet}px) and (max-width: ${
       device.desktop - 1
@@ -28,30 +27,19 @@ const AuthSection = () => {
         <Img
           src={
             isRetina
-              ? require('../../../assets/images/logo-mob@2x.png')
-              : require('../../../assets/images/logo-mob-1x.png')
+              ? require('../../../assets/images/mainpage-goose-mob@2x.png')
+              : require('../../../assets/images/mainpage-goose-mob-1x.png')
           }
           alt="goose"
           width="142"
         />
       )}
-      {isTablet && (
+      {(isTablet || isDesktop) && (
         <Img
           src={
             isRetina
-              ? require('../../../assets/images/logo-tabl@2x.png')
-              : require('../../../assets/images/logo-tabl-1x.png')
-          }
-          alt="goose"
-          width="150"
-        />
-      )}
-      {isDesktop && (
-        <Img
-          src={
-            isRetina
-              ? require('../../../assets/images/logo-desk@2x.png')
-              : require('../../../assets/images/logo-desk-1x.png')
+              ? require('../../../assets/images/mainpage-goose-tabl-desk@2x.png')
+              : require('../../../assets/images/mainpage-goose-tabl-desk-1x.png')
           }
           alt="goose"
           width="150"
