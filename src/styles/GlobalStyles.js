@@ -1,18 +1,18 @@
 import { createGlobalStyle } from 'styled-components';
 import 'modern-normalize';
 
-import InterRegular from "../assets/fonts/inter/Inter-Regular.ttf";
-import InterMedium from "../assets/fonts/inter/Inter-Medium.ttf";
-import InterBold from "../assets/fonts/inter/Inter-Bold.ttf";
+import InterRegular from '../assets/fonts/inter/Inter-Regular.ttf';
+import InterMedium from '../assets/fonts/inter/Inter-Medium.ttf';
+import InterBold from '../assets/fonts/inter/Inter-Bold.ttf';
 
-import InterSemiBold from "../assets/fonts/inter/Inter-SemiBold.ttf";
-import InterSemiBoldItalic from "../assets/fonts/inter/Inter-SemiBold-Italic.ttf";
+import InterSemiBold from '../assets/fonts/inter/Inter-SemiBold.ttf';
+import InterSemiBoldItalic from '../assets/fonts/inter/Inter-SemiBold-Italic.ttf';
 
-import PoppinsRegular from "../assets/fonts/poppins/Poppins-Regular.ttf";
-import PoppinsMedium from "../assets/fonts/poppins/Poppins-Regular.ttf";
+import PoppinsRegular from '../assets/fonts/poppins/Poppins-Regular.ttf';
+import PoppinsMedium from '../assets/fonts/poppins/Poppins-Regular.ttf';
 
-import CoolveticaRegular from "../assets/fonts/coolvetica/Coolvetica-Regular.otf";
-import CoolveticaRegularItalic from "../assets/fonts/coolvetica/Coolvetica-Regular-Italic.otf";
+import CoolveticaRegular from '../assets/fonts/coolvetica/Coolvetica-Regular.otf';
+import CoolveticaRegularItalic from '../assets/fonts/coolvetica/Coolvetica-Regular-Italic.otf';
 
 export const GlobalStyle = createGlobalStyle`
     @font-face {
@@ -108,6 +108,15 @@ export const GlobalStyle = createGlobalStyle`
     line-height: 1.4;
     color: #333;
     background-color: #fff;
+  }
+
+  body[data-theme='light'] {
+    --color-text: #111111
+    --color-calendar-text: #343434
+  }
+
+  body[data-theme='dark'] {
+    --color-text: #FFFFFF
   }
 
   h1, h2, h3, h4, h5, h6 {
