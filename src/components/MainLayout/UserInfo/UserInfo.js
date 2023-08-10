@@ -1,8 +1,11 @@
+import { UserInfoStyled, UserNameStyled, UserPhoto } from './UserInfo.styled';
+
 const UserInfo = () => {
   return (
-    <>
-      <div></div>
-    </>
+    <UserInfoStyled>
+      <UserNameStyled>Nadiia</UserNameStyled>
+      <UserPhoto></UserPhoto>
+    </UserInfoStyled>
   );
 };
 export default UserInfo;
