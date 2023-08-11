@@ -17,11 +17,13 @@ const AuthSection = () => {
         <source
           srcset={
             (require('../../../assets/images/mainpage-goose-tabl-desk-1x.webp'),
-            require('../../../assets/images/mainpage-goose-tabl-desk@2x.webp'))
+            require('../../../assets/images/mainpage-goose-tabl-desk@2x.webp'),
+            require('../../../assets/images/mainpage-goose-tabl@3x.webp'))
           }
           type="image/webp"
           media={`(min-width: ${device.desktop}px)`}
         />
+
         <source
           srcset={
             (require('../../../assets/images/mainpage-goose-tabl-desk-1x.png'),
