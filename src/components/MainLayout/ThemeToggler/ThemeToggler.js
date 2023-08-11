@@ -1,20 +1,23 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { ReactComponent as Icons } from '../../../assets/icons/symbol-defs.svg';
+import { lightTheme, darkTheme } from '../../../styles/theme';
 
 const ThemeToggler = () => {
-  const [theme, setTheme] = useState('light');
+  const [isLightkTheme, setIsLightTheme] = useState(false);
 
-  const toggleTheme = () => setTheme(theme === 'light' ? 'dark' : 'light');
-
-  useEffect(() => {
-    document.body.setAttribute('data-theme', theme);
-  }, [theme]);
+  const toggleTheme = () => {
+    setIsLightTheme(prevIsLightTheme => !prevIsLightTheme);
+  };
 
   return (
     <button type="button" onClick={toggleTheme}>
       <svg width="24" height="24">
-        <use href={Icons + (theme === 'light' ? '#icon-sun' : '#icon-moon')} />
-        {/* <use href={`#${theme === 'light' ? 'icon-sun' : 'icon-moon'}`} /> */}
+        <use
+          href={
+            Icons +
+            (isLightkTheme === 'lightTheme' ? '#icon-sun' : '#icon-moon')
+          }
+        />
       </svg>
     </button>
   );
