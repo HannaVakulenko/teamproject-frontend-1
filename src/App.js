@@ -27,7 +27,15 @@ export const App = () => {
     !isRefreshing && (
       <Routes>
         <Route path="/" element={<Layout />}>
-          <Route index element={<MainPage />} />
+          <Route
+            index
+            element={
+              <RestrictedRoute
+                redirectTo="/authorized/calendar"
+                component={<MainPage />}
+              />
+            }
+          />
           <Route
             path="/login"
             element={
