@@ -1,1 +1,0 @@
-{"version":3,"file":"static/js/829.37fbab11.chunk.js","mappings":"yJAMA,UANiB,WAAH,OACZA,EAAAA,EAAAA,KAAAC,EAAAA,SAAA,CAAAC,UACEF,EAAAA,EAAAA,KAAA,OAAAE,SAAK,cACJ,C","sources":["pages/MainPage.js"],"sourcesContent":["const MainPage = () => (\n  <>\n    <div>MainPage</div>\n  </>\n);\n\nexport default MainPage;\n"],"names":["_jsx","_Fragment","children"],"sourceRoot":""}
