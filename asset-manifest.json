@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/teamproject-frontend-1/static/css/main.c58178e7.css",
-    "main.js": "/teamproject-frontend-1/static/js/main.c46bb657.js",
+    "main.js": "/teamproject-frontend-1/static/js/main.e5727db4.js",
     "static/js/451.4128ad62.chunk.js": "/teamproject-frontend-1/static/js/451.4128ad62.chunk.js",
     "static/js/461.dc0ffeb9.chunk.js": "/teamproject-frontend-1/static/js/461.dc0ffeb9.chunk.js",
     "static/js/826.59e1e1ab.chunk.js": "/teamproject-frontend-1/static/js/826.59e1e1ab.chunk.js",
@@ -17,9 +17,21 @@
     "static/media/Poppins-Regular.ttf": "/teamproject-frontend-1/static/media/Poppins-Regular.35d26b781dc5fda684cc.ttf",
     "static/media/Coolvetica-Regular-Italic.otf": "/teamproject-frontend-1/static/media/Coolvetica-Regular-Italic.733776c8d6437461f923.otf",
     "static/media/Coolvetica-Regular.otf": "/teamproject-frontend-1/static/media/Coolvetica-Regular.3d81d0e1fdbd5f69b232.otf",
+    "static/media/logo-desk@3x.png": "/teamproject-frontend-1/static/media/logo-desk@3x.cf9540d5d6e2de9a8d05.png",
+    "static/media/symbol-defs.svg": "/teamproject-frontend-1/static/media/symbol-defs.4faa6ed0355096b8186ba399358e93e7.svg",
+    "static/media/404-mob@3x.webp": "/teamproject-frontend-1/static/media/404-mob@3x.ed55355ecefbf0a3e159.webp",
+    "static/media/logo-desk@3x.webp": "/teamproject-frontend-1/static/media/logo-desk@3x.8ecbf6617f0416826dd3.webp",
+    "static/media/logo-tabl@3x.png": "/teamproject-frontend-1/static/media/logo-tabl@3x.5cb3c03df214d14d2df5.png",
+    "static/media/logo-tabl@3x.webp": "/teamproject-frontend-1/static/media/logo-tabl@3x.02fda4b617ef57421c38.webp",
+    "static/media/404-mob@2x.webp": "/teamproject-frontend-1/static/media/404-mob@2x.e07e8aa7ba0dee84b52a.webp",
+    "static/media/logo-desk@2x.webp": "/teamproject-frontend-1/static/media/logo-desk@2x.bb420638145156ed2ec3.webp",
+    "static/media/logo-tabl@2x.webp": "/teamproject-frontend-1/static/media/logo-tabl@2x.c2dc80f642e665f4cee9.webp",
+    "static/media/404-mob-1x.webp": "/teamproject-frontend-1/static/media/404-mob-1x.b70c36b0cb3618566894.webp",
+    "static/media/logo-desk-1x.webp": "/teamproject-frontend-1/static/media/logo-desk-1x.afd277922e02777378ea.webp",
+    "static/media/logo-tabl-1x.webp": "/teamproject-frontend-1/static/media/logo-tabl-1x.cec23fd06038f13e12d2.webp",
     "index.html": "/teamproject-frontend-1/index.html",
     "main.c58178e7.css.map": "/teamproject-frontend-1/static/css/main.c58178e7.css.map",
-    "main.c46bb657.js.map": "/teamproject-frontend-1/static/js/main.c46bb657.js.map",
+    "main.e5727db4.js.map": "/teamproject-frontend-1/static/js/main.e5727db4.js.map",
     "451.4128ad62.chunk.js.map": "/teamproject-frontend-1/static/js/451.4128ad62.chunk.js.map",
     "461.dc0ffeb9.chunk.js.map": "/teamproject-frontend-1/static/js/461.dc0ffeb9.chunk.js.map",
     "826.59e1e1ab.chunk.js.map": "/teamproject-frontend-1/static/js/826.59e1e1ab.chunk.js.map",
@@ -30,6 +42,6 @@
   },
   "entrypoints": [
     "static/css/main.c58178e7.css",
-    "static/js/main.c46bb657.js"
+    "static/js/main.e5727db4.js"
   ]
 }
