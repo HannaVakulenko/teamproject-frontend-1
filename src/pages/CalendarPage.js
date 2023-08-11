@@ -1,6 +1,12 @@
+import React from 'react';
+import { MyDatePicker } from 'components/CalendarPage';
+import { CalendarWrapper } from './Calendar.styled';
 const CalendarPage = () => (
   <>
-    <div>CalendarPage</div>
+    <CalendarWrapper>
+      <div>CalendarPage</div>
+      <MyDatePicker />
+    </CalendarWrapper>
   </>
 );
 

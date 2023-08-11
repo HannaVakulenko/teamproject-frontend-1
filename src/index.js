@@ -8,6 +8,8 @@ import theme from 'styles/theme';
 import { store, persistor } from 'redux/store';
 import { PersistGate } from 'redux-persist/integration/react';
 import { Provider } from 'react-redux';
+import { LocalizationProvider } from '@mui/x-date-pickers';
+import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
@@ -15,9 +17,11 @@ ReactDOM.createRoot(document.getElementById('root')).render(
       <PersistGate loading={null} persistor={persistor}>
         <ThemeProvider theme={theme}>
           <GlobalStyle />
-          <BrowserRouter basename="/teamproject-frontend-1">
-            <App />
-          </BrowserRouter>
+          <LocalizationProvider dateAdapter={AdapterDateFns}>
+            <BrowserRouter basename="/teamproject-frontend-1">
+              <App />
+            </BrowserRouter>
+          </LocalizationProvider>
         </ThemeProvider>
       </PersistGate>
     </Provider>
