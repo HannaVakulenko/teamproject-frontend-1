@@ -1,6 +1,6 @@
 import { Formik } from "formik";
 import * as yup from "yup";
-import { FormWrapper, FormTitle, Form, FieldWrapper, FormLabel, Field, FormButton } from "components/RegisterPage/RegisterForm/RegisterForm.styled";
+import { FormWrapper, FormTitle, Form, FieldWrapper, FormLabel, FormField, FormButton } from "components/RegisterPage/RegisterForm/RegisterForm.styled";
 import icon from "assets/icons/symbol-defs.svg";
 
 const schema = yup.object().shape({
@@ -31,11 +31,11 @@ const LoginForm = () => {
         <Form autoComplete="off">
           <FieldWrapper>
             <FormLabel htmlFor="email">Email</FormLabel>
-            <Field id="email" name="email" type="email" placeholder="Enter email" />
+            <FormField id="email" name="email" type="email" placeholder="Enter email" />
           </FieldWrapper>
           <FieldWrapper>
             <FormLabel htmlFor="password">Password</FormLabel>
-            <Field id="password" name="password" type="password" placeholder="Enter password" />
+            <FormField id="password" name="password" type="password" placeholder="Enter password" />
           </FieldWrapper>
           <FormButton type="submit">
             <span>Log In</span>

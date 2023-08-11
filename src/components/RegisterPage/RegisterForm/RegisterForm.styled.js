@@ -1,5 +1,5 @@
 import { styled } from "styled-components";
-import { Form as FormikForm, Field as FormField } from "formik";
+import { Form as FormikForm, Field } from "formik";
 import { device } from "constants";
 
 export const FormWrapper = styled.div`
@@ -59,7 +59,7 @@ export const FormLabel = styled.label`
   }
 `;
 
-export const Field = styled(FormField)`
+export const FormField = styled(Field)`
   padding: 14px;
   font-size: 14px;
   line-height: 1.28;
@@ -69,9 +69,24 @@ export const Field = styled(FormField)`
   outline: none;
   transition: border-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
-  &:hover,
-  &:focus {
+  &:hover {
     border-color: #111111;
+  };
+
+  &:valid {
+    border-color: #3CBC81;
+  };
+
+  &:valid ~ span {
+    display: block;
+  };
+
+  &:invalid[focused="true"] {
+    border-color: #E74A3B;
+  };
+
+  &:invalid[focused="true"] ~ p {
+    display: block;
   }
   
   &::placeholder {
@@ -84,6 +99,24 @@ export const Field = styled(FormField)`
       font-size: 16px;
     };
   };
+`;
+
+export const ErrorText = styled.p`
+  display: none;
+  margin-top: 8px;
+  margin-left: 18px;
+  font-size: 12px;
+  color: #E74A3B;
+  line-height: 1.16;
+`;
+
+export const SuccessText = styled.span`
+  display: none;
+  margin-top: 8px;
+  margin-left: 18px;
+  font-size: 12px;
+  color: #3CBC81;
+  line-height: 1.16;
 `;
 
 export const FormButton = styled.button`

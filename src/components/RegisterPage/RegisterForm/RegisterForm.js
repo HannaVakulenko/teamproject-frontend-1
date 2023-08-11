@@ -1,6 +1,7 @@
-import { Formik } from "formik";
+import { useState } from "react";
+import { Formik} from "formik";
 import * as yup from "yup";
-import { FormWrapper, FormTitle, Form, FieldWrapper, FormLabel, Field, FormButton } from "./RegisterForm.styled";
+import { FormWrapper, FormTitle, Form, FieldWrapper, FormLabel, FormField, FormButton, ErrorText, SuccessText } from "./RegisterForm.styled";
 import icon from "assets/icons/symbol-defs.svg";
 
 const schema = yup.object().shape({
@@ -16,10 +17,27 @@ const initialValues = {
 };
 
 const RegisterForm = () => {
+  const [focused, setFocused] = useState({
+    name: false,
+    email: false,
+    password: false,
+  });
+
+  const handleFocus = fieldName => {
+    setFocused(prevState => ({
+      ...prevState,
+      [fieldName]: true,
+    }));
+  };
 
   const handleSubmit = (values, { resetForm }) => {
     console.log(values);
     resetForm();
+    setFocused({
+      name: false,
+      email: false,
+      password: false,
+    });
   };
 
   return (
@@ -33,15 +51,19 @@ const RegisterForm = () => {
         <Form autoComplete="off">
           <FieldWrapper>
             <FormLabel htmlFor="name">Name</FormLabel>
-            <Field id="name" name="name" placeholder="Enter your name" />
+            <FormField id="name" name="name" placeholder="Enter your name" required onBlur={() => handleFocus("name")} focused={focused.name.toString()} />
+            <ErrorText>Name is required</ErrorText>
           </FieldWrapper>
           <FieldWrapper>
             <FormLabel htmlFor="email">Email</FormLabel>
-            <Field id="email" name="email" type="email" placeholder="Enter email" />
+            <FormField id="email" name="email" type="email" placeholder="Enter email" required onBlur={() => handleFocus("email")} focused={focused.email.toString()} />
+            <ErrorText>This is an ERROR email</ErrorText>
+            <SuccessText>This is an CORRECT email</SuccessText>
           </FieldWrapper>
           <FieldWrapper>
             <FormLabel htmlFor="password">Password</FormLabel>
-            <Field id="password" name="password" type="password" placeholder="Enter password" />
+            <FormField id="password" name="password" type="password" required minLength="7" onBlur={() => handleFocus("password")} focused={focused.password.toString()} placeholder="Enter password" />
+            <ErrorText>Must be at least 7 characters long</ErrorText>
           </FieldWrapper>
           <FormButton type="submit">
             <span>Sign Up</span>
