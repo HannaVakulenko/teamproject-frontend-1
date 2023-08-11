@@ -1,7 +1,19 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+
 import goose from '../../assets/images/404-mob-1x.png';
 import goosetabl from '../../assets/images/404-tabl-desk-1x.png';
+import goose2x from '../../assets/images/404-mob@2x.png';
+import goosetabl2x from '../../assets/images/404-tabl-desk@2x.png';
+import goose3x from '../../assets/images/404-mob@3x.png';
+import goosetabl3x from '../../assets/images/404-tabl-desk@3x.png';
+
+import goosewebp from '../../assets/images/404-mob-1x.webp';
+import goosetablwebp from '../../assets/images/404-tabl-desk-1x.webp';
+import goosewebp2x from '../../assets/images/404-mob@2x.webp';
+import goosetablwebp2x from '../../assets/images/404-tabl-desk@2x.webp';
+import goosewebp3x from '../../assets/images/404-mob@3x.webp';
+import goosetablwebp3x from '../../assets/images/404-tabl-desk@3x.webp';
 
 import { device } from 'constants';
 
@@ -10,7 +22,7 @@ export const NotFoundContainer = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  /* height: 100hv; */
+  height: 100vh;
   width: 100%;
   padding-right: 47px;
   padding-left: 47px;
@@ -123,7 +135,7 @@ export const NotFoundImg = styled.div`
   background-image: url(${goose});
   background-repeat: no-repeat;
   background-size: cover;
-  z-index: 2;
+  z-index: 1;
 
   @media screen and (min-width: ${device.tablet}px) {
     width: 350px;

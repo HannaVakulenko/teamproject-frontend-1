@@ -17,9 +17,7 @@ const NotFound = () => {
         <NotFoundWrapper>
           <NotFoundTitle>4</NotFoundTitle>
           <NotFoundImg
-           
           ></NotFoundImg>
-
           <NotFoundTitle>4</NotFoundTitle>
         </NotFoundWrapper>
         <NotFoundText>
