@@ -1,25 +1,57 @@
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
+import { device } from 'constants';
 
 export const WrappAuthSection = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   height: 100vh;
   background-color: ${p => p.theme.colors.blue1Color};
-  text-align: center;
 `;
 
-export const Img = styled.img`
+export const ImgHero = styled.img`
   margin-top: 256px;
+
+  @media (min-width: ${device.tablet}px) {
+    margin-top: 331px;
+    width: 150px;
+  }
+  @media (min-width: ${device.desktop}px) {
+    margin-top: 187px;
+  }
 `;
 
 export const HeroTitle = styled.h1`
   margin-top: 2px;
-
   color: #fff;
-  text-shadow: 0px 9.399999618530273px 57.6875px rgba(0, 0, 0, 0.04),
+  text-shadow: 0px 9px 58px rgba(0, 0, 0, 0.04),
     0px 47px 355px rgba(0, 0, 0, 0.07);
   font-size: 44px;
   font-weight: 700;
   line-height: 1.09;
+
+  @media (min-width: ${device.tablet}px) {
+    font-size: 100px;
+    line-height: 1.3;
+  }
+  @media (min-width: ${device.desktop}px) {
+    font-size: 120px;
+    line-height: 1.25;
+  }
+`;
+
+export const WrapLink = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  @media (min-width: ${device.tablet}px) {
+    flex-direction: row-reverse;
+    justify-content: center;
+    align-items: baseline;
+    gap: 24px;
+  }
 `;
 
 export const LoginNavLink = styled(NavLink)`
@@ -59,7 +91,7 @@ export const RegisterNavLink = styled(NavLink)`
   color: ${p => p.theme.colors.whiteColor};
   text-shadow: 0px 9px 57px rgba(0, 0, 0, 0.04),
     0px 47px 355px rgba(0, 0, 0, 0.07);
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 600;
   line-height: 1.17;
   text-decoration-line: underline;
@@ -68,4 +100,11 @@ export const RegisterNavLink = styled(NavLink)`
   &:focus {
     text-shadow: 2px 2px 4px ${p => p.theme.colors.whiteColor};
   }
+`;
+
+export const IconLogin = styled.svg`
+  width: 18px;
+  height: 18px;
+  stroke: currentColor;
+  fill: none;
 `;
