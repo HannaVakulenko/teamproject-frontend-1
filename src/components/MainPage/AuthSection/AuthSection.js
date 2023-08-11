@@ -1,50 +1,67 @@
 import { useMediaQuery } from 'react-responsive';
 import { device } from 'constants';
+// import { isWebpSupported } from 'react-image-webp/dist/utils';
 import {
   HeroTitle,
-  Img,
   LoginNavLink,
   RegisterNavLink,
   WrappAuthSection,
 } from 'components/MainPage/AuthSection/AuthSection.styled';
 
 const AuthSection = () => {
-  const isDesktop = useMediaQuery({
-    query: `(min-width: ${device.desktop}px)`,
-  });
-  const isTablet = useMediaQuery({
-    query: `(min-width: ${device.tablet}px) and (max-width: ${
-      device.desktop - 1
-    }px)`,
-  });
-  const isMobile = useMediaQuery({
-    query: `(max-width: ${device.tablet - 1}px)`,
-  });
   const isRetina = useMediaQuery({ query: '(min-resolution: 2dppx)' });
+
   return (
     <WrappAuthSection>
-      {isMobile && (
-        <Img
+      <picture>
+        <source
+          srcset={
+            (require('../../../assets/images/mainpage-goose-tabl-desk-1x.webp'),
+            require('../../../assets/images/mainpage-goose-tabl-desk@2x.webp'))
+          }
+          type="image/webp"
+          media={`(min-width: ${device.desktop}px)`}
+        />
+        <source
+          srcset={
+            (require('../../../assets/images/mainpage-goose-tabl-desk-1x.png'),
+            require('../../../assets/images/mainpage-goose-tabl-desk@2x.png'))
+          }
+          media={`(min-width: ${device.desktop}px)`}
+        />
+        <source
+          srcset={
+            (require('../../../assets/images/mainpage-goose-tabl-desk-1x.png'),
+            require('../../../assets/images/mainpage-goose-tabl-desk@2x.png'))
+          }
+          media={`(min-width: ${device.tablet}px)`}
+        />
+        {/* <source
+          srcset={
+            isRetina
+              ? require('../../../assets/images/mainpage-goose-tabl-desk@2x.png')
+              : require('../../../assets/images/mainpage-goose-tabl-desk-1x.png')
+          }
+          media={`(min-width: ${device.desktop}px)`}
+        />
+        <source
+          srcset={
+            isRetina
+              ? require('../../../assets/images/mainpage-goose-tabl-desk@2x.png')
+              : require('../../../assets/images/mainpage-goose-tabl-desk-1x.png')
+          }
+          media={`(min-width: ${device.tablet}px)`}
+        /> */}
+        <img
           src={
             isRetina
               ? require('../../../assets/images/mainpage-goose-mob@2x.png')
               : require('../../../assets/images/mainpage-goose-mob-1x.png')
           }
           alt="goose"
-          width="142"
-        />
-      )}
-      {(isTablet || isDesktop) && (
-        <Img
-          src={
-            isRetina
-              ? require('../../../assets/images/mainpage-goose-tabl-desk@2x.png')
-              : require('../../../assets/images/mainpage-goose-tabl-desk-1x.png')
-          }
-          alt="goose"
           width="150"
         />
-      )}
+      </picture>
       <HeroTitle>
         Go<i>o</i>seTrack
       </HeroTitle>
