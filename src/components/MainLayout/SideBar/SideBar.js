@@ -38,10 +38,12 @@ import logoDesk3x from '../../../assets/images/logo-desk@3x.png';
 import logoDesk3xw from '../../../assets/images/logo-desk@3x.webp';
 import icon from 'assets/icons/symbol-defs.svg';
 import { useLocation } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { logout } from 'redux/auth/operations';
+import { selectLoggedIn } from 'redux/auth/selectors';
 
 const SideBar = ({ isOpen, toggleSidebar }) => {
+  const isLoggedIn = useSelector(selectLoggedIn);
   const dispatch = useDispatch();
   const location = useLocation();
   const closeSidebar = () => {
@@ -117,12 +119,14 @@ const SideBar = ({ isOpen, toggleSidebar }) => {
             </NavigationList>
           </Navigation>
         </TopSection>
-        <LogoutButton onClick={() => dispatch(logout())}>
-          Log out
-          <IconLogout>
-            <use href={icon + '#icon-logout'}></use>
-          </IconLogout>
-        </LogoutButton>
+        {isLoggedIn && (
+          <LogoutButton onClick={() => dispatch(logout())}>
+            Log out
+            <IconLogout>
+              <use href={icon + '#icon-logout'}></use>
+            </IconLogout>
+          </LogoutButton>
+        )}
       </Sidebar>
     </>
   );
