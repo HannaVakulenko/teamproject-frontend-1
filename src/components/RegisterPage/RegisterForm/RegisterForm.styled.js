@@ -45,9 +45,17 @@ export const Form = styled(FormikForm)`
 `;
 
 export const FieldWrapper = styled.div`
+  position: relative;
   display: flex;
   flex-direction: column;
   gap: 8px;
+
+  svg {
+    position: absolute;
+    right: 18px;
+    top: 42px;
+    fill: #E74A3B;
+  };
 `;
 
 export const FormLabel = styled.label`
@@ -56,7 +64,7 @@ export const FormLabel = styled.label`
 
   @media screen and (min-width: ${device.tablet}px) {
     font-size: 14px;
-  }
+  };
 `;
 
 export const FormField = styled(Field)`
@@ -81,11 +89,19 @@ export const FormField = styled(Field)`
     display: block;
   };
 
+  &:valid svg {
+    display: none;
+  };
+
   &:invalid[focused="true"] {
     border-color: #E74A3B;
   };
 
   &:invalid[focused="true"] ~ p {
+    display: block;
+  };
+
+  &:invalid[focused="true"] svg {
     display: block;
   }
   
@@ -140,7 +156,7 @@ export const FormButton = styled.button`
     margin-left: 11px;
     stroke: currentColor;
     fill: none;
-  }
+  };
 
   &:hover,
   &:focus {

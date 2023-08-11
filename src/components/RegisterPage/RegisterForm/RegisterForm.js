@@ -48,30 +48,36 @@ const RegisterForm = () => {
         validationSchema={schema}
         onSubmit={handleSubmit}
       >
-        <Form autoComplete="off">
-          <FieldWrapper>
-            <FormLabel htmlFor="name">Name</FormLabel>
-            <FormField id="name" name="name" placeholder="Enter your name" required onBlur={() => handleFocus("name")} focused={focused.name.toString()} />
-            <ErrorText>Name is required</ErrorText>
-          </FieldWrapper>
-          <FieldWrapper>
-            <FormLabel htmlFor="email">Email</FormLabel>
-            <FormField id="email" name="email" type="email" placeholder="Enter email" required onBlur={() => handleFocus("email")} focused={focused.email.toString()} />
-            <ErrorText>This is an ERROR email</ErrorText>
-            <SuccessText>This is an CORRECT email</SuccessText>
-          </FieldWrapper>
-          <FieldWrapper>
-            <FormLabel htmlFor="password">Password</FormLabel>
-            <FormField id="password" name="password" type="password" required minLength="7" onBlur={() => handleFocus("password")} focused={focused.password.toString()} placeholder="Enter password" />
-            <ErrorText>Must be at least 7 characters long</ErrorText>
-          </FieldWrapper>
-          <FormButton type="submit">
-            <span>Sign Up</span>
-            <svg width="20" height="20">
-              <use href={icon + "#icon-login"}></use>
-            </svg>
-          </FormButton>
-        </Form>
+        {({ errors, touched }) => (
+          <Form autoComplete="off">
+            <FieldWrapper>
+              <FormLabel htmlFor="name">Name</FormLabel>
+              <FormField id="name" name="name" placeholder="Enter your name" required onBlur={() => handleFocus("name")} focused={focused.name.toString()} />
+              <ErrorText>Name is required</ErrorText>
+            </FieldWrapper>
+            <FieldWrapper>
+              <FormLabel htmlFor="email">Email</FormLabel>
+              <svg width="20" height="20">
+                <use href={icon + "#icon-Vector"}></use>
+              </svg>
+              <FormField id="email" name="email" type="email" placeholder="Enter email" required onBlur={() => handleFocus("email")} focused={focused.email.toString()} />
+              <ErrorText>This is an ERROR email</ErrorText>
+              <SuccessText>This is an CORRECT email</SuccessText>
+            </FieldWrapper>
+            <FieldWrapper>
+              <FormLabel htmlFor="password">Password</FormLabel>
+              <FormField id="password" name="password" type="password" required minLength="7" onBlur={() => handleFocus("password")} focused={focused.password.toString()} placeholder="Enter password" />
+              <ErrorText>Must be at least 7 characters long</ErrorText>
+            </FieldWrapper>
+            <FormButton type="submit">
+              <span>Sign Up</span>
+              <svg width="20" height="20">
+                <use href={icon + "#icon-login"}></use>
+              </svg>
+            </FormButton>
+          </Form>
+        )}
+        
       </Formik>
     </FormWrapper>
   );
