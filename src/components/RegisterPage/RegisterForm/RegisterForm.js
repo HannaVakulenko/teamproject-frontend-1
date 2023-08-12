@@ -1,23 +1,41 @@
-import { Formik } from "formik";
-import * as yup from "yup";
-import { FormWrapper, FormTitle, Form, FieldWrapper, FormLabel, Field, FormButton } from "./RegisterForm.styled";
+import { Formik } from 'formik';
+import * as yup from 'yup';
+import {
+  FormWrapper,
+  FormTitle,
+  Form,
+  FieldWrapper,
+  FormLabel,
+  Field,
+  FormButton,
+} from './RegisterForm.styled';
+
+import { useDispatch } from 'react-redux';
+import { register } from 'redux/auth/operations';
 
 const schema = yup.object().shape({
-  name: yup.string().required("Name is required"),
-  email: yup.string().email("This is an ERROR email").required("Email is required"),
-  password: yup.string().min(7, "Must be at least 7 characters long").required("Password is required"),
+  name: yup.string().required('Name is required'),
+  email: yup
+    .string()
+    .email('This is an ERROR email')
+    .required('Email is required'),
+  password: yup
+    .string()
+    .min(7, 'Must be at least 7 characters long')
+    .required('Password is required'),
 });
 
 const initialValues = {
-  name: "",
-  email: "",
-  password: "",
+  name: '',
+  email: '',
+  password: '',
 };
 
 const RegisterForm = () => {
+  const dispatch = useDispatch();
 
-  const handleSubmit = (values, { resetForm }) => {
-    console.log(values);
+  const handleSubmit = async (values, { resetForm }) => {
+    await dispatch(register(values));
     resetForm();
   };
 
@@ -36,11 +54,21 @@ const RegisterForm = () => {
           </FieldWrapper>
           <FieldWrapper>
             <FormLabel htmlFor="email">Email</FormLabel>
-            <Field id="email" name="email" type="email" placeholder="Enter email" />
+            <Field
+              id="email"
+              name="email"
+              type="email"
+              placeholder="Enter email"
+            />
           </FieldWrapper>
           <FieldWrapper>
             <FormLabel htmlFor="password">Password</FormLabel>
-            <Field id="password" name="password" type="password" placeholder="Enter password" />
+            <Field
+              id="password"
+              name="password"
+              type="password"
+              placeholder="Enter password"
+            />
           </FieldWrapper>
           <FormButton type="submit">Sign Up</FormButton>
         </Form>
