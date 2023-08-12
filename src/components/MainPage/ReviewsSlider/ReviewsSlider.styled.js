@@ -29,7 +29,7 @@ export const ReviewSliderCard = styled.div`
   border-radius: 8px;
   border: 1px solid #e7e5e5;
   padding: 24px;
-  overflow-y: scroll;
+  overflow-y: auto;
 
   @media screen and (min-width: 768px) {
     padding: 32px 32px 50px 32px;
