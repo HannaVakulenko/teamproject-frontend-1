@@ -4,7 +4,6 @@ import { CalendarWrapper } from './Calendar.styled';
 const CalendarPage = () => (
   <>
     <CalendarWrapper>
-      <div>CalendarPage</div>
       <MyDatePicker />
     </CalendarWrapper>
   </>
