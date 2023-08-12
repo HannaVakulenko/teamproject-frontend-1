@@ -53,6 +53,15 @@ export const FieldWrapper = styled.div`
 export const FormLabel = styled.label`
   font-size: 12px;
   font-weight: 600;
+  color: ${p => p.theme.colors.black2Color};
+
+  &.error {
+    color: ${p => p.theme.colors.redColor};
+  };
+
+  &.success {
+    color: ${p => p.theme.colors.greenColor};
+  };
 
   @media screen and (min-width: ${device.tablet}px) {
     font-size: 14px;
@@ -75,9 +84,13 @@ export const FormField = styled(Field)`
     border-color: ${p => p.theme.colors.black2Color};
   };
 
-  &:focus {
-    border-color: ${({ theme, errors, touched }) => (touched && !errors ? theme.greenColor : theme.redColor)};
-  }
+  &.error {
+    border-color: ${p => p.theme.colors.redColor};
+  };
+
+  &.success {
+    border-color: ${p => p.theme.colors.greenColor};
+  };
 
   &::placeholder {
     font-size: 14px;

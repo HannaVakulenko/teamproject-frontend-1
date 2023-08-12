@@ -43,25 +43,49 @@ const RegisterForm = () => {
         {formik => (
           <Form autoComplete="off">
             <FieldWrapper>
-              <FormLabel htmlFor="name">Name</FormLabel>
+              <FormLabel
+                htmlFor="name"
+                className={`${formik.touched.name && formik.errors.name
+                  ? 'error'
+                  : formik.touched.name && !formik.errors.name
+                    ? 'success'
+                    : ''}`}
+              >
+                Name
+              </FormLabel>
               <FormField 
                 id="name"
                 name="name"
                 placeholder="Enter your name"
-                touched={String(formik.touched.name)}
-                errors={formik.errors.name}
+                className={`${formik.touched.name && formik.errors.name
+                  ? 'error'
+                  : formik.touched.name && !formik.errors.name
+                    ? 'success'
+                    : ''}`}
               />
               <ErrorText name="name" component="div" />
             </FieldWrapper>
             <FieldWrapper>
-              <FormLabel htmlFor="email">Email</FormLabel>
+              <FormLabel
+                htmlFor="email"
+                className={`${formik.touched.email && formik.errors.email
+                  ? 'error'
+                  : formik.touched.email && !formik.errors.email
+                    ? 'success'
+                    : ''}`}
+              >
+                Email
+              </FormLabel>
               <FormField
                 id="email"
                 name="email"
                 type="email"
                 placeholder="Enter email"
-                touched={String(formik.touched.email)}
-                errors={formik.errors.email}
+                className={`${formik.touched.email && formik.errors.email
+                  ? 'error'
+                  : formik.touched.email && !formik.errors.email
+                    ? 'success'
+                    : ''}`}
               />
               <ErrorText name="email" component="div" />
               {formik.touched.email && !formik.errors.email && (
@@ -69,14 +93,26 @@ const RegisterForm = () => {
               )}
             </FieldWrapper>
             <FieldWrapper>
-              <FormLabel htmlFor="password">Password</FormLabel>
+              <FormLabel
+                htmlFor="password"
+                className={`${formik.touched.password && formik.errors.password
+                  ? 'error'
+                  : formik.touched.password && !formik.errors.password
+                    ? 'success'
+                    : ''}`}
+              >
+                Password
+              </FormLabel>
               <FormField
                 id="password"
                 name="password"
                 type="password"
                 placeholder="Enter password"
-                touched={String(formik.touched.password)}
-                errors={formik.errors.password}
+                className={`${formik.touched.password && formik.errors.password
+                  ? 'error'
+                  : formik.touched.password && !formik.errors.password
+                    ? 'success'
+                    : ''}`}
               />
               <ErrorText name="password" component="div" />
             </FieldWrapper>
