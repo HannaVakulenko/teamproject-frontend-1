@@ -1,9 +1,11 @@
-import { StyledFeedbackBtn } from './AddFeedbackBtn.styled';
+import { StyledFeedbackBtn, FeedBackBtnText } from './AddFeedbackBtn.styled';
 
 const AddFeedbackBtn = () => {
   return (
     <>
-      <StyledFeedbackBtn type="button">Feedback</StyledFeedbackBtn>
+      <StyledFeedbackBtn type="button">
+        <FeedBackBtnText>Feedback</FeedBackBtnText>
+      </StyledFeedbackBtn>
     </>
   );
 };
