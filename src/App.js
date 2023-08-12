@@ -12,10 +12,11 @@ import { refreshUser } from 'redux/auth/operations';
 import LoginPage from 'pages/LoginPage';
 import MainPage from 'pages/MainPage';
 import RegisterPage from 'pages/RegisterPage';
-
+import NotFoundPage from 'pages/NotFoundPage';
 const AccountPage = lazy(() => import('pages/AccountPage'));
 const CalendarPage = lazy(() => import('pages/CalendarPage'));
 const StatisticsPage = lazy(() => import('pages/StatisticsPage'));
+
 
 export const App = () => {
   const dispatch = useDispatch();
@@ -79,6 +80,7 @@ export const App = () => {
             }
           />
         </Route>
+        <Route path="*" element={<NotFoundPage />} />
       </Routes>
     )
   );
