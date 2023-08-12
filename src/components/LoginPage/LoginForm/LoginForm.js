@@ -9,7 +9,7 @@ import { login } from 'redux/auth/operations';
 const schema = yup.object().shape({
   email: yup
     .string()
-    .email('This is an ERROR email')
+    .email()
     .required('Email is required'),
   password: yup.string().required('Password is required'),
 });
