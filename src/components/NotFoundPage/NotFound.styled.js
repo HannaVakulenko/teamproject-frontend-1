@@ -151,7 +151,7 @@ export const NotFoundImg = styled.div`
     background-image: url(${goose3x});
   }
 
-  /* WebP формат для підтримки високої якості з малою вагою файлу */
+  /* WebP формат */
   @supports (background-image: -webkit-image-set(url(${goosewebp}))) {
     background-image: -webkit-image-set(
       url(${goosewebp}) 1x,
@@ -165,7 +165,7 @@ export const NotFoundImg = styled.div`
     );
   }
 
-  //tabl формат
+  //tablet
 
   @media screen and (min-width: ${device.tablet}px) {
     width: 350px;
@@ -186,8 +186,8 @@ export const NotFoundImg = styled.div`
       background-image: url(${goosetabl3x});
     }
 
-    /* WebP формат для підтримки високої якості з малою вагою файлу */
-    
+    /* WebP формат */
+
     @supports (background-image: -webkit-image-set(url(${goosetablwebp}))) {
       background-image: -webkit-image-set(
         url(${goosetablwebp}) 1x,
