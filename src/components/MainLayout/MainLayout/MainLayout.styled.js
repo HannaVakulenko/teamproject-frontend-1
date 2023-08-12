@@ -4,7 +4,6 @@ export const MainLayoutStyled = styled.div`
   display: flex;
   width: 100%;
   height: 100%;
-  background: ${props => props.theme.mainBGColor};
 `;
 
 export const MainStyled = styled.div`
