@@ -1,16 +1,9 @@
-import { Formik } from 'formik';
-import * as yup from 'yup';
-import {
-  FormWrapper,
-  FormTitle,
-  Form,
-  FieldWrapper,
-  FormLabel,
-  Field,
-  FormButton,
-} from './RegisterForm.styled';
-
 import { useDispatch } from 'react-redux';
+import { Formik} from "formik";
+import * as yup from "yup";
+import { FormWrapper, FormTitle, Form, FieldWrapper, FormLabel, FormField, FormButton, ErrorText, SuccessText, Icon } from "./RegisterForm.styled";
+import icon from "assets/icons/symbol-defs.svg";
+
 import { register } from 'redux/auth/operations';
 
 const schema = yup.object().shape({
@@ -47,31 +40,54 @@ const RegisterForm = () => {
         validationSchema={schema}
         onSubmit={handleSubmit}
       >
-        <Form autoComplete="off">
-          <FieldWrapper>
-            <FormLabel htmlFor="name">Name</FormLabel>
-            <Field id="name" name="name" placeholder="Enter your name" />
-          </FieldWrapper>
-          <FieldWrapper>
-            <FormLabel htmlFor="email">Email</FormLabel>
-            <Field
-              id="email"
-              name="email"
-              type="email"
-              placeholder="Enter email"
-            />
-          </FieldWrapper>
-          <FieldWrapper>
-            <FormLabel htmlFor="password">Password</FormLabel>
-            <Field
-              id="password"
-              name="password"
-              type="password"
-              placeholder="Enter password"
-            />
-          </FieldWrapper>
-          <FormButton type="submit">Sign Up</FormButton>
-        </Form>
+        {formik => (
+          <Form autoComplete="off">
+            <FieldWrapper>
+              <FormLabel htmlFor="name">Name</FormLabel>
+              <FormField 
+                id="name"
+                name="name"
+                placeholder="Enter your name"
+                touched={String(formik.touched.password)}
+                errors={formik.errors.name}
+              />
+              <ErrorText name="name" component="div" />
+            </FieldWrapper>
+            <FieldWrapper>
+              <FormLabel htmlFor="email">Email</FormLabel>
+              <FormField
+                id="email"
+                name="email"
+                type="email"
+                placeholder="Enter email"
+                touched={String(formik.touched.password)}
+                errors={formik.errors.email}
+              />
+              <ErrorText name="email" component="div" />
+              {formik.touched.email && !formik.errors.email && (
+                <SuccessText>This is a CORRECT email</SuccessText>
+              )}
+            </FieldWrapper>
+            <FieldWrapper>
+              <FormLabel htmlFor="password">Password</FormLabel>
+              <FormField
+                id="password"
+                name="password"
+                type="password"
+                placeholder="Enter password"
+                touched={String(formik.touched.password)}
+                errors={formik.errors.password}
+              />
+              <ErrorText name="password" component="div" />
+            </FieldWrapper>
+            <FormButton type="submit">
+              <span>Sign Up</span>
+              <Icon width="20" height="20">
+                <use href={icon + "#icon-login"}></use>
+              </Icon>
+            </FormButton>
+          </Form>
+        )}      
       </Formik>
     </FormWrapper>
   );
