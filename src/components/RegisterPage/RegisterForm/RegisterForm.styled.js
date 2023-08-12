@@ -1,5 +1,5 @@
-import { styled } from "styled-components";
-import { Form as FormikForm, Field as FormField } from "formik";
+import { styled } from 'styled-components';
+import { Form as FormikForm, Field as FormField } from 'formik';
 
 export const FormWrapper = styled.div`
   width: 100%;
@@ -12,12 +12,12 @@ export const FormWrapper = styled.div`
 
   @media screen and (min-width: 375px) and (max-width: 767px) {
     width: 335px;
-  };
+  }
   @media screen and (min-width: 768px) {
     width: 480px;
     padding-left: 40px;
     padding-right: 40px;
-  };
+  }
 `;
 
 export const FormTitle = styled.h1`
@@ -25,12 +25,12 @@ export const FormTitle = styled.h1`
   font-size: 18px;
   font-weight: 600;
   line-height: 1.33;
-  color: ${p => p.theme.colors.blue1Color};
+  /* color: ${p => p.theme.colors.blue1Color}; */
 
   @media screen and (min-width: 768px) {
     margin-bottom: 40px;
     font-size: 24px;
-  };
+  }
 `;
 
 export const Form = styled(FormikForm)`
@@ -40,7 +40,7 @@ export const Form = styled(FormikForm)`
 
   @media screen and (min-width: 768px) {
     gap: 18px;
-  };
+  }
 `;
 
 export const FieldWrapper = styled.div`
@@ -64,19 +64,19 @@ export const Field = styled(FormField)`
   line-height: 1.28;
   color: #111111;
   border-radius: 8px;
-  border: 1px solid rgba(220, 227, 229, 0.60);
+  border: 1px solid rgba(220, 227, 229, 0.6);
   outline: none;
-  
+
   &::placeholder {
     font-size: 14px;
-    color: #DCE3E5;
-  };
+    color: #dce3e5;
+  }
 
   @media screen and (min-width: 768px) {
     &::placeholder {
       font-size: 16px;
-    };
-  };
+    }
+  }
 `;
 
 export const FormButton = styled.button`
