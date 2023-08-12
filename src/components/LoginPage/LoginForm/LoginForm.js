@@ -1,23 +1,15 @@
-import { Formik } from 'formik';
-import * as yup from 'yup';
-import {
-  FormWrapper,
-  FormTitle,
-  Form,
-  FieldWrapper,
-  FormLabel,
-  Field,
-  FormButton,
-} from 'components/RegisterPage/RegisterForm/RegisterForm.styled';
-// import LoginIcon from "assets/icons/symbol-defs.svg#icon-login";
-
 import { useDispatch } from 'react-redux';
+import { Formik } from "formik";
+import * as yup from "yup";
+import { FormWrapper, FormTitle, Form, FieldWrapper, FormLabel, FormField, FormButton, Icon, ErrorText } from "components/RegisterPage/RegisterForm/RegisterForm.styled";
+import icon from "assets/icons/symbol-defs.svg";
+
 import { login } from 'redux/auth/operations';
 
 const schema = yup.object().shape({
   email: yup
     .string()
-    .email('This is an ERROR email')
+    .email()
     .required('Email is required'),
   password: yup.string().required('Password is required'),
 });
@@ -46,23 +38,20 @@ const LoginForm = () => {
         <Form autoComplete="off">
           <FieldWrapper>
             <FormLabel htmlFor="email">Email</FormLabel>
-            <Field
-              id="email"
-              name="email"
-              type="email"
-              placeholder="Enter email"
-            />
+            <FormField id="email" name="email" type="email" placeholder="Enter email" />
+            <ErrorText name="email" component="div" />
           </FieldWrapper>
           <FieldWrapper>
             <FormLabel htmlFor="password">Password</FormLabel>
-            <Field
-              id="password"
-              name="password"
-              type="password"
-              placeholder="Enter password"
-            />
+            <FormField id="password" name="password" type="password" placeholder="Enter password" />
+            <ErrorText name="password" component="div" />
           </FieldWrapper>
-          <FormButton type="submit">Log In</FormButton>
+          <FormButton type="submit">
+            <span>Log In</span>
+            <Icon width="20" height="20">
+              <use href={icon + "#icon-login"}></use>
+            </Icon>
+          </FormButton>
         </Form>
       </Formik>
     </FormWrapper>
