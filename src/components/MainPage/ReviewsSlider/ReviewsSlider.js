@@ -1,3 +1,4 @@
+import { AddFeedbackModal } from 'components/MainLayout';
 import { ContainerMainPage } from '../Description/Description.styled';
 
 const { ReviewsTitle, WrapReviews, Slider } = require('./ReviewsSlider.styled');
@@ -7,7 +8,11 @@ const ReviewsSlider = () => {
     <ContainerMainPage>
       <WrapReviews>
         <ReviewsTitle>Reviews</ReviewsTitle>
-        <Slider></Slider>
+        <Slider>
+          <AddFeedbackModal>
+            
+          </AddFeedbackModal>
+        </Slider>
       </WrapReviews>
     </ContainerMainPage>
   );
