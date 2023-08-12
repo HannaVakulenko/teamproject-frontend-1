@@ -1,4 +1,23 @@
-import { Backdrop, Sidebar, TopSection, LogoAndTitle, LogoLink,  Logo,  LogoTitle,  LogoSpan, CloseButton, Navigation, NavigationList, Panel, NavigationItem, Icon, NavigationLink, IconChart,  LogoutButton, IconLogout } from './SideBar.styled';
+import {
+  Backdrop,
+  Sidebar,
+  TopSection,
+  LogoAndTitle,
+  LogoLink,
+  Logo,
+  LogoTitle,
+  LogoSpan,
+  CloseButton,
+  Navigation,
+  NavigationList,
+  Panel,
+  NavigationItem,
+  Icon,
+  NavigationLink,
+  IconChart,
+  LogoutButton,
+  IconLogout,
+} from './SideBar.styled';
 import logoMob1x from '../../../assets/images/logo-mob-1x.png';
 import logoMob1xw from '../../../assets/images/404-mob-1x.webp';
 import logoMob2x from '../../../assets/images/logo-mob@2x.png';
@@ -18,20 +37,26 @@ import logoDesk2xw from '../../../assets/images/logo-desk@2x.webp';
 import logoDesk3x from '../../../assets/images/logo-desk@3x.png';
 import logoDesk3xw from '../../../assets/images/logo-desk@3x.webp';
 import icon from 'assets/icons/symbol-defs.svg';
-import {  useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { logout } from 'redux/auth/operations';
+import { selectLoggedIn } from 'redux/auth/selectors';
 
 const SideBar = ({ isOpen, toggleSidebar }) => {
+  const isLoggedIn = useSelector(selectLoggedIn);
+  const dispatch = useDispatch();
   const location = useLocation();
+  const navigate = useNavigate();
   const closeSidebar = () => {
     toggleSidebar(false);
   };
 
   return (
-  <>
+    <>
       <Backdrop $isOpen={isOpen} onClick={closeSidebar} />
       <Sidebar $isOpen={isOpen}>
         <TopSection>
-        <LogoAndTitle>
+          <LogoAndTitle>
             <LogoLink to="/">
               <Logo
                 srcSet={`${logoMob1xw} 1w, ${logoMob1x} 1x,
@@ -47,45 +72,68 @@ const SideBar = ({ isOpen, toggleSidebar }) => {
                 type="image/png"
                 alt="Logo"
               />
-              <LogoTitle>G<LogoSpan>oo</LogoSpan>seTrack</LogoTitle>
-              </LogoLink>
+              <LogoTitle>
+                G<LogoSpan>oo</LogoSpan>seTrack
+              </LogoTitle>
+            </LogoLink>
             <CloseButton onClick={closeSidebar}>
-              <svg >
-                <use href={icon + "#icon-x-close"}></use>
+              <svg>
+                <use href={icon + '#icon-x-close'}></use>
               </svg>
             </CloseButton>
-        </LogoAndTitle>
-        <Navigation>
-          <NavigationList>
-            <Panel>User Panel</Panel>
-             <NavigationItem isActive={location.pathname === '/authorized/account'}>
+          </LogoAndTitle>
+          <Navigation>
+            <NavigationList>
+              <Panel>User Panel</Panel>
+              <NavigationItem
+                isActive={location.pathname === '/authorized/account'}
+              >
                 <Icon isActive={location.pathname === '/authorized/account'}>
                   <use href={icon + '#icon-user-check-01'}></use>
                 </Icon>
-                  <NavigationLink to="/authorized/account">
-                    My account</NavigationLink>
-            </NavigationItem>
-              <NavigationItem isActive={location.pathname === '/authorized/calendar'}>
+                <NavigationLink to="/authorized/account">
+                  My account
+                </NavigationLink>
+              </NavigationItem>
+              <NavigationItem
+                isActive={location.pathname === '/authorized/calendar'}
+              >
                 <Icon isActive={location.pathname === '/authorized/calendar'}>
                   <use href={icon + '#icon-calendar-check-02'}></use>
                 </Icon>
-                <NavigationLink to="/authorized/calendar">Calendar</NavigationLink>
+                <NavigationLink to="/authorized/calendar">
+                  Calendar
+                </NavigationLink>
               </NavigationItem>
-              <NavigationItem isActive={location.pathname === '/authorized/statistics'}>
-                <IconChart isActive={location.pathname === '/authorized/statistics'}>
+              <NavigationItem
+                isActive={location.pathname === '/authorized/statistics'}
+              >
+                <IconChart
+                  isActive={location.pathname === '/authorized/statistics'}
+                >
                   <use href={icon + '#icon-shape'}></use>
                 </IconChart>
-                <NavigationLink to="/authorized/statistics">Statistics</NavigationLink>
+                <NavigationLink to="/authorized/statistics">
+                  Statistics
+                </NavigationLink>
               </NavigationItem>
-          </NavigationList>
-        </Navigation>
-      </TopSection>
-        <LogoutButton >Log out
-          <IconLogout>
-                  <use href={icon + '#icon-logout'}></use>
-                </IconLogout>
-    </LogoutButton>
-  </Sidebar>
+            </NavigationList>
+          </Navigation>
+        </TopSection>
+        {isLoggedIn && (
+          <LogoutButton
+            onClick={async () => {
+              await dispatch(logout());
+              navigate('/');
+            }}
+          >
+            Log out
+            <IconLogout>
+              <use href={icon + '#icon-logout'}></use>
+            </IconLogout>
+          </LogoutButton>
+        )}
+      </Sidebar>
     </>
   );
 };

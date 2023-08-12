@@ -1,19 +1,28 @@
+import { useDispatch } from 'react-redux';
 import { useState } from "react";
 import { Formik} from "formik";
 import * as yup from "yup";
 import { FormWrapper, FormTitle, Form, FieldWrapper, FormLabel, FormField, FormButton, ErrorText, SuccessText } from "./RegisterForm.styled";
 import icon from "assets/icons/symbol-defs.svg";
 
+import { register } from 'redux/auth/operations';
+
 const schema = yup.object().shape({
-  name: yup.string().required("Name is required"),
-  email: yup.string().email("This is an ERROR email").required("Email is required"),
-  password: yup.string().min(7, "Must be at least 7 characters long").required("Password is required"),
+  name: yup.string().required('Name is required'),
+  email: yup
+    .string()
+    .email('This is an ERROR email')
+    .required('Email is required'),
+  password: yup
+    .string()
+    .min(7, 'Must be at least 7 characters long')
+    .required('Password is required'),
 });
 
 const initialValues = {
-  name: "",
-  email: "",
-  password: "",
+  name: '',
+  email: '',
+  password: '',
 };
 
 const RegisterForm = () => {
@@ -30,8 +39,10 @@ const RegisterForm = () => {
     }));
   };
 
-  const handleSubmit = (values, { resetForm }) => {
-    console.log(values);
+  const dispatch = useDispatch();
+
+  const handleSubmit = async (values, { resetForm }) => {
+    await dispatch(register(values));
     resetForm();
     setFocused({
       name: false,

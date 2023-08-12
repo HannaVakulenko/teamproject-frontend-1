@@ -1,22 +1,29 @@
+import { useDispatch } from 'react-redux';
 import { Formik } from "formik";
 import * as yup from "yup";
 import { FormWrapper, FormTitle, Form, FieldWrapper, FormLabel, FormField, FormButton } from "components/RegisterPage/RegisterForm/RegisterForm.styled";
 import icon from "assets/icons/symbol-defs.svg";
 
+import { login } from 'redux/auth/operations';
+
 const schema = yup.object().shape({
-  email: yup.string().email("This is an ERROR email").required("Email is required"),
-  password: yup.string().required("Password is required"),
+  email: yup
+    .string()
+    .email('This is an ERROR email')
+    .required('Email is required'),
+  password: yup.string().required('Password is required'),
 });
 
 const initialValues = {
-  email: "",
-  password: "",
+  email: '',
+  password: '',
 };
 
 const LoginForm = () => {
+  const dispatch = useDispatch();
 
-  const handleSubmit = (values, { resetForm }) => {
-    console.log(values);
+  const handleSubmit = async (values, { resetForm }) => {
+    await dispatch(login(values));
     resetForm();
   };
 
