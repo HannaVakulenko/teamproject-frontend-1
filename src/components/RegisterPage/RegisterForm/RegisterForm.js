@@ -48,7 +48,7 @@ const RegisterForm = () => {
                 id="name"
                 name="name"
                 placeholder="Enter your name"
-                touched={String(formik.touched.password)}
+                touched={String(formik.touched.name)}
                 errors={formik.errors.name}
               />
               <ErrorText name="name" component="div" />
@@ -60,7 +60,7 @@ const RegisterForm = () => {
                 name="email"
                 type="email"
                 placeholder="Enter email"
-                touched={String(formik.touched.password)}
+                touched={String(formik.touched.email)}
                 errors={formik.errors.email}
               />
               <ErrorText name="email" component="div" />
