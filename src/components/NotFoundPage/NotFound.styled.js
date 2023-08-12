@@ -65,7 +65,7 @@ export const NotFoundWrapper = styled.div`
   align-items: center;
   justify-content: center;
   gap: 100px;
-  position: relative;
+ 
 
   @media screen and (min-width: ${device.tablet}px) {
     gap: 210px;
@@ -82,7 +82,7 @@ export const NotFoundText = styled.p`
   user-select: none;
 
   @media screen and (min-width: ${device.tablet}px) {
-    margin-top: 40px;
+    margin-top: 50px;
     width: 387px;
   }
 `;
@@ -137,9 +137,68 @@ export const NotFoundImg = styled.div`
   background-size: cover;
   z-index: 1;
 
+  @media (min-device-pixel-ratio: 2),
+    (-webkit-min-device-pixel-ratio: 2),
+    (min-resolution: 192dpi),
+    (min-resolution: 2dppx) {
+    background-image: url(${goose2x});
+  }
+
+  @media (min-device-pixel-ratio: 3),
+    (-webkit-min-device-pixel-ratio: 3),
+    (min-resolution: 288dpi),
+    (min-resolution: 3dppx) {
+    background-image: url(${goose3x});
+  }
+
+  /* WebP формат для підтримки високої якості з малою вагою файлу */
+  @supports (background-image: -webkit-image-set(url(${goosewebp}))) {
+    background-image: -webkit-image-set(
+      url(${goosewebp}) 1x,
+      url(${goosewebp2x}) 2x,
+      url(${goosewebp3x}) 3x
+    );
+    background-image: image-set(
+      url(${goosewebp}) 1x,
+      url(${goosewebp2x}) 2x,
+      url(${goosewebp3x}) 3x
+    );
+  }
+
+  //tabl формат
+
   @media screen and (min-width: ${device.tablet}px) {
     width: 350px;
     height: 400px;
     background-image: url(${goosetabl});
+
+    @media (min-device-pixel-ratio: 2),
+      (-webkit-min-device-pixel-ratio: 2),
+      (min-resolution: 192dpi),
+      (min-resolution: 2dppx) {
+      background-image: url(${goosetabl2x});
+    }
+
+    @media (min-device-pixel-ratio: 3),
+      (-webkit-min-device-pixel-ratio: 3),
+      (min-resolution: 288dpi),
+      (min-resolution: 3dppx) {
+      background-image: url(${goosetabl3x});
+    }
+
+    /* WebP формат для підтримки високої якості з малою вагою файлу */
+    
+    @supports (background-image: -webkit-image-set(url(${goosetablwebp}))) {
+      background-image: -webkit-image-set(
+        url(${goosetablwebp}) 1x,
+        url(${goosetablwebp2x}) 2x,
+        url(${goosetablwebp3x}) 3x
+      );
+      background-image: image-set(
+        url(${goosetablwebp}) 1x,
+        url(${goosetablwebp2x}) 2x,
+        url(${goosetablwebp3x}) 3x
+      );
+    }
   }
 `;
