@@ -130,6 +130,7 @@ export const NotFoundLink = styled(Link)`
 export const NotFoundImg = styled.div`
   width: 100px;
   height: 170px;
+  
   position: absolute;
   background-position: center;
   background-image: url(${goose});
