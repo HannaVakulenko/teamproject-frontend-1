@@ -1,5 +1,5 @@
 import { styled } from "styled-components";
-import { Form as FormikForm, Field } from "formik";
+import { Form as FormikForm, Field, ErrorMessage } from "formik";
 import { device } from "constants";
 
 export const FormWrapper = styled.div`
@@ -45,17 +45,9 @@ export const Form = styled(FormikForm)`
 `;
 
 export const FieldWrapper = styled.div`
-  position: relative;
   display: flex;
   flex-direction: column;
   gap: 8px;
-
-  svg {
-    position: absolute;
-    right: 18px;
-    top: 42px;
-    fill: #E74A3B;
-  };
 `;
 
 export const FormLabel = styled.label`
@@ -71,44 +63,26 @@ export const FormField = styled(Field)`
   padding: 14px;
   font-size: 14px;
   line-height: 1.28;
-  color: #111111;
+  color: ${p => p.theme.colors.black2Color};
   border-radius: 8px;
-  border: 1px solid rgba(220, 227, 229, 0.60);
+  border-width: 1px;
+  border-style: solid;
+  border-color: ${p => p.theme.colors.grey3Color};
   outline: none;
   transition: border-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
   &:hover {
-    border-color: #111111;
+    border-color: ${p => p.theme.colors.black2Color};
   };
 
-  &:valid {
-    border-color: #3CBC81;
-  };
-
-  &:valid ~ span {
-    display: block;
-  };
-
-  &:valid svg {
-    display: none;
-  };
-
-  &:invalid[focused="true"] {
-    border-color: #E74A3B;
-  };
-
-  &:invalid[focused="true"] ~ p {
-    display: block;
-  };
-
-  &:invalid[focused="true"] svg {
-    display: block;
+  &:focus {
+    border-color: ${({ theme, errors, touched }) => (touched && !errors ? theme.greenColor : theme.redColor)};
   }
-  
+
   &::placeholder {
     font-size: 14px;
-    color: #DCE3E5;
-  };
+    color: ${p => p.theme.colors.grey2Color};
+  }; 
 
   @media screen and (min-width: ${device.tablet}px) {
     &::placeholder {
@@ -117,21 +91,19 @@ export const FormField = styled(Field)`
   };
 `;
 
-export const ErrorText = styled.p`
-  display: none;
+export const ErrorText = styled(ErrorMessage)`
   margin-top: 8px;
   margin-left: 18px;
   font-size: 12px;
-  color: #E74A3B;
+  color: ${p => p.theme.colors.redColor};
   line-height: 1.16;
 `;
 
-export const SuccessText = styled.span`
-  display: none;
+export const SuccessText = styled.div`
   margin-top: 8px;
   margin-left: 18px;
   font-size: 12px;
-  color: #3CBC81;
+  color: ${p => p.theme.colors.greenColor};
   line-height: 1.16;
 `;
 
@@ -152,12 +124,6 @@ export const FormButton = styled.button`
   cursor: pointer;
   transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
-  svg {
-    margin-left: 11px;
-    stroke: currentColor;
-    fill: none;
-  };
-
   &:hover,
   &:focus {
     background-color: ${p => p.theme.colors.blue3Color};
@@ -168,4 +134,10 @@ export const FormButton = styled.button`
     font-size: 18px;
     line-height: 1.33;
   }
+`;
+
+export const Icon = styled.svg`
+  margin-left: 11px;
+  stroke: currentColor;
+  fill: none;
 `;

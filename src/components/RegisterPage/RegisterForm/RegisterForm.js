@@ -1,8 +1,7 @@
 import { useDispatch } from 'react-redux';
-import { useState } from "react";
 import { Formik} from "formik";
 import * as yup from "yup";
-import { FormWrapper, FormTitle, Form, FieldWrapper, FormLabel, FormField, FormButton, ErrorText, SuccessText } from "./RegisterForm.styled";
+import { FormWrapper, FormTitle, Form, FieldWrapper, FormLabel, FormField, FormButton, ErrorText, SuccessText, Icon } from "./RegisterForm.styled";
 import icon from "assets/icons/symbol-defs.svg";
 
 import { register } from 'redux/auth/operations';
@@ -26,29 +25,11 @@ const initialValues = {
 };
 
 const RegisterForm = () => {
-  const [focused, setFocused] = useState({
-    name: false,
-    email: false,
-    password: false,
-  });
-
-  const handleFocus = fieldName => {
-    setFocused(prevState => ({
-      ...prevState,
-      [fieldName]: true,
-    }));
-  };
-
   const dispatch = useDispatch();
 
   const handleSubmit = async (values, { resetForm }) => {
     await dispatch(register(values));
     resetForm();
-    setFocused({
-      name: false,
-      email: false,
-      password: false,
-    });
   };
 
   return (
@@ -59,36 +40,54 @@ const RegisterForm = () => {
         validationSchema={schema}
         onSubmit={handleSubmit}
       >
-        {({ errors, touched }) => (
+        {formik => (
           <Form autoComplete="off">
             <FieldWrapper>
               <FormLabel htmlFor="name">Name</FormLabel>
-              <FormField id="name" name="name" placeholder="Enter your name" required onBlur={() => handleFocus("name")} focused={focused.name.toString()} />
-              <ErrorText>Name is required</ErrorText>
+              <FormField 
+                id="name"
+                name="name"
+                placeholder="Enter your name"
+                touched={String(formik.touched.password)}
+                errors={formik.errors.name}
+              />
+              <ErrorText name="name" component="div" />
             </FieldWrapper>
             <FieldWrapper>
               <FormLabel htmlFor="email">Email</FormLabel>
-              <svg width="20" height="20">
-                <use href={icon + "#icon-Vector"}></use>
-              </svg>
-              <FormField id="email" name="email" type="email" placeholder="Enter email" required onBlur={() => handleFocus("email")} focused={focused.email.toString()} />
-              <ErrorText>This is an ERROR email</ErrorText>
-              <SuccessText>This is an CORRECT email</SuccessText>
+              <FormField
+                id="email"
+                name="email"
+                type="email"
+                placeholder="Enter email"
+                touched={String(formik.touched.password)}
+                errors={formik.errors.email}
+              />
+              <ErrorText name="email" component="div" />
+              {formik.touched.email && !formik.errors.email && (
+                <SuccessText>This is a CORRECT email</SuccessText>
+              )}
             </FieldWrapper>
             <FieldWrapper>
               <FormLabel htmlFor="password">Password</FormLabel>
-              <FormField id="password" name="password" type="password" required minLength="7" onBlur={() => handleFocus("password")} focused={focused.password.toString()} placeholder="Enter password" />
-              <ErrorText>Must be at least 7 characters long</ErrorText>
+              <FormField
+                id="password"
+                name="password"
+                type="password"
+                placeholder="Enter password"
+                touched={String(formik.touched.password)}
+                errors={formik.errors.password}
+              />
+              <ErrorText name="password" component="div" />
             </FieldWrapper>
             <FormButton type="submit">
               <span>Sign Up</span>
-              <svg width="20" height="20">
+              <Icon width="20" height="20">
                 <use href={icon + "#icon-login"}></use>
-              </svg>
+              </Icon>
             </FormButton>
           </Form>
-        )}
-        
+        )}      
       </Formik>
     </FormWrapper>
   );
