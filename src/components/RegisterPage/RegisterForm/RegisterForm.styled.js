@@ -46,14 +46,48 @@ export const Form = styled(FormikForm)`
 `;
 
 export const FieldWrapper = styled.div`
+  position: relative;
   display: flex;
   flex-direction: column;
   gap: 8px;
+
+  &.error label {
+    color: ${p => p.theme.authFieldOnErrorColor};
+  };
+
+  &.error input {
+    border-color: ${p => p.theme.authFieldOnErrorColor};
+  };
+
+  &.error svg[status="error"] {
+    display: block;
+  };
+
+  &.success svg[status="error"] {
+    display: none;
+  }
+
+  &.success label {
+    color: ${p => p.theme.authFieldOnSuccessColor};
+  };
+
+  &.success input {
+    border-color: ${p => p.theme.authFieldOnSuccessColor};
+  };
+
+  &.success svg[status="success"] {
+    display: block;
+  };
+
+  &.error svg[status="success"] {
+    display: none;
+  };
 `;
 
 export const FormLabel = styled.label`
   font-size: 12px;
   font-weight: 600;
+  color: ${p => p.theme.mainTextColor};
 
   @media screen and (min-width: ${tablet}px) {
     font-size: 14px;
@@ -76,12 +110,12 @@ export const FormField = styled(Field)`
     border-color: ${p => p.theme.mainTextColor};
   }
 
-  &:focus {
+  /* &:focus {
     border-color: ${({ theme, errors, touched }) =>
       touched && !errors
         ? theme.authFieldOnSuccessColor
         : theme.authFieldOnErrorColor};
-  }
+  } */
 
   &::placeholder {
     font-size: 14px;
@@ -144,4 +178,20 @@ export const Icon = styled.svg`
   margin-left: 11px;
   stroke: currentColor;
   fill: none;
+`;
+
+export const ErrorIcon = styled.svg`
+  position: absolute;
+  display: none;
+  right: 18px;
+  top: 41px;
+  fill: ${p => p.theme.authFieldOnErrorColor};
+`;
+
+export const SuccessIcon = styled.svg`
+  position: absolute;
+  display: none;
+  right: 18px;
+  top: 41px;
+  fill: ${p => p.theme.authFieldOnSuccessColor};
 `;
