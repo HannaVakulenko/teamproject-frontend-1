@@ -1,44 +1,31 @@
-// import { useState } from 'react';
-// import { ReactComponent as Icons } from '../../../assets/icons/symbol-defs.svg';
-// import { lightTheme, darkTheme } from '../../../styles/theme';
+// src/components/MainLayout/ThemeToggler/ThemeToggler.js
 
-// const ThemeToggler = () => {
-//   const [isLightkTheme, setIsLightTheme] = useState(false);
+import React, { useState } from 'react';
+import { ThemeProvider } from 'styled-components';
+import { lightTheme, darkTheme } from 'styles/theme';
+import { GlobalStyle } from 'styles/GlobalStyles';
+import icon from 'assets/icons/symbol-defs.svg';
+import { ButtonThemeToggler } from './ThemeToggler.styled';
 
-//   const toggleTheme = () => {
-//     setIsLightTheme(prevIsLightTheme => !prevIsLightTheme);
-//   };
+function ThemeToggler() {
+  const [theme, setTheme] = useState('light');
 
-//   return (
-//     <button type="button" onClick={toggleTheme}>
-//       <svg width="24" height="24">
-//         <use
-//           href={
-//             Icons +
-//             (isLightkTheme === 'lightTheme' ? '#icon-sun' : '#icon-moon')
-//           }
-//         />
-//       </svg>
-//     </button>
-//   );
-// };
-// export default ThemeToggler;
+  const switchTheme = () => {
+    setTheme(prevTheme => (prevTheme === 'light' ? 'dark' : 'light'));
+  };
 
-import React from 'react';
-import { ReactComponent as Icons } from '../../../assets/icons/symbol-defs.svg';
-
-const ThemeToggler = ({ toggleTheme, isLightTheme }) => {
   return (
-    <button type="button" onClick={toggleTheme}>
-      <svg width="24" height="24">
-        <use
-          href={
-            Icons + (isLightTheme ? '#icon-sun' : '#icon-moon') // Використання переданого стану
-          }
-        />
-      </svg>
-    </button>
+    <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
+      <GlobalStyle />
+      <ButtonThemeToggler onClick={switchTheme}>
+        <svg width="22" height="22">
+          <use
+            href={icon + (theme === 'light' ? '#icon-sun' : '#icon-moon')}
+          ></use>
+        </svg>
+      </ButtonThemeToggler>
+    </ThemeProvider>
   );
-};
+}
 
 export default ThemeToggler;
