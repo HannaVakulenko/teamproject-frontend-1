@@ -13,7 +13,7 @@ export const ReviewsTitle = styled.h2`
   font-weight: 700;
   line-height: 1.14;
   text-transform: uppercase;
-  color: ${p => p.theme.colors.blue1Color};
+  color: ${p => p.theme.mainAccentColor};
 
   @media (min-width: ${device.tablet}px) {
     font-size: 40px;
@@ -25,7 +25,7 @@ export const ReviewsTitle = styled.h2`
 export const Slider = styled.div`
   width: 100%;
   height: 252px;
-  border: solid 1px ${p => p.theme.colors.blue1Color};
+  border: solid 1px ${p => p.theme.mainAccentColor};
 
   @media (min-width: ${device.tablet}px) {
     width: 580px;
