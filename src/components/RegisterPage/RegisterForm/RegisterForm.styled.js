@@ -8,7 +8,7 @@ export const FormWrapper = styled.div`
   padding-left: 24px;
   padding-right: 24px;
   border-radius: 8px;
-  background-color: ${p => p.theme.colors.whiteColor};
+  background-color: ${p => p.theme.secondaryBgColor};
 
   @media screen and (min-width: 375px) and (max-width: 767px) {
     width: 335px;
@@ -25,7 +25,7 @@ export const FormTitle = styled.h1`
   font-size: 18px;
   font-weight: 600;
   line-height: 1.33;
-  /* color: ${p => p.theme.colors.blue1Color}; */
+  color: ${p => p.theme.mainAccentColor};
 
   @media screen and (min-width: 768px) {
     margin-bottom: 40px;
@@ -86,8 +86,8 @@ export const FormButton = styled.button`
   font-weight: 600;
   line-height: 1.28;
   border-radius: 16px;
-  color: ${p => p.theme.colors.whiteColor};
-  background-color: ${p => p.theme.colors.blue1Color};
+  color: ${p => p.theme.secondaryBgColor};
+  background-color: ${p => p.theme.mainAccentColor};
   box-shadow: 4px 2px 16px 0px rgba(136, 165, 191, 0.48);
   border: transparent;
   cursor: pointer;
@@ -95,8 +95,8 @@ export const FormButton = styled.button`
 
   &:hover,
   &:focus {
-    background-color: ${p => p.theme.colors.blue3Color};
-  };
+    background-color: ${p => p.theme.mainAccentColorActive};
+  }
 
   @media screen and (min-width: 768px) {
     margin-top: 30px;

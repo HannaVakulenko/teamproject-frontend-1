@@ -4,7 +4,7 @@ export const MainLayoutStyled = styled.div`
   display: flex;
   width: 100%;
   height: 100%;
-  background: ${props => props.theme.colors.mainBGColor};
+  background: ${props => props.theme.mainBGColor};
 `;
 
 export const MainStyled = styled.div`
@@ -12,8 +12,10 @@ export const MainStyled = styled.div`
 `;
 
 export const MainAndHeaderWrapper = styled.div`
-  /* padding: 24px 20px 40px; */
-  padding: 64px 20px 40px;
+  padding: 20px 20px 40px;
   width: 100%;
   height: 100vh;
+  display: flex;
+  flex-direction: column;
+  gap: 64px;
 `;

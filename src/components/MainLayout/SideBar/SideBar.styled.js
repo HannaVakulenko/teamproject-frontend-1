@@ -24,7 +24,7 @@ export const Backdrop = styled.div`
 export const Sidebar = styled.div`
   width: 225px;
   height: 100vh;
-  background-color: ${props => props.theme.colors.whiteColor};
+  background-color: ${props => props.theme.secondaryBgColor};
   transform: ${props =>
     props.$isOpen ? 'translateX(0)' : 'translateX(-100%)'};
   transition: transform 0.3s ease-out;
@@ -95,7 +95,7 @@ export const Logo = styled.img`
 `;
 
 export const LogoTitle = styled.span`
-  color: ${props => props.theme.colors.blue1Color};
+  color: ${props => props.theme.mainAccentColor};
   font-weight: 700;
   font-size: 16px;
 
@@ -176,7 +176,7 @@ export const NavigationList = styled.ul`
 export const Panel = styled.p`
   font-size: 12px;
   font-weight: 600;
-  color: ${props => props.theme.colors.greyColor};
+  color: ${props => props.theme.sidebarTextColor};
   margin-bottom: 24px;
 
   @media (min-width: ${device.tablet}px) {
@@ -192,9 +192,11 @@ export const NavigationItem = styled.li`
   font-weight: 600;
   margin-bottom: 18px;
   background-color: ${props =>
-    props.isActive ? props.theme.colors.blue4Color : 'transparent'};
+    props.isActive
+      ? props.theme.colors.secondaryAccentColorActive
+      : 'transparent'};
   border-radius: 8px;
-  color: ${props => props.theme.colors.greyColor};
+  color: ${props => props.theme.sidebarTextColor};
   padding: 10px 0 10px 12px;
 
   @media (min-width: ${device.tablet}px) {
@@ -209,7 +211,7 @@ export const Icon = styled.svg`
   height: 20px;
   margin-right: 8px;
   stroke: ${props =>
-    props.isActive ? props.theme.colors.blue1Color : 'currentColor'};
+    props.isActive ? props.theme.mainAccentColor : 'currentColor'};
   fill: none;
 
   @media (min-width: ${device.tablet}px) {
@@ -223,11 +225,11 @@ export const NavigationLink = styled(NavLink)`
   font-weight: 600;
   font-size: 14px;
   border-radius: 8px;
-  color: ${props => props.theme.colors.greyColor};
+  color: ${props => props.theme.sidebarTextColor};
 
   &.active {
     opacity: 100%;
-    color: ${props => props.theme.colors.blue1Color};
+    color: ${props => props.theme.mainAccentColor};
   }
 
   @media (min-width: ${device.tablet}px) {
@@ -241,11 +243,11 @@ export const IconChart = styled.svg`
   height: 20px;
   margin-right: 8px;
   stroke: ${props =>
-    props.isActive ? props.theme.colors.blue1Color : 'inherit'};
+    props.isActive ? props.theme.mainAccentColor : 'inherit'};
   fill: ${props =>
     props.isActive
-      ? props.theme.colors.blue1Color
-      : props.theme.colors.greyColor};
+      ? props.theme.mainAccentColor
+      : props.theme.sidebarTextColor};
 
   @media (min-width: ${device.tablet}px) {
     margin-right: 10px;
@@ -265,8 +267,8 @@ export const LogoutButton = styled.button`
   width: 141px;
   height: 56px;
   padding: 16px 23px 16px 23px;
-  background-color: ${props => props.theme.colors.blue1Color};
-  color: ${props => props.theme.colors.whiteColor};
+  background-color: ${props => props.theme.mainAccentColor};
+  color: ${props => props.theme.secondaryBgColor};
   border: none;
   border-radius: 16px;
   cursor: pointer;
@@ -275,7 +277,7 @@ export const LogoutButton = styled.button`
 
   &:hover,
   &:focus {
-    background-color: ${props => props.theme.colors.blue3Color};
+    background-color: ${props => props.theme.mainAccentColorActive};
   }
 `;
 

@@ -1,6 +1,16 @@
+import { Section } from 'components/Common';
+
 const CalendarPage = () => (
   <>
-    <div>CalendarPage</div>
+    <div>
+      <Section>
+        <h2>CalendarPage</h2>
+        <p>
+          dfuhdkfhgfkdfjhgkjdfgdfkjghfdkjghkjdfhgkjfd
+          dfkghdfkjghkdfjhgkjdfhgkjdf gdfjghdfkjhgkjdfhgkjfdhng
+        </p>
+      </Section>
+    </div>
   </>
 );
 
