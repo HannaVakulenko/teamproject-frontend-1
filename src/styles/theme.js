@@ -38,6 +38,22 @@ export const lightTheme = {
     'linear-gradient(0deg, rgba(220, 227, 229, 0.8), rgba(220, 227, 229, 0.8)), linear-gradient(0deg, #F7F6F9, #F7F6F9)',
   tasksListBgColor:
     'linear-gradient(0deg, rgba(220, 227, 229, 0.8), rgba(220, 227, 229, 0.8)), linear-gradient(0deg, #FFFFFF, #FFFFFF)',
+
+  colors: {
+    blue1Color: '#3E85F3',
+    blue2Color: '#DCEBF7',
+    blue3Color: '#2B78EF',
+    blue4Color: '#E3F3FF',
+    whiteColor: '#FFFFFF',
+    blackColor: '#13151A',
+    black2Color: '#111111',
+    mainBGColor: '#F7F6F9',
+    greyColor: '#34343480',
+    grey2Color: '#DCE3E5',
+    grey3Color: 'rgba(220, 227, 229, 0.60)',
+    redColor: '#E74A3B',
+    greenColor: '#3CBC81',
+  },
 };
 
 export const darkTheme = {
@@ -54,4 +70,19 @@ export const darkTheme = {
     'linear-gradient(0deg, #171820, #171820), linear-gradient(0deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.15))',
   tasksListBgColor:
     'linear-gradient(0deg, #21222C, #21222C), linear-gradient(0deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.15))',
+  colors: {
+    blue1Color: '#3E85F3',
+    blue2Color: '#DCEBF7',
+    blue3Color: '#2B78EF',
+    blue4Color: '#E3F3FF',
+    whiteColor: '#FFFFFF',
+    blackColor: '#13151A',
+    black2Color: '#111111',
+    mainBGColor: '#F7F6F9',
+    greyColor: '#34343480',
+    grey2Color: '#DCE3E5',
+    grey3Color: 'rgba(220, 227, 229, 0.60)',
+    redColor: '#E74A3B',
+    greenColor: '#3CBC81',
+  },
 };

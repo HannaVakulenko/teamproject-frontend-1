@@ -1,6 +1,7 @@
-import { styled } from "styled-components";
-import { Form as FormikForm, Field, ErrorMessage } from "formik";
-import { device } from "constants";
+import { styled } from 'styled-components';
+import { Form as FormikForm, Field, ErrorMessage } from 'formik';
+import { device } from 'constants';
+const { mobile, tablet } = device;
 
 export const FormWrapper = styled.div`
   width: 100%;
@@ -11,9 +12,9 @@ export const FormWrapper = styled.div`
   border-radius: 8px;
   background-color: ${p => p.theme.secondaryBgColor};
 
-  @media screen and (min-width: ${device.mobile}px) and (max-width: ${device.tablet - 1}px) {
+  @media screen and (min-width: ${mobile}px) and (max-width: ${tablet - 1}px) {
     width: 335px;
-  };
+  }
   @media screen and (min-width: ${device.tablet}px) {
     width: 480px;
     padding-left: 40px;
@@ -56,7 +57,7 @@ export const FormLabel = styled.label`
 
   @media screen and (min-width: ${device.tablet}px) {
     font-size: 14px;
-  };
+  }
 `;
 
 export const FormField = styled(Field)`
@@ -67,45 +68,46 @@ export const FormField = styled(Field)`
   border-radius: 8px;
   border-width: 1px;
   border-style: solid;
-  /* border-color: ${p => p.theme.colors.grey3Color}; */
+  border-color: ${p => p.theme.colors.grey3Color};
   outline: none;
   transition: border-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
   &:hover {
     border-color: ${p => p.theme.colors.black2Color};
-  };
+  }
 
   &:focus {
-    border-color: ${({ theme, errors, touched }) => (touched && !errors ? theme.greenColor : theme.redColor)};
+    border-color: ${({ theme, errors, touched }) =>
+      touched && !errors ? theme.greenColor : theme.redColor};
   }
 
   &::placeholder {
     font-size: 14px;
-    /* color: ${p => p.theme.colors.grey2Color}; */
-  }; 
+    color: ${p => p.theme.colors.grey2Color};
+  }
 
   @media screen and (min-width: ${device.tablet}px) {
     &::placeholder {
       font-size: 16px;
-    };
-  };
+    }
+  }
 `;
 
-export const ErrorText = styled(ErrorMessage)`
-  margin-top: 8px;
-  margin-left: 18px;
-  font-size: 12px;
-  color: ${p => p.theme.colors.redColor};
-  line-height: 1.16;
-`;
+// export const ErrorText = styled(ErrorMessage)`
+//   margin-top: 8px;
+//   margin-left: 18px;
+//   font-size: 12px;
+//   color: ${p => p.theme.colors.redColor};
+//   line-height: 1.16;
+// `;
 
-export const SuccessText = styled.div`
-  margin-top: 8px;
-  margin-left: 18px;
-  font-size: 12px;
-  color: ${p => p.theme.colors.greenColor};
-  line-height: 1.16;
-`;
+// export const SuccessText = styled.div`
+//   margin-top: 8px;
+//   margin-left: 18px;
+//   font-size: 12px;
+//   color: ${p => p.theme.colors.greenColor};
+//   line-height: 1.16;
+// `;
 
 export const ErrorText = styled(ErrorMessage)`
   margin-top: 8px;

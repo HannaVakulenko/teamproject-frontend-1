@@ -16,7 +16,7 @@ const AuthSection = () => {
       <picture>
         {/* Webp */}
         <source
-          srcset={
+          srcSet={
             (require('../../../assets/images/mainpage-goose-tabl-desk-1x.webp'),
             require('../../../assets/images/mainpage-goose-tabl-desk@2x.webp'),
             require('../../../assets/images/mainpage-goose-tabl@3x.webp'))
@@ -25,7 +25,7 @@ const AuthSection = () => {
           media={`(min-width: ${device.tablet}px)`}
         />
         <source
-          srcset={
+          srcSet={
             (require('../../../assets/images/mainpage-goose-mob-1x.webp'),
             require('../../../assets/images/mainpage-goose-mob@2x.webp'),
             require('../../../assets/images/mainpage-goose-mob@3x.webp'))
@@ -36,7 +36,7 @@ const AuthSection = () => {
 
         {/* png */}
         <source
-          srcset={
+          srcSet={
             (require('../../../assets/images/mainpage-goose-tabl-desk-1x.png'),
             require('../../../assets/images/mainpage-goose-tabl-desk@2x.png'),
             require('../../../assets/images/mainpage-goose-tabl@3x.png'))
@@ -44,7 +44,7 @@ const AuthSection = () => {
           media={`(min-width: ${device.tablet}px)`}
         />
         <source
-          srcset={
+          srcSet={
             (require('../../../assets/images/mainpage-goose-mob-1x.png'),
             require('../../../assets/images/mainpage-goose-mob@2x.png'),
             require('../../../assets/images/mainpage-goose-mob@3x.png'))
