@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 import { device } from 'constants';
-import theme from 'styles/theme';
+const { tablet, desktop } = device;
 
 export const Backdrop = styled.div`
   position: fixed;
@@ -23,8 +23,8 @@ export const Backdrop = styled.div`
 
 export const Sidebar = styled.div`
   width: 225px;
-  height: 812px;
-  background-color: ${theme.colors.whiteColor};
+  height: 100vh;
+  background-color: ${props => props.theme.secondaryBgColor};
   transform: ${props =>
     props.$isOpen ? 'translateX(0)' : 'translateX(-100%)'};
   transition: transform 0.3s ease-out;
@@ -36,14 +36,12 @@ export const Sidebar = styled.div`
   flex-direction: column;
   justify-content: space-between;
 
-  @media (min-width: ${device.tablet}px) and (max-width: ${device.desktop - 1}px) {
+  @media (min-width: ${tablet}px) and (max-width: ${desktop - 1}px) {
     width: 289px;
-    height: 1024px;
-   }
+  }
 
   @media (min-width: ${device.desktop}px) {
     width: 289px;
-    height: 900px;
     position: static;
     transform: translateX(0);
   }
@@ -52,70 +50,68 @@ export const Sidebar = styled.div`
 export const TopSection = styled.div`
   display: flex;
   flex-direction: column;
- 
 `;
 
 export const LogoAndTitle = styled.nav`
-display: flex;
-align-items: center;
-margin: 24px 20px 0;
+  display: flex;
+  align-items: center;
+  margin: 24px 20px 0;
 
-
-  @media (min-width: ${device.tablet}px) and (max-width: ${device.desktop - 1}px) {
-  margin: 24px 32px 0;
- }; 
+  @media (min-width: ${tablet}px) and (max-width: ${desktop - 1}px) {
+    margin: 24px 32px 0;
+  }
 
   @media (min-width: ${device.desktop}px) {
-  margin: 32px 43px 0 24px;
-    }
+    margin: 32px 43px 0 24px;
+  }
 `;
 
 export const LogoLink = styled(NavLink)`
- display: flex;
-  align-items: center; 
+  display: flex;
+  align-items: center;
 `;
 
 export const Logo = styled.img`
-font-style: normal;
-font-weight: 700;
-text-shadow: 0px 9.399999618530273px 57.6875px rgba(0, 0, 0, 0.04), 0px 47px 355px rgba(0, 0, 0, 0.07);
+  font-style: normal;
+  font-weight: 700;
+  text-shadow: 0px 9.399999618530273px 57.6875px rgba(0, 0, 0, 0.04),
+    0px 47px 355px rgba(0, 0, 0, 0.07);
   font-size: 16px;
-    width:36px;
-    height:35px;
-    margin-right: 6px;
-  
+  width: 36px;
+  height: 35px;
+  margin-right: 6px;
 
-   @media (min-width: ${device.tablet}px) and (max-width: ${device.desktop - 1}px) {
-    width:60px;
-    height:58px;
+  @media (min-width: ${tablet}px) and (max-width: ${desktop - 1}px) {
+    width: 60px;
+    height: 58px;
     margin-right: 6px;
-   }
-    @media (min-width: ${device.desktop}px) {
+  }
+  @media (min-width: ${device.desktop}px) {
     font-size: 24px;
-    width:71px;
-    height:68px;
+    width: 71px;
+    height: 68px;
     margin-right: 10px;
-  } 
+  }
 `;
 
 export const LogoTitle = styled.span`
- color: ${theme.colors.blue1Color};
- font-weight: 700;
- font-size: 16px;
+  color: ${props => props.theme.mainAccentColor};
+  font-weight: 700;
+  font-size: 16px;
 
-   @media (min-width: ${device.desktop}px) {
-   font-size: 24px;
+  @media (min-width: ${device.desktop}px) {
+    font-size: 24px;
   }
 `;
 
 export const LogoSpan = styled.span`
-font-size: 16px;
-font-style: italic;
-font-weight: 700;
+  font-size: 16px;
+  font-style: italic;
+  font-weight: 700;
 
- @media (min-width: ${device.desktop}px) {
-      font-size: 24px;
- }
+  @media (min-width: ${device.desktop}px) {
+    font-size: 24px;
+  }
 `;
 
 export const CloseButton = styled.button`
@@ -135,7 +131,7 @@ export const CloseButton = styled.button`
   stroke: currentColor;
   fill: none;
 
-  @media (min-width: ${device.tablet}px) and (max-width: ${device.desktop - 1}px) {
+  @media (min-width: ${tablet}px) and (max-width: ${desktop - 1}px) {
     width: 34px;
     height: 34px;
   }
@@ -146,60 +142,61 @@ export const CloseButton = styled.button`
 `;
 
 export const Navigation = styled.nav`
-display: flex;
-align-items: center;
-margin-left: 20px;
-margin-top: 64px;
+  display: flex;
+  align-items: center;
+  margin-left: 20px;
+  margin-top: 64px;
 
- @media (min-width: ${device.tablet}px) and (max-width: ${device.desktop - 1}px) {
-  margin-left: 32px;
-  margin-top: 50px;
- }; 
+  @media (min-width: ${tablet}px) and (max-width: ${desktop - 1}px) {
+    margin-left: 32px;
+    margin-top: 50px;
+  }
 
   @media (min-width: ${device.desktop}px) {
-  margin-left: 24px;
-  margin-top: 32px;
-}
+    margin-left: 24px;
+    margin-top: 32px;
+  }
 `;
 
 export const NavigationList = styled.ul`
-width: 185px;
-height: 195px;
+  width: 185px;
+  height: 195px;
 
- @media (min-width: ${device.tablet}px) and (max-width: ${device.desktop - 1}px) {
-  width: 225px;
-  height: 249px;
- }; 
+  @media (min-width: ${tablet}px) and (max-width: ${desktop - 1}px) {
+    width: 225px;
+    height: 249px;
+  }
 
-@media (min-width: ${device.tablet}px)  {
-  width: 241px;
-  height: 249px;
+  @media (min-width: ${device.tablet}px) {
+    width: 241px;
+    height: 249px;
   }
 `;
 
 export const Panel = styled.p`
-font-size: 12px;
-font-weight: 600;
-color: ${theme.colors.greyColor};
-margin-bottom: 24px;
+  font-size: 12px;
+  font-weight: 600;
+  color: ${props => props.theme.sidebarTextColor};
+  margin-bottom: 24px;
 
- @media (min-width: ${device.tablet}px) {
-  margin-bottom: 32px;
+  @media (min-width: ${device.tablet}px) {
+    margin-bottom: 32px;
     font-size: 14px;
-   }
-
+  }
 `;
 
 export const NavigationItem = styled.li`
-display: flex;
-align-items: end;
+  display: flex;
+  align-items: end;
   font-size: 14px;
   font-weight: 600;
   margin-bottom: 18px;
   background-color: ${props =>
-    props.isActive ? theme.colors.blue4Color : 'transparent'};
+    props.isActive
+      ? props.theme.colors.secondaryAccentColorActive
+      : 'transparent'};
   border-radius: 8px;
-  color: ${theme.colors.greyColor};
+  color: ${props => props.theme.sidebarTextColor};
   padding: 10px 0 10px 12px;
 
   @media (min-width: ${device.tablet}px) {
@@ -210,12 +207,12 @@ align-items: end;
 `;
 
 export const Icon = styled.svg`
-width: 20px;
-height: 20px;
-margin-right: 8px;
-stroke: ${props =>
-    props.isActive ? theme.colors.blue1Color : 'currentColor'};
- fill: none;
+  width: 20px;
+  height: 20px;
+  margin-right: 8px;
+  stroke: ${props =>
+    props.isActive ? props.theme.mainAccentColor : 'currentColor'};
+  fill: none;
 
   @media (min-width: ${device.tablet}px) {
     margin-right: 10px;
@@ -225,34 +222,33 @@ stroke: ${props =>
 `;
 
 export const NavigationLink = styled(NavLink)`
-font-weight: 600;
-font-size: 14px;
-border-radius: 8px;
-color: ${theme.colors.greyColor};
+  font-weight: 600;
+  font-size: 14px;
+  border-radius: 8px;
+  color: ${props => props.theme.sidebarTextColor};
 
-&.active {
-  opacity: 100%;
-  color: ${theme.colors.blue1Color};
-  
-}
+  &.active {
+    opacity: 100%;
+    color: ${props => props.theme.mainAccentColor};
+  }
 
-@media (min-width: ${device.tablet}px) {
-   text-decoration: none;
-   font-size: 16px;
-   
-    }
-
+  @media (min-width: ${device.tablet}px) {
+    text-decoration: none;
+    font-size: 16px;
+  }
 `;
 
 export const IconChart = styled.svg`
-width: 20px;
-height: 20px;
-margin-right: 8px;
-stroke: ${props =>
-    props.isActive === theme.colors.blue1Color};
- fill: ${props =>
-  props.isActive ? theme.colors.blue1Color : theme.colors.greyColor};
-    
+  width: 20px;
+  height: 20px;
+  margin-right: 8px;
+  stroke: ${props =>
+    props.isActive ? props.theme.mainAccentColor : 'inherit'};
+  fill: ${props =>
+    props.isActive
+      ? props.theme.mainAccentColor
+      : props.theme.sidebarTextColor};
+
   @media (min-width: ${device.tablet}px) {
     margin-right: 10px;
     width: 24px;
@@ -261,38 +257,38 @@ stroke: ${props =>
 `;
 
 export const LogoutButton = styled.button`
-display: flex; 
-justify-content: space-between;
-font-size: 18px;
-font-weight: 600;
-margin-top: auto;
-margin-left: 24px;
-margin-bottom: 24px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 18px;
+  font-weight: 600;
+  margin-top: auto;
+  margin-left: 24px;
+  margin-bottom: 24px;
   width: 141px;
   height: 56px;
   padding: 16px 23px 16px 23px;
-  background-color: ${theme.colors.blue1Color};
-  color: ${theme.colors.whiteColor};
+  background-color: ${props => props.theme.mainAccentColor};
+  color: ${props => props.theme.secondaryBgColor};
   border: none;
   border-radius: 16px;
   cursor: pointer;
 
   transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
-  &:hover, 
+  &:hover,
   &:focus {
-    background-color: ${theme.colors.blue3Color};
+    background-color: ${props => props.theme.mainAccentColorActive};
   }
 `;
 
 export const IconLogout = styled.svg`
-width: 18px;
-height: 18px;
-stroke: currentColor;
-fill: none;
+  width: 18px;
+  height: 18px;
+  stroke: currentColor;
+  fill: none;
 
-@media (min-width: ${device.tablet}px) {
-  width: 20px;
-height: 20px;
-}
+  @media (min-width: ${device.tablet}px) {
+    width: 20px;
+    height: 20px;
+  }
 `;

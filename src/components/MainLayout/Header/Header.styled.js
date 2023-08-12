@@ -6,7 +6,16 @@ export const StyledHeader = styled.header`
   width: 100%;
   align-items: center;
   justify-content: space-between;
-  background-color: #559955;
+`;
+
+export const ControllWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 18px;
+
+  @media (min-width: ${device.tablet}px) {
+    gap: 24px;
+  }
 `;
 
 export const StyledButton = styled.button`
@@ -24,9 +33,4 @@ export const ThemeUserWrapper = styled.div`
   display: flex;
   align-items: center;
   gap: 8px;
-`;
-export const ControllWrapper = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 22px;
 `;
