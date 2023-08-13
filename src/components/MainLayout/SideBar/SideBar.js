@@ -81,18 +81,23 @@ const SideBar = ({ isOpen, toggleSidebar }) => {
                 <use href={icon + '#icon-x-close'}></use>
               </svg>
             </CloseButton>
-        </LogoAndTitle>
-        <Navigation>
-          <NavigationList>
-            <Panel>User Panel</Panel>
-             <NavigationItem $isActive={location.pathname === '/authorized/account'}>
+          </LogoAndTitle>
+          <Navigation>
+            <NavigationList>
+              <Panel>User Panel</Panel>
+              <NavigationItem
+                $isActive={location.pathname === '/authorized/account'}
+              >
                 <Icon $isActive={location.pathname === '/authorized/account'}>
                   <use href={icon + '#icon-user-check-01'}></use>
                 </Icon>
-                  <NavigationLink to="/authorized/account">
-                    My account</NavigationLink>
-            </NavigationItem>
-              <NavigationItem $isActive={location.pathname === '/authorized/calendar'}>
+                <NavigationLink to="/authorized/account">
+                  My account
+                </NavigationLink>
+              </NavigationItem>
+              <NavigationItem
+                $isActive={location.pathname === '/authorized/calendar'}
+              >
                 <Icon $isActive={location.pathname === '/authorized/calendar'}>
                   <use href={icon + '#icon-calendar-check-02'}></use>
                 </Icon>
@@ -100,8 +105,12 @@ const SideBar = ({ isOpen, toggleSidebar }) => {
                   Calendar
                 </NavigationLink>
               </NavigationItem>
-              <NavigationItem $isActive={location.pathname === '/authorized/statistics'}>
-                <IconChart $isActive={location.pathname === '/authorized/statistics'}>
+              <NavigationItem
+                $isActive={location.pathname === '/authorized/statistics'}
+              >
+                <IconChart
+                  $isActive={location.pathname === '/authorized/statistics'}
+                >
                   <use href={icon + '#icon-shape'}></use>
                 </IconChart>
                 <NavigationLink to="/authorized/statistics">

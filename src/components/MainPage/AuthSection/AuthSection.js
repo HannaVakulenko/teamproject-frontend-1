@@ -58,7 +58,7 @@ const AuthSection = () => {
         />
       </picture>
       <HeroTitle>
-        Go<i>o</i>seTrack
+        G<i>oo</i>seTrack
       </HeroTitle>
       <WrapLink>
         <LoginNavLink to="/login">

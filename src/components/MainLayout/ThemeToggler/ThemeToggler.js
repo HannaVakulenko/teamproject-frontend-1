@@ -13,7 +13,7 @@ function ThemeToggler() {
 
   return (
     <ThemeToggleBtn onClick={switchTheme}>
-      <svg width="22" height="22">
+      <svg width="32" height="32">
         <use
           href={icon + (theme === 'light' ? '#icon-moon' : '#icon-sun')}
         ></use>
