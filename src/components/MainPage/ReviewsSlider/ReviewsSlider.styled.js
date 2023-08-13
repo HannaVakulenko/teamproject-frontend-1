@@ -120,6 +120,10 @@ export const SwiperNavBtn = styled.div`
     width: 61px;
     height: 48px;
   }
+   &.disabled {
+    pointer-events: none; 
+    opacity: 0.5; 
+  }
 `;
 export const Section = styled.div`
   background-color: ${p => p.theme.buttonTextColor};
