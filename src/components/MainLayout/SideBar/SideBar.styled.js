@@ -24,7 +24,7 @@ export const Backdrop = styled.div`
 export const Sidebar = styled.div`
   width: 225px;
   height: 100vh;
-  background-color: ${p => p.theme.secondaryBgColor};
+  background-color: ${p => p.theme.sidebarBGColor};
   transform: ${p => (p.$isOpen ? 'translateX(0)' : 'translateX(-100%)')};
   transition: transform 0.3s ease-out;
   position: fixed;
@@ -142,7 +142,8 @@ export const CloseButton = styled.button`
 `;
 
 export const Navigation = styled.nav`
-  display: flex;
+  // display: flex;
+  display: flow;
   flex-direction: column;
   align-items: center;
   margin-left: 20px;
@@ -162,11 +163,9 @@ export const Navigation = styled.nav`
 export const Panel = styled.span`
   font-size: 12px;
   font-weight: 600;
-  color: ${p => p.theme.sidebarTextColor};
-  margin-bottom: 24px;
+  color: ${p => p.theme.sidebarPanelColor};
 
   @media (min-width: ${tablet}px) {
-    margin-bottom: 32px;
     font-size: 14px;
   }
 `;
@@ -174,15 +173,55 @@ export const Panel = styled.span`
 export const NavigationList = styled.ul`
   width: 185px;
   height: 195px;
+  margin-top: 24px;
 
   @media (min-width: ${tablet}px) and (max-width: ${desktop - 1}px) {
+    margin-top: 32px;
     width: 225px;
     height: 249px;
   }
 
   @media (min-width: ${tablet}px) {
+     margin-top: 32px;
     width: 241px;
     height: 249px;
+  }
+`;
+
+export const NavigationLink = styled(NavLink)`
+  font-weight: 600;
+  font-size: 14px;
+  border-radius: 8px;
+  color: ${p => p.theme.sidebarTextColor};
+
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  &.active {
+    opacity: 100%;
+    color: ${p => p.theme.sidebarMainActiveColor};
+  };
+
+  @media (min-width: ${device.tablet}px) {
+    text-decoration: none;
+    font-size: 16px;
+  }
+`;
+
+export const IconChart = styled.svg`
+  width: 20px;
+  height: 20px;
+  margin-right: 8px;
+  stroke: ${p => (p.isActive === p.theme.mainAccentColor)};
+  fill: ${p =>
+  p.isActive ? p.theme.sidebarMainActiveColor : p.theme.sidebarTextColor};
+
+  transition: stroke 250ms cubic-bezier(0.4, 0, 0.2, 1),
+              fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
+        
+  @media (min-width: ${tablet}px) {
+    margin-right: 10px;
+    width: 24px;
+    height: 24px;
   }
 `;
 
@@ -198,6 +237,24 @@ export const NavigationItem = styled.li`
   color: ${p => p.theme.sidebarTextColor};
   padding: 10px 0 10px 12px;
 
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+              color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+              
+  &:hover,
+  &:focus {
+    background-color: ${p => p.theme.secondaryAccentColorActive};
+    color: ${p => p.theme.sidebarMainActiveColor};
+    cursor: pointer;
+
+    ${NavigationLink} {
+      color: ${p => p.theme.sidebarMainActiveColor};
+    };
+
+     ${IconChart} {
+      fill: ${p => p.theme.sidebarMainActiveColor};
+    }
+  };
+
   @media (min-width: ${tablet}px) {
     font-size: 16px;
     margin-bottom: 16px;
@@ -209,81 +266,12 @@ export const Icon = styled.svg`
   width: 20px;
   height: 20px;
   margin-right: 8px;
-  stroke: ${p => (p.isActive ? p.theme.mainAccentColor : 'currentColor')};
+  stroke: ${p => (p.isActive ? p.theme.sidebarMainActiveColor : 'currentColor')};
   fill: none;
 
   @media (min-width: ${tablet}px) {
     margin-right: 10px;
     width: 24px;
     height: 24px;
-  }
-`;
-
-export const NavigationLink = styled(NavLink)`
-  font-weight: 600;
-  font-size: 14px;
-  border-radius: 8px;
-  color: ${p => p.theme.sidebarTextColor};
-
-  &.active {
-    opacity: 100%;
-    color: ${p => p.theme.mainAccentColor};
-  }
-
-  @media (min-width: ${device.tablet}px) {
-    text-decoration: none;
-    font-size: 16px;
-  }
-`;
-
-export const IconChart = styled.svg`
-  width: 20px;
-  height: 20px;
-  margin-right: 8px;
-  stroke: ${p => (p.isActive ? p.theme.mainAccentColor : 'inherit')};
-  fill: ${p =>
-    p.isActive ? p.theme.mainAccentColor : p.theme.sidebarTextColor};
-
-  @media (min-width: ${tablet}px) {
-    margin-right: 10px;
-    width: 24px;
-    height: 24px;
-  }
-`;
-
-export const LogoutButton = styled.button`
-  display: flex;
-  justify-content: space-between;
-  font-size: 18px;
-  font-weight: 600;
-  margin-top: auto;
-  margin-left: 24px;
-  margin-bottom: 24px;
-  width: 141px;
-  height: 56px;
-  padding: 16px 23px 16px 23px;
-  background-color: ${p => p.theme.mainAccentColor};
-  color: ${p => p.theme.buttonTextColor};
-  border: none;
-  border-radius: 16px;
-  cursor: pointer;
-
-  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
-
-  &:hover,
-  &:focus {
-    background-color: ${p => p.theme.mainAccentColorActive};
-  }
-`;
-
-export const IconLogout = styled.svg`
-  width: 18px;
-  height: 18px;
-  stroke: currentColor;
-  fill: none;
-
-  @media (min-width: ${tablet}px) {
-    width: 20px;
-    height: 20px;
   }
 `;
