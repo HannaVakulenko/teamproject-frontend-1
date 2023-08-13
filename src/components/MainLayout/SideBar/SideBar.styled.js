@@ -225,7 +225,7 @@ export const IconChart = styled.svg`
   }
 `;
 
-export const NavigationItem = styled.li`
+export const NavigationItem = styled(NavLink)`
   display: flex;
   align-items: end;
   font-size: 14px;
