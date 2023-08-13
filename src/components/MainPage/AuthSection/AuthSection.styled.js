@@ -7,7 +7,7 @@ export const WrappAuthSection = styled.div`
   flex-direction: column;
   align-items: center;
   height: 100vh;
-  background-color: ${p => p.theme.colors.blue1Color};
+  background-color: ${p => p.theme.mainAccentColor};
 `;
 
 export const ImgHero = styled.img`
@@ -67,10 +67,10 @@ export const LoginNavLink = styled(NavLink)`
   padding: 14px 32px;
 
   border-radius: 16px;
-  background: ${p => p.theme.colors.whiteColor};
+  background: ${p => p.theme.secondaryBgColor};
   box-shadow: 4px 2px 16px 0px rgba(136, 165, 191, 0.48);
 
-  color: ${p => p.theme.colors.blue1Color};
+  color: ${p => p.theme.mainAccentColor};
   font-size: 14px;
   font-weight: 600;
   line-height: 1.28;
@@ -88,7 +88,7 @@ export const LoginNavLink = styled(NavLink)`
 export const RegisterNavLink = styled(NavLink)`
   display: block;
   margin-top: 16px;
-  color: ${p => p.theme.colors.whiteColor};
+  color: ${p => p.theme.secondaryBgColor};
   text-shadow: 0px 9px 57px rgba(0, 0, 0, 0.04),
     0px 47px 355px rgba(0, 0, 0, 0.07);
   font-size: 14px;
@@ -98,7 +98,7 @@ export const RegisterNavLink = styled(NavLink)`
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   &:hover,
   &:focus {
-    text-shadow: 2px 2px 4px ${p => p.theme.colors.whiteColor};
+    text-shadow: 2px 2px 4px ${p => p.theme.secondaryBgColor};
   }
 `;
 

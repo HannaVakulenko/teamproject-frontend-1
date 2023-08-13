@@ -1,0 +1,354 @@
+// src/components/MainLayout/ThemeToggler/ThemeToggler.js
+import icon from 'assets/icons/symbol-defs.svg';
+import { ThemeToggleBtn } from './ThemeToggler.styled';
+
+function ThemeToggler({ theme, setTheme }) {
+  const switchTheme = () => {
+    setTheme(prevTheme => (prevTheme === 'light' ? 'dark' : 'light'));
+  };
+
+  return (
+    <ThemeToggleBtn onClick={switchTheme}>
+      <svg width="22" height="22">
+        <use
+          href={icon + (theme === 'light' ? '#icon-moon' : '#icon-sun')}
+        ></use>
+      </svg>
+    </ThemeToggleBtn>
+  );
+}
+
+export default ThemeToggler;
+// src/index.js
+import React, { useState } from 'react';
+import ReactDOM from 'react-dom/client';
+import { BrowserRouter } from 'react-router-dom';
+import { ThemeProvider } from 'styled-components';
+import { GlobalStyle } from 'styles/GlobalStyles';
+import { App } from 'App';
+import { lightTheme, darkTheme } from 'styles/theme';
+import { store, persistor } from 'redux/store';
+import { PersistGate } from 'redux-persist/integration/react';
+import { Provider } from 'react-redux';
+import ThemeToggler from 'components/MainLayout/ThemeToggler/ThemeToggler';
+
+function AppWrapper() {
+  const [theme, setTheme] = useState('light');
+
+  return (
+    <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
+      <GlobalStyle />
+      <ThemeToggler theme={theme} setTheme={setTheme} />
+      <BrowserRouter basename="/teamproject-frontend-1">
+        <App />
+      </BrowserRouter>
+    </ThemeProvider>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('root')).render(
+  <React.StrictMode>
+    <Provider store={store}>
+      <PersistGate loading={null} persistor={persistor}>
+        <AppWrapper />
+      </PersistGate>
+    </Provider>
+  </React.StrictMode>
+);
+// src/App.js
+import { lazy } from 'react';
+import { Route, Routes } from 'react-router-dom';
+import Layout from 'components/MainLayout/MainLayout/MainLayout';
+import { PrivateRoute } from 'components/PrivateRoute';
+import { RestrictedRoute } from 'components/RestrictedRoute';
+import { useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
+import { selectIsRefreshing } from 'redux/auth/selectors';
+import { useEffect } from 'react';
+import { refreshUser } from 'redux/auth/operations';
+
+import LoginPage from 'pages/LoginPage';
+import MainPage from 'pages/MainPage';
+import RegisterPage from 'pages/RegisterPage';
+
+const AccountPage = lazy(() => import('pages/AccountPage'));
+const CalendarPage = lazy(() => import('pages/CalendarPage'));
+const StatisticsPage = lazy(() => import('pages/StatisticsPage'));
+
+export const App = () => {
+  const dispatch = useDispatch();
+  const isRefreshing = useSelector(selectIsRefreshing);
+
+  useEffect(() => {
+    dispatch(refreshUser());
+  }, [dispatch]);
+
+  return (
+    !isRefreshing && (
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <RestrictedRoute
+              redirectTo="/authorized/calendar"
+              component={<MainPage />}
+            />
+          }
+          index
+        />
+        <Route
+          path="/login"
+          element={
+            <RestrictedRoute
+              redirectTo="/authorized/calendar"
+              component={<LoginPage />}
+            />
+          }
+        />
+        <Route
+          path="/register"
+          element={
+            <RestrictedRoute
+              redirectTo="/authorized/calendar"
+              component={<RegisterPage />}
+            />
+          }
+        />
+        <Route path="/authorized/*" element={<Layout />}>
+          <Route
+            path="calendar"
+            element={
+              <PrivateRoute redirectTo="/login" component={<CalendarPage />} />
+            }
+          />
+          <Route
+            path="account"
+            element={
+              <PrivateRoute redirectTo="/login" component={<AccountPage />} />
+            }
+          />
+          <Route
+            path="statistics"
+            element={
+              <PrivateRoute
+                redirectTo="/login"
+                component={<StatisticsPage />}
+              />
+            }
+          />
+        </Route>
+      </Routes>
+    )
+  );
+};
+// src/styles/theme.js
+// export const theme = {
+// colors: {
+//   mainAccentColor: '#3E85F3',
+//   secondaryAccentColor: '#DCEBF7',
+//   mainAccentColorActive: '#2B78EF',
+//   secondaryAccentColorActive: '#E3F3FF',
+//   secondaryBgColor: '#FFFFFF',
+//   blackColor: '#13151A',
+//   mainBGColor: '#F7F6F9',
+//   sidebarTextColor: '#34343450',
+// },
+// };
+
+export const lightTheme = {
+  mainBGColor: '#F7F6F9',
+  secondaryBgColor: '#FFFFFF',
+  mainAccentColor: '#3E85F3',
+  mainAccentColorActive: '#2B78EF',
+  secondaryAccentColor: '#DCEBF7',
+  secondaryAccentColorActive: '#E3F3FF',
+  mainTextColor: '#111111',
+  calendarTextColor: '#343434',
+  sidebarTextColor: '#34343450',
+  taskBgColor:
+    'linear-gradient(0deg, rgba(220, 227, 229, 0.8), rgba(220, 227, 229, 0.8)), linear-gradient(0deg, #F7F6F9, #F7F6F9)',
+  tasksListBgColor:
+    'linear-gradient(0deg, rgba(220, 227, 229, 0.8), rgba(220, 227, 229, 0.8)), linear-gradient(0deg, #FFFFFF, #FFFFFF)',
+};
+
+export const darkTheme = {
+  mainBGColor: '#171820',
+  secondaryBgColor: '#21222C',
+  mainAccentColor: '#3E85F3',
+  mainAccentColorActive: '#2B78EF',
+  secondaryAccentColor: '#DCEBF7',
+  secondaryAccentColorActive: '#3E85F3',
+  mainTextColor: '#FFFFFF',
+  calendarTextColor: '#343434',
+  sidebarTextColor: '#34343450',
+  taskBgColor:
+    'linear-gradient(0deg, #171820, #171820), linear-gradient(0deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.15))',
+  tasksListBgColor:
+    'linear-gradient(0deg, #21222C, #21222C), linear-gradient(0deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.15))',
+};
+// src/redux/store.js
+import { configureStore } from '@reduxjs/toolkit';
+import {
+  persistStore,
+  persistReducer,
+  FLUSH,
+  REHYDRATE,
+  PAUSE,
+  PERSIST,
+  PURGE,
+  REGISTER,
+} from 'redux-persist';
+import storage from 'redux-persist/lib/storage';
+import { authReducer } from './auth/authSlice';
+import { reviewsReducer } from './reviews/reviewsSlice';
+import { tasksReducer } from './tasks/tasksSlice';
+
+const authPersistConfig = {
+  key: 'auth',
+  storage,
+  whitelist: ['token'],
+};
+
+const persistedReducer = persistReducer(authPersistConfig, authReducer);
+
+export const store = configureStore({
+  reducer: {
+    tasks: tasksReducer,
+    reviews: reviewsReducer,
+    auth: persistedReducer,
+  },
+  middleware: getDefaultMiddleware =>
+    getDefaultMiddleware({
+      serializableCheck: {
+        ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+      },
+    }),
+});
+
+export const persistor = persistStore(store);
+// src/redux/auth/authSlice.js
+import { createSlice } from '@reduxjs/toolkit';
+import { register, logout, login, refreshUser } from './operations';
+
+const initialState = {
+  user: {
+    name: null,
+    email: null,
+    birthday: null,
+    phone: null,
+    skype: null,
+    imageURL: null,
+  },
+  token: null,
+  isLoggedIn: false,
+  isRefreshing: false,
+};
+
+const authSlice = createSlice({
+  name: 'auth',
+  initialState,
+  extraReducers: {
+    [register.fulfilled](state, action) {
+      state.user = action.payload.user;
+      state.token = action.payload.token;
+      state.isLoggedIn = true;
+    },
+    [logout.fulfilled](state) {
+      state.user = { name: null, email: null };
+      state.token = null;
+      state.isLoggedIn = false;
+    },
+    [login.fulfilled](state, action) {
+      state.user = action.payload.user;
+      state.token = action.payload.token;
+      state.isLoggedIn = true;
+    },
+    [refreshUser.pending](state) {
+      state.isRefreshing = true;
+    },
+    [refreshUser.fulfilled](state, action) {
+      state.user = action.payload;
+      state.isLoggedIn = true;
+      state.isRefreshing = false;
+    },
+    [refreshUser.rejected](state) {
+      state.isRefreshing = false;
+    },
+  },
+});
+
+export const authReducer = authSlice.reducer;
+// src/redux/auth/operations.js
+import { createAsyncThunk } from '@reduxjs/toolkit';
+import axios from 'axios';
+
+axios.defaults.baseURL = ' https://goose-track-gr25.onrender.com';
+
+const setAuthHeader = token => {
+  axios.defaults.headers.common.Authorization = `Bearer ${token}`;
+};
+
+const clearAuthHeader = () => {
+  axios.defaults.headers.common.Authorization = '';
+};
+
+export const register = createAsyncThunk(
+  'auth/register',
+  async (credentials, thunkAPI) => {
+    try {
+      const res = await axios.post('/api/auth/register', credentials);
+      setAuthHeader(res.data.token);
+      return res.data;
+    } catch (error) {
+      console.log('This user already exists');
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const login = createAsyncThunk(
+  'auth/login',
+  async (credentials, thunkAPI) => {
+    try {
+      const res = await axios.post('/api/auth/login', credentials);
+      setAuthHeader(res.data.token);
+      return res.data;
+    } catch (error) {
+      console.log('This user does not exist');
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const logout = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
+  try {
+    await axios.post('/api/auth/logout');
+    clearAuthHeader();
+  } catch (error) {
+    return thunkAPI.rejectWithValue(error.message);
+  }
+});
+
+export const refreshUser = createAsyncThunk(
+  'auth/refresh',
+  async (_, thunkAPI) => {
+    const state = thunkAPI.getState();
+    const persistedToken = state.auth.token;
+
+    if (persistedToken === null) {
+      return thunkAPI.rejectWithValue('Unable to fetch user');
+    }
+
+    try {
+      setAuthHeader(persistedToken);
+      const res = await axios.get('/api/auth/current');
+      return res.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+// src/redux/auth/selectors.js
+export const selectLoggedIn = state => state.auth.isLoggedIn;
+export const selectUser = state => state.auth.user;
+export const selectIsRefreshing = state => state.auth.isRefreshing;

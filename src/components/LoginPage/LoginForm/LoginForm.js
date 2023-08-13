@@ -1,17 +1,22 @@
-import { Formik } from 'formik';
-import * as yup from 'yup';
+import { useDispatch } from 'react-redux';
+import { Formik } from "formik";
+import * as yup from "yup";
 import {
   FormWrapper,
   FormTitle,
   Form,
   FieldWrapper,
   FormLabel,
-  Field,
+  FormField,
   FormButton,
-} from 'components/RegisterPage/RegisterForm/RegisterForm.styled';
-// import LoginIcon from "assets/icons/symbol-defs.svg#icon-login";
+  Icon,
+  ErrorText,
+  SuccessText,
+  ErrorIcon,
+  SuccessIcon 
+} from "components/RegisterPage/RegisterForm/RegisterForm.styled";
+import icon from "assets/icons/symbol-defs.svg";
 
-import { useDispatch } from 'react-redux';
 import { login } from 'redux/auth/operations';
 
 const schema = yup.object().shape({
@@ -43,27 +48,53 @@ const LoginForm = () => {
         validationSchema={schema}
         onSubmit={handleSubmit}
       >
-        <Form autoComplete="off">
-          <FieldWrapper>
-            <FormLabel htmlFor="email">Email</FormLabel>
-            <Field
-              id="email"
-              name="email"
-              type="email"
-              placeholder="Enter email"
-            />
-          </FieldWrapper>
-          <FieldWrapper>
-            <FormLabel htmlFor="password">Password</FormLabel>
-            <Field
-              id="password"
-              name="password"
-              type="password"
-              placeholder="Enter password"
-            />
-          </FieldWrapper>
-          <FormButton type="submit">Log In</FormButton>
-        </Form>
+        {formik => (
+          <Form autoComplete="off">
+            <FieldWrapper
+              className={`${formik.touched.email && formik.errors.email
+                ? 'error'
+                : formik.touched.email && !formik.errors.email
+                  ? 'success'
+                  : ''}`}
+            >
+              <FormLabel htmlFor="email">Email</FormLabel>
+              <ErrorIcon width="20" height="20" status="error">
+                <use href={icon + "#icon-Vector"}></use>
+              </ErrorIcon>
+              <SuccessIcon width="20" height="20" status="success">
+                <use href={icon + "#icon-Vector-1"}></use>
+              </SuccessIcon>
+              <FormField id="email" name="email" type="email" placeholder="Enter email" />
+              <ErrorText name="email" component="div" />
+              {formik.touched.email && !formik.errors.email && (
+                <SuccessText>This is a CORRECT email</SuccessText>
+              )}
+            </FieldWrapper>
+            <FieldWrapper
+              className={`${formik.touched.password && formik.errors.password
+                ? 'error'
+                : formik.touched.password && !formik.errors.password
+                  ? 'success'
+                  : ''}`}
+            >
+              <FormLabel htmlFor="password">Password</FormLabel>
+              <ErrorIcon width="20" height="20" status="error">
+                <use href={icon + "#icon-Vector"}></use>
+              </ErrorIcon>
+              <SuccessIcon width="20" height="20" status="success">
+                <use href={icon + "#icon-Vector-1"}></use>
+              </SuccessIcon>
+              <FormField id="password" name="password" type="password" placeholder="Enter password" />
+              <ErrorText name="password" component="div" />
+            </FieldWrapper>
+            <FormButton type="submit">
+              <span>Log In</span>
+              <Icon width="20" height="20">
+                <use href={icon + "#icon-login"}></use>
+              </Icon>
+            </FormButton>
+          </Form>
+        )}
       </Formik>
     </FormWrapper>
   );

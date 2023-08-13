@@ -1,7 +1,11 @@
 import React, { useState, useCallback } from 'react';
 import { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
-import { MainLayoutStyled } from './MainLayout.styled';
+import {
+  MainLayoutStyled,
+  MainStyled,
+  MainAndHeaderWrapper,
+} from './MainLayout.styled';
 import { Container, Spinner } from 'components/Common';
 import SideBar from '../SideBar/SideBar';
 import Header from '../Header/Header';
@@ -25,14 +29,16 @@ const MainLayout = () => {
   return (
     <MainLayoutStyled onKeyDown={handleKeyDown} tabIndex="0">
       <SideBar isOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />
-      <Container>
+      <MainAndHeaderWrapper>
         <Header toggleSidebar={toggleSidebar} />
-        <main>
-          <Suspense fallback={<Spinner />}>
-            <Outlet />
-          </Suspense>
-        </main>
-      </Container>
+        <MainStyled>
+          <Container>
+            <Suspense fallback={<Spinner />}>
+              <Outlet />
+            </Suspense>
+          </Container>
+        </MainStyled>
+      </MainAndHeaderWrapper>
     </MainLayoutStyled>
   );
 };

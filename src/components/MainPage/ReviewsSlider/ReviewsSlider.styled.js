@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-
+// import { device } from 'constants';
 
 export const BackgroundName = styled.div`
   width: 100%;
