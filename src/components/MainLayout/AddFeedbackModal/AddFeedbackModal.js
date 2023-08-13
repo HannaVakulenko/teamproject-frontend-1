@@ -1,52 +1,75 @@
 import { createPortal } from 'react-dom';
+import Rating from '@mui/material/Rating';
 import icon from 'assets/icons/symbol-defs.svg';
 import {
   CancelBtn,
+  CloseBtn,
+  DeleteBtn,
+  EditBtn,
+  Icon,
   InputFeedback,
   ModalDiv,
   Overlay,
   SaveBtn,
   TextReview,
+  WrapControlBtn,
+  WrapRating,
+  WrapReview,
 } from './AddFeedbackModal.styled';
-import { IconLogin } from 'components/MainPage/AuthSection/AuthSection.styled';
+import { useState } from 'react';
 
 const modalRoot = document.querySelector('#modal-root');
 
-// const FeedbackSchema = Yup.object().shape({
-//   textFeedback: Yup.string()
-
-//     .required(),
-
-// });
-
 const AddFeedbackModal = () => {
+  const [value, setValue] = useState(1);
+  const [isEdit, setisEdit] = useState(false);
+  const [isReview, setIsReview] = useState(true);
+
   return createPortal(
     <Overlay>
       <ModalDiv>
+        <CloseBtn type="button">
+          <Icon width={24} height={24}>
+            <use href={icon + '#icon-x-close'}></use>
+          </Icon>
+        </CloseBtn>
+
         <form>
-        <TextReview>Rating</TextReview>
-        
-        <div>
-          <input type="radio" id="r1" />
-          <label for="r1"></label>
+          <WrapRating>
+            <TextReview>Rating</TextReview>
+            <Rating
+              name="simple-controlled"
+              value={value}
+              onChange={(event, newValue) => {
+                setValue(newValue);
+              }}
+            />
+          </WrapRating>
 
-          <input type="radio" id="r2" />
-          <label for="r2"></label>
+          <WrapReview>
+            <TextReview>Review</TextReview>
+            {isReview && (
+              <>
+                <EditBtn onClick={() => setisEdit(true)} type="button">
+                  <Icon width={16} height={16}>
+                    <use href={icon + '#icon-pencil-01'}></use>
+                  </Icon>
+                </EditBtn>
+                <DeleteBtn type="submit">
+                  <Icon width={16} height={16}>
+                    <use href={icon + '#icon-trash-2'}></use>
+                  </Icon>
+                </DeleteBtn>
+              </>
+            )}
+          </WrapReview>
 
-          <input type="radio" id="r3" />
-          <label for="r3"></label>
+          <InputFeedback name="feedback" type="text" placeholder="Enter text" />
 
-          <input type="radio" id="r4" />
-          <label for="r4"></label>
-
-          <input type="radio" id="r5" />
-          <label for="r5"></label>
-        </div>
-
-        <TextReview>Review</TextReview>
-        <InputFeedback type="text" placeholder="Enter text" name="name" />
-        <SaveBtn type="submit">Save</SaveBtn>
-        <CancelBtn type="button">Cancel</CancelBtn>
+          <WrapControlBtn>
+            <SaveBtn type="submit">{isEdit ? 'Edit' : 'Save'}</SaveBtn>
+            <CancelBtn type="button">Cancel</CancelBtn>
+          </WrapControlBtn>
         </form>
       </ModalDiv>
     </Overlay>,
