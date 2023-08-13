@@ -18,6 +18,8 @@ export const UserNameIcon = styled.p`
   font-size: 18px;
   font-weight: 700;
   line-height: 1.3;
+  text-transform: uppercase;
+  color: ${p => p.theme.mainAccentColor};
 
   color: black;
 `;
@@ -67,6 +69,12 @@ export const AvatarWrapper = styled.div`
   margin-right: 18px;
   overflow: hidden;
 `;
+
+export const Slider = styled.div`
+  width: 100%;
+  height: 252px;
+  border: solid 1px ${p => p.theme.mainAccentColor};
+
 
 export const AvatarImg = styled.img`
   width: 50px;

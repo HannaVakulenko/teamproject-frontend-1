@@ -69,7 +69,7 @@ export const OddNumbered = styled.div`
 
 export const Number = styled.p`
   margin-bottom: 14px;
-  color: ${p => p.theme.colors.blue1Color};
+  color: ${p => p.theme.mainAccentColor};
   font-size: 80px;
   font-weight: 700;
   line-height: 100%; /* 80px */
@@ -84,13 +84,13 @@ export const TitleDescription = styled.h2`
   display: inline-block;
   margin-bottom: 8px;
   padding: 6px 18px;
-  color: ${p => p.theme.colors.blue1Color};
+  color: ${p => p.theme.mainAccentColor};
   font-size: 32px;
   font-weight: 700;
   line-height: 1.25;
   text-transform: uppercase;
   border-radius: 44px;
-  background: ${p => p.theme.colors.blue2Color};
+  background: ${p => p.theme.secondaryAccentColor};
 
   @media (min-width: ${device.tablet}px) {
     font-size: 40px;

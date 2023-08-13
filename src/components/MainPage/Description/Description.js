@@ -31,7 +31,7 @@ const Description = () => {
           <picture>
             {/* Webp */}
             <source
-              srcset={
+              srcSet={
                 (require('../../../assets/images/mainpage-calendar-desk-1x.webp'),
                 require('../../../assets/images/mainpage-calendar-desk@2x.webp'),
                 require('../../../assets/images/mainpage-calendar-desk@3x.webp'))
@@ -40,7 +40,7 @@ const Description = () => {
               media={`(min-width: ${device.desktop}px)`}
             />
             <source
-              srcset={
+              srcSet={
                 (require('../../../assets/images/mainpage-calendar-tabl-1x.webp'),
                 require('../../../assets/images/mainpage-calendar-tabl@2x.webp'),
                 require('../../../assets/images/mainpage-calendar-tabl@3x.webp'))
@@ -49,7 +49,7 @@ const Description = () => {
               media={`(min-width: ${device.tablet}px)`}
             />
             <source
-              srcset={
+              srcSet={
                 (require('../../../assets/images/mainpage-calendar-mob-1x.webp'),
                 require('../../../assets/images/mainpage-calendar-mob@2x.webp'),
                 require('../../../assets/images/mainpage-calendar-mob@3x.webp'))
@@ -60,7 +60,7 @@ const Description = () => {
 
             {/* png */}
             <source
-              srcset={
+              srcSet={
                 (require('../../../assets/images/mainpage-calendar-desk-1x.png'),
                 require('../../../assets/images/mainpage-calendar-desk@2x.png'),
                 require('../../../assets/images/mainpage-calendar-desk@3x.png'))
@@ -68,7 +68,7 @@ const Description = () => {
               media={`(min-width: ${device.desktop}px)`}
             />
             <source
-              srcset={
+              srcSet={
                 (require('../../../assets/images/mainpage-calendar-tabl-1x.png'),
                 require('../../../assets/images/mainpage-calendar-tabl@2x.png'),
                 require('../../../assets/images/mainpage-calendar-tabl@3x.png'))
@@ -76,7 +76,7 @@ const Description = () => {
               media={`(min-width: ${device.tablet}px)`}
             />
             <source
-              srcset={
+              srcSet={
                 (require('../../../assets/images/mainpage-calendar-mob-1x.png'),
                 require('../../../assets/images/mainpage-calendar-mob@2x.png'),
                 require('../../../assets/images/mainpage-calendar-mob@3x.png'))
@@ -107,7 +107,7 @@ const Description = () => {
           <picture>
             {/* Webp */}
             <source
-              srcset={
+              srcSet={
                 (require('../../../assets/images/mainpage-sidebar-desk-1x.webp'),
                 require('../../../assets/images/mainpage-sidebar-desk@2x.webp'),
                 require('../../../assets/images/mainpage-sidebar-desk@3x.webp'))
@@ -116,7 +116,7 @@ const Description = () => {
               media={`(min-width: ${device.desktop}px)`}
             />
             <source
-              srcset={
+              srcSet={
                 (require('../../../assets/images/mainpage-sidebar-tabl-1x.webp'),
                 require('../../../assets/images/mainpage-sidebar-tabl@2x.webp'),
                 require('../../../assets/images/mainpage-sidebar-tabl@3x.webp'))
@@ -125,7 +125,7 @@ const Description = () => {
               media={`(min-width: ${device.tablet}px)`}
             />
             <source
-              srcset={
+              srcSet={
                 (require('../../../assets/images/mainpage-sidebar-mob-1x.webp'),
                 require('../../../assets/images/mainpage-sidebar-mob@2x.webp'),
                 require('../../../assets/images/mainpage-sidebar-mob@3x.webp'))
@@ -136,7 +136,7 @@ const Description = () => {
 
             {/* png */}
             <source
-              srcset={
+              srcSet={
                 (require('../../../assets/images/mainpage-sidebar-desk-1x.png'),
                 require('../../../assets/images/mainpage-sidebar-desk@2x.png'),
                 require('../../../assets/images/mainpage-sidebar-desk@3x.png'))
@@ -144,7 +144,7 @@ const Description = () => {
               media={`(min-width: ${device.desktop}px)`}
             />
             <source
-              srcset={
+              srcSet={
                 (require('../../../assets/images/mainpage-sidebar-tabl-1x.png'),
                 require('../../../assets/images/mainpage-sidebar-tabl@2x.png'),
                 require('../../../assets/images/mainpage-sidebar-tabl@3x.png'))
@@ -152,7 +152,7 @@ const Description = () => {
               media={`(min-width: ${device.tablet}px)`}
             />
             <source
-              srcset={
+              srcSet={
                 (require('../../../assets/images/mainpage-sidebar-mob-1x.png'),
                 require('../../../assets/images/mainpage-sidebar-mob@2x.png'),
                 require('../../../assets/images/mainpage-sidebar-mob@3x.png'))
@@ -181,7 +181,7 @@ const Description = () => {
           <picture>
             {/* Webp */}
             <source
-              srcset={
+              srcSet={
                 (require('../../../assets/images/mainpage-one-desk-1x.webp'),
                 require('../../../assets/images/mainpage-one-desk@2x.webp'),
                 require('../../../assets/images/mainpage-one-desk@3x.webp'))
@@ -190,7 +190,7 @@ const Description = () => {
               media={`(min-width: ${device.desktop}px)`}
             />
             <source
-              srcset={
+              srcSet={
                 (require('../../../assets/images/mainpage-one-tabl-1x.webp'),
                 require('../../../assets/images/mainpage-one-tabl@2x.webp'),
                 require('../../../assets/images/mainpage-one-tabl@3x.webp'))
@@ -199,7 +199,7 @@ const Description = () => {
               media={`(min-width: ${device.tablet}px)`}
             />
             <source
-              srcset={
+              srcSet={
                 (require('../../../assets/images/mainpage-one-mob-1x.webp'),
                 require('../../../assets/images/mainpage-one-mob@2x.webp'),
                 require('../../../assets/images/mainpage-one-mob@3x.webp'))
@@ -210,7 +210,7 @@ const Description = () => {
 
             {/* png */}
             <source
-              srcset={
+              srcSet={
                 (require('../../../assets/images/mainpage-one-desk-1x.png'),
                 require('../../../assets/images/mainpage-one-desk@2x.png'),
                 require('../../../assets/images/mainpage-one-desk@3x.png'))
@@ -218,7 +218,7 @@ const Description = () => {
               media={`(min-width: ${device.desktop}px)`}
             />
             <source
-              srcset={
+              srcSet={
                 (require('../../../assets/images/mainpage-one-tabl-1x.png'),
                 require('../../../assets/images/mainpage-one-tabl@2x.png'),
                 require('../../../assets/images/mainpage-one-tabl@3x.png'))
@@ -226,7 +226,7 @@ const Description = () => {
               media={`(min-width: ${device.tablet}px)`}
             />
             <source
-              srcset={
+              srcSet={
                 (require('../../../assets/images/mainpage-one-mob-1x.png'),
                 require('../../../assets/images/mainpage-one-mob@2x.png'),
                 require('../../../assets/images/mainpage-one-mob@3x.png'))
