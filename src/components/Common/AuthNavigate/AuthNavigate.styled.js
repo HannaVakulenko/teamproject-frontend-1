@@ -15,13 +15,13 @@ export const AuthLink = styled(Link)`
   font-size: 12px;
   font-weight: 600;
   line-height: 1.16;
-  color: ${p => p.theme.colors.blue1Color};
+  color: ${p => p.theme.mainAccentColor};
 
   transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
   &:hover,
   &:focus {
-    color: ${p => p.theme.colors.blue3Color};
+    color: ${p => p.theme.mainAccentColorActive};
   }
 
   @media screen and (min-width: ${device.tablet}px) {

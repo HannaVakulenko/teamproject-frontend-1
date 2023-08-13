@@ -106,8 +106,8 @@ export const GlobalStyle = createGlobalStyle`
     margin: 0;
     padding: 0;
     line-height: 1.4;
-    background-color: ${({ theme }) => theme.colorsBg};
-    color: ${({ theme }) => theme.colorsText};
+    background-color: ${({ theme }) => theme.mainBGColor};
+    color: ${({ theme }) => theme.mainTextColor};
   }
 
   
@@ -142,6 +142,6 @@ export const GlobalStyle = createGlobalStyle`
   }
 
 #nprogress .bar {
-background: #13151A;
+background-color: ${({ theme }) => theme.mainTextColor};
 }
 `;

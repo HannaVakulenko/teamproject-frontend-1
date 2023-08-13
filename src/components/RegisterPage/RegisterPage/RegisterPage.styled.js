@@ -1,4 +1,4 @@
-import { styled } from "styled-components";
+import { styled } from 'styled-components';
 import { device } from 'constants';
 import gooseImage1x from 'assets/images/registerform-desk-1x.webp';
 import gooseImage2x from 'assets/images/registerform-desk@2x.webp';

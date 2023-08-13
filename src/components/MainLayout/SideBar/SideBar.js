@@ -15,8 +15,6 @@ import {
   Icon,
   NavigationLink,
   IconChart,
-  LogoutButton,
-  IconLogout,
 } from './SideBar.styled';
 import logoMob1x from '../../../assets/images/logo-mob-1x.png';
 import logoMob1xw from '../../../assets/images/404-mob-1x.webp';
@@ -37,16 +35,14 @@ import logoDesk2xw from '../../../assets/images/logo-desk@2x.webp';
 import logoDesk3x from '../../../assets/images/logo-desk@3x.png';
 import logoDesk3xw from '../../../assets/images/logo-desk@3x.webp';
 import icon from 'assets/icons/symbol-defs.svg';
-import { useLocation, useNavigate } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
-import { logout } from 'redux/auth/operations';
+import { useLocation } from 'react-router-dom';
+import {  useSelector } from 'react-redux';
 import { selectLoggedIn } from 'redux/auth/selectors';
+import LogoutBtn from '../LogoutBtn/LogoutBtn';
 
 const SideBar = ({ isOpen, toggleSidebar }) => {
   const isLoggedIn = useSelector(selectLoggedIn);
-  const dispatch = useDispatch();
   const location = useLocation();
-  const navigate = useNavigate();
   const closeSidebar = () => {
     toggleSidebar(false);
   };
@@ -81,27 +77,36 @@ const SideBar = ({ isOpen, toggleSidebar }) => {
                 <use href={icon + '#icon-x-close'}></use>
               </svg>
             </CloseButton>
-        </LogoAndTitle>
-        <Navigation>
-          <NavigationList>
+          </LogoAndTitle>
+          <Navigation>
             <Panel>User Panel</Panel>
-             <NavigationItem $isActive={location.pathname === '/authorized/account'}>
-                <Icon $isActive={location.pathname === '/authorized/account'}>
+            <NavigationList>
+              <NavigationItem
+                isActive={location.pathname === '/authorized/account'}
+              >
+                <Icon isActive={location.pathname === '/authorized/account'}>
                   <use href={icon + '#icon-user-check-01'}></use>
                 </Icon>
-                  <NavigationLink to="/authorized/account">
-                    My account</NavigationLink>
-            </NavigationItem>
-              <NavigationItem $isActive={location.pathname === '/authorized/calendar'}>
-                <Icon $isActive={location.pathname === '/authorized/calendar'}>
+                <NavigationLink to="/authorized/account">
+                  My account
+                </NavigationLink>
+              </NavigationItem>
+              <NavigationItem
+                isActive={location.pathname === '/authorized/calendar'}
+              >
+                <Icon isActive={location.pathname === '/authorized/calendar'}>
                   <use href={icon + '#icon-calendar-check-02'}></use>
                 </Icon>
                 <NavigationLink to="/authorized/calendar">
                   Calendar
                 </NavigationLink>
               </NavigationItem>
-              <NavigationItem $isActive={location.pathname === '/authorized/statistics'}>
-                <IconChart $isActive={location.pathname === '/authorized/statistics'}>
+              <NavigationItem
+                isActive={location.pathname === '/authorized/statistics'}
+              >
+                <IconChart
+                  isActive={location.pathname === '/authorized/statistics'}
+                >
                   <use href={icon + '#icon-shape'}></use>
                 </IconChart>
                 <NavigationLink to="/authorized/statistics">
@@ -112,17 +117,7 @@ const SideBar = ({ isOpen, toggleSidebar }) => {
           </Navigation>
         </TopSection>
         {isLoggedIn && (
-          <LogoutButton
-            onClick={async () => {
-              await dispatch(logout());
-              navigate('/');
-            }}
-          >
-            Log out
-            <IconLogout>
-              <use href={icon + '#icon-logout'}></use>
-            </IconLogout>
-          </LogoutButton>
+          <LogoutBtn/>
         )}
       </Sidebar>
     </>

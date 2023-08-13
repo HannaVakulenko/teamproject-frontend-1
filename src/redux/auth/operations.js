@@ -1,7 +1,8 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
+import { setLightTheme } from '../themeSlice';
 
-axios.defaults.baseURL = ' https://goose-track-gr25.onrender.com';
+axios.defaults.baseURL = 'https://goose-track-gr25.onrender.com';
 
 const setAuthHeader = token => {
   axios.defaults.headers.common.Authorization = `Bearer ${token}`;
@@ -42,6 +43,7 @@ export const login = createAsyncThunk(
 export const logout = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
   try {
     await axios.post('/api/auth/logout');
+    thunkAPI.dispatch(setLightTheme());
     clearAuthHeader();
   } catch (error) {
     return thunkAPI.rejectWithValue(error.message);

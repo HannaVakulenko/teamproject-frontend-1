@@ -10,7 +10,7 @@ export const ThemeToggleBtn = styled.button`
   padding: 0;
   background-color: transparent;
   border: none;
-  color: red;
+  color: ${p => p.theme.mainAccentColor};
   fill: currentColor;
 
   @media (min-width: ${device.tablet}px) {
