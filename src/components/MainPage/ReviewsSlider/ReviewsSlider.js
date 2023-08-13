@@ -106,7 +106,7 @@ const ReviewsSlider = () => {
             <AvatarImg src={slide.avatarURL} alt="UserPicture" />
           ) : (
             <BackgroundName className="initials">
-              <UserNameIcon>{(slide.name)}</UserNameIcon>
+              <UserNameIcon>{(slide.nameпш)}</UserNameIcon>
             </BackgroundName>
           )}
         </AvatarWrapper>
