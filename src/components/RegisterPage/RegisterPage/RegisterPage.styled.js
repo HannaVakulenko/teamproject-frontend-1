@@ -1,4 +1,4 @@
-import { styled } from "styled-components";
+import { styled } from 'styled-components';
 import { device } from 'constants';
 import gooseImage1x from 'assets/images/registerform-desk-1x.webp';
 import gooseImage2x from 'assets/images/registerform-desk@2x.webp';
@@ -10,6 +10,7 @@ export const PageContainer = styled.div`
   align-items: center;
   flex-direction: column;
   justify-content: center;
+  background-color: ${p => p.theme.secondaryAccentColor};
   @media screen and (min-width: ${device.desktop}px) {
     position: relative;
   }
@@ -40,5 +41,4 @@ export const BgImage = styled.div`
       background-size: contain;
     }
   }
-  background-color: ${p => p.theme.secondaryAccentColor};
 `;
