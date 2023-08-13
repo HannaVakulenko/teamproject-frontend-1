@@ -44,7 +44,7 @@ const rateStyled = {
 const ReviewsSlider = () => {
   const dispatch = useDispatch();
   const reviews = useSelector(selectReviews);
-  console.log('reviews:', reviews);
+  // console.log('reviews:', reviews);
   const swiperRef = useRef(null);
   SwiperCore.use([Autoplay]);
 
@@ -52,21 +52,21 @@ const ReviewsSlider = () => {
     dispatch(fetchReviews({page:1, limit:8}));
   }, [dispatch]);
 
-  function getInitials(name) {
-    if (name) {
-      const initials = name
-        .split(' ')
-        .map(word => word.charAt(0))
-        .join('')
-        .toUpperCase();
-      return initials;
-    } else {
-      return name;
-    }
-  }
+  // function getInitials(name) {
+  //   if (name) {
+  //     const initials = name
+  //       .split(' ')
+  //       .map(word => word.charAt(0))
+  //       .join('')
+  //       .toUpperCase();
+  //     return initials;
+  //   } else {
+  //     return name;
+  //   }
+  // }
 
   const slides = Array.isArray(reviews.reviews) ? reviews.reviews : [];
-console.log('slides:', slides);
+// console.log('slides:', slides);
   return (
     <Section>
       <Container>
@@ -102,16 +102,16 @@ console.log('slides:', slides);
     <ReviewSliderCard>
       <ReviewContentBox>
         <AvatarWrapper>
-          {slide.owner.avatarURL ? (
-            <AvatarImg src={slide.owner.avatarURL} alt="UserPicture" />
+          {slide.avatarURL ? (
+            <AvatarImg src={slide.avatarURL} alt="UserPicture" />
           ) : (
             <BackgroundName className="initials">
-              <UserNameIcon>{getInitials(slide.owner.name)}</UserNameIcon>
+              <UserNameIcon>{(slide.name)}</UserNameIcon>
             </BackgroundName>
           )}
         </AvatarWrapper>
         <div>
-          <Name>{slide.owner.name}</Name>
+          <Name>{slide.name}</Name>
           <Rate>
             <Rating
               value={slide.rating}
