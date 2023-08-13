@@ -1,10 +1,11 @@
 import styled from 'styled-components';
 import { device } from 'constants';
 
-export const StyledFeedbackBtn = styled.div`
+export const StyledFeedbackBtn = styled.button`
   display: flex;
   padding: 8px 20px;
   align-items: center;
+  border: none;
 
   border-radius: 10px;
   background: ${p => p.theme.mainAccentColor};

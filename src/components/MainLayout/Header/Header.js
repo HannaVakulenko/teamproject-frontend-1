@@ -8,11 +8,16 @@ import {
   ControllWrapper,
   StyledHeader,
 } from './Header.styled';
+import icon from 'assets/icons/symbol-defs.svg';
 
 const Header = ({ toggleSidebar }) => {
   return (
     <StyledHeader>
-      <StyledButton onClick={toggleSidebar}>X</StyledButton>
+      <StyledButton onClick={toggleSidebar}>
+        <svg width="32" height="32">
+          <use href={icon + '#icon-Vector'}></use>
+        </svg>
+      </StyledButton>
       <MainTitle title="Calendar" />
       <ControllWrapper>
         <AddFeedbackBtn />
