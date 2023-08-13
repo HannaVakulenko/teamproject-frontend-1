@@ -22,8 +22,6 @@ import {
   ReviewText,
   SwiperNavBox,
   SwiperNavBtn,
-  BackgroundName,
-  UserNameIcon,
   Section,
   Container,
   SliderWrapper,
@@ -44,7 +42,6 @@ const rateStyled = {
 const ReviewsSlider = () => {
   const dispatch = useDispatch();
   const reviews = useSelector(selectReviews);
-  // console.log('reviews:', reviews);
   const swiperRef = useRef(null);
   SwiperCore.use([Autoplay]);
 
@@ -52,21 +49,9 @@ const ReviewsSlider = () => {
     dispatch(fetchReviews({page:1, limit:8}));
   }, [dispatch]);
 
-  // function getInitials(name) {
-  //   if (name) {
-  //     const initials = name
-  //       .split(' ')
-  //       .map(word => word.charAt(0))
-  //       .join('')
-  //       .toUpperCase();
-  //     return initials;
-  //   } else {
-  //     return name;
-  //   }
-  // }
+ 
 
   const slides = Array.isArray(reviews.reviews) ? reviews.reviews : [];
-// console.log('slides:', slides);
   return (
     <Section>
       <Container>
@@ -102,13 +87,7 @@ const ReviewsSlider = () => {
     <ReviewSliderCard>
       <ReviewContentBox>
         <AvatarWrapper>
-          {slide.avatarURL ? (
             <AvatarImg src={slide.avatarURL} alt="UserPicture" />
-          ) : (
-            <BackgroundName className="initials">
-              <UserNameIcon>{(slide.name)}</UserNameIcon>
-            </BackgroundName>
-          )}
         </AvatarWrapper>
         <div>
           <Name>{slide.name}</Name>
