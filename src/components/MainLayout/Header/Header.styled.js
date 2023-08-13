@@ -48,3 +48,15 @@ export const ThemeUserWrapper = styled.div`
     gap: 14px;
   }
 `;
+
+export const Icon = styled.svg`
+width: 24px;
+height: 24px;
+stroke: currentColor;
+fill: currentColor;
+
+@media (min-width: ${device.tablet}px) {
+  width: 34px;
+  height: 34px;
+  }
+`;
