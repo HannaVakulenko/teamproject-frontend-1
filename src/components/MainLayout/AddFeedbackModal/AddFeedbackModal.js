@@ -21,7 +21,7 @@ import { useState } from 'react';
 const modalRoot = document.querySelector('#modal-root');
 
 const AddFeedbackModal = () => {
-  const [value, setValue] = useState(1);
+  const [value, setValue] = useState(0);
   const [isEdit, setisEdit] = useState(false);
   const [isReview, setIsReview] = useState(true);
 
@@ -55,7 +55,7 @@ const AddFeedbackModal = () => {
                     <use href={icon + '#icon-pencil-01'}></use>
                   </Icon>
                 </EditBtn>
-                <DeleteBtn type="submit">
+                <DeleteBtn onClick={() => setValue(0)} type="submit">
                   <Icon width={16} height={16}>
                     <use href={icon + '#icon-trash-2'}></use>
                   </Icon>
@@ -66,10 +66,12 @@ const AddFeedbackModal = () => {
 
           <InputFeedback name="feedback" type="text" placeholder="Enter text" />
 
-          <WrapControlBtn>
-            <SaveBtn type="submit">{isEdit ? 'Edit' : 'Save'}</SaveBtn>
-            <CancelBtn type="button">Cancel</CancelBtn>
-          </WrapControlBtn>
+          {(!isReview || isEdit) && (
+            <WrapControlBtn>
+              <SaveBtn type="submit">{isEdit ? 'Edit' : 'Save'}</SaveBtn>
+              <CancelBtn type="button">Cancel</CancelBtn>
+            </WrapControlBtn>
+          )}
         </form>
       </ModalDiv>
     </Overlay>,

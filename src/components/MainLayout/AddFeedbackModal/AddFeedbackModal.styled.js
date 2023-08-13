@@ -15,7 +15,7 @@ export const Overlay = styled.div`
 
 export const ModalDiv = styled.div`
   width: 335px;
-  height: 331px;
+  /* height: 331px; */
   padding: 28px 20px;
   position: absolute;
   top: 50%;
@@ -108,7 +108,6 @@ export const TextReview = styled.p`
 `;
 
 export const InputFeedback = styled.textarea`
-  margin-bottom: 14px;
   width: 100%;
   height: 130px;
   padding: 14px 18px;
@@ -125,8 +124,9 @@ export const InputFeedback = styled.textarea`
 `;
 
 export const WrapControlBtn = styled.div`
- display: flex;
- justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 14px;
 `;
 
 export const SaveBtn = styled.button`
