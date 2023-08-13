@@ -11,6 +11,7 @@ export const PageContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   background-color: ${p => p.theme.secondaryAccentColor};
+
   @media screen and (min-width: ${device.desktop}px) {
     position: relative;
   }
