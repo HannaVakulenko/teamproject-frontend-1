@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-// import { device } from 'constants';
+import { device } from 'constants';
 
 
 export const ReviewSliderCard = styled.div`
@@ -12,7 +12,7 @@ export const ReviewSliderCard = styled.div`
   padding: 24px;
   overflow-y: auto;
 
-  @media screen and (min-width: 768px) {
+  @media (min-width: ${device.tablet}px) {
     padding: 32px 32px 50px 32px;
   }
 
@@ -30,7 +30,7 @@ export const ReviewSliderCard = styled.div`
     background-color: #adadad;
   }
 
-  @media screen and (min-width: 768px) {
+  @media (min-width: ${device.tablet}px) {
     gap: 18px;
     max-height: 372px;
 
@@ -61,7 +61,7 @@ export const Name = styled.h1`
   font-weight: 700;
   font-size: 18px;
   line-height: 1;
-  color: #13151a;
+  color: ${p => p.theme.calendarTextColor};
 `;
 
 export const Rate = styled.div`
@@ -76,8 +76,8 @@ export const ReviewText = styled.p`
   font-weight: 500;
   font-size: 14px;
   line-height: 1.29;
-  color: rgba(17, 17, 17, 0.7);
-  @media screen and (min-width: 768px) {
+  color: rgba(17, 17, 17, 0.70);
+  @media (min-width: ${device.tablet}px) {
     margin-left: 68px;
   }
 `;
@@ -86,7 +86,7 @@ export const ReviewContentBox = styled.div`
   position: sticky;
   top: 0px;
   display: flex;
-  background-color: #FFFFFF;
+  background-color: ${p => p.theme.buttonTextColor};
 `;
 
 export const SwiperNavBox = styled.div`
@@ -97,7 +97,7 @@ export const SwiperNavBox = styled.div`
   gap: 25px;
   justify-content: center;
   align-items: center;
-  @media screen and (min-width: 767px) {
+  @media (min-width: ${device.tablet}px) {
     width: 147px;
     height: 61px;
   }
@@ -116,37 +116,18 @@ export const SwiperNavBtn = styled.div`
     filter: drop-shadow(0px 5px 2px rgb(0 0 0 / 0.4));
     transition: 300ms cubic-bezier(0.4, 0, 0.2, 1);
   }
-  @media screen and (min-width: 768px) {
+ @media (min-width: ${device.tablet}px) {
     width: 61px;
     height: 48px;
   }
 `;
 export const Section = styled.div`
-  background-color: #FFFFFF;
+  background-color: ${p => p.theme.buttonTextColor};
 `;
 
-export const Container = styled.div`
-  width: 335px;
-  margin-left: auto;
-  margin-right: auto;
-  margin-bottom: 64px;
-  @media screen and (min-width: 768px) {
-    width: 704px;
-    margin-bottom: 100px;
-  }
-  @media screen and (min-width: 1440px) {
-    width: 1157px;
-    margin-bottom: 118px;
-  }
-`;
 
 export const SliderWrapper = styled.div`
   margin-bottom: 32px;
-
-  @media screen and (min-width: 768px) {
-  }
-  @media screen and (min-width: 1440px) {
-  }
 `;
 
 export const Title = styled.h2`
@@ -155,12 +136,31 @@ export const Title = styled.h2`
   font-weight: 700;
   font-size: 28px;
   line-height: 1.14;
-  color: #3E85F3;
+  color: ${p => p.theme.mainAccentColor};
   text-align: center;
   margin: 0 auto 40px auto;
-  @media screen and (min-width: 768px) {
+  @media (min-width: ${device.tablet}px) {
     font-size: 40px;
     line-height: 1.1;
     margin: 0 auto 50px auto;
+  }
+`;
+export const Container = styled.div`
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 20px;
+
+  @media (min-width: ${device.mobile}px) {
+    width: 375px;
+  }
+  @media (min-width: ${device.tablet}px) {
+    width: 768px;
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+  @media (min-width: ${device.desktop}px) {
+    width: 1440px;
+    padding-left: 128px;
+    padding-right: 128px;
   }
 `;
