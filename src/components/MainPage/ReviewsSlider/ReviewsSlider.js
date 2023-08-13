@@ -131,12 +131,12 @@ console.log('slides:', slides);
         <SwiperNavBox>
           <SwiperNavBtn id="my-prev-button">
             <svg>
-              <use href={icon+'#icon-Vector-2'}></use>
+              <use href={icon + '#icon-Vector-2'}></use>
             </svg>
           </SwiperNavBtn>
           <SwiperNavBtn id="my-next-button">
              <svg>
-              <use href={icon+'#icon-Vector-3'}></use>
+              <use href={icon + '#icon-Vector-3'}></use>
             </svg>
           </SwiperNavBtn>
         </SwiperNavBox>

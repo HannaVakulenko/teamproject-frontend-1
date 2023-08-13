@@ -18,7 +18,6 @@ export const UserNameIcon = styled.p`
   font-size: 18px;
   font-weight: 700;
   line-height: 1.3;
-
   color: black;
 `;
 export const ReviewSliderCard = styled.div`
