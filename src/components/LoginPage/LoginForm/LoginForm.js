@@ -22,9 +22,13 @@ import { login } from 'redux/auth/operations';
 const schema = yup.object().shape({
   email: yup
     .string()
-    .email('This is an ERROR email')
+    .email('Email address must contain an "@" sign')
+    .matches(/^\w+([.-]?\w+)@\w+([.-]?\w+)(.\w{2,3})+$/, 'Must be a valid email')
     .required('Email is required'),
-  password: yup.string().required('Password is required'),
+  password: yup
+    .string()
+    .min(7, 'Must be at least 7 characters long')
+    .required('Password is required'),
 });
 
 const initialValues = {
@@ -67,7 +71,7 @@ const LoginForm = () => {
               <FormField id="email" name="email" type="email" placeholder="Enter email" />
               <ErrorText name="email" component="div" />
               {formik.touched.email && !formik.errors.email && (
-                <SuccessText>This is a CORRECT email</SuccessText>
+                <SuccessText>This is a valid email</SuccessText>
               )}
             </FieldWrapper>
             <FieldWrapper
@@ -86,6 +90,9 @@ const LoginForm = () => {
               </SuccessIcon>
               <FormField id="password" name="password" type="password" placeholder="Enter password" />
               <ErrorText name="password" component="div" />
+              {formik.touched.password && !formik.errors.password && (
+                <SuccessText>This is a valid password</SuccessText>
+              )}
             </FieldWrapper>
             <FormButton type="submit">
               <span>Log In</span>
