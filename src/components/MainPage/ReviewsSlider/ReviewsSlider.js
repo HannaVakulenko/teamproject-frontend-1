@@ -1,9 +1,8 @@
-
 import React, { useEffect, useRef } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import SwiperCore from 'swiper';
 import { Autoplay } from 'swiper/modules';
-import { Navigation} from 'swiper/modules';
+import { Navigation } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/virtual';
 import 'swiper/css/navigation';
@@ -31,7 +30,6 @@ import {
 } from './ReviewsSlider.styled';
 
 import icon from 'assets/icons/symbol-defs.svg';
-import { AddFeedbackModal } from 'components/MainLayout';
 
 const rateIcon = (
   <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"></path>
@@ -50,7 +48,7 @@ const ReviewsSlider = () => {
   SwiperCore.use([Autoplay]);
 
   useEffect(() => {
-    dispatch(fetchReviews({page:1, limit:8}));
+    dispatch(fetchReviews({ page: 1, limit: 8 }));
   }, [dispatch]);
 
   // function getInitials(name) {
@@ -67,7 +65,7 @@ const ReviewsSlider = () => {
   // }
 
   const slides = Array.isArray(reviews.reviews) ? reviews.reviews : [];
-// console.log('slides:', slides);
+  // console.log('slides:', slides);
   return (
     <Section>
       <Container>
@@ -98,35 +96,35 @@ const ReviewsSlider = () => {
               },
             }}
           >
-           {slides.map((slide, index) => (
-  <SwiperSlide key={index} virtualIndex={index}>
-    <ReviewSliderCard>
-      <ReviewContentBox>
-        <AvatarWrapper>
-          {slide.avatarURL ? (
-            <AvatarImg src={slide.avatarURL} alt="UserPicture" />
-          ) : (
-            <BackgroundName className="initials">
-              <UserNameIcon>{(slide.name)}</UserNameIcon>
-            </BackgroundName>
-          )}
-        </AvatarWrapper>
-        <div>
-          <Name>{slide.name}</Name>
-          <Rate>
-            <Rating
-              value={slide.rating}
-              itemStyles={rateStyled}
-              style={{ maxWidth: 110, gap: 4 }}
-              readOnly
-            />
-          </Rate>
-        </div>
-      </ReviewContentBox>
-      <ReviewText>{slide.review}</ReviewText>
-    </ReviewSliderCard>
-  </SwiperSlide>
-           ))}
+            {slides.map((slide, index) => (
+              <SwiperSlide key={index} virtualIndex={index}>
+                <ReviewSliderCard>
+                  <ReviewContentBox>
+                    <AvatarWrapper>
+                      {slide.avatarURL ? (
+                        <AvatarImg src={slide.avatarURL} alt="UserPicture" />
+                      ) : (
+                        <BackgroundName className="initials">
+                          <UserNameIcon>{slide.name}</UserNameIcon>
+                        </BackgroundName>
+                      )}
+                    </AvatarWrapper>
+                    <div>
+                      <Name>{slide.name}</Name>
+                      <Rate>
+                        <Rating
+                          value={slide.rating}
+                          itemStyles={rateStyled}
+                          style={{ maxWidth: 110, gap: 4 }}
+                          readOnly
+                        />
+                      </Rate>
+                    </div>
+                  </ReviewContentBox>
+                  <ReviewText>{slide.review}</ReviewText>
+                </ReviewSliderCard>
+              </SwiperSlide>
+            ))}
           </Swiper>
         </SliderWrapper>
         <SwiperNavBox>
@@ -136,13 +134,12 @@ const ReviewsSlider = () => {
             </svg>
           </SwiperNavBtn>
           <SwiperNavBtn id="my-next-button">
-             <svg>
+            <svg>
               <use href={icon + '#icon-Vector-3'}></use>
             </svg>
           </SwiperNavBtn>
         </SwiperNavBox>
       </Container>
-      <AddFeedbackModal></AddFeedbackModal>
     </Section>
   );
 };
