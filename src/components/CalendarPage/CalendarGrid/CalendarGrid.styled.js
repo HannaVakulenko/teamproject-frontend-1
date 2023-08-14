@@ -4,7 +4,7 @@ export const GridWrapper = styled.div`
   display: grid;
   grid-template-columns: repeat(7, 1fr);
   grid-template-rows: repeat(5, 1fr);
-  border: 1px solid #000;
+  border: 1px solid #84828a;
   border-radius: 8px;
   width: 475px;
   margin: 0 auto;
@@ -75,7 +75,7 @@ export const WeekdayHeader = styled.div`
   justify-content: space-around;
   font-weight: bold;
   text-align: center;
-  margin-bottom: 50px;
+  margin-bottom: 14px;
   border: 1px solid #84828a;
   border-radius: 8px;
 
@@ -102,6 +102,8 @@ export const Weektenday = styled.div`
     letter-spacing: 0em;
     text-align: center;
     color: #3e85f3;
+    margin-left: 18px;
+    margin-right: 18px;
   }
 
   @media (min-width: 376px) and (max-width: 768px) {
@@ -121,6 +123,9 @@ export const Workday = styled.div`
     letter-spacing: 0em;
     text-align: center;
     color: #343434;
+    text-transform: uppercase;
+    margin-left: 18px;
+    margin-right: 18px;
   }
 
   @media (min-width: 376px) and (max-width: 768px) {
