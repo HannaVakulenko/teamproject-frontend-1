@@ -16,13 +16,10 @@ import {
 import { useEffect, useState } from 'react';
 import { Form, Formik } from 'formik';
 import { useDispatch, useSelector } from 'react-redux';
-import {
-  addReview,
-  fetchReviewById,
- 
-} from 'redux/reviews/operations';
-import { selectReviews, selectUserReview } from 'redux/reviews/selectors';
+import { addReview, deleteReview } from 'redux/reviews/operations';
+import { selectUserReview } from 'redux/reviews/selectors';
 
+// petrenko@kart.edu.ua
 
 const FeedbackSchema = Yup.object().shape({
   raiting: Yup.string().required(),
@@ -30,9 +27,6 @@ const FeedbackSchema = Yup.object().shape({
 });
 
 const FeedbackForm = ({ closeModal }) => {
-  const data = useSelector(selectReviews); // []
-  console.log('selectReviews', data);
-
   const data1 = useSelector(selectUserReview); // {rating: '',  review: ''}
   console.log('selectUserReview', data1);
 
@@ -51,7 +45,6 @@ const FeedbackForm = ({ closeModal }) => {
 
   return (
     <Formik
-      // дивись документацію
       initialValues={{ raiting: raitingValue, feedbackText: '' }}
       validationSchema={FeedbackSchema}
       onSubmit={(values, actions) => {
@@ -92,6 +85,7 @@ const FeedbackForm = ({ closeModal }) => {
               </EditBtn>
               <DeleteBtn
                 onClick={() => {
+                  dispatch(deleteReview());
                   console.log('delete feedback');
                 }}
                 type="button"
@@ -117,14 +111,12 @@ const FeedbackForm = ({ closeModal }) => {
             <SaveBtn
               onClick={e => {
                 console.log('Save');
-                // dispatch(
-                //   addReview(
-                //     json.stringify({
-                //       rating: 1,
-                //       review: 'test',
-                //     })
-                //   )
-                // );
+                dispatch(
+                  addReview({
+                    rating: 5,
+                    review: 'The Best Review',
+                  })
+                );
               }}
               type="submit"
             >
