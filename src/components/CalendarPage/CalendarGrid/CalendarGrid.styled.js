@@ -58,3 +58,64 @@ export const DayWrapper = styled.div`
   @media (min-width: 769px) and (max-width: 1440px) {
   }
 `;
+export const WeekdayHeader = styled.div`
+  display: flex;
+  justify-content: space-around;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 50px;
+  border: 1px solid #84828a;
+  border-radius: 8px;
+
+  @media (max-width: 375px) {
+    font-size: 14px;
+    height: 50px;
+    align-items: center;
+  }
+
+  @media (min-width: 376px) and (max-width: 768px) {
+    font-size: 16px;
+  }
+
+  @media (min-width: 769px) and (max-width: 1440px) {
+    font-size: 18px;
+  }
+`;
+export const Weekday = styled.div`
+  @media (max-width: 375px) {
+    font-family: Inter;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 18px;
+    letter-spacing: 0em;
+    text-align: center;
+    color: #3e85f3;
+  }
+
+  @media (min-width: 376px) and (max-width: 768px) {
+    font-size: 16px;
+  }
+
+  @media (min-width: 769px) and (max-width: 1440px) {
+    font-size: 18px;
+  }
+`;
+export const Workday = styled.div`
+  @media (max-width: 375px) {
+    font-family: Inter;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 18px;
+    letter-spacing: 0em;
+    text-align: center;
+    color: #343434;
+  }
+
+  @media (min-width: 376px) and (max-width: 768px) {
+    font-size: 16px;
+  }
+
+  @media (min-width: 769px) and (max-width: 1440px) {
+    font-size: 18px;
+  }
+`;
