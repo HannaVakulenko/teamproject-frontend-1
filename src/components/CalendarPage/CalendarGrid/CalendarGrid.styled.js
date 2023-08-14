@@ -4,33 +4,33 @@ export const GridWrapper = styled.div`
   display: grid;
   grid-template-columns: repeat(7, 1fr);
   grid-template-rows: repeat(5, 1fr);
-  border: 1px solid #84828a;
+  border: 1px solid #000;
   border-radius: 8px;
+  width: 475px;
+  margin: 0 auto;
 
   @media (max-width: 375px) {
-    grid-template-columns: repeat(7, minmax(0, 1fr));
-    height: 470px;
+    width: 100%;
+    height: 475px;
   }
 
   @media (min-width: 376px) and (max-width: 768px) {
-    // grid-template-columns: repeat(7, minmax(0, 1fr));
-  }
-
-  @media (min-width: 769px) and (max-width: 1440px) {
-    // grid-template-columns: repeat(7, minmax(0, 1fr));
+    grid-template-columns: repeat(7, minmax(0, 1fr));
+    width: 704px;
+    height: 720px;
   }
 `;
 
 export const CellWrapper = styled.div`
+  position: relative;
+  border: 1px solid #ddd;
+
   @media (max-width: 375px) {
-    border: 1px solid #84828a;
   }
   @media (min-width: 376px) and (max-width: 768px) {
-    border: 1px solid #ddd;
   }
 
   @media (min-width: 769px) and (max-width: 1440px) {
-    color: #84828a;
   }
 `;
 export const RowInCell = styled.div`
@@ -47,10 +47,22 @@ export const RowInCell = styled.div`
   @media (min-width: 769px) and (max-width: 1440px) {
   }
 `;
+
 export const DayWrapper = styled.div`
-  padding: 4px;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 14px;
+  letter-spacing: 0em;
+  text-align: right;
+  position: absolute;
+  top: 0;
+  right: 0;
 
   @media (max-width: 375px) {
+    margin-top: 4px;
+    margin-bottom: 4px;
+    margin-right: 6px;
+    margin-left: 6px;
   }
   @media (min-width: 376px) and (max-width: 768px) {
   }
@@ -81,7 +93,7 @@ export const WeekdayHeader = styled.div`
     font-size: 18px;
   }
 `;
-export const Weekday = styled.div`
+export const Weektenday = styled.div`
   @media (max-width: 375px) {
     font-family: Inter;
     font-size: 16px;

@@ -74,7 +74,7 @@ import {
   RowInCell,
   DayWrapper,
   WeekdayHeader,
-  Weekday,
+  Weektenday,
   Workday,
 } from './CalendarGrid.styled';
 
@@ -129,8 +129,8 @@ const CalendarPage = ({ startDay }) => {
         <Workday>W</Workday>
         <Workday>T</Workday>
         <Workday>F</Workday>
-        <Weekday>S</Weekday>
-        <Weekday>S</Weekday>
+        <Weektenday>S</Weektenday>
+        <Weektenday>S</Weektenday>
       </WeekdayHeader>
       <GridWrapper>
         {daysArray.map(({ day, isCurrentMonth }) => (
