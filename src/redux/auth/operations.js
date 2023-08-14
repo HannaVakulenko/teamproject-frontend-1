@@ -20,7 +20,6 @@ export const register = createAsyncThunk(
       setAuthHeader(res.data.token);
       return res.data;
     } catch (error) {
-      console.log('This user already exists');
       return thunkAPI.rejectWithValue(error.message);
     }
   }
@@ -34,7 +33,6 @@ export const login = createAsyncThunk(
       setAuthHeader(res.data.token);
       return res.data;
     } catch (error) {
-      console.log('This user does not exist');
       return thunkAPI.rejectWithValue(error.message);
     }
   }
@@ -63,6 +61,26 @@ export const refreshUser = createAsyncThunk(
     try {
       setAuthHeader(persistedToken);
       const res = await axios.get('/api/auth/current');
+      return res.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const fetchUserAccount = createAsyncThunk(
+  'auth/fetchAccount',
+  async (_, thunkAPI) => {
+    const state = thunkAPI.getState();
+    const persistedToken = state.auth.token;
+
+    if (persistedToken === null) {
+      return thunkAPI.rejectWithValue('Unable to fetch user account');
+    }
+
+    try {
+      setAuthHeader(persistedToken);
+      const res = await axios.get('/api/auth/account');
       return res.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);

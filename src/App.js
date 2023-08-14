@@ -7,7 +7,7 @@ import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 import { selectIsRefreshing } from 'redux/auth/selectors';
 import { useEffect } from 'react';
-import { refreshUser } from 'redux/auth/operations';
+import { refreshUser, fetchUserAccount } from 'redux/auth/operations';
 
 import LoginPage from 'pages/LoginPage';
 import MainPage from 'pages/MainPage';
