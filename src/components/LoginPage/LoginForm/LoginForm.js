@@ -17,7 +17,7 @@ import {
 } from "components/RegisterPage/RegisterForm/RegisterForm.styled";
 import icon from "assets/icons/symbol-defs.svg";
 
-import { login } from 'redux/auth/operations';
+import { login, refreshUser } from 'redux/auth/operations';
 
 const schema = yup.object().shape({
   email: yup
@@ -41,6 +41,7 @@ const LoginForm = () => {
 
   const handleSubmit = async (values, { resetForm }) => {
     await dispatch(login(values));
+    await dispatch(refreshUser());
     resetForm();
   };
 
