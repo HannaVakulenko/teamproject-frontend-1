@@ -11,14 +11,12 @@ export const UserInfoStyled = styled.div`
   }
 `;
 
-export const UserPhoto = styled.div`
+export const UserPhoto = styled.img`
   width: 32px;
   height: 32px;
-  background-color: ${p => p.theme.secondaryBGColor};
   border-radius: 32px;
   border: 1.8px solid;
   border-color: ${p => p.theme.mainAccentColor};
-  
   @media (min-width: ${device.tablet}px) {
     width: 44px;
     height: 44px;

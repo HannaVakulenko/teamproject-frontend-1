@@ -15,7 +15,7 @@ const UserInfo = () => {
   return (
     <UserInfoStyled>
       <UserNameStyled>{user.name}</UserNameStyled>
-      <UserPhoto></UserPhoto>
+      <UserPhoto src={user.avatarURL}></UserPhoto>
     </UserInfoStyled>
   );
 };
