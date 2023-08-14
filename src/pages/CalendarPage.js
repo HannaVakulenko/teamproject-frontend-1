@@ -1,12 +1,19 @@
 import React from 'react';
-import { MyDatePicker } from 'components/CalendarPage';
-import { CalendarWrapper } from './Calendar.styled';
-const CalendarPage = () => (
-  <>
-    <CalendarWrapper>
-      <MyDatePicker />
-    </CalendarWrapper>
-  </>
-);
+import moment from 'moment';
+import {
+  CalendarGrid,
+  CalendarToolbar,
+  PeriodPaginator,
+} from 'components/CalendarPage';
+const startDay = moment().startOf('month').startOf('week');
+const CalendarPage = () => {
+  return (
+    <div>
+      <CalendarToolbar />
+      <PeriodPaginator />
+      <CalendarGrid startDay={startDay} />
+    </div>
+  );
+};
 
 export default CalendarPage;

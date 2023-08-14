@@ -1,7 +1,7 @@
 const CalendarToolbar = () => {
   return (
     <>
-      <div></div>
+      <div>Tool</div>
     </>
   );
 };

@@ -1,7 +1,7 @@
 const PeriodPaginator = () => {
   return (
     <>
-      <div></div>
+      <div>Paginator</div>
     </>
   );
 };
