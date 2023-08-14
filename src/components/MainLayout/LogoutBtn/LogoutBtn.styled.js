@@ -4,16 +4,13 @@ const { tablet } = device;
 
 export const LogoutButton = styled.button`
   display: flex;
-  justify-content: space-around;
+  gap: 6px;
+  justify-content: center;
   align-items: center;
   font-size: 14px;
   font-weight: 600;
-  margin-top: auto;
-  margin-left: 24px;
-  margin-bottom: 24px;
+  padding: 14px;
   width: 131px;
-  height: 46px;
-  padding: 16px 18px 16px 23px;
   background-color: ${p => p.theme.mainAccentColor};
   color: ${p => p.theme.buttonTextColor};
   border: none;
@@ -25,24 +22,28 @@ export const LogoutButton = styled.button`
   &:hover,
   &:focus {
     background-color: ${p => p.theme.mainAccentColorActive};
-  };
-
-  @media (min-width: ${tablet}px) {
-    width: 141px;
-    height: 56px;
-    font-size: 18px;
   }
 
+  @media (min-width: ${tablet}px) {
+    gap: 11px;
+    padding: 16px;
+    width: 141px;
+    font-size: 18px;
+  }
 `;
 
 export const IconLogout = styled.svg`
   width: 18px;
   height: 18px;
+  min-width: 18px;
+  min-height: 18px;
   stroke: currentColor;
   fill: none;
 
   @media (min-width: ${tablet}px) {
     width: 20px;
     height: 20px;
+    min-width: 20px;
+    min-height: 20px;
   }
 `;

@@ -6,7 +6,7 @@ const UserInfo = () => {
   const user = useSelector(selectUser);
   return (
     <UserInfoStyled>
-      <UserNameStyled>{user.name || 'noname'}</UserNameStyled>
+      <UserNameStyled>{user.name}</UserNameStyled>
       <UserPhoto></UserPhoto>
     </UserInfoStyled>
   );
