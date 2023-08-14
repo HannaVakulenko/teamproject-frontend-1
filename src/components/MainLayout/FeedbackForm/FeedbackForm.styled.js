@@ -1,3 +1,4 @@
+import { Field } from 'formik';
 import styled from 'styled-components';
 
 export const WrapReview = styled.div`
@@ -64,7 +65,7 @@ export const TextReview = styled.p`
   line-height: 1.17; /* 116.667% */
 `;
 
-export const InputFeedback = styled.textarea`
+export const TextFeedback = styled(Field)`
   width: 100%;
   height: 130px;
   padding: 14px 18px;
