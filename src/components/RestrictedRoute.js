@@ -4,7 +4,7 @@ import { selectLoggedIn } from '../redux/auth/selectors';
 
 export const RestrictedRoute = ({
   component: Component,
-  redirectTo = '/authorized/calendar',
+  redirectTo = '/calendar',
 }) => {
   const isLoggedIn = useSelector(selectLoggedIn);
 

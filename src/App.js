@@ -17,7 +17,6 @@ const AccountPage = lazy(() => import('pages/AccountPage'));
 const CalendarPage = lazy(() => import('pages/CalendarPage'));
 const StatisticsPage = lazy(() => import('pages/StatisticsPage'));
 
-
 export const App = () => {
   const dispatch = useDispatch();
   const isRefreshing = useSelector(selectIsRefreshing);
@@ -32,32 +31,26 @@ export const App = () => {
         <Route
           path="/"
           element={
-            <RestrictedRoute
-              redirectTo="/authorized/calendar"
-              component={<MainPage />}
-            />
+            <RestrictedRoute redirectTo="/calendar" component={<MainPage />} />
           }
           index
         />
         <Route
           path="/login"
           element={
-            <RestrictedRoute
-              redirectTo="/authorized/calendar"
-              component={<LoginPage />}
-            />
+            <RestrictedRoute redirectTo="/calendar" component={<LoginPage />} />
           }
         />
         <Route
           path="/register"
           element={
             <RestrictedRoute
-              redirectTo="/authorized/calendar"
+              redirectTo="/calendar"
               component={<RegisterPage />}
             />
           }
         />
-        <Route path="/authorized/*" element={<Layout />}>
+        <Route path="/*" element={<Layout />}>
           <Route
             path="calendar"
             element={
