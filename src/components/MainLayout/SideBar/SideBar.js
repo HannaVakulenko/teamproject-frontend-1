@@ -84,7 +84,7 @@ const SideBar = ({ isOpen, toggleSidebar }) => {
               <li>
                 <NavigationItem
                   to="/account"
-                  isActive={location.pathname === '/account'}
+                  $isActive={location.pathname === '/account'}
                 >
                   <Icon>
                     <use href={icon + '#icon-user-check-01'}></use>
@@ -96,7 +96,7 @@ const SideBar = ({ isOpen, toggleSidebar }) => {
               <li>
                 <NavigationItem
                   to="/calendar"
-                  isActive={location.pathname === '/calendar'}
+                  $isActive={location.pathname === '/calendar'}
                 >
                   <Icon>
                     <use href={icon + '#icon-calendar-check-02'}></use>
@@ -108,9 +108,9 @@ const SideBar = ({ isOpen, toggleSidebar }) => {
               <li>
                 <NavigationItem
                   to="/statistics"
-                  isActive={location.pathname === '/statistics'}
+                  $isActive={location.pathname === '/statistics'}
                 >
-                  <Icon isActive={location.pathname === '/statistics'}>
+                  <Icon $isActive={location.pathname === '/statistics'}>
                     <use href={icon + '#icon-shape'}></use>
                   </Icon>
                   <NavItemName to="/statistics">Statistics</NavItemName>
