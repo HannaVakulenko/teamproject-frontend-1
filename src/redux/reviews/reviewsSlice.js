@@ -89,7 +89,7 @@ const reviewSlice = createSlice({
       })
       .addCase(fetchReviewById.fulfilled, (state, action) => {
         if (action.payload) {
-           state.userReview = action.payload;
+          state.userReview = action.payload;
         } else {
           state.userReview = {
             rating: '',
@@ -107,5 +107,5 @@ const reviewSlice = createSlice({
 });
 
 
-export const {changeRating}=reviewSlice.actions;
+export const { changeRating } = reviewSlice.actions;
 export const reviewsReducer = reviewSlice.reducer;

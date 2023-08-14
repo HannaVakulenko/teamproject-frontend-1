@@ -110,13 +110,6 @@ export const FormField = styled(Field)`
     border-color: ${p => p.theme.mainTextColor};
   }
 
-  /* &:focus {
-    border-color: ${({ theme, errors, touched }) =>
-      touched && !errors
-        ? theme.authFieldOnSuccessColor
-        : theme.authFieldOnErrorColor};
-  } */
-
   &::placeholder {
     font-size: 14px;
     color: ${p => p.theme.authFieldPlaceholderColor};

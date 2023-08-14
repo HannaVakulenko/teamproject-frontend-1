@@ -1,3 +1,4 @@
+import { ChoosedDay } from 'components/CalendarPage';
 import { Section } from 'components/Common';
 
 const CalendarPage = () => (
@@ -9,6 +10,7 @@ const CalendarPage = () => (
           dfuhdkfhgfkdfjhgkjdfgdfkjghfdkjghkjdfhgkjfd
           dfkghdfkjghkdfjhgkjdfhgkjdf gdfjghdfkjhgkjdfhgkjfdhng
         </p>
+        <ChoosedDay />
       </Section>
     </div>
   </>
