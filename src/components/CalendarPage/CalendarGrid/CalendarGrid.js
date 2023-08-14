@@ -15,7 +15,6 @@ const CalendarPage = ({ startDay }) => {
   const daysArray = [];
   let currentDay = startDay.clone();
 
-  // Перевірка, якщо початковий день - неділя, зсуваємо його на понеділок
   if (currentDay.day() === 0) {
     currentDay.add(1, 'day');
   }
@@ -44,7 +43,6 @@ const CalendarPage = ({ startDay }) => {
     currentDay.add(1, 'day');
   }
 
-  // Додаємо пусті клітинки в кінець календаря
   while (daysArray.length < 35) {
     daysArray.push({
       day: null,
