@@ -1,24 +1,39 @@
 import styled from 'styled-components';
-
-export const UserPhoto = styled.div`
-  width: 32px;
-  height: 32px;
-  background-color: #555599;
-  border-radius: 44px;
-  border: 1.8px solid #3e85f3;
-`;
-
-export const UserNameStyled = styled.span`
-  color: #343434;
-  font-family: Inter;
-  font-size: 18px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: 18px;
-`;
+import { device } from 'constants';
 
 export const UserInfoStyled = styled.div`
   display: flex;
   gap: 8px;
   align-items: center;
+
+  @media (min-width: ${device.tablet}px) {
+    gap: 14px;
+  }
+`;
+
+export const UserPhoto = styled.img`
+  width: 32px;
+  height: 32px;
+  border-radius: 32px;
+  border: 1.8px solid;
+  border-color: ${p => p.theme.mainAccentColor};
+  @media (min-width: ${device.tablet}px) {
+    width: 44px;
+    height: 44px;
+    border-radius: 44px;
+  }
+`;
+
+export const UserNameStyled = styled.span`
+  color: ${p => p.theme.secondaryTextColor};
+  font-family: Inter;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 128.571%;
+  
+  @media (min-width: ${device.tablet}px) {
+    font-size: 18px;
+    line-height: 100%;
+  }
 `;

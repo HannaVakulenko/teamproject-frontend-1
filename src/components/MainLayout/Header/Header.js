@@ -7,12 +7,18 @@ import {
   ThemeUserWrapper,
   ControllWrapper,
   StyledHeader,
+  Icon
 } from './Header.styled';
+import icon from 'assets/icons/symbol-defs.svg';
 
 const Header = ({ toggleSidebar }) => {
   return (
     <StyledHeader>
-      <StyledButton onClick={toggleSidebar}>X</StyledButton>
+      <StyledButton onClick={toggleSidebar}>
+        <Icon>
+          <use href={icon + '#icon-menu-01'}></use>
+        </Icon>
+      </StyledButton>
       <MainTitle title="Calendar" />
       <ControllWrapper>
         <AddFeedbackBtn />

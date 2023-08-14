@@ -8,11 +8,13 @@ import { useSelector } from 'react-redux';
 import { selectIsRefreshing } from 'redux/auth/selectors';
 import { useEffect } from 'react';
 import { refreshUser } from 'redux/auth/operations';
+
+import LoginPage from 'pages/LoginPage';
+import MainPage from 'pages/MainPage';
+import RegisterPage from 'pages/RegisterPage';
+import NotFoundPage from 'pages/NotFoundPage';
 const AccountPage = lazy(() => import('pages/AccountPage'));
 const CalendarPage = lazy(() => import('pages/CalendarPage'));
-const LoginPage = lazy(() => import('pages/LoginPage'));
-const MainPage = lazy(() => import('pages/MainPage'));
-const RegisterPage = lazy(() => import('pages/RegisterPage'));
 const StatisticsPage = lazy(() => import('pages/StatisticsPage'));
 
 export const App = () => {
@@ -26,40 +28,43 @@ export const App = () => {
   return (
     !isRefreshing && (
       <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route index element={<MainPage />} />
+        <Route
+          path="/"
+          element={
+            <RestrictedRoute redirectTo="/calendar" component={<MainPage />} />
+          }
+          index
+        />
+        <Route
+          path="/login"
+          element={
+            <RestrictedRoute redirectTo="/calendar" component={<LoginPage />} />
+          }
+        />
+        <Route
+          path="/register"
+          element={
+            <RestrictedRoute
+              redirectTo="/calendar"
+              component={<RegisterPage />}
+            />
+          }
+        />
+        <Route path="/*" element={<Layout />}>
           <Route
-            path="/login"
-            element={
-              <RestrictedRoute
-                redirectTo="/authorized/calendar"
-                component={<LoginPage />}
-              />
-            }
-          />
-          <Route
-            path="/register"
-            element={
-              <RestrictedRoute
-                redirectTo="/authorized/calendar"
-                component={<RegisterPage />}
-              />
-            }
-          />
-          <Route
-            path="/authorized/calendar"
+            path="calendar"
             element={
               <PrivateRoute redirectTo="/login" component={<CalendarPage />} />
             }
           />
           <Route
-            path="/authorized/account"
+            path="account"
             element={
               <PrivateRoute redirectTo="/login" component={<AccountPage />} />
             }
           />
           <Route
-            path="/authorized/statistics"
+            path="statistics"
             element={
               <PrivateRoute
                 redirectTo="/login"
@@ -68,6 +73,7 @@ export const App = () => {
             }
           />
         </Route>
+        <Route path="*" element={<NotFoundPage />} />
       </Routes>
     )
   );

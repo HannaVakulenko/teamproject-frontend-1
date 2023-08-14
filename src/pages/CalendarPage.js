@@ -1,16 +1,15 @@
-import React from 'react';
-import moment from 'moment';
-import { CalendarGrid, CalendarToolbar } from 'components/CalendarPage';
-// import MyDatePicker from 'components/CalendarPage/DatePicker/DatePicker';
-const startDay = moment().startOf('month').startOf('week');
-const CalendarPage = () => {
-  return (
-    <div>
-      <CalendarToolbar />
-      {/* <PeriodPaginator />  */}
-      <CalendarGrid startDay={startDay} />
-    </div>
-  );
-};
+import { Section } from 'components/Common';
+
+const CalendarPage = () => (
+  <>
+    <Section>
+      <h2>CalendarPage</h2>
+      <p>
+        dfuhdkfhgfkdfjhgkjdfgdfkjghfdkjghkjdfhgkjfd dfkghdfkjghkdfjhgkjdfhgkjdf
+        gdfjghdfkjhgkjdfhgkjfdhng
+      </p>
+    </Section>
+  </>
+);
 
 export default CalendarPage;
