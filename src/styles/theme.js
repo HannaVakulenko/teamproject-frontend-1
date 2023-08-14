@@ -40,7 +40,7 @@ export const darkTheme = {
   sidebarBGColor: '#13151A',
   sidebarTextColor: '#FFFFFF',
   sidebarLogoTextColor: '#E3F3FF',
-  sidebarPanelColor: '#FAFAFA',
+  sidebarPanelColor: '#FAFAFA4D',
   authFieldBorderColor: 'rgba(220, 227, 229, 0.60)',
   authFieldPlaceholderColor: '#DCEBF7',
   authFieldOnErrorColor: '#E74A3B',
@@ -50,19 +50,4 @@ export const darkTheme = {
     'linear-gradient(0deg, #171820, #171820), linear-gradient(0deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.15))',
   tasksListBgColor:
     'linear-gradient(0deg, #21222C, #21222C), linear-gradient(0deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.15))',
-  // colors: {
-  //   blue1Color: '#3E85F3',
-  //   blue2Color: '#DCEBF7',
-  //   blue3Color: '#2B78EF',
-  //   blue4Color: '#E3F3FF',
-  //   whiteColor: '#FFFFFF',
-  //   blackColor: '#13151A',
-  //   black2Color: '#111111',
-  //   mainBGColor: '#F7F6F9',
-  //   greyColor: '#34343480',
-  //   grey2Color: '#DCE3E5',
-  //   grey3Color: 'rgba(220, 227, 229, 0.60)',
-  //   redColor: '#E74A3B',
-  //   greenColor: '#3CBC81',
-  // },
 };

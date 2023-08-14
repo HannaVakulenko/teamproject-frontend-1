@@ -9,17 +9,17 @@ const LogoutBtn = () => {
 
 
   return (
-     <LogoutButton
-            onClick={async () => {
-              await dispatch(logout());
-              navigate('/');
-            }}
-          >
-            Log out
-            <IconLogout>
-              <use href={icon + '#icon-logout'}></use>
-            </IconLogout>
-          </LogoutButton>
+    <LogoutButton
+      onClick={async () => {
+        await dispatch(logout());
+        navigate('/');
+      }}
+    >
+      Log out
+      <IconLogout width="20" height="20">
+        <use href={icon + '#icon-logout'}></use>
+      </IconLogout>
+    </LogoutButton>
   );
 };
 export default LogoutBtn;
