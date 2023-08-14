@@ -82,6 +82,7 @@ const SideBar = ({ isOpen, toggleSidebar }) => {
             <Panel>User Panel</Panel>
             <NavigationList>
               <NavigationItem
+                to="/authorized/account"
                 isActive={location.pathname === '/authorized/account'}
               >
                 <Icon isActive={location.pathname === '/authorized/account'}>
@@ -92,6 +93,7 @@ const SideBar = ({ isOpen, toggleSidebar }) => {
                 </NavigationLink>
               </NavigationItem>
               <NavigationItem
+                to="/authorized/calendar"
                 isActive={location.pathname === '/authorized/calendar'}
               >
                 <Icon isActive={location.pathname === '/authorized/calendar'}>
@@ -102,6 +104,7 @@ const SideBar = ({ isOpen, toggleSidebar }) => {
                 </NavigationLink>
               </NavigationItem>
               <NavigationItem
+                to="/authorized/statistics"
                 isActive={location.pathname === '/authorized/statistics'}
               >
                 <IconChart
