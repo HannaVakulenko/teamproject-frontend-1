@@ -22,7 +22,7 @@ import {
  
 } from 'redux/reviews/operations';
 import { selectReviews, selectUserReview } from 'redux/reviews/selectors';
-import { json } from 'body-parser';
+
 
 const FeedbackSchema = Yup.object().shape({
   raiting: Yup.string().required(),
