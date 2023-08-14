@@ -53,35 +53,35 @@ export const FieldWrapper = styled.div`
 
   &.error label {
     color: ${p => p.theme.authFieldOnErrorColor};
-  };
+  }
 
   &.error input {
     border-color: ${p => p.theme.authFieldOnErrorColor};
-  };
+  }
 
-  &.error svg[status="error"] {
+  &.error svg[data-status='error'] {
     display: block;
-  };
+  }
 
-  &.success svg[status="error"] {
+  &.success svg[data-status='error'] {
     display: none;
   }
 
   &.success label {
     color: ${p => p.theme.authFieldOnSuccessColor};
-  };
+  }
 
   &.success input {
     border-color: ${p => p.theme.authFieldOnSuccessColor};
-  };
+  }
 
-  &.success svg[status="success"] {
+  &.success svg[data-status='success'] {
     display: block;
-  };
+  }
 
-  &.error svg[status="success"] {
+  &.error svg[data-status='success'] {
     display: none;
-  };
+  }
 `;
 
 export const FormLabel = styled.label`
@@ -112,9 +112,9 @@ export const FormField = styled(Field)`
 
   /* &:focus {
     border-color: ${({ theme, errors, touched }) =>
-      touched && !errors
-        ? theme.authFieldOnSuccessColor
-        : theme.authFieldOnErrorColor};
+    touched && !errors
+      ? theme.authFieldOnSuccessColor
+      : theme.authFieldOnErrorColor};
   } */
 
   &::placeholder {
