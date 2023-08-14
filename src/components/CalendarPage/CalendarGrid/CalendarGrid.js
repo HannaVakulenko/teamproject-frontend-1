@@ -1,25 +1,70 @@
 import React from 'react';
+import moment from 'moment';
 import {
   GridWrapper,
   CellWrapper,
   RowInCell,
   DayWrapper,
 } from './CalendarGrid.styled';
+
 const CalendarPage = ({ startDay }) => {
-  // const totalDays = 35;
-  const day = startDay.clone().subtract();
-  const daysArray = [...Array(35)].map(() => day.add(1, 'day').clone());
-  console.log(daysArray);
+  const currentDate = moment();
+  const firstDayOfCurrentMonth = currentDate.clone().startOf('month');
+  const lastDayOfCurrentMonth = currentDate.clone().endOf('month');
+
+  const daysArray = [];
+  let currentDay = startDay.clone();
+
+  // Перевірка, якщо початковий день - неділя, зсуваємо його на понеділок
+  if (currentDay.day() === 0) {
+    currentDay.add(1, 'day');
+  }
+
+  let isCurrentMonth = false;
+
+  for (let i = 0; i < 35; i++) {
+    if (currentDay.isSame(firstDayOfCurrentMonth, 'day')) {
+      isCurrentMonth = true;
+    }
+
+    if (
+      !isCurrentMonth ||
+      currentDay.isSameOrBefore(lastDayOfCurrentMonth, 'day')
+    ) {
+      daysArray.push({
+        day: isCurrentMonth ? currentDay.clone() : null,
+        isCurrentMonth: isCurrentMonth,
+      });
+    }
+
+    if (isCurrentMonth && currentDay.isSame(lastDayOfCurrentMonth, 'day')) {
+      break;
+    }
+
+    currentDay.add(1, 'day');
+  }
+
+  // Додаємо пусті клітинки в кінець календаря
+  while (daysArray.length < 35) {
+    daysArray.push({
+      day: null,
+      isCurrentMonth: false,
+    });
+  }
+
   return (
     <GridWrapper>
-      {daysArray.map(dayItem => (
-        <CellWrapper key={dayItem.format('DDMMYYYY')}>
+      {daysArray.map(({ day, isCurrentMonth }) => (
+        <CellWrapper key={day ? day.format('DDMMYYYY') : 'empty'}>
           <RowInCell>
-            <DayWrapper>{dayItem.format('D')}</DayWrapper>
+            <DayWrapper className={isCurrentMonth ? 'current-month' : ''}>
+              {day ? day.format('D') : ''}
+            </DayWrapper>
           </RowInCell>
         </CellWrapper>
       ))}
     </GridWrapper>
   );
 };
+
 export default CalendarPage;
