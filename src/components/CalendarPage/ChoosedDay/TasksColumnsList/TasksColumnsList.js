@@ -2,10 +2,10 @@ import React from 'react'
 import { Wrapper } from './TasksColumnsList.styled';
 import TasksColumn from '../TasksColumn/TasksColumn';
 
-const TasksColumnsList = () => {
+const TasksColumnsList = ({ tasks }) => {
   return (
     <Wrapper>
-      <TasksColumn />
+      <TasksColumn tasks={tasks} />
     </Wrapper>
   )
 }
