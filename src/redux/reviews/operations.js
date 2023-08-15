@@ -4,7 +4,7 @@ import axios from 'axios';
 axios.defaults.baseURL = 'https://goose-track-gr25.onrender.com';
 
 export const fetchReviews = createAsyncThunk(
-  'reviews/getREviews',
+  'reviews/getReviews',
   async ({ page, limit }, thunkAPI) => {
     try {
       const { data } = await axios.get(
