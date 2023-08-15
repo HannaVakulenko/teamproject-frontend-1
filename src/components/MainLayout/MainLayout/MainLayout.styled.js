@@ -17,6 +17,7 @@ export const MainAndHeaderWrapper = styled.div`
   height: 100vh;
   display: flex;
   flex-direction: column;
+    align-items: center; 
   gap: 64px;
 
   @media (min-width: ${device.tablet}px) {
