@@ -107,6 +107,10 @@ const SideBar = ({ isOpen, toggleSidebar, mainLayoutRef }) => {
     };
   }, [isOpen]);
 
+    const handleLinkClick = () => {
+      closeSidebar();
+    };
+
   return (
     <>
       <Backdrop $isOpen={isOpen} onClick={closeSidebar} />
@@ -144,6 +148,7 @@ const SideBar = ({ isOpen, toggleSidebar, mainLayoutRef }) => {
               <li>
                 <NavigationItem
                   to="/account"
+                  onClick={handleLinkClick}
                   $isActive={location.pathname === '/account'}
                 >
                   <Icon>
@@ -156,6 +161,7 @@ const SideBar = ({ isOpen, toggleSidebar, mainLayoutRef }) => {
               <li>
                 <NavigationItem
                   to="/calendar"
+                  onClick={handleLinkClick}
                   $isActive={location.pathname === '/calendar'}
                 >
                   <Icon>
@@ -168,9 +174,10 @@ const SideBar = ({ isOpen, toggleSidebar, mainLayoutRef }) => {
               <li>
                 <NavigationItem
                   to="/statistics"
+                  onClick={handleLinkClick}
                   $isActive={location.pathname === '/statistics'}
                 >
-                  <Icon $isActive={location.pathname === '/statistics'}>
+                  <Icon>
                     <use href={icon + '#icon-shape'}></use>
                   </Icon>
                   <NavItemName to="/statistics">Statistics</NavItemName>
