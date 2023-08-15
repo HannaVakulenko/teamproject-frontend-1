@@ -6,9 +6,14 @@ axios.defaults.baseURL = AXIOS_BASE_URL;
 
 export const fetchTasks = createAsyncThunk(
   'tasks/fetchAll',
-  async (_, thunkAPI) => {
+  async ({ monthStart, monthEnd }, thunkAPI) => {
     try {
-      const response = await axios.get('/api/tasks');
+      const response = await axios.get('/api/tasks', {
+        params: {
+          monthStart: monthStart,
+          monthEnd: monthEnd,
+        }
+      });
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
