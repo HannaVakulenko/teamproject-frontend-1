@@ -1,8 +1,9 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 import { setLightTheme } from '../themeSlice';
+import { AXIOS_BASE_URL } from 'constants/axiosBaseUrl';
 
-axios.defaults.baseURL = 'https://goose-track-gr25.onrender.com';
+axios.defaults.baseURL = AXIOS_BASE_URL;
 
 const setAuthHeader = token => {
   axios.defaults.headers.common.Authorization = `Bearer ${token}`;
@@ -20,7 +21,6 @@ export const register = createAsyncThunk(
       setAuthHeader(res.data.token);
       return res.data;
     } catch (error) {
-      console.log('This user already exists');
       return thunkAPI.rejectWithValue(error.message);
     }
   }
@@ -34,7 +34,6 @@ export const login = createAsyncThunk(
       setAuthHeader(res.data.token);
       return res.data;
     } catch (error) {
-      console.log('This user does not exist');
       return thunkAPI.rejectWithValue(error.message);
     }
   }
@@ -63,6 +62,26 @@ export const refreshUser = createAsyncThunk(
     try {
       setAuthHeader(persistedToken);
       const res = await axios.get('/api/auth/current');
+      return res.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const fetchUserAccount = createAsyncThunk(
+  'auth/fetchAccount',
+  async (_, thunkAPI) => {
+    const state = thunkAPI.getState();
+    const persistedToken = state.auth.token;
+
+    if (persistedToken === null) {
+      return thunkAPI.rejectWithValue('Unable to fetch user account');
+    }
+
+    try {
+      setAuthHeader(persistedToken);
+      const res = await axios.get('/api/auth/account');
       return res.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);

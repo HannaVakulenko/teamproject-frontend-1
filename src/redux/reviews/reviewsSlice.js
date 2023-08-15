@@ -4,7 +4,7 @@ import {
   addReview,
   editReview,
   deleteReview,
-  fetchReviewById,
+  fetchReviewOwn,
 } from './operations';
 
 const reviewSlice = createSlice({
@@ -19,10 +19,10 @@ const reviewSlice = createSlice({
     error: null,
   },
   reducers: {
-    changeRating(state, action){
+    changeRating(state, action) {
       state.userReview.rating = action.payload;
-
-  }},
+    },
+  },
   extraReducers: builder => {
     builder
       .addCase(fetchReviews.pending, state => {
@@ -56,7 +56,7 @@ const reviewSlice = createSlice({
       .addCase(deleteReview.fulfilled, (state, action) => {
         state.userReview = {
           rating: '',
-          review: ''
+          review: '',
         };
         state.reviews = state.reviews.filter(
           review => review.id !== action.payload._id
@@ -84,28 +84,27 @@ const reviewSlice = createSlice({
         state.isLoading = false;
         state.error = action.payload;
       })
-      .addCase(fetchReviewById.pending, state => {
+      .addCase(fetchReviewOwn.pending, state => {
         state.isLoading = true;
       })
-      .addCase(fetchReviewById.fulfilled, (state, action) => {
+      .addCase(fetchReviewOwn.fulfilled, (state, action) => {
         if (action.payload) {
           state.userReview = action.payload;
         } else {
           state.userReview = {
             rating: '',
-            review: ''
+            review: '',
           };
         }
         state.isLoading = false;
         state.error = null;
       })
-      .addCase(fetchReviewById.rejected, (state, action) => {
+      .addCase(fetchReviewOwn.rejected, (state, action) => {
         state.isLoading = false;
         state.error = action.payload;
-      })
+      });
   },
 });
-
 
 export const { changeRating } = reviewSlice.actions;
 export const reviewsReducer = reviewSlice.reducer;

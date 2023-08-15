@@ -21,9 +21,10 @@ export const Backdrop = styled.div`
   }
 `;
 
-export const Sidebar = styled.div`
+export const Sidebar = styled.aside`
   width: 225px;
-  height: 100vh;
+  /* height: 100vh; */
+  height: ${p => `${p.$windowHeight}px`};
   background-color: ${p => p.theme.sidebarBGColor};
   transform: ${p => (p.$isOpen ? 'translateX(0)' : 'translateX(-100%)')};
   transition: transform 0.3s ease-out;
@@ -31,16 +32,19 @@ export const Sidebar = styled.div`
   top: 0;
   left: 0;
   z-index: 2;
+  padding: 24px 20px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 
   @media (min-width: ${tablet}px) and (max-width: ${desktop - 1}px) {
     width: 289px;
+    padding: 24px 32px;
   }
 
   @media (min-width: ${desktop}px) {
     width: 289px;
+    padding: 32px 24px 24px;
     position: static;
     transform: translateX(0);
   }
@@ -48,26 +52,32 @@ export const Sidebar = styled.div`
 
 export const TopSection = styled.div`
   display: flex;
+  gap: 64px;
   flex-direction: column;
-`;
-
-export const LogoAndTitle = styled.nav`
-  display: flex;
-  align-items: center;
-  margin: 24px 20px 0;
 
   @media (min-width: ${tablet}px) and (max-width: ${desktop - 1}px) {
-    margin: 24px 32px 0;
+    gap: 50px;
   }
 
   @media (min-width: ${desktop}px) {
-    margin: 32px 43px 0 24px;
+    gap: 32px;
   }
+`;
+
+export const LogoAndTitle = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 `;
 
 export const LogoLink = styled(NavLink)`
   display: flex;
   align-items: center;
+  gap: 6px;
+
+  @media (min-width: ${desktop}px) {
+    gap: 10px;
+  }
 `;
 
 export const Logo = styled.img`
@@ -78,18 +88,15 @@ export const Logo = styled.img`
   font-size: 16px;
   width: 36px;
   height: 35px;
-  margin-right: 6px;
 
   @media (min-width: ${tablet}px) and (max-width: ${desktop - 1}px) {
     width: 60px;
     height: 58px;
-    margin-right: 6px;
   }
   @media (min-width: ${desktop}px) {
     font-size: 24px;
     width: 71px;
     height: 68px;
-    margin-right: 10px;
   }
 `;
 
@@ -117,23 +124,15 @@ export const CloseButton = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 24px;
-  height: 24px;
-  margin-right: 0;
-  margin-left: auto;
   padding: 0;
   background: none;
   border: none;
   cursor: pointer;
-  font-size: 24px;
-  margin-left: auto;
   color: ${p => p.theme.secondaryTextColor};
   stroke: currentColor;
-  fill: currentColor;
+  height: 100%;
 
   @media (min-width: ${tablet}px) and (max-width: ${desktop - 1}px) {
-    width: 34px;
-    height: 34px;
   }
 
   @media (min-width: ${desktop}px) {
@@ -141,28 +140,30 @@ export const CloseButton = styled.button`
   }
 `;
 
+export const CloseIcon = styled.svg`
+  width: 24px;
+  height: 24px;
+  @media (min-width: ${tablet}px) and (max-width: ${desktop - 1}px) {
+    width: 34px;
+    height: 34px;
+  }
+`;
+
 export const Navigation = styled.nav`
-  // display: flex;
-  display: flow;
+  display: flex;
   flex-direction: column;
-  align-items: center;
-  margin-left: 20px;
-  margin-top: 64px;
+  align-items: flex-start;
+  gap: 24px;
 
   @media (min-width: ${tablet}px) and (max-width: ${desktop - 1}px) {
-    margin-left: 32px;
-    margin-top: 50px;
-  }
-
-  @media (min-width: ${desktop}px) {
-    margin-left: 24px;
-    margin-top: 32px;
+    gap: 32px;
   }
 `;
 
 export const Panel = styled.span`
   font-size: 12px;
   font-weight: 600;
+  color: red;
   color: ${p => p.theme.sidebarPanelColor};
 
   @media (min-width: ${tablet}px) {
@@ -171,107 +172,85 @@ export const Panel = styled.span`
 `;
 
 export const NavigationList = styled.ul`
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
   width: 185px;
-  height: 195px;
-  margin-top: 24px;
+
+  /* тут вказуємо, що по замовчуванню іконка фарбується через stroke, і лише третя - через fill */
+  li svg {
+    fill: none;
+    stroke: currentColor;
+  }
+
+  li:nth-child(3) svg {
+    fill: currentColor;
+    stroke: none;
+  }
 
   @media (min-width: ${tablet}px) and (max-width: ${desktop - 1}px) {
-    margin-top: 32px;
+    gap: 16px;
     width: 225px;
-    height: 249px;
   }
 
   @media (min-width: ${tablet}px) {
-     margin-top: 32px;
     width: 241px;
-    height: 249px;
   }
 `;
 
-export const NavigationLink = styled(NavLink)`
+export const NavItemName = styled.span`
   font-weight: 600;
   font-size: 14px;
   border-radius: 8px;
-  color: ${p => p.theme.sidebarTextColor};
 
-  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
-
-  &.active {
-    opacity: 100%;
-    color: ${p => p.theme.sidebarMainActiveColor};
-  };
-
-  @media (min-width: ${device.tablet}px) {
+  @media (min-width: ${tablet}px) {
     text-decoration: none;
     font-size: 16px;
   }
 `;
 
-export const IconChart = styled.svg`
-  width: 20px;
-  height: 20px;
-  margin-right: 8px;
-  stroke: ${p => (p.isActive === p.theme.mainAccentColor)};
-  fill: ${p =>
-  p.isActive ? p.theme.sidebarMainActiveColor : p.theme.sidebarTextColor};
-
-  transition: stroke 250ms cubic-bezier(0.4, 0, 0.2, 1),
-              fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
-        
-  @media (min-width: ${tablet}px) {
-    margin-right: 10px;
-    width: 24px;
-    height: 24px;
-  }
-`;
-
 export const NavigationItem = styled(NavLink)`
   display: flex;
-  align-items: end;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 12px;
   font-size: 14px;
   font-weight: 600;
-  margin-bottom: 18px;
-  background-color: ${p =>
-    p.isActive ? p.theme.secondaryAccentColorActive : 'transparent'};
   border-radius: 8px;
-  color: ${p => p.theme.sidebarTextColor};
-  padding: 10px 0 10px 12px;
 
+  background-color: ${p =>
+    p.$isActive ? p.theme.secondaryAccentColorActive : 'transparent'};
+  color: ${p =>
+    p.$isActive ? p.theme.sidebarMainActiveColor : p.theme.sidebarTextColor};
   transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
-              color 250ms cubic-bezier(0.4, 0, 0.2, 1);
-              
+    color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
   &:hover,
   &:focus {
     background-color: ${p => p.theme.secondaryAccentColorActive};
     color: ${p => p.theme.sidebarMainActiveColor};
+    transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+      color 250ms cubic-bezier(0.4, 0, 0.2, 1);
     cursor: pointer;
-
-    ${NavigationLink} {
-      color: ${p => p.theme.sidebarMainActiveColor};
-    };
-
-     ${IconChart} {
-      fill: ${p => p.theme.sidebarMainActiveColor};
-    }
-  };
+  }
 
   @media (min-width: ${tablet}px) {
-    font-size: 16px;
-    margin-bottom: 16px;
     padding: 16px 0 16px 20px;
+    gap: 10px;
+    font-size: 16px;
   }
 `;
 
 export const Icon = styled.svg`
   width: 20px;
   height: 20px;
-  margin-right: 8px;
-  stroke: ${p => (p.isActive ? p.theme.sidebarMainActiveColor : 'currentColor')};
-  fill: none;
+  min-width: 20px;
+  min-height: 20px;
 
   @media (min-width: ${tablet}px) {
-    margin-right: 10px;
     width: 24px;
     height: 24px;
+    min-width: 24px;
+    min-height: 24px;
   }
 `;
