@@ -1,8 +1,12 @@
-const TaskModal = () => {
+import TaskForm from "../TaskForm/TaskForm";
+import Modal from "../Modal/Modal";
+
+
+const TaskModal = ({onClose}) => {
   return (
-    <>
-      <div></div>
-    </>
+    <Modal onClose={onClose}>
+      <TaskForm></TaskForm>
+    </Modal>
   );
 };
 export default TaskModal;

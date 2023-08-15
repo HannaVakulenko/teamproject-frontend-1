@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { createPortal } from "react-dom";
-import { Overlay } from "./Modal.styles";
+import { Overlay, ModalDiv } from "./Modal.styles";
 
 
 
@@ -33,7 +33,7 @@ const Modal = ({ onClose, children }) => {
 
   return createPortal(
     <Overlay onClick={handleOverlayClick}>
-      <Modal>{ children}</Modal>
+      <ModalDiv>{ children}</ModalDiv>
     </Overlay>,
     modalRoot
   );

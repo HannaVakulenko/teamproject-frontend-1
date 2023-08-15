@@ -1,8 +1,7 @@
 import { Formik } from 'formik';
 import * as Yup from 'yup';
-// import { useParams } from 'react-router-dom';
-// import { useDispatch } from 'react-redux';
-// import icon from 'assets/icons/symbol-defs.svg';
+
+
 
 const TaskSchema = Yup.object().shape({
   title: Yup.string()
@@ -44,11 +43,7 @@ const TaskSchema = Yup.object().shape({
 
 const TaskForm = () => {
 
-  //  const { _id, title, priority, start, end, category } = taskToEdit;
 
-  // const dispatch = useDispatch();
-  
-  
   return (
     <Formik
     validationSchema={TaskSchema}>
