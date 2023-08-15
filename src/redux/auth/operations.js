@@ -1,8 +1,9 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 import { setLightTheme } from '../themeSlice';
+import { AXIOS_BASE_URL } from 'constants/axiosBaseUrl';
 
-axios.defaults.baseURL = 'https://goose-track-gr25.onrender.com';
+axios.defaults.baseURL = AXIOS_BASE_URL;
 
 const setAuthHeader = token => {
   axios.defaults.headers.common.Authorization = `Bearer ${token}`;

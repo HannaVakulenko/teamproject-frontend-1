@@ -1,10 +1,11 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
+import { AXIOS_BASE_URL } from 'constants/axiosBaseUrl';
 
-axios.defaults.baseURL = 'https://goose-track-gr25.onrender.com';
+axios.defaults.baseURL = AXIOS_BASE_URL;
 
 export const fetchReviews = createAsyncThunk(
-  'reviews/getREviews',
+  'reviews/getReviews',
   async ({ page, limit }, thunkAPI) => {
     try {
       const { data } = await axios.get(
