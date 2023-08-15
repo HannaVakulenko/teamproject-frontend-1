@@ -8,7 +8,7 @@ export const fetchReviews = createAsyncThunk(
   async ({ page, limit }, thunkAPI) => {
     try {
       const { data } = await axios.get(
-        `/api/reviews?page=${page}&limit=${limit}`
+        `/reviews?page=${page}&limit=${limit}`
       );
       return data;
     } catch (e) {
