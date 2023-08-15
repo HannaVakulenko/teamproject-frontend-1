@@ -21,7 +21,7 @@ export const Backdrop = styled.div`
   }
 `;
 
-export const Sidebar = styled.div`
+export const Sidebar = styled.aside`
   width: 225px;
   /* height: 100vh; */
   height: ${p => `${p.$windowHeight}px`};
