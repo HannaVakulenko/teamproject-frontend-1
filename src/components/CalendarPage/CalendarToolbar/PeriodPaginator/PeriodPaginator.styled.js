@@ -14,3 +14,5 @@ export const Date = styled.p`
 export const ButtonIncrease = styled.button``;
 
 export const ButtonDecrease = styled.button``;
+
+export const Icon = styled.svg``;
