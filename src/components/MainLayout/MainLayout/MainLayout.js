@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useRef } from 'react';
 import { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
 import {
@@ -11,6 +11,7 @@ import SideBar from '../SideBar/SideBar';
 import Header from '../Header/Header';
 
 const MainLayout = () => {
+  const mainLayoutRef = useRef(null);
   const [isSidebarOpen, setSidebarOpen] = useState(false);
 
   const toggleSidebar = useCallback(open => {
@@ -27,8 +28,16 @@ const MainLayout = () => {
   );
 
   return (
-    <MainLayoutStyled onKeyDown={handleKeyDown} tabIndex="0">
-      <SideBar isOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />
+    <MainLayoutStyled
+      ref={mainLayoutRef}
+      onKeyDown={handleKeyDown}
+      tabIndex="0"
+    >
+      <SideBar
+        mainLayoutRef={mainLayoutRef}
+        isOpen={isSidebarOpen}
+        toggleSidebar={toggleSidebar}
+      />
       <MainAndHeaderWrapper>
         <Header toggleSidebar={toggleSidebar} />
         <MainStyled>

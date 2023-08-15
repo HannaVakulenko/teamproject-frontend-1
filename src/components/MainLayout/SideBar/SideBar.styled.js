@@ -23,7 +23,8 @@ export const Backdrop = styled.div`
 
 export const Sidebar = styled.div`
   width: 225px;
-  height: 100vh;
+  /* height: 100vh; */
+  height: ${p => `${p.$windowHeight}px`};
   background-color: ${p => p.theme.sidebarBGColor};
   transform: ${p => (p.$isOpen ? 'translateX(0)' : 'translateX(-100%)')};
   transition: transform 0.3s ease-out;
