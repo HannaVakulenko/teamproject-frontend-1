@@ -1,23 +1,53 @@
 import { PeriodPaginator, PeriodTypeSelect } from '../../index';
-// import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Container, ContainerSecond } from './CalendarToolbar.styled';
 
 // сюда получаем период из вне как пропс - ?????где его взять??????
 // и стэйт глобальный с задачами
 const CalendarToolbar = () => {
-  // const [date, setDate] = useState(0);
-  // setDate(data => data);
+  const dateStart = new Date();
 
-  const getTasksForThePeriod = () => {
-    // если изменилось date или пропсом переданный период, то выполни фэтч на таски за период и запиши в глобальный стэйт - ???где этот стэйт????.
-    // Ошибка - пуш уведомление
+  // const date1 = dateStart.getDate();
+
+  // const monthNames = [
+  //   'January',
+  //   'February',
+  //   'March',
+  //   'April',
+  //   'May',
+  //   'June',
+  //   'July',
+  //   'August',
+  //   'September',
+  //   'October',
+  //   'November',
+  //   'December',
+  // ];
+
+  // const finalDate = `${dateDate} ${dateMonth} ${dateYear}`;
+
+  const [date, setDate] = useState(dateStart);
+  console.log(date);
+
+  useEffect(() => {}, []);
+
+  const changeDate = e => {
+    const newDate = new Date(date);
+
+    if (e.currentTarget.className === 'sc-gJiVIX') {
+      const result = newDate.setDate(newDate.getDate() - 1);
+      setDate(result);
+    } else {
+      const result = newDate.setDate(newDate.getDate() + 1);
+      setDate(result);
+    }
   };
 
   return (
     <>
       <Container>
         <ContainerSecond>
-          <PeriodPaginator date={1} getTasks={getTasksForThePeriod} />
+          <PeriodPaginator date={1} getTasks={changeDate} />
         </ContainerSecond>
         <div>
           <PeriodTypeSelect />
