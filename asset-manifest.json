@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/teamproject-frontend-1/static/css/main.8505ec9a.css",
-    "main.js": "/teamproject-frontend-1/static/js/main.74ab5323.js",
+    "main.js": "/teamproject-frontend-1/static/js/main.57f38cab.js",
     "static/js/451.4128ad62.chunk.js": "/teamproject-frontend-1/static/js/451.4128ad62.chunk.js",
     "static/js/461.df29eb65.chunk.js": "/teamproject-frontend-1/static/js/461.df29eb65.chunk.js",
     "static/js/97.84e62906.chunk.js": "/teamproject-frontend-1/static/js/97.84e62906.chunk.js",
@@ -96,22 +96,25 @@
     "static/media/mainpage-one-mob-1x.webp": "/teamproject-frontend-1/static/media/mainpage-one-mob-1x.e38e3fd27f6e04ebbe06.webp",
     "static/media/mainpage-sidebar-mob-1x.webp": "/teamproject-frontend-1/static/media/mainpage-sidebar-mob-1x.250fbc7bac0d4717e66b.webp",
     "static/media/404-mob@2x.webp": "/teamproject-frontend-1/static/media/404-mob@2x.e07e8aa7ba0dee84b52a.webp",
+    "static/media/logo-mob@3x.webp": "/teamproject-frontend-1/static/media/logo-mob@3x.b12d8a293403d75eaa09.webp",
     "static/media/mainpage-goose-tabl-desk-1x.webp": "/teamproject-frontend-1/static/media/mainpage-goose-tabl-desk-1x.6bebc22f4b08fe53c354.webp",
     "static/media/mainpage-goose-mob-1x.webp": "/teamproject-frontend-1/static/media/mainpage-goose-mob-1x.4bd9a70dd0433fb7a24a.webp",
     "static/media/logo-desk@2x.webp": "/teamproject-frontend-1/static/media/logo-desk@2x.bb420638145156ed2ec3.webp",
     "static/media/logo-tabl@2x.webp": "/teamproject-frontend-1/static/media/logo-tabl@2x.c2dc80f642e665f4cee9.webp",
     "static/media/404-mob-1x.webp": "/teamproject-frontend-1/static/media/404-mob-1x.b70c36b0cb3618566894.webp",
+    "static/media/logo-mob@2x.webp": "/teamproject-frontend-1/static/media/logo-mob@2x.371f6253b17509902e1d.webp",
     "static/media/logo-desk-1x.webp": "/teamproject-frontend-1/static/media/logo-desk-1x.afd277922e02777378ea.webp",
     "static/media/logo-tabl-1x.webp": "/teamproject-frontend-1/static/media/logo-tabl-1x.cec23fd06038f13e12d2.webp",
     "index.html": "/teamproject-frontend-1/index.html",
+    "static/media/logo-mob-1x.webp": "/teamproject-frontend-1/static/media/logo-mob-1x.cd09cea1d315fcef8d71.webp",
     "main.8505ec9a.css.map": "/teamproject-frontend-1/static/css/main.8505ec9a.css.map",
-    "main.74ab5323.js.map": "/teamproject-frontend-1/static/js/main.74ab5323.js.map",
+    "main.57f38cab.js.map": "/teamproject-frontend-1/static/js/main.57f38cab.js.map",
     "451.4128ad62.chunk.js.map": "/teamproject-frontend-1/static/js/451.4128ad62.chunk.js.map",
     "461.df29eb65.chunk.js.map": "/teamproject-frontend-1/static/js/461.df29eb65.chunk.js.map",
     "97.84e62906.chunk.js.map": "/teamproject-frontend-1/static/js/97.84e62906.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.8505ec9a.css",
-    "static/js/main.74ab5323.js"
+    "static/js/main.57f38cab.js"
   ]
 }
