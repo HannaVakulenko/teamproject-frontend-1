@@ -43,35 +43,25 @@ import LogoutBtn from '../LogoutBtn/LogoutBtn';
 import { disableScrolling } from 'helpers/disableScrolling';
 
 const SideBar = ({ isOpen, toggleSidebar, mainLayoutRef }) => {
+  const sidebarRef = useRef(null);
   const isLoggedIn = useSelector(selectLoggedIn);
   const location = useLocation();
-  const sidebarRef = useRef(null);
   const [windowHeight, setWindowHeight] = useState(window.innerHeight);
 
-  const closeSidebar = () => {
-    toggleSidebar(false);
-  };
+  const closeSidebar = () => toggleSidebar(false);
+  const handleLinkClick = () => closeSidebar();
 
   useEffect(() => {
     const mainLayoutElement = mainLayoutRef.current;
 
     let touchStartX = 0;
 
-    const handleTouchStart = e => {
-      touchStartX = e.touches[0].clientX;
-    };
+    const handleTouchStart = e => (touchStartX = e.touches[0].clientX);
 
     const handleTouchMove = e => {
       const touchX = e.touches[0].clientX;
       const touchOffset = touchX - touchStartX;
-
-      if (touchOffset < -50 && isOpen) {
-        toggleSidebar(false);
-      }
-
-      if (touchOffset > 100 && !isOpen) {
-        toggleSidebar(true);
-      }
+      if (touchOffset > 100 && !isOpen) toggleSidebar(true);
     };
 
     if (mainLayoutElement) {
@@ -88,28 +78,46 @@ const SideBar = ({ isOpen, toggleSidebar, mainLayoutRef }) => {
   }, [isOpen, toggleSidebar, mainLayoutRef]);
 
   useEffect(() => {
-    const handleResize = () => {
-      setWindowHeight(window.innerHeight);
+    const currentSidebarRef = sidebarRef.current;
+
+    const handleTouchStart = e => {
+      currentSidebarRef.touchStartX = e.touches[0].clientX;
     };
 
-    window.addEventListener('resize', handleResize);
+    const handleTouchMove = e => {
+      const touchX = e.touches[0].clientX;
+      const touchOffset = currentSidebarRef.touchStartX - touchX;
+
+      if (touchOffset > 100) {
+        toggleSidebar(false);
+      }
+    };
+
+    if (isOpen && currentSidebarRef) {
+      currentSidebarRef.addEventListener('touchstart', handleTouchStart);
+      currentSidebarRef.addEventListener('touchmove', handleTouchMove);
+    }
 
     return () => {
-      window.removeEventListener('resize', handleResize);
+      if (currentSidebarRef) {
+        currentSidebarRef.removeEventListener('touchstart', handleTouchStart);
+        currentSidebarRef.removeEventListener('touchmove', handleTouchMove);
+      }
     };
+  }, [isOpen, toggleSidebar]);
+
+  useEffect(() => {
+    const handleResize = () => setWindowHeight(window.innerHeight);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
   }, []);
 
   useEffect(() => {
     disableScrolling(isOpen);
-
     return () => {
       disableScrolling(false);
     };
   }, [isOpen]);
-
-    const handleLinkClick = () => {
-      closeSidebar();
-    };
 
   return (
     <>
