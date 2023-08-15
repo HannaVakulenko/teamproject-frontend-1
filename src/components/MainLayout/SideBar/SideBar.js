@@ -17,11 +17,11 @@ import {
   NavItemName,
 } from './SideBar.styled';
 import logoMob1x from 'assets/images/logo-mob-1x.png';
-import logoMob1xw from 'assets/images/logo-mob-1x.webp';
+import logoMob1xw from 'assets/images/404-mob-1x.webp';
 import logoMob2x from 'assets/images/logo-mob@2x.png';
-import logoMob2xw from 'assets/images/logo-mob@2x.webp';
+import logoMob2xw from 'assets/images/404-mob@2x.webp';
 import logoMob3x from 'assets/images/logo-mob@3x.png';
-import logoMob3xw from 'assets/images/logo-mob@3x.webp';
+import logoMob3xw from 'assets/images/404-mob@3x.webp';
 import logoTabl1x from 'assets/images/logo-tabl-1x.png';
 import logoTabl1xw from 'assets/images/logo-tabl-1x.webp';
 import logoTabl2x from 'assets/images/logo-tabl@2x.png';
@@ -35,94 +35,22 @@ import logoDesk2xw from 'assets/images/logo-desk@2x.webp';
 import logoDesk3x from 'assets/images/logo-desk@3x.png';
 import logoDesk3xw from 'assets/images/logo-desk@3x.webp';
 import icon from 'assets/icons/symbol-defs.svg';
-import { useEffect, useState, useRef } from 'react';
 import { useLocation } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { selectLoggedIn } from 'redux/auth/selectors';
 import LogoutBtn from '../LogoutBtn/LogoutBtn';
-import { disableScrolling } from 'helpers/disableScrolling';
 
-const SideBar = ({ isOpen, toggleSidebar, mainLayoutRef }) => {
-  const sidebarRef = useRef(null);
+const SideBar = ({ isOpen, toggleSidebar }) => {
   const isLoggedIn = useSelector(selectLoggedIn);
   const location = useLocation();
-  const [windowHeight, setWindowHeight] = useState(window.innerHeight);
-
-  const closeSidebar = () => toggleSidebar(false);
-  const handleLinkClick = () => closeSidebar();
-
-  useEffect(() => {
-    const mainLayoutElement = mainLayoutRef.current;
-
-    let touchStartX = 0;
-
-    const handleTouchStart = e => (touchStartX = e.touches[0].clientX);
-
-    const handleTouchMove = e => {
-      const touchX = e.touches[0].clientX;
-      const touchOffset = touchX - touchStartX;
-      if (touchOffset > 100 && !isOpen) toggleSidebar(true);
-    };
-
-    if (mainLayoutElement) {
-      mainLayoutElement.addEventListener('touchstart', handleTouchStart);
-      mainLayoutElement.addEventListener('touchmove', handleTouchMove);
-    }
-
-    return () => {
-      if (mainLayoutElement) {
-        mainLayoutElement.removeEventListener('touchstart', handleTouchStart);
-        mainLayoutElement.removeEventListener('touchmove', handleTouchMove);
-      }
-    };
-  }, [isOpen, toggleSidebar, mainLayoutRef]);
-
-  useEffect(() => {
-    const currentSidebarRef = sidebarRef.current;
-
-    const handleTouchStart = e => {
-      currentSidebarRef.touchStartX = e.touches[0].clientX;
-    };
-
-    const handleTouchMove = e => {
-      const touchX = e.touches[0].clientX;
-      const touchOffset = currentSidebarRef.touchStartX - touchX;
-
-      if (touchOffset > 100) {
-        toggleSidebar(false);
-      }
-    };
-
-    if (isOpen && currentSidebarRef) {
-      currentSidebarRef.addEventListener('touchstart', handleTouchStart);
-      currentSidebarRef.addEventListener('touchmove', handleTouchMove);
-    }
-
-    return () => {
-      if (currentSidebarRef) {
-        currentSidebarRef.removeEventListener('touchstart', handleTouchStart);
-        currentSidebarRef.removeEventListener('touchmove', handleTouchMove);
-      }
-    };
-  }, [isOpen, toggleSidebar]);
-
-  useEffect(() => {
-    const handleResize = () => setWindowHeight(window.innerHeight);
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
-
-  useEffect(() => {
-    disableScrolling(isOpen);
-    return () => {
-      disableScrolling(false);
-    };
-  }, [isOpen]);
+  const closeSidebar = () => {
+    toggleSidebar(false);
+  };
 
   return (
     <>
       <Backdrop $isOpen={isOpen} onClick={closeSidebar} />
-      <Sidebar $isOpen={isOpen} $windowHeight={windowHeight} ref={sidebarRef}>
+      <Sidebar $isOpen={isOpen}>
         <TopSection>
           <LogoAndTitle>
             <LogoLink to="/">
@@ -156,7 +84,6 @@ const SideBar = ({ isOpen, toggleSidebar, mainLayoutRef }) => {
               <li>
                 <NavigationItem
                   to="/account"
-                  onClick={handleLinkClick}
                   $isActive={location.pathname === '/account'}
                 >
                   <Icon>
@@ -169,7 +96,6 @@ const SideBar = ({ isOpen, toggleSidebar, mainLayoutRef }) => {
               <li>
                 <NavigationItem
                   to="/calendar"
-                  onClick={handleLinkClick}
                   $isActive={location.pathname === '/calendar'}
                 >
                   <Icon>
@@ -182,10 +108,9 @@ const SideBar = ({ isOpen, toggleSidebar, mainLayoutRef }) => {
               <li>
                 <NavigationItem
                   to="/statistics"
-                  onClick={handleLinkClick}
                   $isActive={location.pathname === '/statistics'}
                 >
-                  <Icon>
+                  <Icon $isActive={location.pathname === '/statistics'}>
                     <use href={icon + '#icon-shape'}></use>
                   </Icon>
                   <NavItemName to="/statistics">Statistics</NavItemName>
