@@ -16,7 +16,11 @@ import {
 import { useEffect, useState } from 'react';
 import { Form, Formik } from 'formik';
 import { useDispatch, useSelector } from 'react-redux';
-import { addReview, deleteReview } from 'redux/reviews/operations';
+import {
+  addReview,
+  deleteReview,
+  fetchReviewOwn,
+} from 'redux/reviews/operations';
 import { selectUserReview } from 'redux/reviews/selectors';
 
 // petrenko@kart.edu.ua
@@ -27,21 +31,22 @@ const FeedbackSchema = Yup.object().shape({
 });
 
 const FeedbackForm = ({ closeModal }) => {
-  const data1 = useSelector(selectUserReview); // {rating: '',  review: ''}
-  console.log('selectUserReview', data1);
-
   const dispatch = useDispatch();
+  // open modal => fetchReviewOwn
+  useEffect(() => {
+    dispatch(fetchReviewOwn());
+  }, [dispatch]);
 
-  // useEffect(() => {
-  //   dispatch(fetchReviews());
-  // }, [dispatch]);
+  // const isFeedback = [1];
+  // const isFeedback = [{review: 'The Best Review', rating: 5}]; // [] or [{rating: '',  review: ''}]
+  const isFeedback = useSelector(selectUserReview);
 
-  // dispatch(fetchReviewById());
+  console.log('selectUserReview', isFeedback);
 
-  const [raitingValue, setRaitingValue] = useState('0');
+  const [raitingValue, setRaitingValue] = useState(0);
 
   const [isEdit, setisEdit] = useState(false);
-  const [isFeedback, setIsFeedback] = useState(false);
+  // const [isFeedback, setIsFeedback] = useState(false);
 
   return (
     <Formik
@@ -54,7 +59,7 @@ const FeedbackForm = ({ closeModal }) => {
       <Form>
         <WrapRating>
           <TextReview>Rating</TextReview>
-          {!isFeedback ? (
+          {!isFeedback.length || isEdit ? (
             <Rating
               name="raiting"
               value={raitingValue}
@@ -70,12 +75,11 @@ const FeedbackForm = ({ closeModal }) => {
 
         <WrapReview>
           <TextReview>Review</TextReview>
-          {(isFeedback || isEdit) && (
+          {(isFeedback.length || isEdit) && (
             <>
               <EditBtn
                 onClick={() => {
                   setisEdit(true);
-                  setIsFeedback(false);
                 }}
                 type="button"
               >
@@ -100,13 +104,13 @@ const FeedbackForm = ({ closeModal }) => {
 
         <TextFeedback
           as="textarea"
-          disabled={isFeedback}
+          disabled={!isEdit || !(isFeedback.length === 0)}
           name="feedbackText"
           type="text"
           placeholder="Enter text"
         />
 
-        {(!isFeedback || isEdit) && (
+        {(!isFeedback.length || isEdit) && (
           <WrapControlBtn>
             <SaveBtn
               onClick={e => {
