@@ -5,75 +5,90 @@ import {
   CancelBtn,
   DeleteBtn,
   EditBtn,
+  FormFieldReview,
   Icon,
   SaveBtn,
   TextFeedback,
   TextReview,
   WrapControlBtn,
-  WrapRating,
-  WrapReview,
 } from './FeedbackForm.styled';
-import { useEffect, useState } from 'react';
-import { Form, Formik } from 'formik';
+import { useState } from 'react';
+import { Form, Formik, useField } from 'formik';
 import { useDispatch, useSelector } from 'react-redux';
-import {
-  addReview,
-  deleteReview,
-  fetchReviewOwn,
-} from 'redux/reviews/operations';
+import { addReview, deleteReview } from 'redux/reviews/operations';
 import { selectUserReview } from 'redux/reviews/selectors';
 
 // petrenko@kart.edu.ua
 
-const FeedbackSchema = Yup.object().shape({
-  raiting: Yup.string().required(),
-  feedbackText: Yup.string().max(300).required(),
-});
+const MyTextArea = ({ label, ...props }) => {
+  const [field, meta] = useField(props);
+  return (
+    <>
+      <label htmlFor={props.id || props.name}>{label}</label>
+      <TextFeedback className="text-area" {...field} {...props} />
+      {meta.touched && meta.error ? (
+        <div className="error">{meta.error}</div>
+      ) : null}
+    </>
+  );
+};
 
 const FeedbackForm = ({ closeModal }) => {
   const dispatch = useDispatch();
-  // open modal => fetchReviewOwn
-  useEffect(() => {
-    dispatch(fetchReviewOwn());
-  }, [dispatch]);
 
-  // const isFeedback = [1];
-  // const isFeedback = [{review: 'The Best Review', rating: 5}]; // [] or [{rating: '',  review: ''}]
   const isFeedback = useSelector(selectUserReview);
+  console.log('selectUserReview', isFeedback[0]);
 
-  console.log('selectUserReview', isFeedback);
-
-  const [raitingValue, setRaitingValue] = useState(0);
+  const [ratingValue, setRatingValue] = useState(5);
 
   const [isEdit, setisEdit] = useState(false);
-  // const [isFeedback, setIsFeedback] = useState(false);
+
+  // console.log('isEdit', isEdit);
+  console.log('isFeedback', !isFeedback.length === 0);
 
   return (
     <Formik
-      initialValues={{ raiting: raitingValue, feedbackText: '' }}
-      validationSchema={FeedbackSchema}
-      onSubmit={(values, actions) => {
+      initialValues={{
+        rating: ratingValue,
+        feedbacText: isFeedback.length === 0 ? '' : isFeedback[0].review,
+      }}
+      validationSchema={Yup.object({
+        rating: Yup.number().required('required'),
+        feedbacText: Yup.string()
+          .max(300, 'Must be 300 characters or less')
+          .required('required'),
+      })}
+      onSubmit={(values, e) => {
         console.log(values);
+        // e.preventDefault();
+        console.log('Save');
+        dispatch(
+          addReview({
+            rating: ratingValue,
+            review: values.feedbacText,
+          })
+        );
+        // closeModal();
       }}
     >
       <Form>
-        <WrapRating>
-          <TextReview>Rating</TextReview>
-          {!isFeedback.length || isEdit ? (
+        <TextReview>Rating</TextReview>
+        {!isFeedback.length || isEdit ? (
+          <label>
             <Rating
-              name="raiting"
-              value={raitingValue}
+              name="rating"
+              value={ratingValue}
               onChange={(event, newValue) => {
-                setRaitingValue(newValue);
                 console.log(newValue);
+                setRatingValue(newValue);
+                console.log(ratingValue);
               }}
             />
-          ) : (
-            <Rating name="raiting" value={raitingValue} readOnly />
-          )}
-        </WrapRating>
-
-        <WrapReview>
+          </label>
+        ) : (
+          <Rating name="rating" value={isFeedback[0].rating} readOnly />
+        )}
+        <FormFieldReview>
           <TextReview>Review</TextReview>
           {(isFeedback.length || isEdit) && (
             <>
@@ -90,6 +105,7 @@ const FeedbackForm = ({ closeModal }) => {
               <DeleteBtn
                 onClick={() => {
                   dispatch(deleteReview());
+                  closeModal();
                   console.log('delete feedback');
                 }}
                 type="button"
@@ -100,32 +116,18 @@ const FeedbackForm = ({ closeModal }) => {
               </DeleteBtn>
             </>
           )}
-        </WrapReview>
+        </FormFieldReview>
 
-        <TextFeedback
-          as="textarea"
-          disabled={!isEdit || !(isFeedback.length === 0)}
-          name="feedbackText"
-          type="text"
+        <MyTextArea
+          disabled={false}
+          name="feedbacText"
+          rows="6"
           placeholder="Enter text"
         />
 
         {(!isFeedback.length || isEdit) && (
           <WrapControlBtn>
-            <SaveBtn
-              onClick={e => {
-                console.log('Save');
-                dispatch(
-                  addReview({
-                    rating: 5,
-                    review: 'The Best Review',
-                  })
-                );
-              }}
-              type="submit"
-            >
-              {isEdit ? 'Edit' : 'Save'}
-            </SaveBtn>
+            <SaveBtn type="submit">{isEdit ? 'Edit' : 'Save'}</SaveBtn>
             <CancelBtn onClick={closeModal} type="button">
               Cancel
             </CancelBtn>
@@ -136,3 +138,80 @@ const FeedbackForm = ({ closeModal }) => {
   );
 };
 export default FeedbackForm;
+
+// <Formik
+//   initialValues={{ rating: ratingValue, feedbackText: '' }}
+//   validationSchema={FeedbackSchema}
+//   onSubmit={(values, actions) => {
+//     console.log(values);
+//     // saveFeedback();
+//   }}
+// >
+//   <Form>
+//     <label>
+//       <TextReview>Rating</TextReview>
+//       {!isFeedback.length || isEdit ? (
+//         <Rating
+//           name="rating"
+//           value={
+//             isFeedback.length === 0 ? ratingValue : isFeedback[0].rating
+//           }
+//           onChange={(event, newValue) => {
+//             setRatingValue(newValue);
+//           }}
+//         />
+//       ) : (
+//         <Rating name="rating" value={isFeedback[0].rating} readOnly />
+//       )}
+//     </label>
+
+//     <label>
+//       <TextReview>Review</TextReview>
+//       {(isFeedback.length || isEdit) && (
+//         <>
+//           <EditBtn
+//             onClick={() => {
+//               setisEdit(true);
+//             }}
+//             type="button"
+//           >
+//             <Icon width={16} height={16}>
+//               <use href={icon + '#icon-pencil-01'}></use>
+//             </Icon>
+//           </EditBtn>
+//           <DeleteBtn
+//             onClick={() => {
+//               dispatch(deleteReview());
+//               closeModal();
+//               console.log('delete feedback');
+//             }}
+//             type="button"
+//           >
+//             <Icon width={16} height={16}>
+//               <use href={icon + '#icon-trash-2'}></use>
+//             </Icon>
+//           </DeleteBtn>
+//         </>
+//       )}
+//       <TextFeedback
+//       as="textarea"
+//       disabled={isEdit}
+//       name="feedbackText"
+//       type="text"
+//       placeholder="Enter text"
+//       defaultValue={isFeedback.length === 0 ? '' : isFeedback[0].review}
+//       // onChange={setFeedbackText()}
+
+//     />
+//     </label>
+
+//     {(!isFeedback.length || isEdit) && (
+//       <WrapControlBtn>
+//         <SaveBtn onClick={saveFeedback} type="submit">{isEdit ? 'Edit' : 'Save'}</SaveBtn>
+//         <CancelBtn onClick={closeModal} type="button">
+//           Cancel
+//         </CancelBtn>
+//       </WrapControlBtn>
+//     )}
+//   </Form>
+// </Formik>

@@ -23,7 +23,7 @@ export const addReview = createAsyncThunk(
   async (review, thunkAPI) => {
     try {
       const { data } = await axios.post('/api/reviews/own', review);
-      return data;
+      return data.reviews;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);
     }
@@ -35,7 +35,7 @@ export const deleteReview = createAsyncThunk(
   async (_, thunkAPI) => {
     try {
       const { data } = await axios.delete(`/api/reviews/own`);
-
+      console.log(data);
       return data;
     } catch (e) {
       thunkAPI.rejectWithValue(e.message);
@@ -62,7 +62,6 @@ export const fetchReviewOwn = createAsyncThunk(
     try {
       const { data } = await axios.get(`/api/reviews/own`);
       return data.reviews;
-    
     } catch (e) {
       thunkAPI.rejectWithValue(e.message);
     }

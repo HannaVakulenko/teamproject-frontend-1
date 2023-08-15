@@ -1,7 +1,6 @@
-import { Field } from 'formik';
 import styled from 'styled-components';
 
-export const WrapReview = styled.div`
+export const FormFieldReview = styled.div`
   display: flex;
   justify-content: start;
   align-items: baseline;
@@ -52,7 +51,7 @@ export const Icon = styled.svg`
   fill: none;
 `;
 
-export const WrapRating = styled.div`
+export const FormFieldRating = styled.label`
   /* display: flex;
   flex-direction: column; */
 `;
@@ -65,7 +64,7 @@ export const TextReview = styled.p`
   line-height: 1.17; /* 116.667% */
 `;
 
-export const TextFeedback = styled(Field)`
+export const TextFeedback = styled.textarea`
   width: 100%;
   height: 130px;
   padding: 14px 18px;

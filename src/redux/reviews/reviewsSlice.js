@@ -11,10 +11,10 @@ const reviewSlice = createSlice({
   name: 'reviews',
   initialState: {
     reviews: [],
-    userReview: {
-      rating: '',
+    userReview: [{
+      rating: null,
       review: '',
-    },
+    }],
     isLoading: false,
     error: null,
   },
@@ -54,10 +54,10 @@ const reviewSlice = createSlice({
         state.isLoading = true;
       })
       .addCase(deleteReview.fulfilled, (state, action) => {
-        state.userReview = {
+        state.userReview = [{
           rating: '',
           review: '',
-        };
+        }];
         state.reviews = state.reviews.filter(
           review => review.id !== action.payload._id
         );
