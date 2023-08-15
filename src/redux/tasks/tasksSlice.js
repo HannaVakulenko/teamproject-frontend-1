@@ -33,7 +33,7 @@ const updateTaskFulfilledReducer = (state, action) => {
   state.isLoading = false;
   state.error = null;
   const index = state.tasks.findIndex(
-    task => task.id === action.payload.id
+    task => task._id === action.payload._id
   );
   state.tasks.splice(index, 1, action.payload);
 };
@@ -42,7 +42,7 @@ const deleteTaskFulfilledReducer = (state, action) => {
   state.isLoading = false;
   state.error = null;
   const index = state.tasks.findIndex(
-    task => task.id === action.payload.id
+    task => task._id === action.payload._id
   );
   state.task.splice(index, 1);
 };

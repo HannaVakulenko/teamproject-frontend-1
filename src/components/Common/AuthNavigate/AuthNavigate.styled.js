@@ -12,6 +12,7 @@ export const Wrapper = styled.div`
 `;
 
 export const AuthLink = styled(Link)`
+  position: relative;
   font-size: 12px;
   font-weight: 600;
   line-height: 1.16;
@@ -22,6 +23,25 @@ export const AuthLink = styled(Link)`
   &:hover,
   &:focus {
     color: ${p => p.theme.mainAccentColorActive};
+  };
+
+  &::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    display: block;
+    width: 100%;
+    height: 2px;
+    background-color: ${p => p.theme.mainAccentColor};
+    border-radius: 2px;
+    transform: scaleX(0);
+    transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  };
+
+  &:hover::after,
+  &:focus::after {
+    transform: scaleX(1);
   }
 
   @media screen and (min-width: ${device.tablet}px) {

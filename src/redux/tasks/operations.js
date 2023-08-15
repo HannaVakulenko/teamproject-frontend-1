@@ -32,7 +32,7 @@ export const updateTask = createAsyncThunk(
   'tasks/updateTask',
   async (task, thunkAPI) => {
     try {
-      const response = await axios.patch(`/api/tasks/${task.id}`, {
+      const response = await axios.patch(`/api/tasks/${task._id}`, {
         title: task.title,
         priority: task.priority,
         category: task.category,
