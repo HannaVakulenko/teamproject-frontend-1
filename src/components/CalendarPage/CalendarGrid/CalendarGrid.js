@@ -56,13 +56,13 @@ const CalendarPage = ({ startDay }) => {
   return (
     <div>
       <WeekdayHeader>
-        <Workday>M</Workday>
-        <Workday>T</Workday>
-        <Workday>W</Workday>
-        <Workday>T</Workday>
-        <Workday>F</Workday>
-        <Weektenday>S</Weektenday>
-        <Weektenday>S</Weektenday>
+        <Workday>m</Workday>
+        <Workday>t</Workday>
+        <Workday>w</Workday>
+        <Workday>t</Workday>
+        <Workday>f</Workday>
+        <Weektenday>s</Weektenday>
+        <Weektenday>s</Weektenday>
       </WeekdayHeader>
       <GridWrapper>
         {daysArray.map(({ day, isCurrentMonth }, i) => (
