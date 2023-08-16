@@ -85,10 +85,10 @@ const reviewSlice = createSlice({
         if (action.payload) {
           state.userReview = action.payload;
         } else {
-          state.userReview = {
+          state.userReview = [{
             rating: '',
             review: '',
-          };
+          }];
         }
         state.isLoading = false;
         state.error = null;
