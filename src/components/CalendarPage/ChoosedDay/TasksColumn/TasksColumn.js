@@ -1,8 +1,15 @@
-const TasksColumn = () => {
+import AddTaskBtn from "../AddTaskBtn/AddTaskBtn";
+import ColumnHeadBar from "../ColumnHeadBar/ColumnHeadBar";
+import ColumnsTasksList from "../ColumnsTasksList/ColumnsTasksList";
+import { Wrapper } from "./TasksColumn.styled";
+
+const TasksColumn = ({ title, tasks}) => {
   return (
-    <>
-      <div></div>
-    </>
+    <Wrapper>
+      <ColumnHeadBar title={title} />
+      {tasks && (<ColumnsTasksList tasks={tasks} />)}
+      <AddTaskBtn />
+    </Wrapper>
   );
 };
 export default TasksColumn;
