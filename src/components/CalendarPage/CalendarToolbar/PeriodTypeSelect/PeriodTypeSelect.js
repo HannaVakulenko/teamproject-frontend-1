@@ -6,11 +6,11 @@ const PeriodTypeSelect = () => {
 
   const toMonth = () => {
     // какой маршрут??????
-    navigate('');
+    navigate('/calendar/month');
   };
   const toDay = () => {
     // какой маршрут??????
-    navigate('');
+    navigate('/calendar/day');
   };
   return (
     <>
