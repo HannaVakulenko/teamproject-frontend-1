@@ -5,8 +5,10 @@ import {
   CancelBtn,
   DeleteBtn,
   EditBtn,
+  Error,
   FormFieldReview,
   Icon,
+  IconStar,
   SaveBtn,
   TextFeedback,
   TextReview,
@@ -24,9 +26,7 @@ const TextArea = ({ label, ...props }) => {
     <>
       <label htmlFor={props.id || props.name}>{label}</label>
       <TextFeedback className="text-area" {...field} {...props} />
-      {meta.touched && meta.error ? (
-        <div className="error">{meta.error}</div>
-      ) : null}
+      {meta.touched && meta.error ? <Error>{meta.error}</Error> : null}
     </>
   );
 };
@@ -50,9 +50,9 @@ const FeedbackForm = ({ closeModal }) => {
         rating: Yup.number().required('Required'),
         feedbacText: Yup.string()
           .max(300, 'Must be 300 characters or less')
-          .required('Required'),
+          .required('Field review is required'),
       })}
-      onSubmit={(values, e) => {
+      onSubmit={values => {
         if (!isEdit) {
           dispatch(
             addReview({
@@ -68,31 +68,33 @@ const FeedbackForm = ({ closeModal }) => {
             })
           );
         }
-
         setisEdit(false);
-
-        // closeModal();
       }}
     >
       <Form>
         <TextReview>Rating</TextReview>
-        {isFeedback.length === 0 || isEdit ? (
-          <label>
-            <Rating
-              name="rating"
-              defaultValue={
-                isFeedback.length === 0 ? ratingValue : isFeedback[0].rating
-              }
-              onChange={(event, newValue) => {
-                console.log(newValue);
-                setRatingValue(newValue);
-                console.log(ratingValue);
-              }}
-            />
-          </label>
-        ) : (
-          <Rating name="rating" value={isFeedback[0].rating} readOnly />
-        )}
+
+        <Rating
+          name="rating"
+          readOnly={!(isFeedback.length === 0) && !isEdit}
+          emptyIcon={
+            <IconStar>
+              <use href={icon + '#icon-Star-2'}></use>
+            </IconStar>
+          }
+          icon={
+            <IconStar>
+              <use href={icon + '#icon-star'}></use>
+            </IconStar>
+          }
+          defaultValue={
+            isFeedback.length === 0 ? ratingValue : isFeedback[0].rating
+          }
+          onChange={(_, newValue) => {
+            setRatingValue(newValue);
+          }}
+        />
+
         <FormFieldReview>
           <TextReview>Review</TextReview>
           {(isFeedback.length || isEdit) && (
