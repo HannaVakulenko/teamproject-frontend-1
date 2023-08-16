@@ -1,5 +1,5 @@
-import DayCalendarHead from "../DayCalendarHead /DayCalendarHead";
-import TasksColumnsList from "../TasksColumnsList/TasksColumnsList";
+import DayCalendarHead from '../DayCalendarHead/DayCalendarHead';
+import TasksColumnsList from '../TasksColumnsList/TasksColumnsList';
 
 const ChoosedDay = () => {
   return (
