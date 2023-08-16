@@ -8,6 +8,7 @@ import {
   Error,
   FormFieldReview,
   Icon,
+  IconStar,
   SaveBtn,
   TextFeedback,
   TextReview,
@@ -76,6 +77,16 @@ const FeedbackForm = ({ closeModal }) => {
         <Rating
           name="rating"
           readOnly={!(isFeedback.length === 0) && !isEdit}
+          emptyIcon={
+            <IconStar>
+            <use href={icon + '#icon-Star-2'}></use>
+          </IconStar>
+          }
+          icon={
+            <IconStar>
+            <use href={icon + '#icon-star'}></use>
+          </IconStar>
+          }
           defaultValue={
             isFeedback.length === 0 ? ratingValue : isFeedback[0].rating
           }

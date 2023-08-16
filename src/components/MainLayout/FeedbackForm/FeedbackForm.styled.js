@@ -148,3 +148,11 @@ export const Error = styled.div`
   color: ${p => p.theme.authFieldOnErrorColor};
   line-height: 1.16;
 `;
+
+export const IconStar = styled.svg`
+  margin-right: 2px;
+  width: 24px;
+  height: 24px;
+  stroke: currentColor;
+  fill: none;
+`;
