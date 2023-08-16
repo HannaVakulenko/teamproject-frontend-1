@@ -1,4 +1,4 @@
-export { default as CalendarPage } from './CalendarPage/CalendarPage';
+export { default as CalendarGrid } from './CalendarGrid/CalendarGrid';
 export { default as CalendarToolbar } from './CalendarToolbar/CalendarToolbar/CalendarToolbar';
 export { default as PeriodPaginator } from './CalendarToolbar/PeriodPaginator/PeriodPaginator';
 export { default as PeriodTypeSelect } from './CalendarToolbar/PeriodTypeSelect/PeriodTypeSelect';
@@ -11,3 +11,5 @@ export { default as TaskToolbar } from './ChoosedDay/TaskToolbar/TaskToolbar';
 export { default as TasksColumn } from './ChoosedDay/TasksColumn/TasksColumn';
 export { default as CalendarTable } from './ChoosedMonth/CalendarTable/CalendarTable';
 export { default as ChoosedMonth } from './ChoosedMonth/ChoosedMonth/ChoosedMonth';
+export { default as MyDatePicker } from './DatePicker/DatePicker';
+export { default as WeekdayHeader } from './WeekdayHeader/WeekdayHeader';

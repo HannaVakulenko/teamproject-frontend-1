@@ -1,16 +1,16 @@
 import { Section } from 'components/Common';
-import { CalendarToolbar } from '../components/CalendarPage/index';
+import { CalendarGrid, CalendarToolbar, WeekdayHeader } from '../components/CalendarPage/index';
+import React from 'react';
+import moment from 'moment';
 
+const startDay = moment().startOf('month').startOf('week');
 const CalendarPage = () => (
   <>
     <CalendarToolbar />
 
     <Section>
-      <h2>CalendarPage</h2>
-      <p>
-        dfuhdkfhgfkdfjhgkjdfgdfkjghfdkjghkjdfhgkjfd dfkghdfkjghkdfjhgkjdfhgkjdf
-        gdfjghdfkjhgkjdfhgkjfdhng
-      </p>
+      <WeekdayHeader />
+      <CalendarGrid startDay={startDay} />
     </Section>
   </>
 );

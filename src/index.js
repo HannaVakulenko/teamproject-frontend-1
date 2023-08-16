@@ -10,6 +10,8 @@ import { PersistGate } from 'redux-persist/integration/react';
 import { Provider } from 'react-redux';
 import { useSelector } from 'react-redux';
 import { selectTheme } from 'redux/themeSlice';
+import { LocalizationProvider } from '@mui/x-date-pickers';
+import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 
 function AppWrapper() {
   const theme = useSelector(selectTheme);
@@ -18,7 +20,9 @@ function AppWrapper() {
     <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
       <GlobalStyle />
       <BrowserRouter basename="/teamproject-frontend-1">
-        <App />
+        <LocalizationProvider dateAdapter={AdapterDateFns}>
+          <App />
+        </LocalizationProvider>
       </BrowserRouter>
     </ThemeProvider>
   );
