@@ -1,1 +1,1 @@
-export const AXIOS_BASE_URL = 'https://goose-track-gr25.onrender.com';
+export const AXIOS_BASE_URL = 'https://goose-track-gr25.onrender.com/api';
