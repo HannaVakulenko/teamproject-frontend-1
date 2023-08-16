@@ -1,7 +1,7 @@
 import { Button, Icon, Title, Wrapper } from "./ColumnHeadBar.styled";
 import icon from "assets/icons/symbol-defs.svg";
 
-const ColumnHeadBar = ({ title }) => {
+const ColumnHeadBar = ({ title, category }) => {
   return (
     <Wrapper>
       <Title>{title}</Title>
@@ -15,4 +15,4 @@ const ColumnHeadBar = ({ title }) => {
 };
 export default ColumnHeadBar;
 
-// додати в props status = ["To do", "In progress", "Done"]
+// props category = "to-do", "in-progress", "done"

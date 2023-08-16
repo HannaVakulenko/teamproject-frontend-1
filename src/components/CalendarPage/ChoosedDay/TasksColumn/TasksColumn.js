@@ -1,23 +1,15 @@
 import AddTaskBtn from "../AddTaskBtn/AddTaskBtn";
 import ColumnHeadBar from "../ColumnHeadBar/ColumnHeadBar";
+import ColumnsTasksList from "../ColumnsTasksList/ColumnsTasksList";
 import { Wrapper } from "./TasksColumn.styled";
 
-const TasksColumn = () => {
+const TasksColumn = ({ title, tasks}) => {
   return (
-    <>
-      <Wrapper>
-        <ColumnHeadBar title="To do" />
-        <AddTaskBtn />
-      </Wrapper>
-      <Wrapper>
-        <ColumnHeadBar title="In progress" />
-        <AddTaskBtn />
-      </Wrapper>
-      <Wrapper>
-        <ColumnHeadBar title="Done" />
-        <AddTaskBtn />
-      </Wrapper>
-    </>
+    <Wrapper>
+      <ColumnHeadBar title={title} />
+      {tasks && (<ColumnsTasksList tasks={tasks} />)}
+      <AddTaskBtn />
+    </Wrapper>
   );
 };
 export default TasksColumn;

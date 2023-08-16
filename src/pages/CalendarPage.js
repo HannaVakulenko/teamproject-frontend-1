@@ -1,20 +1,18 @@
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { fetchTasks } from 'redux/tasks/operations';
 import { ChoosedDay } from 'components/CalendarPage';
 import { Section } from 'components/Common';
-import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { fetchTasks } from 'redux/tasks/operations';
-import { selectTasks } from 'redux/tasks/selectors';
 // import { CalendarToolbar } from '../components/CalendarPage/index';
 
 const CalendarPage = () => {
-  const tasks = useSelector(selectTasks);
-  console.log(tasks);
+
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(fetchTasks({
-      monthStart: "2023-09-01",
-      monthEnd: "2023-09-30"
+      monthStart: "2023-08-01",
+      monthEnd: "2023-08-31"
     }));
   }, [dispatch]);
 
