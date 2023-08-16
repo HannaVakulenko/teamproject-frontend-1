@@ -46,7 +46,7 @@ const CalendarToolbar = () => {
   //   dispatch(fetchTasks());
   //   //  // formatDateForFetch(date); а потом записать их в selectTasks??
   // }, [date, dateGlobal]);
-
+  // hello
   const changeDate = e => {
     const newDate = new Date(date);
 
