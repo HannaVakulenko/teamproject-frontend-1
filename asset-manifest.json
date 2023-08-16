@@ -1,10 +1,11 @@
 {
   "files": {
     "main.css": "/teamproject-frontend-1/static/css/main.8505ec9a.css",
-    "main.js": "/teamproject-frontend-1/static/js/main.ad19b566.js",
+    "main.js": "/teamproject-frontend-1/static/js/main.47255911.js",
     "static/js/451.4128ad62.chunk.js": "/teamproject-frontend-1/static/js/451.4128ad62.chunk.js",
-    "static/js/197.17838437.chunk.js": "/teamproject-frontend-1/static/js/197.17838437.chunk.js",
+    "static/js/751.14da4dd2.chunk.js": "/teamproject-frontend-1/static/js/751.14da4dd2.chunk.js",
     "static/js/97.84e62906.chunk.js": "/teamproject-frontend-1/static/js/97.84e62906.chunk.js",
+    "static/js/206.4b5b942c.chunk.js": "/teamproject-frontend-1/static/js/206.4b5b942c.chunk.js",
     "static/media/mainpage-calendar-tabl@3x.png": "/teamproject-frontend-1/static/media/mainpage-calendar-tabl@3x.589377ec1ea92f785c22.png",
     "static/media/mainpage-calendar-desk@3x.png": "/teamproject-frontend-1/static/media/mainpage-calendar-desk@3x.7eb92153619fd464b254.png",
     "static/media/mainpage-calendar-tabl@2x.png": "/teamproject-frontend-1/static/media/mainpage-calendar-tabl@2x.a67bf7cd45e21b8911e7.png",
@@ -108,13 +109,14 @@
     "index.html": "/teamproject-frontend-1/index.html",
     "static/media/logo-mob-1x.webp": "/teamproject-frontend-1/static/media/logo-mob-1x.cd09cea1d315fcef8d71.webp",
     "main.8505ec9a.css.map": "/teamproject-frontend-1/static/css/main.8505ec9a.css.map",
-    "main.ad19b566.js.map": "/teamproject-frontend-1/static/js/main.ad19b566.js.map",
+    "main.47255911.js.map": "/teamproject-frontend-1/static/js/main.47255911.js.map",
     "451.4128ad62.chunk.js.map": "/teamproject-frontend-1/static/js/451.4128ad62.chunk.js.map",
-    "197.17838437.chunk.js.map": "/teamproject-frontend-1/static/js/197.17838437.chunk.js.map",
-    "97.84e62906.chunk.js.map": "/teamproject-frontend-1/static/js/97.84e62906.chunk.js.map"
+    "751.14da4dd2.chunk.js.map": "/teamproject-frontend-1/static/js/751.14da4dd2.chunk.js.map",
+    "97.84e62906.chunk.js.map": "/teamproject-frontend-1/static/js/97.84e62906.chunk.js.map",
+    "206.4b5b942c.chunk.js.map": "/teamproject-frontend-1/static/js/206.4b5b942c.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.8505ec9a.css",
-    "static/js/main.ad19b566.js"
+    "static/js/main.47255911.js"
   ]
 }
