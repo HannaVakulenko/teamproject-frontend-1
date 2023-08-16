@@ -20,7 +20,7 @@ const rejectedReducer = (state, action) => {
 const fetchTasksFulfilledReducer = (state, action) => {
   state.isLoading = false;
   state.error = null;
-  state.tasks = action.payload;
+  state.tasks = action.payload.tasks;
 };
 
 const addTaskFulfilledReducer = (state, action) => {
