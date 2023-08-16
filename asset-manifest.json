@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/teamproject-frontend-1/static/css/main.8505ec9a.css",
-    "main.js": "/teamproject-frontend-1/static/js/main.c8c8ff97.js",
+    "main.js": "/teamproject-frontend-1/static/js/main.efdb1e9f.js",
     "static/js/451.4128ad62.chunk.js": "/teamproject-frontend-1/static/js/451.4128ad62.chunk.js",
     "static/js/197.053042af.chunk.js": "/teamproject-frontend-1/static/js/197.053042af.chunk.js",
     "static/js/97.84e62906.chunk.js": "/teamproject-frontend-1/static/js/97.84e62906.chunk.js",
@@ -108,13 +108,13 @@
     "index.html": "/teamproject-frontend-1/index.html",
     "static/media/logo-mob-1x.webp": "/teamproject-frontend-1/static/media/logo-mob-1x.cd09cea1d315fcef8d71.webp",
     "main.8505ec9a.css.map": "/teamproject-frontend-1/static/css/main.8505ec9a.css.map",
-    "main.c8c8ff97.js.map": "/teamproject-frontend-1/static/js/main.c8c8ff97.js.map",
+    "main.efdb1e9f.js.map": "/teamproject-frontend-1/static/js/main.efdb1e9f.js.map",
     "451.4128ad62.chunk.js.map": "/teamproject-frontend-1/static/js/451.4128ad62.chunk.js.map",
     "197.053042af.chunk.js.map": "/teamproject-frontend-1/static/js/197.053042af.chunk.js.map",
     "97.84e62906.chunk.js.map": "/teamproject-frontend-1/static/js/97.84e62906.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.8505ec9a.css",
-    "static/js/main.c8c8ff97.js"
+    "static/js/main.efdb1e9f.js"
   ]
 }
