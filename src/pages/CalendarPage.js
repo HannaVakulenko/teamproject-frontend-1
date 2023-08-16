@@ -3,7 +3,7 @@
 // import { fetchTasks } from 'redux/tasks/operations';
 import { ChoosedDay } from 'components/CalendarPage';
 import { Section } from 'components/Common';
-// import { CalendarToolbar } from '../components/CalendarPage/index';
+import { CalendarToolbar } from '../components/CalendarPage/index';
 
 const CalendarPage = () => {
 
@@ -18,7 +18,7 @@ const CalendarPage = () => {
 
   return (
     <>
-      {/* <CalendarToolbar /> */}
+      <CalendarToolbar />
       <Section>
         <h2>CalendarPage</h2>
         <p>
