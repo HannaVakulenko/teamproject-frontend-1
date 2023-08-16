@@ -1,7 +1,27 @@
-const PeriodPaginator = () => {
+import {
+  Date,
+  ButtonIncrease,
+  ButtonDecrease,
+  Icon,
+} from './PeriodPaginator.styled';
+import icon from 'assets/icons/symbol-defs.svg';
+
+const PeriodPaginator = ({ date, getTasks }) => {
+  // const formatDate = month || date;
+
   return (
     <>
-      <div>Paginator</div>
+      <Date>{date}</Date>
+      <ButtonIncrease onClick={getTasks}>
+        <Icon width="18" height="18">
+          <use href={icon + '#icon-chevron-left'}></use>
+        </Icon>
+      </ButtonIncrease>
+      <ButtonDecrease onClick={getTasks}>
+        <svg width="18" height="18">
+          <use href={icon + '#icon-chevron-right'}></use>
+        </svg>
+      </ButtonDecrease>
     </>
   );
 };

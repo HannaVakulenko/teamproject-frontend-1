@@ -1,6 +1,7 @@
 import { useDispatch } from 'react-redux';
 import { Formik } from 'formik';
 import * as yup from 'yup';
+import Swal from 'sweetalert2';
 import {
   FormWrapper,
   FormTitle,
@@ -24,7 +25,7 @@ const schema = yup.object().shape({
     .string()
     .email('Email address must contain an "@" sign')
     .matches(
-      /^\w+([.-]?\w+)@\w+([.-]?\w+)(.\w{2,3})+$/,
+      /^\w+([.-]?\w+)*@\w+([.-]?\w+)*\.\w{2,3}$/,
       'Must be a valid email'
     )
     .required('Email is required'),
@@ -43,9 +44,20 @@ const LoginForm = () => {
   const dispatch = useDispatch();
 
   const handleSubmit = async (values, { resetForm }) => {
-    await dispatch(login(values));
-    await dispatch(refreshUser());
-    resetForm();
+    try {
+      await dispatch(login(values)).unwrap();
+      await dispatch(refreshUser()).unwrap();
+      resetForm();
+    } catch (error) {
+      if (error.response.status === 401) {
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Email or password is wrong!',
+          confirmButtonColor: '#3E85F3',
+        });
+      }
+    }
   };
 
   return (

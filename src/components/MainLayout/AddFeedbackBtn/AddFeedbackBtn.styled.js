@@ -10,6 +10,13 @@ export const StyledFeedbackBtn = styled.button`
   border-radius: 10px;
   background: ${p => p.theme.mainAccentColor};
 
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+  &:hover,
+  &:focus {
+    background: #0f5dc8;
+  }
+
   @media (min-width: ${device.tablet}px) {
     padding: 12px 32px;
     border-radius: 14px;

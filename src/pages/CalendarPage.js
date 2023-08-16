@@ -1,20 +1,18 @@
+import { Section } from 'components/Common';
+import { CalendarGrid, CalendarToolbar, WeekdayHeader } from '../components/CalendarPage/index';
 import React from 'react';
 import moment from 'moment';
-import {
-  CalendarGrid,
-  CalendarToolbar,
-  WeekdayHeader,
-} from 'components/CalendarPage';
 
 const startDay = moment().startOf('month').startOf('week');
-const CalendarPage = () => {
-  return (
-    <div>
-      <CalendarToolbar />
+const CalendarPage = () => (
+  <>
+    <CalendarToolbar />
+
+    <Section>
       <WeekdayHeader />
       <CalendarGrid startDay={startDay} />
-    </div>
-  );
-};
+    </Section>
+  </>
+);
 
 export default CalendarPage;

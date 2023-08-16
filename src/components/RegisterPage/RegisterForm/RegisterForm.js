@@ -1,6 +1,7 @@
 import { useDispatch } from 'react-redux';
 import { Formik } from 'formik';
 import * as yup from 'yup';
+import Swal from 'sweetalert2';
 import {
   FormWrapper,
   FormTitle,
@@ -32,7 +33,7 @@ const schema = yup.object().shape({
     .string()
     .email('Email address must contain an "@" sign')
     .matches(
-      /^\w+([.-]?\w+)@\w+([.-]?\w+)(.\w{2,3})+$/,
+      /^\w+([.-]?\w+)*@\w+([.-]?\w+)*\.\w{2,3}$/,
       'Must be a valid email'
     )
     .required('Email is required'),
@@ -52,9 +53,20 @@ const RegisterForm = () => {
   const dispatch = useDispatch();
 
   const handleSubmit = async (values, { resetForm }) => {
-    await dispatch(register(values));
-        await dispatch(refreshUser());
-    resetForm();
+    try {
+      await dispatch(register(values)).unwrap();
+      await dispatch(refreshUser()).unwrap();
+      resetForm();
+    } catch (error) {
+      if (error.response.status === 409) {
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'User with this email address already exists!',
+          confirmButtonColor: '#3E85F3',
+        });
+      }
+    }
   };
 
   return (

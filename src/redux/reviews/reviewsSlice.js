@@ -4,25 +4,25 @@ import {
   addReview,
   editReview,
   deleteReview,
-  fetchReviewById,
+  fetchReviewOwn,
 } from './operations';
 
 const reviewSlice = createSlice({
   name: 'reviews',
   initialState: {
     reviews: [],
-    userReview: {
-      rating: '',
+    userReview: [{
+      rating: null,
       review: '',
-    },
+    }],
     isLoading: false,
     error: null,
   },
   reducers: {
-    changeRating(state, action){
+    changeRating(state, action) {
       state.userReview.rating = action.payload;
-
-  }},
+    },
+  },
   extraReducers: builder => {
     builder
       .addCase(fetchReviews.pending, state => {
@@ -54,10 +54,7 @@ const reviewSlice = createSlice({
         state.isLoading = true;
       })
       .addCase(deleteReview.fulfilled, (state, action) => {
-        state.userReview = {
-          rating: '',
-          review: ''
-        };
+        state.userReview = [];
         state.reviews = state.reviews.filter(
           review => review.id !== action.payload._id
         );
@@ -73,10 +70,7 @@ const reviewSlice = createSlice({
       })
       .addCase(editReview.fulfilled, (state, action) => {
         state.userReview = action.payload;
-        const index = state.reviews.findIndex(
-          review => review.id === action.payload._id
-        );
-        state.reviews.splice(index, 1, action.payload);
+        state.reviews = [...state.reviews, action.payload];
         state.isLoading = false;
         state.error = null;
       })
@@ -84,28 +78,27 @@ const reviewSlice = createSlice({
         state.isLoading = false;
         state.error = action.payload;
       })
-      .addCase(fetchReviewById.pending, state => {
+      .addCase(fetchReviewOwn.pending, state => {
         state.isLoading = true;
       })
-      .addCase(fetchReviewById.fulfilled, (state, action) => {
+      .addCase(fetchReviewOwn.fulfilled, (state, action) => {
         if (action.payload) {
-           state.userReview = action.payload;
+          state.userReview = action.payload;
         } else {
-          state.userReview = {
+          state.userReview = [{
             rating: '',
-            review: ''
-          };
+            review: '',
+          }];
         }
         state.isLoading = false;
         state.error = null;
       })
-      .addCase(fetchReviewById.rejected, (state, action) => {
+      .addCase(fetchReviewOwn.rejected, (state, action) => {
         state.isLoading = false;
         state.error = action.payload;
-      })
+      });
   },
 });
 
-
-export const {changeRating}=reviewSlice.actions;
+export const { changeRating } = reviewSlice.actions;
 export const reviewsReducer = reviewSlice.reducer;
