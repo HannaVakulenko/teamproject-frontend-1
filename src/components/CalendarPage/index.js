@@ -12,3 +12,4 @@ export { default as TasksColumn } from './ChoosedDay/TasksColumn/TasksColumn';
 export { default as CalendarTable } from './ChoosedMonth/CalendarTable/CalendarTable';
 export { default as ChoosedMonth } from './ChoosedMonth/ChoosedMonth/ChoosedMonth';
 export { default as MyDatePicker } from './DatePicker/DatePicker';
+export { default as WeekdayHeader } from './WeekdayHeader/WeekdayHeader';

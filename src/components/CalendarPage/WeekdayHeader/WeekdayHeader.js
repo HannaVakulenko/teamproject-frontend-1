@@ -1,25 +1,34 @@
 import React from 'react';
+import { LargeWeekday, WeekWrapper } from './WeekdayHeader.styled';
 import { useMediaQuery } from 'react-responsive';
-import { LargeWeekday, SmallWeekday } from './WeekdayHeader.styled';
-const WeekdayHeader = ({ isTabletOrDesktop }) => {
+
+const WeekdayHeader = () => {
+  const isTabletOrDesktop = useMediaQuery({ minWidth: 768 });
+
   return (
-    <div>
-      <LargeWeekday>M</LargeWeekday>
-      <LargeWeekday>T</LargeWeekday>
-      <LargeWeekday>W</LargeWeekday>
-      <LargeWeekday>T</LargeWeekday>
-      <LargeWeekday>F</LargeWeekday>
-      {isTabletOrDesktop ? (
-        <LargeWeekday>S</LargeWeekday>
-      ) : (
-        <SmallWeekday>S</SmallWeekday>
-      )}
-      {isTabletOrDesktop ? (
-        <LargeWeekday>S</LargeWeekday>
-      ) : (
-        <SmallWeekday>S</SmallWeekday>
-      )}
-    </div>
+    <WeekWrapper>
+      <LargeWeekday isWeekend={false}>
+        {isTabletOrDesktop ? 'mon' : 'm'}
+      </LargeWeekday>
+      <LargeWeekday isWeekend={false}>
+        {isTabletOrDesktop ? 'tue' : 't'}
+      </LargeWeekday>
+      <LargeWeekday isWeekend={false}>
+        {isTabletOrDesktop ? 'wed' : 'w'}
+      </LargeWeekday>
+      <LargeWeekday isWeekend={false}>
+        {isTabletOrDesktop ? 'thu' : 't'}
+      </LargeWeekday>
+      <LargeWeekday isWeekend={false}>
+        {isTabletOrDesktop ? 'fri' : 'f'}
+      </LargeWeekday>
+      <LargeWeekday isWeekend={true}>
+        {isTabletOrDesktop ? 'sat' : 's'}
+      </LargeWeekday>
+      <LargeWeekday isWeekend={true}>
+        {isTabletOrDesktop ? 'sun' : 's'}
+      </LargeWeekday>
+    </WeekWrapper>
   );
 };
 

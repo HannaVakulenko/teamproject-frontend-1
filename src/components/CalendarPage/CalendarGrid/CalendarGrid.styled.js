@@ -42,7 +42,7 @@ export const CellWrapper = styled.div`
   }
   @media (min-width: 376px) and (max-width: 768px) {
     padding-top: 14px;
-    padding: 14px;
+    padding-right: 4px;
   }
 
   @media (min-width: 769px) and (max-width: 1440px) {
@@ -122,91 +122,65 @@ export const DayWrapper = styled.div`
     text-transform: uppercase;
   }
 `;
-export const WeekdayHeader = styled.div`
-  display: flex;
-  justify-content: space-around;
-  font-weight: bold;
-  text-align: center;
-  margin-bottom: 14px;
-  border: 1px solid rgba(220, 227, 229, 0.5);
-  border-radius: 8px;
-  background-color: white;
+// export const WeekWrapper = styled.div`
+//   display: flex;
+//   justify-content: space-between;
+//   @media (max-width: 375px) {
+//     display: flex;
+//     justify-content: space-between;
+//   }
 
-  @media (max-width: 375px) {
-    font-size: 14px;
-    height: 50px;
-    align-items: center;
-    background-color: white;
-  }
+//   @media (min-width: 376px) and (max-width: 768px) {
+//     display: flex;
+//     justify-content: space-between;
+//   }
 
-  @media (min-width: 376px) and (max-width: 768px) {
-    font-size: 16px;
-    height: 46px;
-    align-items: center;
-    border: 1px solid rgba(220, 227, 229, 0.5);
-    background-color: white;
-  }
+//   @media (min-width: 769px) and (max-width: 1440px) {
+//     display: flex;
+//     justify-content: space-between;
+//   }
+// `;
+// export const Weektenday = styled.div`
+//   font-family: Inter;
+//   font-weight: 600;
+//   line-height: 18px;
+//   letter-spacing: 0em;
+//   text-align: center;
+//   color: #3e85f3;
+//   text-transform: uppercase;
 
-  @media (min-width: 769px) and (max-width: 1440px) {
-    border: 1px solid rgba(220, 227, 229, 0.5);
-    height: 46px;
-    align-items: center;
-    color: #343434;
-    font-family: Inter;
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 600;
-    line-height: 18px;
-    text-transform: uppercase;
-    background-color: white;
-    // padding-right: 60px;
-    // padding-left: 60px;
-    // padding-top: 14px;
-    // padding-bottom: 14px;
-    // звернути на це увагу коли будуть додаватись 3 букви в назвах днів тижня.
-  }
-`;
-export const Weektenday = styled.div`
-  font-family: Inter;
-  font-weight: 600;
-  line-height: 18px;
-  letter-spacing: 0em;
-  text-align: center;
-  color: #3e85f3;
-  text-transform: uppercase;
+//   @media (min-width: 376px) and (max-width: 768px) {
+//     font-size: 16px;
+//   }
 
-  @media (min-width: 376px) and (max-width: 768px) {
-    font-size: 16px;
-  }
+//   @media (min-width: 769px) and (max-width: 1440px) {
+//     font-size: 18px;
+//   }
+// `;
+// export const Workday = styled.div`
+//   @media (max-width: 375px) {
+//     font-family: Inter;
+//     font-size: 16px;
+//     font-weight: 600;
+//     line-height: 18px;
+//     letter-spacing: 0em;
+//     text-align: center;
+//     color: #343434;
+//     text-transform: uppercase;
+//   }
 
-  @media (min-width: 769px) and (max-width: 1440px) {
-    font-size: 18px;
-  }
-`;
-export const Workday = styled.div`
-  @media (max-width: 375px) {
-    font-family: Inter;
-    font-size: 16px;
-    font-weight: 600;
-    line-height: 18px;
-    letter-spacing: 0em;
-    text-align: center;
-    color: #343434;
-    text-transform: uppercase;
-  }
+//   @media (min-width: 376px) and (max-width: 768px) {
+//     font-family: Inter;
+//     font-size: 16px;
+//     font-weight: 600;
+//     line-height: 18px;
+//     letter-spacing: 0em;
+//     text-align: center;
+//     color: #343434;
+//     text-transform: uppercase;
+//   }
 
-  @media (min-width: 376px) and (max-width: 768px) {
-    font-family: Inter;
-    font-size: 16px;
-    font-weight: 600;
-    line-height: 18px;
-    letter-spacing: 0em;
-    text-align: center;
-    color: #343434;
-    text-transform: uppercase;
-  }
-
-  @media (min-width: 769px) and (max-width: 1440px) {
-    font-size: 18px;
-  }
-`;
+//   @media (min-width: 769px) and (max-width: 1440px) {
+//     font-size: 18px;
+//   }
+// `;

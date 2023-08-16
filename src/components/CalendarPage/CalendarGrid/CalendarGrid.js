@@ -1,13 +1,12 @@
 import React from 'react';
 import moment from 'moment';
+import WeekdayHeader from '../WeekdayHeader/WeekdayHeader';
 import {
   GridWrapper,
   CellWrapper,
   RowInCell,
   DayWrapper,
-  WeekdayHeader,
-  Weektenday,
-  Workday,
+  // WeekWrapper,
 } from './CalendarGrid.styled';
 
 const CalendarPage = ({ startDay }) => {
@@ -55,15 +54,8 @@ const CalendarPage = ({ startDay }) => {
 
   return (
     <div>
-      <WeekdayHeader>
-        <Workday>m</Workday>
-        <Workday>t</Workday>
-        <Workday>w</Workday>
-        <Workday>t</Workday>
-        <Workday>f</Workday>
-        <Weektenday>s</Weektenday>
-        <Weektenday>s</Weektenday>
-      </WeekdayHeader>
+      <WeekdayHeader />
+
       <GridWrapper>
         {daysArray.map(({ day, isCurrentMonth }, i) => (
           <CellWrapper key={day ? day.format('DDMMYYYY') : `empty-${i}`}>
