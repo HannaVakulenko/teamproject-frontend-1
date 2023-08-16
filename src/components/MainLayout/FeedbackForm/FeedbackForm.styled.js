@@ -5,10 +5,10 @@ export const FormFieldReview = styled.div`
   display: flex;
   justify-content: start;
   align-items: baseline;
-  margin-top: 15px;
+  margin-top: 12px;
 
   @media (min-width: ${device.tablet}px) {
-    margin-top: 20px;
+    margin-top: 16px;
   }
 `;
 
@@ -85,10 +85,10 @@ export const TextFeedback = styled.textarea`
 export const WrapControlBtn = styled.div`
   display: flex;
   justify-content: space-between;
-  margin-top: 14px;
+  margin-top: 12px;
 
   @media (min-width: ${device.tablet}px) {
-    margin-top: 18px;
+    margin-top: 16px;
   }
 `;
 
