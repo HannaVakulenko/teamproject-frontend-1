@@ -74,6 +74,11 @@ export const TextFeedback = styled.textarea`
   background: #f6f6f6;
   resize: none;
   outline: none;
+
+  color: #343434;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.29;
 `;
 
 export const WrapControlBtn = styled.div`
