@@ -1,3 +1,4 @@
+import { device } from 'constants';
 import styled from 'styled-components';
 
 export const Overlay = styled.div`
@@ -15,7 +16,6 @@ export const Overlay = styled.div`
 
 export const ModalDiv = styled.div`
   width: 335px;
-  /* height: 331px; */
   padding: 28px 20px;
   position: absolute;
   top: 50%;
@@ -26,6 +26,11 @@ export const ModalDiv = styled.div`
   border: 1px solid rgba(220, 227, 229, 0.8);
   background: #fff;
   box-shadow: 0px 4px 57px 0px rgba(17, 17, 17, 0.05);
+
+  @media (min-width: ${device.tablet}px) {
+    width: 468px;
+    padding: 32px;
+  }
 `;
 
 export const CloseBtn = styled.button`
@@ -40,6 +45,11 @@ export const CloseBtn = styled.button`
   &:hover,
   &:focus {
     color: #3e85f3;
+  }
+
+  @media (min-width: ${device.tablet}px) {
+    top: 18px;
+    right: 18px;
   }
 `;
 

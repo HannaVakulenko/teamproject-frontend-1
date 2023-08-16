@@ -121,5 +121,11 @@
             <path fill="none" stroke="#ea3d65" style="stroke: var(--color1, #ea3d65)" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="3" d="M13.334 14.667v8"></path>
             <path fill="none" stroke="#ea3d65" style="stroke: var(--color1, #ea3d65)" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="3" d="M18.666 14.667v8"></path>
         </symbol>
+        <symbol id="icon-star" viewBox="0 0 32 32">
+            <path fill="#ffac33" style="fill: var(--color2, #ffac33); stroke: var(--color2, #ffac33)" stroke="#ffac33" stroke-linejoin="miter" stroke-linecap="butt" stroke-miterlimit="4" stroke-width="1.6" d="M16 1.714l4.030 7.638c0.212 0.402 0.599 0.683 1.047 0.761l8.509 1.472-6.019 6.193c-0.317 0.326-0.465 0.781-0.4 1.231l1.229 8.548-7.75-3.811c-0.408-0.201-0.886-0.201-1.294 0l-7.75 3.811 1.229-8.548c0.065-0.45-0.083-0.905-0.4-1.231l-6.019-6.193 8.509-1.472c0.448-0.078 0.835-0.359 1.047-0.761v0l4.030-7.638zM7.376 27.669c0 0 0-0 0-0l-0 0zM16.118 1.491l0-0c0 0-0 0-0 0z"></path>
+        </symbol>
+        <symbol id="icon-Star-2" viewBox="0 0 32 32">
+            <path fill="#cec9c1" style="fill: var(--color1, #cec9c1); stroke: var(--color1, #cec9c1)" stroke="#cec9c1" stroke-linejoin="miter" stroke-linecap="butt" stroke-miterlimit="4" stroke-width="1.7455" d="M16 1.87l4.396 8.332c0.231 0.439 0.653 0.745 1.142 0.83l9.283 1.606-6.566 6.756c-0.346 0.356-0.507 0.852-0.436 1.343l1.341 9.325-8.454-4.157c-0.445-0.219-0.967-0.219-1.412 0l-8.454 4.157 1.341-9.325c0.071-0.491-0.091-0.987-0.436-1.343l-6.566-6.756 9.283-1.606c0.489-0.085 0.911-0.391 1.142-0.83v0l4.396-8.332zM6.592 30.184c0 0 0-0 0-0l-0 0zM16.128 1.627l0-0c0 0-0 0-0 0z"></path>
+        </symbol>
     </defs>
 </svg>

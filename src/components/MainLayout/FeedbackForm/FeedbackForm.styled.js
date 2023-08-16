@@ -1,9 +1,15 @@
+import { device } from 'constants';
 import styled from 'styled-components';
 
 export const FormFieldReview = styled.div`
   display: flex;
   justify-content: start;
   align-items: baseline;
+  margin-top: 12px;
+
+  @media (min-width: ${device.tablet}px) {
+    margin-top: 16px;
+  }
 `;
 
 export const EditBtn = styled.button`
@@ -12,7 +18,7 @@ export const EditBtn = styled.button`
   display: flex;
   width: 30px;
   height: 30px;
-  padding: 10px;
+  padding: 5px;
   justify-content: center;
   align-items: center;
   border-radius: 50px;
@@ -32,7 +38,7 @@ export const DeleteBtn = styled.button`
   display: flex;
   width: 30px;
   height: 30px;
-  padding: 10px;
+  padding: 5px;
   justify-content: center;
   align-items: center;
   border-radius: 50px;
@@ -51,17 +57,12 @@ export const Icon = styled.svg`
   fill: none;
 `;
 
-export const FormFieldRating = styled.label`
-  /* display: flex;
-  flex-direction: column; */
-`;
-
 export const TextReview = styled.p`
   margin-bottom: 8px;
   color: rgba(52, 52, 52, 0.8);
   font-size: 12px;
   font-weight: 500;
-  line-height: 1.17; /* 116.667% */
+  line-height: 1.17;
 `;
 
 export const TextFeedback = styled.textarea`
@@ -84,13 +85,16 @@ export const TextFeedback = styled.textarea`
 export const WrapControlBtn = styled.div`
   display: flex;
   justify-content: space-between;
-  margin-top: 14px;
+  margin-top: 12px;
+
+  @media (min-width: ${device.tablet}px) {
+    margin-top: 16px;
+  }
 `;
 
 export const SaveBtn = styled.button`
   width: 144px;
   height: 42px;
-  /* margin-right: 7px; */
   border: none;
   border-radius: 8px;
   background: #3e85f3;
@@ -105,6 +109,11 @@ export const SaveBtn = styled.button`
   &:hover,
   &:focus {
     background: #0f5dc8;
+  }
+
+  @media (min-width: ${device.tablet}px) {
+    width: 198px;
+    height: 48px;
   }
 `;
 
@@ -126,4 +135,24 @@ export const CancelBtn = styled.button`
   &:focus {
     background: #d6dde9;
   }
+
+  @media (min-width: ${device.tablet}px) {
+    width: 198px;
+    height: 48px;
+  }
+`;
+
+export const Error = styled.div`
+  margin-top: 8px;
+  font-size: 12px;
+  color: ${p => p.theme.authFieldOnErrorColor};
+  line-height: 1.16;
+`;
+
+export const IconStar = styled.svg`
+  margin-right: 2px;
+  width: 24px;
+  height: 24px;
+  stroke: currentColor;
+  fill: none;
 `;
