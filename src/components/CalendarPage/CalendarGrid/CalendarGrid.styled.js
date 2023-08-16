@@ -17,7 +17,6 @@ export const GridWrapper = styled.div`
   }
 
   @media (min-width: 376px) and (max-width: 768px) {
-    // grid-template-columns: repeat(7, minmax(0, 1fr));
     max-width: 704px;
     height: 720px;
     border-radius: 8px;
@@ -72,53 +71,48 @@ export const DayWrapper = styled.div`
   line-height: 14px;
   letter-spacing: 0em;
   text-align: center;
-  padding-bottom: 4px;
-  padding-left: 6px;
-  padding-right: 6px;
-  padding-top: 4px;
-  text-transform: uppercase 
+  padding: 4px 6px;
+
+  color: ${props => (props.$today ? '#FFFFFF' : '#343434')};
+  background-color: ${props => (props.$today ? '#3E85F3' : 'transparent')};
+  border-radius: ${props => (props.$today ? '6px' : '0')};
 
   @media (max-width: 375px) {
-      font-size: 12px;
-  font-weight: 700;
-  line-height: 14px;
-  letter-spacing: 0em;
-  text-align: center;
-  padding-bottom: 4px;
-  padding-left: 6px;
-  padding-right: 6px;
-  padding-top: 4px;
-  text-transform: uppercase 
-    padding-bottom: 4px;
-    padding-left: 6px;
-    padding-right: 6px;
-    padding-top: 4px;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 14px;
+    letter-spacing: 0em;
+    text-align: center;
+    text-transform: uppercase;
+    padding: 4px 6px;
+    color: ${props => (props.$today ? '#FFFFFF' : '#343434')};
+    background-color: ${props => (props.$today ? '#3E85F3' : 'transparent')};
+    border-radius: ${props => (props.$today ? '6px' : '0')};
   }
   @media (min-width: 376px) and (max-width: 768px) {
-    padding-bottom: 4px;
-    padding-left: 8px;
-    padding-right: 8px;
-    padding-top: 4px;
+    padding: 4px 8px;
     color: #343434;
     font-family: Inter;
     font-size: 16px;
     font-style: normal;
     font-weight: 700;
-    line-height: 18px; 
-    text-transform: uppercase;
+    line-height: 18px;
+    color: ${props => (props.$today ? '#FFFFFF' : '#343434')};
+    background-color: ${props => (props.$today ? '#3E85F3' : 'transparent')};
+    border-radius: ${props => (props.$today ? '8px' : '0')};
   }
 
   @media (min-width: 769px) and (max-width: 1440px) {
-    padding-bottom: 4px;
-    padding-left: 8px;
-    padding-right: 8px;
-    padding-top: 4px;
+    padding: 4px 8px;
     color: #343434;
     font-family: Inter;
     font-size: 16px;
     font-style: normal;
     font-weight: 700;
-    line-height: 18px; 
+    line-height: 18px;
     text-transform: uppercase;
+    color: ${props => (props.$today ? '#FFFFFF' : '#343434')};
+    background-color: ${props => (props.$today ? '#3E85F3' : 'transparent')};
+    border-radius: ${props => (props.$today ? '8px' : '0')};
   }
 `;

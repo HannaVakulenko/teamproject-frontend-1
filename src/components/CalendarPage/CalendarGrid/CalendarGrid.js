@@ -57,7 +57,10 @@ const CalendarPage = ({ startDay }) => {
         {daysArray.map(({ day, isCurrentMonth }, i) => (
           <CellWrapper key={day ? day.format('DDMMYYYY') : `empty-${i}`}>
             <RowInCell>
-              <DayWrapper className={isCurrentMonth ? 'current-month' : ''}>
+              <DayWrapper
+                className={isCurrentMonth ? 'current-month' : ''}
+                $today={day && day.isSame(currentDate, 'day')}
+              >
                 {day ? day.format('D') : ''}
               </DayWrapper>
             </RowInCell>
