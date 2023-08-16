@@ -12,6 +12,7 @@ const AddFeedbackBtn = () => {
   }, [dispatch]);
 
   const [isShowModal, setIsShowModal] = useState(false);
+
   const openModal = () => {
     setIsShowModal(true);
   };
