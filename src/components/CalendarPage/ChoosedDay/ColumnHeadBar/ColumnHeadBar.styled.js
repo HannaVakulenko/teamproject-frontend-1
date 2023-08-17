@@ -27,7 +27,7 @@ export const Button = styled.button`
 
   &:hover svg {
     stroke: ${p => p.theme.mainAccentColorActive};
-  }
+  };
 `;
 
 export const Icon = styled.svg`
