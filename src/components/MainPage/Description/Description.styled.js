@@ -1,6 +1,16 @@
 import styled from 'styled-components';
 import { device } from 'constants';
 
+export const DescriptionSection = styled.section`
+  padding-top: 64px;
+  padding-bottom: 64px;
+  background: #fff;
+
+  @media (min-width: ${device.desktop}px) {
+    padding-bottom: 100px;
+  }
+`;
+
 export const ContainerMainPage = styled.div`
   width: 100%;
   margin: 0 auto;
@@ -26,8 +36,6 @@ export const ListDescription = styled.ul`
   flex-direction: column;
   align-items: center;
   gap: 64px;
-  padding-top: 64px;
-  padding-bottom: 64px;
 `;
 
 export const ItemDescription = styled.li`

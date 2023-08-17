@@ -2,23 +2,19 @@ import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 import { device } from 'constants';
 
-export const WrappAuthSection = styled.div`
+export const WrappAuthSection = styled.section`
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
-  height: 100vh;
+  min-height: 100vh;
+  padding-bottom: 20px;
   background-color: ${p => p.theme.mainAccentColor};
 `;
 
 export const ImgHero = styled.img`
-  margin-top: 256px;
-
   @media (min-width: ${device.tablet}px) {
-    margin-top: 331px;
     width: 150px;
-  }
-  @media (min-width: ${device.desktop}px) {
-    margin-top: 187px;
   }
 `;
 
