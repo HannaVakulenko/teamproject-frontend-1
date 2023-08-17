@@ -1,4 +1,3 @@
-export { default as CalendarGrid } from './CalendarGrid/CalendarGrid';
 export { default as CalendarToolbar } from './CalendarToolbar/CalendarToolbar/CalendarToolbar';
 export { default as PeriodPaginator } from './CalendarToolbar/PeriodPaginator/PeriodPaginator';
 export { default as PeriodTypeSelect } from './CalendarToolbar/PeriodTypeSelect/PeriodTypeSelect';
