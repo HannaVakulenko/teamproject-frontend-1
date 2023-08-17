@@ -2,7 +2,6 @@ import styled from 'styled-components';
 import { device } from 'constants';
 const { tablet, desktop } = device;
 
-
 export const MainLayoutStyled = styled.div`
   display: flex;
   width: 100%;
@@ -19,7 +18,6 @@ export const MainAndHeaderWrapper = styled.div`
   height: 100vh;
   display: flex;
   flex-direction: column;
-    align-items: center; 
   gap: 64px;
 
   @media (min-width: ${tablet}px) and (max-width: ${desktop - 1}px) {
