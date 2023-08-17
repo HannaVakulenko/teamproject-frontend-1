@@ -40,9 +40,12 @@
             <path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="2.6667"
                 d="M12 24l8-8-8-8"></path>
         </symbol>
+        <symbol id="icon-chevron-down" viewBox="0 0 18 18">
+            <path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="2"
+                d="M4.5 6.75L9 11.25L13.5 6.75"></path>
+        </symbol>
         <symbol id="icon-chevron-left" viewBox="0 0 32 32">
-            <path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="2.6667"
-                d="M20 24l-8-8 8-8"></path>
+            <path stroke-linejoin="round" stroke-linecap="round" stroke-width="2.6667" d="M20 24l-8-8 8-8"></path>
         </symbol>
         <symbol id="icon-x-close" viewBox="0 0 32 32">
             <path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="2.6667"
@@ -56,9 +59,13 @@
             </path>
         </symbol>
         <symbol id="icon-plus-in-a-circle" viewBox="0 0 32 32">
-            <path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="2.9091"
-                d="M16 10.182v11.636M10.182 16h11.636M30.545 16c0 8.033-6.512 14.545-14.545 14.545s-14.545-6.512-14.545-14.545c0-8.033 6.512-14.545 14.545-14.545s14.545 6.512 14.545 14.545z">
-            </path>
+            <g stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="2.9091">
+                <path d="M16 10.182v11.636" stroke="white" />
+                <path d="M10.182 16h11.636" stroke="white" />
+                <path
+                    d="M30.545 16c0 8.033-6.512 14.545-14.545 14.545s-14.545-6.512-14.545-14.545c0-8.033 6.512-14.545 14.545-14.545s14.545 6.512 14.545 14.545z"
+                    stroke="#3E85F3" />
+            </g>
         </symbol>
         <symbol id="icon-arrow-circle-broken-right" viewBox="0 0 32 32">
             <path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="2.6"
