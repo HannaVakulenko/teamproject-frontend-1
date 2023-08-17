@@ -44,13 +44,14 @@ export const Badge = styled.span`
   line-height: 1.2;
   color:  ${p => p.theme.mainBGColor};
   border-radius: 4px;
-  ${({ priority }) => {
-    if (priority === 'low') {
-      return 'background-color: #72C2F8;';
-    } else if (priority === 'medium') {
-      return 'background-color: #F3B249;';
-    } else if (priority === 'high') {
-      return 'background-color: #EA3D65;';
-    }
-  }}
+
+  &[data-priority="low"] {
+    background-color: #72C2F8;
+  };
+  &[data-priority="medium"] {
+    background-color: #F3B249;
+  };
+  &[data-priority="high"] {
+    background-color: #EA3D65;
+  };
 `;

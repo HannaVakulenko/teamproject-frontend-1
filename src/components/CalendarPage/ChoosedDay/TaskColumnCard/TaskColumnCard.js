@@ -12,7 +12,7 @@ const TaskColumnCard = ({ task }) => {
       <CardFooter>
         <AvatarWrapper>
           <AvatarImage src={avatar} width="32" height="32" alt="User Avatar" />
-          <Badge priority={task.priority}>{task.priority}</Badge>
+          <Badge data-priority={task.priority}>{task.priority}</Badge>
         </AvatarWrapper>
         <TaskToolbar />
       </CardFooter>
