@@ -72,7 +72,11 @@ export const App = () => {
               />
             }
           />
+          {/* by Lucky13  */}
+          <Route path="calendar/month" element={<CalendarPage />} />
+          <Route path="calendar/day" element={<CalendarPage />} />
         </Route>
+
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
     )

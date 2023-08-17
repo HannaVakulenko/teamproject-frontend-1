@@ -6,9 +6,14 @@ axios.defaults.baseURL = AXIOS_BASE_URL;
 
 export const fetchTasks = createAsyncThunk(
   'tasks/fetchAll',
-  async (_, thunkAPI) => {
+  async ({ monthStart, monthEnd }, thunkAPI) => {
     try {
-      const response = await axios.get('/api/tasks');
+      const response = await axios.get('/tasks', {
+        params: {
+          monthStart: monthStart,
+          monthEnd: monthEnd,
+        }
+      });
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
@@ -20,7 +25,7 @@ export const addTask = createAsyncThunk(
   'tasks/addTask',
   async (task, thunkAPI) => {
     try {
-      const response = await axios.post('/api/tasks', task);
+      const response = await axios.post('/tasks', task);
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
@@ -32,7 +37,7 @@ export const updateTask = createAsyncThunk(
   'tasks/updateTask',
   async (task, thunkAPI) => {
     try {
-      const response = await axios.patch(`/api/tasks/${task.id}`, {
+      const response = await axios.patch(`/tasks/${task._id}`, {
         title: task.title,
         priority: task.priority,
         category: task.category,
@@ -50,7 +55,7 @@ export const deleteTask = createAsyncThunk(
   'tasks/deleteTask',
   async (taskId, thunkAPI) => {
     try {
-      const response = await axios.delete(`/api/tasks/${taskId}`);
+      const response = await axios.delete(`/tasks/${taskId}`);
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error);

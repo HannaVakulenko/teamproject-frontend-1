@@ -1,6 +1,7 @@
 import styled from 'styled-components';
+import DatePicker from 'react-datepicker';
 
-export const Date = styled.p`
+export const Date = styled.button`
   display: flex;
   align-items: center;
   margin-right: 8px;
@@ -14,3 +15,9 @@ export const Date = styled.p`
 export const ButtonIncrease = styled.button``;
 
 export const ButtonDecrease = styled.button``;
+
+export const Icon = styled.svg``;
+
+export const StyledDatePicker = styled(DatePicker)`
+  background-color: red;
+`;

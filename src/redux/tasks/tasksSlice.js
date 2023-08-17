@@ -4,6 +4,7 @@ import { logout } from 'redux/auth/operations';
 
 const initialState = {
   tasks: [],
+  avatarURL: "",
   isLoading: false,
   error: null,
 };
@@ -20,7 +21,8 @@ const rejectedReducer = (state, action) => {
 const fetchTasksFulfilledReducer = (state, action) => {
   state.isLoading = false;
   state.error = null;
-  state.tasks = action.payload;
+  state.tasks = action.payload.tasks;
+  state.avatarURL = action.payload.avatarURL;
 };
 
 const addTaskFulfilledReducer = (state, action) => {
@@ -33,7 +35,7 @@ const updateTaskFulfilledReducer = (state, action) => {
   state.isLoading = false;
   state.error = null;
   const index = state.tasks.findIndex(
-    task => task.id === action.payload.id
+    task => task._id === action.payload._id
   );
   state.tasks.splice(index, 1, action.payload);
 };
@@ -42,13 +44,14 @@ const deleteTaskFulfilledReducer = (state, action) => {
   state.isLoading = false;
   state.error = null;
   const index = state.tasks.findIndex(
-    task => task.id === action.payload.id
+    task => task._id === action.payload._id
   );
   state.task.splice(index, 1);
 };
 
 const clearTasksFulfilledReducer = (state) => {
   state.tasks = [];
+  state.avatarURL = "";
   state.isLoading = false;
   state.error = null;
 }
