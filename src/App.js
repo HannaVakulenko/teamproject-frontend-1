@@ -8,6 +8,7 @@ import { useSelector } from 'react-redux';
 import { selectIsRefreshing } from 'redux/auth/selectors';
 import { useEffect } from 'react';
 import { refreshUser } from 'redux/auth/operations';
+// import { useTranslation } from 'react-i18next';
 
 import LoginPage from 'pages/LoginPage';
 import MainPage from 'pages/MainPage';
@@ -18,6 +19,8 @@ const CalendarPage = lazy(() => import('pages/CalendarPage'));
 const StatisticsPage = lazy(() => import('pages/StatisticsPage'));
 
 export const App = () => {
+  // const { t, i18n } = useTranslation();
+
   const dispatch = useDispatch();
   const isRefreshing = useSelector(selectIsRefreshing);
 

@@ -1,0 +1,75 @@
+{
+  "sign_up": "Registrieren",
+  "log_in": "Anmelden",
+  "log_out": "Abmelden",
+
+  "first_home_title": "Kalenderansicht",
+  "first_home_description": "Die Kalenderansicht von GooseTrack verschafft Ihnen einen umfassenden Überblick über Ihren Zeitplan und stellt alle Ihre Aufgaben, Ereignisse und Termine in einem visuell ansprechenden und intuitiven Design dar.",
+
+  "second_home_title": "Seitenleiste",
+  "second_home_description": "GooseTrack ermöglicht Ihnen bequemen Zugriff auf Ihre Kontoeinstellungen, den Kalender und die Filter. Der Abschnitt 'Mein Konto' erlaubt es Ihnen, Ihre Profilinformationen und Präferenzen zu verwalten, während der Kalender eine schnelle und bequeme Möglichkeit bietet, bevorstehende Ereignisse und Aufgaben zu betrachten.",
+
+  "third_home_title": "Alles in",
+  "third_home_title_1": "einem",
+  "third_home_description": "GooseTrack ist eine All-in-One-Produktivitätslösung, die Ihnen dabei hilft, Ihre Aufgaben, Ereignisse und Fristen im Blick zu behalten. Verabschieden Sie sich von verstreuten Aufgabenlisten und sagen Sie hallo zur effizienteren Produktivität mit GooseTrack.",
+
+  "rewiews_home": "Bewertungen",
+
+  "user_panel": "Benutzerpanel",
+  "my_account": "My Account",
+  "calendar": "Calendar",
+  "statistics": "Statistics",
+  "feedback": "Feedback",
+
+  "name": "Name",
+  "password": "Password",
+
+  "user_name": "User Name",
+  "phone": "Phone",
+  "birthday": "Birthday",
+  "skype": "Skype",
+  "email": "Email",
+  "save_changes": "Save Changes",
+
+  "add_task": "Add Task",
+  "edit_task": "Edit Task",
+  "delete_task": "Delete Task",
+
+  "task": "Task",
+  "to_do": "To Do",
+  "in_progress": "In Progress",
+  "done": "Done",
+  "by_day": "By Day",
+  "by_month": "By Month",
+
+  "title": "Title",
+  "description": "Enter text",
+  "start_time": "Start",
+  "end_time": "End",
+
+  "low": "Low",
+  "medium": "Medium",
+  "high": "High",
+
+  "save": "Save",
+  "cancel": "Cancel",
+  "delete": "Delete",
+  "edit": "Edit",
+  "close": "Close",
+  "update": "Update",
+
+  "month": "Month",
+  "day": "Day",
+  "days": {
+    "monday": "MON",
+    "tuesday": "TUE",
+    "wednesday": "WED",
+    "thursday": "THU",
+    "friday": "FRI",
+    "saturday": "SAT",
+    "sunday": "SUN"
+  },
+
+  "404": "We're sorry, the page you requested could not be found. Please go back to the homepage.",
+  "back": "Back to home"
+}

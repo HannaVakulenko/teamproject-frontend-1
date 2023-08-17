@@ -352,3 +352,37 @@ export const refreshUser = createAsyncThunk(
 export const selectLoggedIn = state => state.auth.isLoggedIn;
 export const selectUser = state => state.auth.user;
 export const selectIsRefreshing = state => state.auth.isRefreshing;
+
+
+----------------------------------------------------------
+
+
+  "delete_event": "Delete Event",
+  "delete_appointment": "Delete Appointment",
+  "delete_task_message": "Are you sure you want to delete this task?",
+  "delete_event_message": "Are you sure you want to delete this event?",
+  "delete_appointment_message": "Are you sure you want to delete this appointment?",
+
+  "delete_task_success": "Task deleted successfully!",
+  "delete_event_success": "Event deleted successfully!",
+  "delete_appointment_success": "Appointment deleted successfully!",
+  "delete_task_error": "Error deleting task!",
+  "delete_event_error": "Error deleting event!",
+  "delete_appointment_error": "Error deleting appointment!",
+  "add_task_success": "Task added successfully!",
+  "add_event_success": "Event added successfully!",
+  "add_appointment_success": "Appointment added successfully!",
+  "add_task_error": "Error adding task!",
+  "add_event_error": "Error adding event!",
+  "add_appointment_error": "Error adding appointment!",
+  "update_task_success": "Task updated successfully!",
+  "update_event_success": "Event updated successfully!",
+  "update_appointment_success": "Appointment updated successfully!",
+  "update_task_error": "Error updating task!",
+  "update_event_error": "Error updating event!",
+  "update_appointment_error": "Error updating appointment!",
+  "task_title_error": "Task title is required!",
+  "event_title_error": "Event title is required!",
+  "appointment_title_error": "Appointment title is required!"
+
+  ----------------------------------------------------------------
