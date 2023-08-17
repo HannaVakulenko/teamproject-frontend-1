@@ -1,9 +1,9 @@
 {
   "files": {
     "main.css": "/teamproject-frontend-1/static/css/main.8505ec9a.css",
-    "main.js": "/teamproject-frontend-1/static/js/main.573d0133.js",
+    "main.js": "/teamproject-frontend-1/static/js/main.c63c3bea.js",
     "static/js/181.c30e31c5.chunk.js": "/teamproject-frontend-1/static/js/181.c30e31c5.chunk.js",
-    "static/js/671.ba48a918.chunk.js": "/teamproject-frontend-1/static/js/671.ba48a918.chunk.js",
+    "static/js/671.95baf01e.chunk.js": "/teamproject-frontend-1/static/js/671.95baf01e.chunk.js",
     "static/js/97.84e62906.chunk.js": "/teamproject-frontend-1/static/js/97.84e62906.chunk.js",
     "static/css/44.3387ab20.chunk.css": "/teamproject-frontend-1/static/css/44.3387ab20.chunk.css",
     "static/js/44.ecf187ae.chunk.js": "/teamproject-frontend-1/static/js/44.ecf187ae.chunk.js",
@@ -111,9 +111,9 @@
     "index.html": "/teamproject-frontend-1/index.html",
     "static/media/logo-mob-1x.webp": "/teamproject-frontend-1/static/media/logo-mob-1x.cd09cea1d315fcef8d71.webp",
     "main.8505ec9a.css.map": "/teamproject-frontend-1/static/css/main.8505ec9a.css.map",
-    "main.573d0133.js.map": "/teamproject-frontend-1/static/js/main.573d0133.js.map",
+    "main.c63c3bea.js.map": "/teamproject-frontend-1/static/js/main.c63c3bea.js.map",
     "181.c30e31c5.chunk.js.map": "/teamproject-frontend-1/static/js/181.c30e31c5.chunk.js.map",
-    "671.ba48a918.chunk.js.map": "/teamproject-frontend-1/static/js/671.ba48a918.chunk.js.map",
+    "671.95baf01e.chunk.js.map": "/teamproject-frontend-1/static/js/671.95baf01e.chunk.js.map",
     "97.84e62906.chunk.js.map": "/teamproject-frontend-1/static/js/97.84e62906.chunk.js.map",
     "44.3387ab20.chunk.css.map": "/teamproject-frontend-1/static/css/44.3387ab20.chunk.css.map",
     "44.ecf187ae.chunk.js.map": "/teamproject-frontend-1/static/js/44.ecf187ae.chunk.js.map",
@@ -121,6 +121,6 @@
   },
   "entrypoints": [
     "static/css/main.8505ec9a.css",
-    "static/js/main.573d0133.js"
+    "static/js/main.c63c3bea.js"
   ]
 }
