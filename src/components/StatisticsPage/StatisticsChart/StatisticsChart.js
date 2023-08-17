@@ -47,7 +47,7 @@ const StatisticsChart = () => {
 
   //Дата
   const dateStatistics = useSelector(selectDate);
-  console.log(dateStatistics);
+  
 
   // Задачи по категоріям за місяць
   const todoByMonth = useSelector(state =>
