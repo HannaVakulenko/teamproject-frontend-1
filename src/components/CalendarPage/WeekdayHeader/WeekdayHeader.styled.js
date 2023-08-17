@@ -28,6 +28,8 @@ export const LargeWeekday = styled.div`
     line-height: 18px;
     text-transform: uppercase;
   }
+  @media (max-width: 1441px) {
+  }
 `;
 
 export const SmallWeekday = styled.div`

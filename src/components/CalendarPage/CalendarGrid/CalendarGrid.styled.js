@@ -26,7 +26,7 @@ export const GridWrapper = styled.div`
     max-width: 1087px;
     height: 625px;
     border-radius: 8px;
-    background-color: white;
+    // background-color: white;
   }
 `;
 
