@@ -59,13 +59,12 @@
             </path>
         </symbol>
         <symbol id="icon-plus-in-a-circle" viewBox="0 0 32 32">
-            <g stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="2.9091">
-                <path d="M16 10.182v11.636" stroke="white" />
-                <path d="M10.182 16h11.636" stroke="white" />
-                <path
-                    d="M30.545 16c0 8.033-6.512 14.545-14.545 14.545s-14.545-6.512-14.545-14.545c0-8.033 6.512-14.545 14.545-14.545s14.545 6.512 14.545 14.545z"
-                    stroke="#3E85F3" />
-            </g>
+          <path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="2.9091"
+            d="M16 10.182v11.636M10.182 16h11.636M30.545 16c0 8.033-6.512 14.545-14.545 14.545s-14.545-6.512-14.545-14.545c0-8.033 6.512-14.545 14.545-14.545s14.545 6.512 14.545 14.545z">
+          </path>
+        </symbol>
+        <symbol id="icon-plus" viewBox="0 0 32 32">
+          <path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="2.6667" d="M16 6.667v18.667M6.667 16h18.667"></path>
         </symbol>
         <symbol id="icon-arrow-circle-broken-right" viewBox="0 0 32 32">
             <path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="2.6"

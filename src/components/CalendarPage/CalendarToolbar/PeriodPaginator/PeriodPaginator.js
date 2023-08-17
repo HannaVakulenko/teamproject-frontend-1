@@ -15,7 +15,7 @@ import 'react-datepicker/dist/react-datepicker.css';
 
 const PeriodPaginator = ({ date, getTasks, isOpen, setIsOpen, setDate }) => {
   const location = useLocation();
-  console.log(window);
+  // console.log(window);
 
   const handleChange = e => {
     setIsOpen(!isOpen);
