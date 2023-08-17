@@ -3,9 +3,9 @@
 // import { fetchTasks } from 'redux/tasks/operations';
 import { ChoosedDay } from 'components/CalendarPage';
 import { Section } from 'components/Common';
-// import { CalendarGrid, CalendarToolbar, WeekdayHeader } from '../components/CalendarPage/index';
+import { CalendarGrid, CalendarToolbar, WeekdayHeader } from '../components/CalendarPage/index';
 import React from 'react';
-// import moment from 'moment';
+import moment from 'moment';
 
 const CalendarPage = () => {
 
@@ -20,17 +20,17 @@ const CalendarPage = () => {
 
   return (
     <>
-      {/* <CalendarToolbar /> */}
+      <CalendarToolbar />
       <Section>
-        {/* <Section>
+        <Section>
           <WeekdayHeader />
           <CalendarGrid startDay={startDay} />
-        </Section> */}
+        </Section>
         <ChoosedDay />
       </Section>
     </>
   )
 };
-// const startDay = moment().startOf('month').startOf('week');
+const startDay = moment().startOf('month').startOf('week');
 
 export default CalendarPage;
