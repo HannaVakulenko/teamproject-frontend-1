@@ -6,34 +6,53 @@ import { device } from 'constants';
 const { tablet, desktop } = device;
 
 export const FormWrap = styled.div`
-position: relative;
- padding: 40px 20px;
-  border-radius: 16px;
-  background-color: ${p => p.theme.secondaryBgColor};
+
+ @media (max-width: ${tablet - 1}px) {
+ display: grid;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
+    position: relative;
+    padding: 40px 0;
+    border-radius: 16px;
+    background-color: ${p => p.theme.secondaryBgColor};
+}
 
   @media (min-width: ${tablet}px) and (max-width: ${desktop - 1}px) {
-     display: block;
-    margin-top: 38px;
-    padding: 40px 175px;
+    position: static;
+    border-radius: 16px;
+    padding: 40px 0;
+     background-color: ${p => p.theme.secondaryBgColor};
   }
 
-  @media (min-width: ${desktop}px) {
-    display: block;
-    margin-top: 38px;
-    padding: 60px 165px;
+ @media (min-width: ${desktop}px) {
+  background-color: ${p => p.theme.secondaryBgColor};
+  position: static;
+    padding: 60px 0;
+    border-radius: 16px;
+     grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
   }
- 
 `;
 
 export const Form = styled(FormikForm)`
-  display: flex;
-  flex-direction: column;
+@media (max-width: ${desktop - 1}px)
 
- @media (min-width: ${desktop}px) {
+ {display: flex;
+  gap:18px;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
+    align-items: flex-start;}
+
+  @media (min-width: ${desktop}px) {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+     grid-template-columns: 1fr 1fr;
     gap: 24px;
+     grid-column: span 2;
   }
+
 `;
 
 export const StyledDatePickerInput = styled(DatePicker)`
@@ -102,7 +121,6 @@ line-height: 18px;
   &:focus {
     border-color: #111111;
   };
-
 `;
 
 export const ErrorText = styled(ErrorMessage)`
@@ -121,21 +139,14 @@ export const ImageContainer = styled.div`
   align-items: center;
   z-index: 1;
 
-   @media (min-width: ${tablet}px) and (max-width: ${desktop - 1}px) {
+   @media (min-width: ${tablet}px) {
+    width: 124px;
      position: relative;
      display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
    }
-
-   @media (min-width: ${desktop}px) {
-     position: relative;
-     display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  }
 `;
 
 export const UserImage = styled.img`
@@ -162,20 +173,15 @@ export const Upload = styled.input`
   background-color: transparent;
   z-index: 3;
 
-   @media (min-width: ${tablet}px) and (max-width: ${desktop - 1}px) {
-
+   @media (min-width: ${tablet}px) {
         width: 18px;
-    left: 57%;
-   bottom: -3%;
+    
     height: 18px;
 }
-
-   @media (min-width: ${desktop}px)  {
+ @media (min-width: ${desktop}px)  {
 
     width: 18px;
   height: 18px;
-    left: 53%;
-    bottom: -3%;
   }
 `;
 
@@ -188,32 +194,21 @@ export const Icon = styled.svg`
   fill: none;
   background-color: #3E85F3;
   height: 14px;
-  stroke: #3E85F3;
+  stroke: white;
   border-radius: 50%;
   z-index: 2;
 
-   @media (min-width: ${tablet}px) and (max-width: ${desktop - 1}px) {
- 
-        width: 18px;
-    left: 57%;
-    bottom: -3%;
-    height: 18px;
-}
-
-   @media (min-width: ${desktop}px)  {
-
-    width: 18px;
-  height: 18px;
-    left: 53%;
+   @media (min-width: ${tablet}px) {
+    width: 24px;
+    height: 24px;
      bottom: -3%;
-  }
+  left: 70%;
+}
 `;
 
 export const BdayIcon = styled.svg`
-   position: absolute;
-  right: 12px;
-  top: 50%;
-  transform: translateY(-50%);
+   position: relative;
+  right: 20px;
   width: 14px;
   fill: none;
   height: 14px;
@@ -227,7 +222,6 @@ export const BdayIcon = styled.svg`
     transform: translateY(0);
    right: 20px;
   }
- 
 `;
 
 export const PlaceholderContainer = styled.div`
@@ -247,6 +241,7 @@ display: flex;
   justify-content: center;
   gap: 4px;
   margin-top: 18px;
+  margin-bottom: 40px;
 
    @media (min-width: ${tablet}px)  and (max-width: ${desktop - 1}px) {
     margin-top: 20px;
@@ -254,9 +249,11 @@ display: flex;
   }
 
    @media (min-width: ${desktop}px) {
+    display: grid;
     grid-column: 1 / span 2;
     text-align: center;
     margin-top: 20px;
+
   }
 `;
 
@@ -271,14 +268,14 @@ export const UserStatus = styled.span`
 color: #343434;
   font-size: 12px;
   font-weight: 400;
-  margin-bottom: 40px;
+  // margin-bottom: 40px;
 
 `;
 
 export const SaveChangesBtn = styled.button`
 display: block;
 width: 195px;
-  margin-top: 22px;
+  margin-top: 40px;
   padding: 14px 0;
   font-size: 14px;
   font-weight: 600;
@@ -297,7 +294,12 @@ width: 195px;
     background-color: ${p => p.theme.mainAccentColorActive};
   }
 
+   @media (min-width: ${tablet}px)  and (max-width: ${desktop - 1}px) {
+margin-top: 40px;
+   }
+
   @media (min-width: ${desktop}px) {
+    margin-top: 88px;
    display: block;
   margin-left: auto;
   margin-right: auto;
@@ -312,9 +314,44 @@ export const StyledDatePickerInputWrapper = styled.div`
   align-items: center;
 `;
 
-export const InputWrapper = styled.div`
- @media (max-width: ${desktop}px) {
-    gap: 18px;
+export const InputWrapperL = styled.div`
+display: grid;
+gap: 18px;
+
+ @media (min-width: ${tablet}px)  and (max-width: ${desktop - 1}px) {
+  gap: 24px;
+ }
+
+
+ @media (min-width: ${desktop}px) {
+  gap: 24px;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-end;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+`;
+
+export const InputWrapperR = styled.div`
+display: grid;
+gap: 18px;
+
+ @media (min-width: ${tablet}px)  and (max-width: ${desktop - 1}px) {
+  gap: 24px;
+ }
+
+
+ @media (min-width: ${desktop}px) {
+  gap: 24px;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: column;
   }
 
 `;
@@ -357,4 +394,3 @@ export const DatePickerWrapperStyles = createGlobalStyle`
     border-radius: 16px !important;
   }
 `;
-
