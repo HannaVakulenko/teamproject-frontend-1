@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 import { device } from 'constants';
 
-
 export const ReviewSliderCard = styled.div`
   height: 190px;
   display: flex;
@@ -76,7 +75,7 @@ export const ReviewText = styled.p`
   font-weight: 500;
   font-size: 14px;
   line-height: 1.29;
-  color: rgba(17, 17, 17, 0.70);
+  color: rgba(17, 17, 17, 0.7);
   @media (min-width: ${device.tablet}px) {
     margin-left: 68px;
   }
@@ -116,19 +115,19 @@ export const SwiperNavBtn = styled.div`
     filter: drop-shadow(0px 5px 2px rgb(0 0 0 / 0.4));
     transition: 300ms cubic-bezier(0.4, 0, 0.2, 1);
   }
- @media (min-width: ${device.tablet}px) {
+  @media (min-width: ${device.tablet}px) {
     width: 61px;
     height: 48px;
   }
-   &.disabled {
-    pointer-events: none; 
-    opacity: 0.5; 
+  &.disabled {
+    pointer-events: none;
+    opacity: 0.5;
   }
 `;
-export const Section = styled.div`
+
+export const Section = styled.section`
   background-color: ${p => p.theme.buttonTextColor};
 `;
-
 
 export const SliderWrapper = styled.div`
   margin-bottom: 32px;
@@ -149,6 +148,7 @@ export const Title = styled.h2`
     margin: 0 auto 50px auto;
   }
 `;
+
 export const Container = styled.div`
   width: 100%;
   margin: 0 auto;
