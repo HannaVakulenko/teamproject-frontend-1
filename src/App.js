@@ -1,5 +1,5 @@
 import { lazy } from 'react';
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, Navigate } from 'react-router-dom';
 import Layout from 'components/MainLayout/MainLayout/MainLayout';
 import { PrivateRoute } from 'components/PrivateRoute';
 import { RestrictedRoute } from 'components/RestrictedRoute';
@@ -35,12 +35,14 @@ export const App = () => {
           }
           index
         />
+
         <Route
           path="/login"
           element={
             <RestrictedRoute redirectTo="/calendar" component={<LoginPage />} />
           }
         />
+
         <Route
           path="/register"
           element={
@@ -50,31 +52,17 @@ export const App = () => {
             />
           }
         />
-        <Route path="/*" element={<Layout />}>
-          <Route
-            path="calendar"
-            element={
-              <PrivateRoute redirectTo="/login" component={<CalendarPage />} />
-            }
-          />
-          <Route
-            path="account"
-            element={
-              <PrivateRoute redirectTo="/login" component={<AccountPage />} />
-            }
-          />
-          <Route
-            path="statistics"
-            element={
-              <PrivateRoute
-                redirectTo="/login"
-                component={<StatisticsPage />}
-              />
-            }
-          />
-          {/* by Lucky13  */}
-          <Route path="calendar/month" element={<CalendarPage />} />
-          <Route path="calendar/day" element={<CalendarPage />} />
+
+        <Route
+          path="/"
+          element={<PrivateRoute redirectTo="/login" component={<Layout />} />}
+        >
+          <Route path="calendar" element={<CalendarPage />}>
+            <Route path="month" element={<CalendarPage />} />
+            <Route path="day" element={<CalendarPage />} />
+          </Route>
+          <Route path="account" element={<AccountPage />} />
+          <Route path="statistics" element={<StatisticsPage />} />
         </Route>
 
         <Route path="*" element={<NotFoundPage />} />
