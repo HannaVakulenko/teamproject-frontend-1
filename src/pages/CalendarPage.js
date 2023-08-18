@@ -4,7 +4,7 @@ import { fetchTasks } from 'redux/tasks/operations';
 import { ChoosedDay } from 'components/CalendarPage';
 import { Section } from 'components/Common';
 import { CalendarToolbar } from '../components/CalendarPage/index';
-// import React from 'react';
+import React from 'react';
 // import moment from 'moment';
 // import { Outlet } from 'react-router-dom';
 
