@@ -7,7 +7,7 @@ import { useMediaQuery } from 'react-responsive';
 const DayCalendarHead = () => {
   // const { currentDay } = useParams();
   const currentDate = new Date(); // currentDay;
-  console.log('currentDate: ', currentDate);
+  // console.log('currentDate: ', currentDate);
   const result = formatISO(currentDate, { representation: 'date' });
   console.log('result: ', result);
 
