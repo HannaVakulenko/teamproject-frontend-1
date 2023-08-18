@@ -13,6 +13,7 @@ import LoginPage from 'pages/LoginPage';
 import MainPage from 'pages/MainPage';
 import RegisterPage from 'pages/RegisterPage';
 import NotFoundPage from 'pages/NotFoundPage';
+import { ChoosedDay, ChoosedMonth } from 'components/CalendarPage';
 const AccountPage = lazy(() => import('pages/AccountPage'));
 const CalendarPage = lazy(() => import('pages/CalendarPage'));
 const StatisticsPage = lazy(() => import('pages/StatisticsPage'));
@@ -58,8 +59,12 @@ export const App = () => {
           element={<PrivateRoute redirectTo="/login" component={<Layout />} />}
         >
           <Route path="calendar" element={<CalendarPage />}>
-            <Route path="month" element={<CalendarPage />} />
-            <Route path="day" element={<CalendarPage />} />
+            <Route
+              index
+              element={<Navigate to="/calendar/month/:currentDate" />}
+            />
+            <Route path="month/:currentDate" element={<ChoosedMonth />} />
+            <Route path="day" element={<ChoosedDay />} />
           </Route>
           <Route path="account" element={<AccountPage />} />
           <Route path="statistics" element={<StatisticsPage />} />

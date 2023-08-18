@@ -101,10 +101,10 @@ const CalendarToolbar = () => {
           <PeriodTypeSelect />
         </div>
       </Container>
-      <Routes>
-        <Route path="/calendar/month" element={<div>day</div>} />
-        <Route path="/calendar/day" element={<div>month</div>} />
-      </Routes>
+      {/* <Routes>
+        <Route path="/month" element={<div>day</div>} />
+        <Route path="/day" element={<div>month</div>} />
+      </Routes> */}
     </>
   );
 };
