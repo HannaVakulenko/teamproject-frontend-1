@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { FormWrap, FieldWrap, Label, Input, BdayIcon, StyledDatePickerInputWrapper, InputWrapper, StyledDatePickerInput, ErrorText, Form, ImageContainer, UserImage, Upload, UserInfoWrap, UserName, UserStatus, SaveChangesBtn,  DatePickerWrapperStyles} from './UserForm.styled';
+import { FormWrap, FieldWrap, Label, Input, BdayIcon, StyledDatePickerInputWrapper, InputWrapperL, InputWrapperR, StyledDatePickerInput, ErrorText, Form, ImageContainer, UserImage, Upload, UserInfoWrap, UserName, UserStatus, SaveChangesBtn,  DatePickerWrapperStyles} from './UserForm.styled';
 import { useDispatch, useSelector } from 'react-redux';
 import { Formik} from 'formik';
 import * as yup from 'yup';
@@ -15,7 +15,7 @@ const validationSchema = yup.object().shape({
   userName: yup.string().max(16, 'Max 16 characters').min(2, 'Min 2 characters'),
   email: yup.string().email('Invalid email'),
   birthday: yup.date(),
-  phone: yup.string().matches(/^\+380\d{9}$/, 'Invalid phone format'),
+  phone: yup.string(), 
   skype: yup.string().max(16, 'Max 16 characters').min(5, 'Min 5 characters'),
 });
 
@@ -91,7 +91,7 @@ const months = [
                 }}
               />
               <Icon>
-                <use href={icon + '#icon-plus-in-a-circle'}></use>
+                <use href={icon + '#icon-plus'}></use>
               </Icon>
       </ImageContainer>
       <UserInfoWrap>
@@ -106,7 +106,7 @@ const months = [
         <>
           <>
               <Form autoComplete="off">
-                <InputWrapper className="left-column">
+                <InputWrapperL className="left-column">
               <FieldWrap>
               <Label>User Name:</Label>
                   <Input type="text" name="userName" placeholder="User Name"/>
@@ -118,7 +118,7 @@ const months = [
                  <StyledDatePickerInput
          selected={localUserData.birthday}
   onChange={date => setLocalUserData({ ...localUserData, birthday: date })}
-                      dateFormat="MM/dd/yyyy"
+                      dateFormat="dd/MM/yyyy"
                        placeholderText={`Select your birthday (current date: ${currentDateString})`}
   onChangeRaw={e => {
     e.preventDefault();
@@ -177,7 +177,7 @@ const months = [
                 {">"}
       </button>
     </div>
-          )}
+  )}
                     />
                      <BdayIcon>
               <use href={icon + '#icon-chevron-down'}></use>
@@ -189,11 +189,11 @@ const months = [
               <Input type="email" name="email" placeholder="Email" />
                     <ErrorText name="email" component="div" />
                   </FieldWrap>
-                </InputWrapper>
-                <InputWrapper className="right-column">
+                </InputWrapperL>
+                <InputWrapperR className="right-column">
               <FieldWrap>
               <Label>Phone:</Label>
-              <Input type="text" name="phone" placeholder="+380971234567" />
+              <Input type="text" name="phone" placeholder="38 (097) 256 34 77" />
               <ErrorText name="phone" component="div" /></FieldWrap>
               <FieldWrap>
               <Label>Skype:</Label>
@@ -204,20 +204,21 @@ const months = [
               />
                 <ErrorText name="skype" component="div" />
                   </FieldWrap>
-                  </InputWrapper>
-                
+                  </InputWrapperR>
               </Form>
                <SaveChangesBtn
               type="submit"
               disabled={!dirty || isSubmitting || formSubmitted}>
               Save changes
-            </SaveChangesBtn>
-            <DatePickerWrapperStyles />
+              </SaveChangesBtn>
+              
+              <DatePickerWrapperStyles />
           </>
         </>
       )}
       </Formik>
-      </FormWrap>
+    </FormWrap>
+    
   );
 };
 

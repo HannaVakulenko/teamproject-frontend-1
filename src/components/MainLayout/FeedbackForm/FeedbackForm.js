@@ -36,7 +36,9 @@ const FeedbackForm = ({ closeModal }) => {
 
   const isFeedback = useSelector(selectUserReview);
 
-  const [ratingValue, setRatingValue] = useState(5);
+  const [ratingValue, setRatingValue] = useState(
+    isFeedback.length === 0 ? 5 : isFeedback[0].rating
+  );
 
   const [isEdit, setisEdit] = useState(false);
 
@@ -87,9 +89,10 @@ const FeedbackForm = ({ closeModal }) => {
               <use href={icon + '#icon-star'}></use>
             </IconStar>
           }
-          defaultValue={
-            isFeedback.length === 0 ? ratingValue : isFeedback[0].rating
-          }
+          // defaultValue={
+          //   isFeedback.length === 0 ? ratingValue : isFeedback[0].rating
+          // }
+          value={ratingValue}
           onChange={(_, newValue) => {
             setRatingValue(newValue);
           }}
@@ -114,7 +117,6 @@ const FeedbackForm = ({ closeModal }) => {
                   dispatch(deleteReview());
                   setisEdit(false);
                   closeModal();
-                  console.log('delete feedback');
                 }}
                 type="button"
               >

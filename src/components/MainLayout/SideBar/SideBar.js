@@ -157,7 +157,7 @@ const SideBar = ({ isOpen, toggleSidebar, mainLayoutRef }) => {
                 <NavigationItem
                   to="/account"
                   onClick={handleLinkClick}
-                  $isActive={location.pathname === '/account'}
+                  $isActive={location.pathname.startsWith('/account')}
                 >
                   <Icon>
                     <use href={icon + '#icon-user-check-01'}></use>
@@ -170,7 +170,7 @@ const SideBar = ({ isOpen, toggleSidebar, mainLayoutRef }) => {
                 <NavigationItem
                   to="/calendar"
                   onClick={handleLinkClick}
-                  $isActive={location.pathname === '/calendar'}
+                  $isActive={location.pathname.startsWith('/calendar')}
                 >
                   <Icon>
                     <use href={icon + '#icon-calendar-check-02'}></use>
@@ -183,7 +183,7 @@ const SideBar = ({ isOpen, toggleSidebar, mainLayoutRef }) => {
                 <NavigationItem
                   to="/statistics"
                   onClick={handleLinkClick}
-                  $isActive={location.pathname === '/statistics'}
+                  $isActive={location.pathname.startsWith('/statistics')}
                 >
                   <Icon>
                     <use href={icon + '#icon-shape'}></use>
