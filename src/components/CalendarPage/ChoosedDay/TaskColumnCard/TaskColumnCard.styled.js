@@ -16,7 +16,6 @@ export const Wrapper = styled.div`
   };
 `;
 
-// Стыли для текста в карточке задачи, максимальное к-во символов 250. Нужно обрезать текст и добавить многоточие
 export const Text = styled.p`
   width: 272px;
   font-size: 14px;
