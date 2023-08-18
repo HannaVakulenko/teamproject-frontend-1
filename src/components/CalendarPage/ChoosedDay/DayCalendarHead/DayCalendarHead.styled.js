@@ -33,3 +33,35 @@ export const Item = styled.li`
     gap: 8px;
   }
 `;
+
+export const WeekDay = styled.p`
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.12;
+  color: ${p => p.theme.secondaryTextColor};
+  text-transform: uppercase;
+
+  @media screen and (min-width: ${device.tablet}px) {
+    font-size: 14px;
+    line-height: 1.28;
+  };
+`;
+
+export const WeekDate = styled.p`
+  padding: 4px 6px;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.16;
+  color: ${p => p.theme.secondaryTextColor};
+  border-radius: 6px;
+
+  @media screen and (min-width: ${device.tablet}px) {
+    font-size: 16px;
+    line-height: 1.12;
+  };
+
+  &.current-day {
+    color: #fff;
+    background-color: ${p => p.theme.mainAccentColor};
+  };
+`;

@@ -1,6 +1,6 @@
 import React from 'react';
-import { startOfWeek, eachDayOfInterval, format, addDays, formatISO } from 'date-fns';
-import { Item, List, Wrapper } from './DayCalendarHead.styled';
+import { startOfWeek, eachDayOfInterval, format, addDays, formatISO, isSameDay } from 'date-fns';
+import { WeekDay, WeekDate, Item, List, Wrapper } from './DayCalendarHead.styled';
 import { useMediaQuery } from 'react-responsive';
 // import { useParams } from 'react-router-dom';
 
@@ -30,14 +30,27 @@ const DayCalendarHead = () => {
         {isMobile
           ? daysOfWeekForMobile.map((day, index) => (
             <Item key={index}>
-              <span>{day}</span>
-              <span>{daysOfMonth[index]}</span>
+              <WeekDay>{day}</WeekDay>
+              <WeekDate className={
+                isSameDay(days[index], currentDate)
+                  ? 'current-day'
+                  : ''
+                }
+              >
+                {daysOfMonth[index]}
+              </WeekDate>
             </Item>
           ))
           : daysOfWeek.map((day, index) => (
             <Item key={index}>
-              <span>{day}</span>
-              <span>{daysOfMonth[index]}</span>
+              <WeekDay>{day}</WeekDay>
+              <WeekDate className={
+                isSameDay(days[index], currentDate)
+                  ? 'current-day'
+                  : ''
+                }
+              >
+                {daysOfMonth[index]}</WeekDate>
             </Item>
           ))}
       </List>

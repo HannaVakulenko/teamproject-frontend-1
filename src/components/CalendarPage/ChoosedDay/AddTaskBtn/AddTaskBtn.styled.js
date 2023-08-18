@@ -1,4 +1,5 @@
 import { styled } from 'styled-components';
+import { device } from 'constants';
 
 export const Button = styled.button`
   width: 100%;
@@ -15,6 +16,10 @@ export const Button = styled.button`
   border-radius: 8px;
   border: 1px dashed ${p => p.theme.sidebarMainActiveColor};
   transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  @media screen and (min-width: ${device.tablet}px) {
+    margin-top: 32px;
+  };
 
 
   &:hover {
