@@ -6,7 +6,7 @@ import { Section } from 'components/Common';
 import { CalendarToolbar } from '../components/CalendarPage/index';
 // import React from 'react';
 // import moment from 'moment';
-import { Outlet } from 'react-router-dom';
+// import { Outlet } from 'react-router-dom';
 
 const CalendarPage = () => {
 
@@ -24,13 +24,13 @@ const CalendarPage = () => {
       <CalendarToolbar />
       {/* <Section>
         <ChoosedMonth startDay={startDay} />
-      </Section>
-      <Section>
-        <ChoosedDay />
       </Section> */}
       <Section>
-        <Outlet />
+        <ChoosedDay />
       </Section>
+      {/* <Section>
+        <Outlet />
+      </Section> */}
     </>
   );
 };
