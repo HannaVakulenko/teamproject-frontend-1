@@ -16,24 +16,10 @@ import {
   Icon,
   NavItemName,
 } from './SideBar.styled';
-import logoMob1x from 'assets/images/logo-mob-1x.png';
-import logoMob1xw from 'assets/images/logo-mob-1x.webp';
-import logoMob2x from 'assets/images/logo-mob@2x.png';
-import logoMob2xw from 'assets/images/logo-mob@2x.webp';
-import logoMob3x from 'assets/images/logo-mob@3x.png';
-import logoMob3xw from 'assets/images/logo-mob@3x.webp';
-import logoTabl1x from 'assets/images/logo-tabl-1x.png';
-import logoTabl1xw from 'assets/images/logo-tabl-1x.webp';
-import logoTabl2x from 'assets/images/logo-tabl@2x.png';
-import logoTabl2xw from 'assets/images/logo-tabl@2x.webp';
-import logoTabl3x from 'assets/images/logo-tabl@3x.png';
-import logoTabl3xw from 'assets/images/logo-tabl@3x.webp';
-import logoDesk1x from 'assets/images/logo-desk-1x.png';
-import logoDesk1xw from 'assets/images/logo-desk-1x.webp';
-import logoDesk2x from 'assets/images/logo-desk@2x.png';
-import logoDesk2xw from 'assets/images/logo-desk@2x.webp';
-import logoDesk3x from 'assets/images/logo-desk@3x.png';
-import logoDesk3xw from 'assets/images/logo-desk@3x.webp';
+
+import { device } from 'constants';
+import { logo } from 'assets/images/logo';
+
 import icon from 'assets/icons/symbol-defs.svg';
 import { useEffect, useState, useRef } from 'react';
 import { useLocation } from 'react-router-dom';
@@ -126,20 +112,40 @@ const SideBar = ({ isOpen, toggleSidebar, mainLayoutRef }) => {
         <TopSection>
           <LogoAndTitle>
             <LogoLink to="/">
-              <Logo
-                srcSet={`${logoMob1xw} 1w, ${logoMob1x} 1x,
-                        ${logoMob2xw} 2w, ${logoMob2x} 2x,
-                        ${logoMob3xw} 3w, ${logoMob3x} 3x,
-                        ${logoTabl1xw} 1w, ${logoTabl1x} 1x,
-                        ${logoTabl2xw} 2w, ${logoTabl2x} 2x,
-                        ${logoTabl3xw} 3w, ${logoTabl3x} 3x,
-                        ${logoDesk1xw} 1w, ${logoDesk1x} 1x,
-                        ${logoDesk2xw} 2w, ${logoDesk2x} 2x,
-                        ${logoDesk3xw} 3w, ${logoDesk3x} 3x`}
-                src={logoDesk1x}
-                type="image/png"
-                alt="Logo"
-              />
+              <picture>
+                {/* Webp */}
+                <source
+                  srcSet={`${logo.mob1xWebp} 1x, ${logo.mob2xWebp} 2x, ${logo.mob3xWebp} 3x`}
+                  type="image/webp"
+                  media={`(min-width: 150px)`}
+                />
+                <source
+                  srcSet={`${logo.tabl1xWebp} 1x, ${logo.tabl2xWebp} 2x, ${logo.tabl3xWebp} 3x`}
+                  type="image/webp"
+                  media={`(min-width: ${device.tablet}px)`}
+                />
+                <source
+                  srcSet={`${logo.desk1xWebp} 1x, ${logo.desk2xWebp} 2x, ${logo.desk3xWebp} 3x`}
+                  type="image/webp"
+                  media={`(min-width: ${device.desktop}px)`}
+                />
+
+                {/* Png */}
+                <source
+                  srcSet={`${logo.mob1xPng} 1x, ${logo.mob2xPng} 2x, ${logo.mob3xPng} 3x`}
+                  media={`(min-width: 150px)`}
+                />
+                <source
+                  srcSet={`${logo.tabl1xPng} 1x, ${logo.tabl2xPng} 2x, ${logo.tabl3xPng} 3x`}
+                  media={`(min-width: ${device.tablet}px)`}
+                />
+                <source
+                  srcSet={`${logo.desk1xPng} 1x, ${logo.desk2xPng} 2x, ${logo.desk3xPng} 3x`}
+                  media={`(min-width: ${device.desktop}px)`}
+                />
+
+                <Logo src={logo.desk1xPng} alt="Logo" />
+              </picture>
               <LogoTitle>
                 G<LogoSpan>oo</LogoSpan>seTrack
               </LogoTitle>
@@ -150,6 +156,7 @@ const SideBar = ({ isOpen, toggleSidebar, mainLayoutRef }) => {
               </CloseIcon>
             </CloseButton>
           </LogoAndTitle>
+
           <Navigation>
             <Panel>User Panel</Panel>
             <NavigationList>
@@ -157,7 +164,7 @@ const SideBar = ({ isOpen, toggleSidebar, mainLayoutRef }) => {
                 <NavigationItem
                   to="/account"
                   onClick={handleLinkClick}
-                  $isActive={location.pathname === '/account'}
+                  $isActive={location.pathname.startsWith('/account')}
                 >
                   <Icon>
                     <use href={icon + '#icon-user-check-01'}></use>
@@ -170,7 +177,7 @@ const SideBar = ({ isOpen, toggleSidebar, mainLayoutRef }) => {
                 <NavigationItem
                   to="/calendar"
                   onClick={handleLinkClick}
-                  $isActive={location.pathname === '/calendar'}
+                  $isActive={location.pathname.startsWith('/calendar')}
                 >
                   <Icon>
                     <use href={icon + '#icon-calendar-check-02'}></use>
@@ -183,7 +190,7 @@ const SideBar = ({ isOpen, toggleSidebar, mainLayoutRef }) => {
                 <NavigationItem
                   to="/statistics"
                   onClick={handleLinkClick}
-                  $isActive={location.pathname === '/statistics'}
+                  $isActive={location.pathname.startsWith('/statistics')}
                 >
                   <Icon>
                     <use href={icon + '#icon-shape'}></use>

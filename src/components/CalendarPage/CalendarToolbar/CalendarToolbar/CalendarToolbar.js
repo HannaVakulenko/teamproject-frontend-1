@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { Routes, Route, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
+// import { Routes, Route, useLocation } from 'react-router-dom';
 // import { useSelector } from 'react-redux';
 import { PeriodPaginator, PeriodTypeSelect } from '../../index';
 import { Container, ContainerSecond } from './CalendarToolbar.styled';
@@ -101,10 +102,10 @@ const CalendarToolbar = () => {
           <PeriodTypeSelect />
         </div>
       </Container>
-      <Routes>
-        <Route path="/calendar/month" element={<div>day</div>} />
-        <Route path="/calendar/day" element={<div>month</div>} />
-      </Routes>
+      {/* <Routes>
+        <Route path="/month" element={<div>day</div>} />
+        <Route path="/day" element={<div>month</div>} />
+      </Routes> */}
     </>
   );
 };

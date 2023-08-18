@@ -34,6 +34,7 @@ export const Date = styled.button`
   font-style: normal;
   font-weight: 700;
   line-height: 1.3;
+  text-transform: uppercase;
 
   @media (min-width: 376px) and (max-width: 768px) {
     padding: 8px 12px 8px 12px;
@@ -63,8 +64,10 @@ export const ButtonDecrease = styled.button`
   width: 36px;
   height: 30px;
   border-radius: 8px 0px 0px 8px;
-  border: 1px;
+
   padding: 8px 12px 8px 12px;
+  border: ${p => p.theme.buttonInDecBorder};
+  background-color: ${p => p.theme.secondaryBgColor};
 
   @media (min-width: 376px) and (max-width: 768px) {
     width: 38px;
@@ -84,8 +87,10 @@ export const ButtonIncrease = styled.button`
   width: 36px;
   height: 30px;
   border-radius: 0px 8px 8px 0px;
-  border: 1px;
+
   padding: 8px 12px 8px 12px;
+  border: ${p => p.theme.buttonInDecBorder};
+  background-color: ${p => p.theme.secondaryBgColor};
 
   @media (min-width: 376px) and (max-width: 768px) {
     width: 38px;
@@ -101,9 +106,6 @@ export const ButtonIncrease = styled.button`
 export const Icon = styled.svg``;
 
 export const DatePickerWrapperStyles = createGlobalStyle`
-
-
-
 .react-datepicker{ 
   position: absolute !important;
 
@@ -153,11 +155,16 @@ export const DatePickerWrapperStyles = createGlobalStyle`
   }
 
   .react-datepicker__month-container{
+    width: 327px;
+    height: 354px;
+    padding: 9px 18px;
 
-  @media (min-width: 376px) and (max-width: 768px) {   
- }
-  @media (min-width: 769px) and (max-width: 1440px) {
-}
+    @media (min-width: 376px) and (max-width: 768px) {   width:374px;
+    heigh:354px;
+   }
+    @media (min-width: 769px) and (max-width: 1440px) { width:374px;
+    height:354px;
+   }
   background-color: #3E85F3 !important;
   border: none  !important;
   border-radius: 16px !important;
@@ -165,7 +172,11 @@ padding: 9px 19px 19px 19px;
   }
 
   .react-datepicker__navigation{margin-top:9px;}
-  .react-datepicker__day{}
+  .react-datepicker__day{font-family: Inter;
+font-size: 14px;
+font-style: normal;
+font-weight: 400;
+line-height: 18px;}
 
    .react-datepicker__current-month{ 
     color: white !important;
