@@ -43,7 +43,7 @@ export const AvatarWrapper = styled.div`
   width: 50px;
   height: 50px;
   border-radius: 50%;
-  border: 1px solid #616161;
+  border: 1px solid transparent;
   margin-right: 18px;
   overflow: hidden;
 `;
@@ -52,6 +52,7 @@ export const AvatarImg = styled.img`
   width: 50px;
   height: 50px;
   border-radius: 50%;
+  outline: none;
 `;
 
 export const Name = styled.h1`
