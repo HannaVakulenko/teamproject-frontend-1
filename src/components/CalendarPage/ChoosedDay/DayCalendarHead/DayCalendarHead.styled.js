@@ -20,7 +20,7 @@ export const Wrapper = styled.div`
 
 export const List = styled.ul`
   display: flex;
-  gap: 19px;
+  justify-content: space-between;
 `;
 
 export const Item = styled.li`
@@ -28,4 +28,8 @@ export const Item = styled.li`
   flex-direction: column;
   align-items: center;
   gap: 6px;
+
+  @media screen and (min-width: ${device.tablet}px) {
+    gap: 8px;
+  }
 `;

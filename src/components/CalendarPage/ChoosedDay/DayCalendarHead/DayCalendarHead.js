@@ -1,38 +1,45 @@
 import React from 'react';
+import { startOfWeek, eachDayOfInterval, format, addDays, formatISO } from 'date-fns';
 import { Item, List, Wrapper } from './DayCalendarHead.styled';
+import { useMediaQuery } from 'react-responsive';
+// import { useParams } from 'react-router-dom';
 
 const DayCalendarHead = () => {
+  // const { currentDay } = useParams();
+  const currentDate = new Date(); // currentDay;
+  console.log('currentDate: ', currentDate);
+  const result = formatISO(currentDate, { representation: 'date' });
+  console.log('result: ', result);
+
+  const isMobile = useMediaQuery({ maxWidth: 767 });
+
+  const startDay = startOfWeek(currentDate, { weekStartsOn: 1 }); // 1 - Monday
+  const lastDayOfWeek = addDays(startOfWeek(currentDate, { weekStartsOn: 1 }), 6) // 6 - Sunday
+
+  const days = eachDayOfInterval({
+    start: startDay,
+    end: lastDayOfWeek
+  });
+  const daysOfWeek = days.map(day => format(day, 'E'));
+  const daysOfWeekForMobile = days.map(day => format(day, 'EEEEE'));
+  const daysOfMonth = days.map(day => format(day, 'd'));
+
   return (
     <Wrapper>
       <List>
-        <Item>
-          <span>MON</span>
-          <span>1</span>
-        </Item>
-        <Item>
-          <span>TUE</span>
-          <span>2</span>
-        </Item>
-        <Item>
-          <span>WED</span>
-          <span>3</span>
-        </Item>
-        <Item>
-          <span>THU</span>
-          <span>4</span>
-        </Item>
-        <Item>
-          <span>FRI</span>
-          <span>5</span>
-        </Item>
-        <Item>
-          <span>SAT</span>
-          <span>6</span>
-        </Item>
-        <Item>
-          <span>SUN</span>
-          <span>7</span>
-        </Item>
+        {isMobile
+          ? daysOfWeekForMobile.map((day, index) => (
+            <Item key={index}>
+              <span>{day}</span>
+              <span>{daysOfMonth[index]}</span>
+            </Item>
+          ))
+          : daysOfWeek.map((day, index) => (
+            <Item key={index}>
+              <span>{day}</span>
+              <span>{daysOfMonth[index]}</span>
+            </Item>
+          ))}
       </List>
     </Wrapper>
   );
