@@ -16,12 +16,12 @@ export const ButtonMonth = styled.button`
   padding: 8px 16px 8px 16px;
   display: inline-flex;
   background-color: ${props =>
-    props.isActive
+    props.$isActive
       ? p => p.theme.activeButtonDayMonth
       : p => p.theme.inactiveButtonDayMonth};
 
   color: ${props =>
-    props.isActive ? '#3E85F3' : p => p.theme.sidebarMainActiveColor};
+    props.$isActive ? '#3E85F3' : p => p.theme.sidebarMainActiveColor};
 
   font-family: Inter;
   font-size: 14px;
@@ -56,11 +56,11 @@ export const ButtonDay = styled.button`
   display: inline-flex;
   border: none;
   background-color: ${props =>
-    props.isActive
+    props.$isActive
       ? p => p.theme.activeButtonDayMonth
       : p => p.theme.inactiveButtonDayMonth};
   color: ${props =>
-    props.isActive ? '#3E85F3' : p => p.theme.sidebarMainActiveColor};
+    props.$isActive ? '#3E85F3' : p => p.theme.sidebarMainActiveColor};
 
   font-family: Inter;
   font-size: 14px;

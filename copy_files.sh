@@ -1,15 +1,16 @@
 #!/bin/bash
 
 files=(
-  "src/components/MainLayout/ThemeToggler/ThemeToggler.js"
-  "src/index.js"
   "src/App.js"
-  "src/styles/theme.js"
-  "src/redux/store.js"
-  "src/redux/auth/authSlice.js"
-  "src/redux/auth/operations.js"
-  "src/redux/auth/selectors.js"
-  
+  "src/components/CalendarPage/index.js"
+  "src/components/CalendarPage/ChoosedMonth/CalendarTable/CalendarTable.js"
+  "src/components/CalendarPage/ChoosedMonth/ChoosedMonth/ChoosedMonth.js"
+  "src/components/CalendarPage/ChoosedMonth/ChoosedMonth/MonthCalendarHead/MonthCalendarHead.js"
+  "src/components/CalendarPage/ChoosedDay/ChoosedDay/ChoosedDay.js"
+  "src/components/CalendarPage/CalendarToolbar/CalendarToolbar/CalendarToolbar.js"
+  "src/components/CalendarPage/CalendarToolbar/PeriodPaginator/PeriodPaginator.js"
+  "src/components/CalendarPage/CalendarToolbar/PeriodTypeSelect/PeriodTypeSelect.js"
+  "src/pages/CalendarPage.js"
 )
 > buffer.txt
 for file in "${files[@]}"
