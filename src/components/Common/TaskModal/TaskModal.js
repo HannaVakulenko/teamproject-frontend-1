@@ -2,10 +2,13 @@ import TaskForm from "../TaskForm/TaskForm";
 import Modal from "../Modal/Modal";
 
 
-const TaskModal = ({onClose}) => {
+const TaskModal = ({onClose, action}) => {
   return (
     <Modal onClose={onClose}>
-      <TaskForm></TaskForm>
+      <TaskForm>
+        onClose={onClose}
+        action={action} 
+      </TaskForm>
     </Modal>
   );
 };

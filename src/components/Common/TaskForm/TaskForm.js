@@ -1,7 +1,28 @@
 import { Formik } from 'formik';
 import * as Yup from 'yup';
+import { addTask } from 'redux/tasks/operations';
+import { useDispatch } from 'react-redux';
+import { useParams } from 'react-router-dom';
+
+import {
+  ButtonAction,
+  ButtonCancel,
+  ButtonCloseWrap,
+  ButtonWrapper,
+  ErrorMessage,
+  Form,
+  InputTime,
+  InputTitle,
+  Label,
+  RadioField,
+  RadioLabel,
+  RadioSpan,
+  RadioWrapper,
+  TimeWrapper,
+} from './TaskForm.styled';
 
 
+import icon from 'assets/icons/symbol-defs.svg';
 
 const TaskSchema = Yup.object().shape({
   title: Yup.string()
@@ -29,9 +50,11 @@ const TaskSchema = Yup.object().shape({
     .transform((value, originalValue) => {
       if (originalValue) {
         const [year, month, day] = originalValue.split('-');
-        return new Date(
+        if (year && month && day) {
+         return new Date(
           `${year}-${month.padStart(2, '0')}-${day.padStart(2, '0')}`
         );
+       }
       }
       return value;
     }),
@@ -41,13 +64,98 @@ const TaskSchema = Yup.object().shape({
 });
 
 
-const TaskForm = () => {
+const TaskForm = ({ onClose, action, column, title, start, end, priority }) => {
+  const dispatch = useDispatch();
+  const { currentDay } = useParams();
 
+  const handleSubmit = (values, actions) => {
+  onClose(); 
+
+     dispatch(addTask(values));
+     onClose();
+  actions.resetForm();
+};
+
+
+   const setCategory = () => {
+    if (column === 'To do') return 'to-do';
+    if (column === 'In progress') return 'in-progress';
+    if (column === 'Done') return 'done';
+  };
 
   return (
     <Formik
-    validationSchema={TaskSchema}>
-      
+      initialValues={{
+        title: '',
+    start:'09:00',
+    end: '10:00',
+    priority: action === 'edit' ? priority : 'low',
+    category: setCategory(),
+    date: currentDay,
+      }}
+      validationSchema={TaskSchema}
+      onSubmit={handleSubmit}
+    >
+       <Form>
+        <Label>
+          Title
+          <InputTitle type="text" name="title" placeholder="Enter text" />
+          <ErrorMessage name="title" component="div" />
+        </Label>
+
+        <TimeWrapper>
+          <Label>
+            Start
+            <InputTime type="time" name="start" />
+            <ErrorMessage name="start" component="div" />
+          </Label>
+          <Label>
+            End
+            <InputTime type="time" name="end" />
+            <ErrorMessage name="end" component="div" />
+          </Label>
+        </TimeWrapper>
+
+        <RadioWrapper role="group" aria-labelledby="my-radio-group">
+          <RadioLabel>
+            <RadioField type="radio" name="priority" value="low" />
+            <RadioSpan value="low" />
+            Low
+          </RadioLabel>
+          <RadioLabel>
+            <RadioField type="radio" name="priority" value="medium" />
+            <RadioSpan value="medium" />
+            Medium
+          </RadioLabel>
+          <RadioLabel>
+            <RadioField type="radio" name="priority" value="high" />
+            <RadioSpan value="high" />
+            High
+          </RadioLabel>
+        </RadioWrapper>
+
+       <ButtonWrapper>
+          <ButtonAction type="submit">
+             <svg width="18" height="18">
+              <use href={icon + '#icon-plus'} stroke="white"></use>
+            </svg>
+            Add
+  </ButtonAction>
+  <ButtonCancel type="button" onClick={onClose}>
+    Cancel
+  </ButtonCancel>
+</ButtonWrapper>
+
+        <ButtonCloseWrap
+  type="button"
+  aria-label="close button"
+  onClick={onClose}
+>
+  <svg width="24" height="24" >
+    <use href={icon + '#icon-x-close'} stroke="#111111"></use>
+  </svg>
+</ButtonCloseWrap>
+      </Form>
   </Formik>
   );
 };
