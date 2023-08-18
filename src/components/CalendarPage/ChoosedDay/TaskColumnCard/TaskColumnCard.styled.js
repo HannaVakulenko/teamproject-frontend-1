@@ -8,12 +8,22 @@ export const Wrapper = styled.div`
   padding-left: 14px;
   border-radius: 8px;
   background-color: ${p => p.theme.mainBGColor};
+  @media screen and (max-width: ${device.tablet - 1}px) {
+    height: 108px;
+  };
+  @media screen and (min-width: ${device.tablet}px) {
+    height: 112px;
+  };
 `;
 
-export const Title = styled.p`
+export const Text = styled.p`
+  width: 272px;
   font-size: 14px;
   font-weight: 500;
   line-height: 1.28;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 `;
 
 export const CardFooter = styled.div`
@@ -43,6 +53,15 @@ export const Badge = styled.span`
   font-weight: 600;
   line-height: 1.2;
   color:  ${p => p.theme.mainBGColor};
-  background-color: #72C2F8;
   border-radius: 4px;
+
+  &[data-priority="low"] {
+    background-color: #72C2F8;
+  };
+  &[data-priority="medium"] {
+    background-color: #F3B249;
+  };
+  &[data-priority="high"] {
+    background-color: #EA3D65;
+  };
 `;

@@ -3,9 +3,14 @@ import { device } from 'constants';
 
 export const Wrapper = styled.div`
   width: 100%;
+  margin-bottom: 24px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  @media screen and (min-width: ${device.tablet}px) {
+    margin-bottom: 28px;
+  }
 `;
 
 export const Title = styled.h3`
