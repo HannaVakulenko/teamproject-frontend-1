@@ -25,9 +25,10 @@ const CalendarPage = () => {
       {/* <Section>
         <ChoosedMonth startDay={startDay} />
       </Section> */}
-      <Section>
+      {/* <Section>
         <ChoosedDay />
-      </Section>
+      </Section> */}
+      <ChoosedDay />
       {/* <Section>
         <Outlet />
       </Section> */}
