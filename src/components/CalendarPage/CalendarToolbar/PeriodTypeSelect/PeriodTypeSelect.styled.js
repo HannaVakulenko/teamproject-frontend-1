@@ -10,12 +10,18 @@ export const ButtonMonth = styled.button`
   justify-content: center;
   width: 76px;
   height: 34px;
+  border: none;
+  border-right: ${p => p.theme.monthBorder};
   border-radius: 8px 0px 0px 8px;
   padding: 8px 16px 8px 16px;
   display: inline-flex;
-  background-color: ${props => (props.isActive ? '#e3f3ff' : '#CAE8FF')};
-  border-color: transparent;
-  color: #3e85f3;
+  background-color: ${props =>
+    props.$isActive
+      ? p => p.theme.activeButtonDayMonth
+      : p => p.theme.inactiveButtonDayMonth};
+
+  color: ${props =>
+    props.$isActive ? '#3E85F3' : p => p.theme.sidebarMainActiveColor};
 
   font-family: Inter;
   font-size: 14px;
@@ -48,9 +54,13 @@ export const ButtonDay = styled.button`
   border-radius: 0px 8px 8px 0px;
   padding: 8px 16px 8px 16px;
   display: inline-flex;
-  background-color: ${props => (props.isActive ? '#e3f3ff' : '#CAE8FF')};
-  border-color: transparent;
-  color: #3e85f3;
+  border: none;
+  background-color: ${props =>
+    props.$isActive
+      ? p => p.theme.activeButtonDayMonth
+      : p => p.theme.inactiveButtonDayMonth};
+  color: ${props =>
+    props.$isActive ? '#3E85F3' : p => p.theme.sidebarMainActiveColor};
 
   font-family: Inter;
   font-size: 14px;
