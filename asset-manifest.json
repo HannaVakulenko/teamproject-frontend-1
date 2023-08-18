@@ -1,13 +1,10 @@
 {
   "files": {
-    "main.css": "/teamproject-frontend-1/static/css/main.8505ec9a.css",
-    "main.js": "/teamproject-frontend-1/static/js/main.c63c3bea.js",
+    "main.css": "/teamproject-frontend-1/static/css/main.ba4169d3.css",
+    "main.js": "/teamproject-frontend-1/static/js/main.9375361d.js",
     "static/js/181.c30e31c5.chunk.js": "/teamproject-frontend-1/static/js/181.c30e31c5.chunk.js",
-    "static/js/671.95baf01e.chunk.js": "/teamproject-frontend-1/static/js/671.95baf01e.chunk.js",
+    "static/js/461.06198538.chunk.js": "/teamproject-frontend-1/static/js/461.06198538.chunk.js",
     "static/js/97.84e62906.chunk.js": "/teamproject-frontend-1/static/js/97.84e62906.chunk.js",
-    "static/css/44.3387ab20.chunk.css": "/teamproject-frontend-1/static/css/44.3387ab20.chunk.css",
-    "static/js/44.ecf187ae.chunk.js": "/teamproject-frontend-1/static/js/44.ecf187ae.chunk.js",
-    "static/js/528.0daadc60.chunk.js": "/teamproject-frontend-1/static/js/528.0daadc60.chunk.js",
     "static/media/mainpage-calendar-tabl@3x.png": "/teamproject-frontend-1/static/media/mainpage-calendar-tabl@3x.589377ec1ea92f785c22.png",
     "static/media/mainpage-calendar-desk@3x.png": "/teamproject-frontend-1/static/media/mainpage-calendar-desk@3x.7eb92153619fd464b254.png",
     "static/media/mainpage-calendar-tabl@2x.png": "/teamproject-frontend-1/static/media/mainpage-calendar-tabl@2x.a67bf7cd45e21b8911e7.png",
@@ -110,17 +107,14 @@
     "static/media/logo-tabl-1x.webp": "/teamproject-frontend-1/static/media/logo-tabl-1x.cec23fd06038f13e12d2.webp",
     "index.html": "/teamproject-frontend-1/index.html",
     "static/media/logo-mob-1x.webp": "/teamproject-frontend-1/static/media/logo-mob-1x.cd09cea1d315fcef8d71.webp",
-    "main.8505ec9a.css.map": "/teamproject-frontend-1/static/css/main.8505ec9a.css.map",
-    "main.c63c3bea.js.map": "/teamproject-frontend-1/static/js/main.c63c3bea.js.map",
+    "main.ba4169d3.css.map": "/teamproject-frontend-1/static/css/main.ba4169d3.css.map",
+    "main.9375361d.js.map": "/teamproject-frontend-1/static/js/main.9375361d.js.map",
     "181.c30e31c5.chunk.js.map": "/teamproject-frontend-1/static/js/181.c30e31c5.chunk.js.map",
-    "671.95baf01e.chunk.js.map": "/teamproject-frontend-1/static/js/671.95baf01e.chunk.js.map",
-    "97.84e62906.chunk.js.map": "/teamproject-frontend-1/static/js/97.84e62906.chunk.js.map",
-    "44.3387ab20.chunk.css.map": "/teamproject-frontend-1/static/css/44.3387ab20.chunk.css.map",
-    "44.ecf187ae.chunk.js.map": "/teamproject-frontend-1/static/js/44.ecf187ae.chunk.js.map",
-    "528.0daadc60.chunk.js.map": "/teamproject-frontend-1/static/js/528.0daadc60.chunk.js.map"
+    "461.06198538.chunk.js.map": "/teamproject-frontend-1/static/js/461.06198538.chunk.js.map",
+    "97.84e62906.chunk.js.map": "/teamproject-frontend-1/static/js/97.84e62906.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.8505ec9a.css",
-    "static/js/main.c63c3bea.js"
+    "static/css/main.ba4169d3.css",
+    "static/js/main.9375361d.js"
   ]
 }
