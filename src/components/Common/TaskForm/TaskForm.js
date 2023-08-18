@@ -1,6 +1,6 @@
 import { Formik } from 'formik';
 import * as Yup from 'yup';
-import { addTask } from 'redux/tasks/operations';
+import { updateTask, addTask } from 'redux/tasks/operations';
 import { useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
 
@@ -24,7 +24,13 @@ import {
 
 import icon from 'assets/icons/symbol-defs.svg';
 
-const TaskSchema = Yup.object().shape({
+
+
+const TaskForm = ({ onClose, action,column,priority, taskToEdit }) => {
+  const dispatch = useDispatch();
+  const { currentDay } = useParams();
+  
+  const TaskSchema = Yup.object().shape({
   title: Yup.string()
     .max(250, 'Title is too long')
     .required('Title is required'),
@@ -61,22 +67,29 @@ const TaskSchema = Yup.object().shape({
   category: Yup.string()
     .oneOf(['to-do', 'in-progress', 'done'])
     .required('Category is required'),
-});
+  });
+  
+  const addNewTask = async values => {
+    await dispatch(addTask(values));
+  };
 
-
-const TaskForm = ({ onClose, action, column, title, start, end, priority }) => {
-  const dispatch = useDispatch();
-  const { currentDay } = useParams();
+  const updateExistingTask = async values => {
+    await dispatch(updateTask({ _id: taskToEdit._id, ...values }));
+  };
 
   const handleSubmit = (values, actions) => {
-  onClose(); 
-
-     dispatch(addTask(values));
-     onClose();
-  actions.resetForm();
-};
-
-
+    if (action === 'add') {
+      addNewTask(values).then(() => {
+        onClose();
+        actions.resetForm();
+      });
+    } else if (action === 'edit') {
+      updateExistingTask(values).then(() => {
+        onClose();
+        actions.resetForm();
+      });
+    }
+  };
    const setCategory = () => {
     if (column === 'To do') return 'to-do';
     if (column === 'In progress') return 'in-progress';
@@ -86,7 +99,7 @@ const TaskForm = ({ onClose, action, column, title, start, end, priority }) => {
   return (
     <Formik
       initialValues={{
-        title: '',
+    title: '',
     start:'09:00',
     end: '10:00',
     priority: action === 'edit' ? priority : 'low',
@@ -133,19 +146,27 @@ const TaskForm = ({ onClose, action, column, title, start, end, priority }) => {
             High
           </RadioLabel>
         </RadioWrapper>
-
-       <ButtonWrapper>
-          <ButtonAction type="submit">
-             <svg width="18" height="18">
+<ButtonWrapper>
+          {action === 'add' ? (
+            <ButtonAction type="submit">
+              <svg width="18" height="18">
               <use href={icon + '#icon-plus'} stroke="white"></use>
             </svg>
-            Add
-  </ButtonAction>
-  <ButtonCancel type="button" onClick={onClose}>
-    Cancel
-  </ButtonCancel>
-</ButtonWrapper>
+              Add
+            </ButtonAction>
+          ) : (
+            <ButtonAction type="submit">
+              <svg width="18" height="18">
+              <use href={icon + '#icon-pencil-01'} stroke="white"></use>
+            </svg>
+              Edit
+            </ButtonAction>
+          )}
 
+          <ButtonCancel type="button" onClick={onClose}>
+            Cancel
+          </ButtonCancel>
+        </ButtonWrapper>
         <ButtonCloseWrap
   type="button"
   aria-label="close button"
