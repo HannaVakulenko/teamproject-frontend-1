@@ -1,19 +1,7 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
-import goose from '../../assets/images/404-mob-1x.png';
-import goosetabl from '../../assets/images/404-tabl-desk-1x.png';
-import goose2x from '../../assets/images/404-mob@2x.png';
-import goosetabl2x from '../../assets/images/404-tabl-desk@2x.png';
-import goose3x from '../../assets/images/404-mob@3x.png';
-import goosetabl3x from '../../assets/images/404-tabl-desk@3x.png';
-
-import goosewebp from '../../assets/images/404-mob-1x.webp';
-import goosetablwebp from '../../assets/images/404-tabl-desk-1x.webp';
-import goosewebp2x from '../../assets/images/404-mob@2x.webp';
-import goosetablwebp2x from '../../assets/images/404-tabl-desk@2x.webp';
-import goosewebp3x from '../../assets/images/404-mob@3x.webp';
-import goosetablwebp3x from '../../assets/images/404-tabl-desk@3x.webp';
+import { notFound } from 'assets/images/notFound';
 
 import { device } from 'constants';
 const { tablet, desktop } = device;
@@ -133,7 +121,7 @@ export const NotFoundImg = styled.div`
 
   position: absolute;
   background-position: center;
-  background-image: url(${goose});
+  background-image: url(${notFound.mob1xPng});
   background-repeat: no-repeat;
   background-size: cover;
   z-index: 1;
@@ -142,63 +130,65 @@ export const NotFoundImg = styled.div`
     (-webkit-min-device-pixel-ratio: 2),
     (min-resolution: 192dpi),
     (min-resolution: 2dppx) {
-    background-image: url(${goose2x});
+    background-image: url(${notFound.mob2xPng});
   }
 
   @media (min-device-pixel-ratio: 3),
     (-webkit-min-device-pixel-ratio: 3),
     (min-resolution: 288dpi),
     (min-resolution: 3dppx) {
-    background-image: url(${goose3x});
+    background-image: url(${notFound.mob3xPng});
   }
 
   /* WebP формат */
-  @supports (background-image: -webkit-image-set(url(${goosewebp}))) {
+  @supports (background-image: -webkit-image-set(url(${notFound.mob1xWebp}))) {
     background-image: -webkit-image-set(
-      url(${goosewebp}) 1x,
-      url(${goosewebp2x}) 2x,
-      url(${goosewebp3x}) 3x
+      url(${notFound.mob1xWebp}) 1x,
+      url(${notFound.mob2xWebp}) 2x,
+      url(${notFound.mob3xWebp}) 3x
     );
     background-image: image-set(
-      url(${goosewebp}) 1x,
-      url(${goosewebp2x}) 2x,
-      url(${goosewebp3x}) 3x
+      url(${notFound.mob1xWebp}) 1x,
+      url(${notFound.mob2xWebp}) 2x,
+      url(${notFound.mob3xWebp}) 3x
     );
   }
 
   //tablet
 
-  @media screen and (min-width: ${device.tablet}px) {
+  @media screen and (min-width: ${tablet}px) {
     width: 350px;
     height: 400px;
-    background-image: url(${goosetabl});
+    background-image: url(${notFound.tablDesk1xPng});
 
     @media (min-device-pixel-ratio: 2),
       (-webkit-min-device-pixel-ratio: 2),
       (min-resolution: 192dpi),
       (min-resolution: 2dppx) {
-      background-image: url(${goosetabl2x});
+      background-image: url(${notFound.tablDesk2xPng});
     }
 
     @media (min-device-pixel-ratio: 3),
       (-webkit-min-device-pixel-ratio: 3),
       (min-resolution: 288dpi),
       (min-resolution: 3dppx) {
-      background-image: url(${goosetabl3x});
+      background-image: url(${notFound.tablDesk3xPng});
     }
 
     /* WebP формат */
 
-    @supports (background-image: -webkit-image-set(url(${goosetablwebp}))) {
+    @supports (
+      background-image: -webkit-image-set(url(${notFound.tablDesk1xWebp}))
+    ) {
       background-image: -webkit-image-set(
-        url(${goosetablwebp}) 1x,
-        url(${goosetablwebp2x}) 2x,
-        url(${goosetablwebp3x}) 3x
+        url(${notFound.tablDesk1xWebp}) 1x,
+        url(${notFound.tablDesk2xWebp}) 2x,
+        url(${notFound.tablDesk3xWebp}) 3x
       );
       background-image: image-set(
-        url(${goosetablwebp}) 1x,
-        url(${goosetablwebp2x}) 2x,
-        url(${goosetablwebp3x}) 3x
+        url(${notFound.tablDesk1xWebp}) 1x,
+        url(${notFound.tablDesk2xWebp}) 2x,
+        url(${notFound.tablDesk3xWebp}) 3x
       );
     }
   }

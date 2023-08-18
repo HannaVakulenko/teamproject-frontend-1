@@ -13,6 +13,10 @@ import {
   WrappInfo,
 } from './Description.styled';
 
+import { mainpageCalendar } from 'assets/images/mainpageCalendar';
+import { mainpageSidebar } from 'assets/images/mainpageSidebar';
+import { mainpageOne } from 'assets/images/mainpageOne';
+
 const Description = () => {
   return (
     <DescriptionSection>
@@ -32,60 +36,36 @@ const Description = () => {
             <picture>
               {/* Webp */}
               <source
-                srcSet={
-                  (require('../../../assets/images/mainpage-calendar-desk-1x.webp'),
-                  require('../../../assets/images/mainpage-calendar-desk@2x.webp'),
-                  require('../../../assets/images/mainpage-calendar-desk@3x.webp'))
-                }
+                srcSet={`${mainpageCalendar.mob1xWebp}, ${mainpageCalendar.mob2xWebp} 2x, ${mainpageCalendar.mob3xWebp} 3x`}
                 type="image/webp"
-                media={`(min-width: ${device.desktop}px)`}
+                media={`(min-width: 150px)`}
               />
               <source
-                srcSet={
-                  (require('../../../assets/images/mainpage-calendar-tabl-1x.webp'),
-                  require('../../../assets/images/mainpage-calendar-tabl@2x.webp'),
-                  require('../../../assets/images/mainpage-calendar-tabl@3x.webp'))
-                }
+                srcSet={`${mainpageCalendar.tabl1xWebp}, ${mainpageCalendar.tabl2xWebp} 2x, ${mainpageCalendar.tabl3xWebp} 3x`}
                 type="image/webp"
                 media={`(min-width: ${device.tablet}px)`}
               />
               <source
-                srcSet={
-                  (require('../../../assets/images/mainpage-calendar-mob-1x.webp'),
-                  require('../../../assets/images/mainpage-calendar-mob@2x.webp'),
-                  require('../../../assets/images/mainpage-calendar-mob@3x.webp'))
-                }
+                srcSet={`${mainpageCalendar.desk1xWebp}, ${mainpageCalendar.desk2xWebp} 2x, ${mainpageCalendar.desk3xWebp} 3x`}
                 type="image/webp"
-                media={`(min-width: 150px)`}
+                media={`(min-width: ${device.desktop}px)`}
               />
 
               {/* png */}
               <source
-                srcSet={
-                  (require('../../../assets/images/mainpage-calendar-desk-1x.png'),
-                  require('../../../assets/images/mainpage-calendar-desk@2x.png'),
-                  require('../../../assets/images/mainpage-calendar-desk@3x.png'))
-                }
-                media={`(min-width: ${device.desktop}px)`}
+                srcSet={`${mainpageCalendar.mob1xPng}, ${mainpageCalendar.mob2xPng} 2x, ${mainpageCalendar.mob3xPng} 3x`}
+                media={`(min-width: 150px)`}
               />
               <source
-                srcSet={
-                  (require('../../../assets/images/mainpage-calendar-tabl-1x.png'),
-                  require('../../../assets/images/mainpage-calendar-tabl@2x.png'),
-                  require('../../../assets/images/mainpage-calendar-tabl@3x.png'))
-                }
+                srcSet={`${mainpageCalendar.tabl1xPng}, ${mainpageCalendar.tabl2xPng} 2x, ${mainpageCalendar.tabl3xPng} 3x`}
                 media={`(min-width: ${device.tablet}px)`}
               />
               <source
-                srcSet={
-                  (require('../../../assets/images/mainpage-calendar-mob-1x.png'),
-                  require('../../../assets/images/mainpage-calendar-mob@2x.png'),
-                  require('../../../assets/images/mainpage-calendar-mob@3x.png'))
-                }
-                media={`(min-width: 150px)`}
+                srcSet={`${mainpageCalendar.desk1xPng}, ${mainpageCalendar.desk2xPng} 2x, ${mainpageCalendar.desk3xPng} 3x`}
+                media={`(min-width: ${device.desktop}px)`}
               />
               <ImgDescription
-                src={require('../../../assets/images/mainpage-calendar-mob-1x.png')}
+                src={mainpageCalendar.desk1xPng}
                 alt="calendar"
                 width="335"
               />
@@ -108,60 +88,36 @@ const Description = () => {
             <picture>
               {/* Webp */}
               <source
-                srcSet={
-                  (require('../../../assets/images/mainpage-sidebar-desk-1x.webp'),
-                  require('../../../assets/images/mainpage-sidebar-desk@2x.webp'),
-                  require('../../../assets/images/mainpage-sidebar-desk@3x.webp'))
-                }
+                srcSet={`${mainpageSidebar.mob1xWebp}, ${mainpageSidebar.mob2xWebp} 2x, ${mainpageSidebar.mob3xWebp} 3x`}
                 type="image/webp"
-                media={`(min-width: ${device.desktop}px)`}
+                media={`(min-width: 150px)`}
               />
               <source
-                srcSet={
-                  (require('../../../assets/images/mainpage-sidebar-tabl-1x.webp'),
-                  require('../../../assets/images/mainpage-sidebar-tabl@2x.webp'),
-                  require('../../../assets/images/mainpage-sidebar-tabl@3x.webp'))
-                }
+                srcSet={`${mainpageSidebar.tabl1xWebp}, ${mainpageSidebar.tabl2xWebp} 2x, ${mainpageSidebar.tabl3xWebp} 3x`}
                 type="image/webp"
                 media={`(min-width: ${device.tablet}px)`}
               />
               <source
-                srcSet={
-                  (require('../../../assets/images/mainpage-sidebar-mob-1x.webp'),
-                  require('../../../assets/images/mainpage-sidebar-mob@2x.webp'),
-                  require('../../../assets/images/mainpage-sidebar-mob@3x.webp'))
-                }
+                srcSet={`${mainpageSidebar.desk1xWebp}, ${mainpageSidebar.desk2xWebp} 2x, ${mainpageSidebar.desk3xWebp} 3x`}
                 type="image/webp"
-                media={`(min-width: 150px)`}
+                media={`(min-width: ${device.desktop}px)`}
               />
 
               {/* png */}
               <source
-                srcSet={
-                  (require('../../../assets/images/mainpage-sidebar-desk-1x.png'),
-                  require('../../../assets/images/mainpage-sidebar-desk@2x.png'),
-                  require('../../../assets/images/mainpage-sidebar-desk@3x.png'))
-                }
-                media={`(min-width: ${device.desktop}px)`}
+                srcSet={`${mainpageSidebar.mob1xPng}, ${mainpageSidebar.mob2xPng} 2x, ${mainpageSidebar.mob3xPng} 3x`}
+                media={`(min-width: 150px)`}
               />
               <source
-                srcSet={
-                  (require('../../../assets/images/mainpage-sidebar-tabl-1x.png'),
-                  require('../../../assets/images/mainpage-sidebar-tabl@2x.png'),
-                  require('../../../assets/images/mainpage-sidebar-tabl@3x.png'))
-                }
+                srcSet={`${mainpageSidebar.tabl1xPng}, ${mainpageSidebar.tabl2xPng} 2x, ${mainpageSidebar.tabl3xPng} 3x`}
                 media={`(min-width: ${device.tablet}px)`}
               />
               <source
-                srcSet={
-                  (require('../../../assets/images/mainpage-sidebar-mob-1x.png'),
-                  require('../../../assets/images/mainpage-sidebar-mob@2x.png'),
-                  require('../../../assets/images/mainpage-sidebar-mob@3x.png'))
-                }
-                media={`(min-width: 150px)`}
+                srcSet={`${mainpageSidebar.desk1xPng}, ${mainpageSidebar.desk2xPng} 2x, ${mainpageSidebar.desk3xPng} 3x`}
+                media={`(min-width: ${device.desktop}px)`}
               />
               <ImgDescription
-                src={require('../../../assets/images/mainpage-sidebar-mob-1x.png')}
+                src={mainpageSidebar.desk1xPng}
                 alt="sidebar"
                 width="335"
               />
@@ -182,60 +138,36 @@ const Description = () => {
             <picture>
               {/* Webp */}
               <source
-                srcSet={
-                  (require('../../../assets/images/mainpage-one-desk-1x.webp'),
-                  require('../../../assets/images/mainpage-one-desk@2x.webp'),
-                  require('../../../assets/images/mainpage-one-desk@3x.webp'))
-                }
+                srcSet={`${mainpageOne.mob1xWebp}, ${mainpageOne.mob2xWebp} 2x, ${mainpageOne.mob3xWebp} 3x`}
                 type="image/webp"
-                media={`(min-width: ${device.desktop}px)`}
+                media={`(min-width: 150px)`}
               />
               <source
-                srcSet={
-                  (require('../../../assets/images/mainpage-one-tabl-1x.webp'),
-                  require('../../../assets/images/mainpage-one-tabl@2x.webp'),
-                  require('../../../assets/images/mainpage-one-tabl@3x.webp'))
-                }
+                srcSet={`${mainpageOne.tabl1xWebp}, ${mainpageOne.tabl2xWebp} 2x, ${mainpageOne.tabl3xWebp} 3x`}
                 type="image/webp"
                 media={`(min-width: ${device.tablet}px)`}
               />
               <source
-                srcSet={
-                  (require('../../../assets/images/mainpage-one-mob-1x.webp'),
-                  require('../../../assets/images/mainpage-one-mob@2x.webp'),
-                  require('../../../assets/images/mainpage-one-mob@3x.webp'))
-                }
+                srcSet={`${mainpageOne.desk1xWebp}, ${mainpageOne.desk2xWebp} 2x, ${mainpageOne.desk3xWebp} 3x`}
                 type="image/webp"
-                media={`(min-width: 150px)`}
+                media={`(min-width: ${device.desktop}px)`}
               />
 
               {/* png */}
               <source
-                srcSet={
-                  (require('../../../assets/images/mainpage-one-desk-1x.png'),
-                  require('../../../assets/images/mainpage-one-desk@2x.png'),
-                  require('../../../assets/images/mainpage-one-desk@3x.png'))
-                }
-                media={`(min-width: ${device.desktop}px)`}
+                srcSet={`${mainpageOne.mob1xPng}, ${mainpageOne.mob2xPng} 2x, ${mainpageOne.mob3xPng} 3x`}
+                media={`(min-width: 150px)`}
               />
               <source
-                srcSet={
-                  (require('../../../assets/images/mainpage-one-tabl-1x.png'),
-                  require('../../../assets/images/mainpage-one-tabl@2x.png'),
-                  require('../../../assets/images/mainpage-one-tabl@3x.png'))
-                }
+                srcSet={`${mainpageOne.tabl1xPng}, ${mainpageOne.tabl2xPng} 2x, ${mainpageOne.tabl3xPng} 3x`}
                 media={`(min-width: ${device.tablet}px)`}
               />
               <source
-                srcSet={
-                  (require('../../../assets/images/mainpage-one-mob-1x.png'),
-                  require('../../../assets/images/mainpage-one-mob@2x.png'),
-                  require('../../../assets/images/mainpage-one-mob@3x.png'))
-                }
-                media={`(min-width: 150px)`}
+                srcSet={`${mainpageOne.desk1xPng}, ${mainpageOne.desk2xPng} 2x, ${mainpageOne.desk3xPng} 3x`}
+                media={`(min-width: ${device.desktop}px)`}
               />
               <ImgDescription
-                src={require('../../../assets/images/mainpage-one-mob-1x.png')}
+                src={mainpageOne.desk1xPng}
                 alt="tasks"
                 width="335"
               />
