@@ -10,6 +10,7 @@ import {
   Icon
 } from './Header.styled';
 import icon from 'assets/icons/symbol-defs.svg';
+import { TaskToolbar } from 'components/CalendarPage';
 
 const Header = ({ toggleSidebar }) => {
   return (
@@ -22,6 +23,7 @@ const Header = ({ toggleSidebar }) => {
       <MainTitle title="Calendar" />
       <ControllWrapper>
         <AddFeedbackBtn />
+        <TaskToolbar/>
         <ThemeUserWrapper>
           <ThemeToggler />
           <UserInfo />
