@@ -251,7 +251,13 @@ export const ButtonCloseWrap = styled.button`
   border: none;
   background-color: transparent;
   cursor: pointer;
+    &:hover svg use,
+  &:focus svg use {
+    stroke: lightgray; 
+  }
 `;
+
+
 
 export const ErrorMessage = styled(FormikErrorMessage)`
   margin-left: 18px;
