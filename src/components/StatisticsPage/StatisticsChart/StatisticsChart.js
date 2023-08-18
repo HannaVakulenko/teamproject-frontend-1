@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 import {
@@ -26,25 +26,6 @@ import {
   ContainerSecondWrapper,
   ContainerFirstWrapper,
 } from './StatisticsChart.styled';
-
-// Поки що данні для прикладу(тестові)
-// const data = [
-//   {
-//     name: 'To do',
-//     uv: 22,
-//     pv: 22,
-//   },
-//   {
-//     name: 'In Progress',
-//     uv: 35,
-//     pv: 28,
-//   },
-//   {
-//     name: 'Done',
-//     uv: 43,
-//     pv: 50,
-//   },
-// ];
 
 const StatisticsChart = () => {
   const dispatch = useDispatch();
@@ -126,41 +107,33 @@ const StatisticsChart = () => {
       ? 0
       : Number((doneByDayCount / totalTasksByDay) * 100).toFixed();
 
-  //данні для відображення графіка
-  const data = [
-    {
-      name: 'To do',
-      uv: todoByDayPercentage,
-      pv: todoByMonthPercentage,
-    },
-    {
-      name: 'In Progress',
-      uv: inprogressByDayPercentage,
-      pv: inprogressByMonthPercentage,
-    },
-    {
-      name: 'Done',
-      uv: doneByDayPercentage,
-      pv: doneByMonthPercentage,
-    },
-  ];
-  // const data = [
-  //   {
-  //     name: 'To do',
-  //     uv: todoByDayPercentage || 0,
-  //     pv: todoByMonthPercentage || 0,
-  //   },
-  //   {
-  //     name: 'In Progress',
-  //     uv: inprogressByDayPercentage || 0,
-  //     pv: inprogressByMonthPercentage || 0,
-  //   },
-  //   {
-  //     name: 'Done',
-  //     uv: doneByDayPercentage || 0,
-  //     pv: doneByMonthPercentage || 0,
-  //   },
-  // ];
+  const data = useMemo(
+    () => [
+      {
+        name: 'To do',
+        uv: todoByDayPercentage,
+        pv: todoByMonthPercentage,
+      },
+      {
+        name: 'In Progress',
+        uv: inprogressByDayPercentage,
+        pv: inprogressByMonthPercentage,
+      },
+      {
+        name: 'Done',
+        uv: doneByDayPercentage,
+        pv: doneByMonthPercentage,
+      },
+    ],
+    [
+      todoByMonthPercentage,
+      inprogressByMonthPercentage,
+      doneByMonthPercentage,
+      todoByDayPercentage,
+      inprogressByDayPercentage,
+      doneByDayPercentage,
+    ]
+  );
 
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
@@ -365,111 +338,5 @@ const StatisticsChart = () => {
     </ContainerSecondWrapper>
   );
 };
-//   return (
-//     <ChartContainer>
-//       <ResponsiveContainer width={'100%'} height={'100%'}>
-//         <BarChart
-//           width={chartWidth}
-//           height={chartHeight}
-//           maxBarSize={chartMaxBarSize}
-//           barGap={chartBarGap}
-//           barCategoryGap={chartBarCategoryGap}
-//           data={data}
-//           margin={{
-//             top: 40,
-//             right: 0,
-//             left: -10,
-//             bottom: 0,
-//           }}
-//         >
-//           <CartesianGrid
-//             horizontal={true}
-//             vertical={false}
-//             strokeDasharray=" "
-//             stroke="#E3F3FF"
-//           />
-
-//           <XAxis
-//             axisLine={false}
-//             tickLine={false}
-//             dataKey="name"
-//             fontSize={chartXAxisFontSiZe}
-//             fontWeight={400}
-//             tickMargin={10}
-//           />
-//           <YAxis
-//             ticks={[0, 20, 40, 60, 80, 100]}
-//             position="left"
-//             tickCount={6}
-//             tickMargin={20}
-//             fontSize={14}
-//             fontWeight={500}
-//             line-height={1.5}
-//             axisLine={false}
-//             tickLine={false}
-//           >
-//             <Label
-//               position="top"
-//               dy={-24}
-//               dx={-2}
-//               fontSize={14}
-//               fontWeight={600}
-//               lineHeight={1.5}
-//             >
-//               Tasks
-//             </Label>
-//           </YAxis>
-
-//           <Legend />
-
-//           <defs>
-//             <linearGradient id="colorUv" x1="0" y1="1" x2="0" y2="0">
-//               <stop offset="5%" stopColor="#FFD2DD" stopOpacity={0.8} />
-//               <stop offset="100%" stopColor="#FFD2DD" stopOpacity={0} />
-//             </linearGradient>
-//             <linearGradient id="colorPv" x1="0" y1="1" x2="0" y2="0">
-//               <stop offset="5%" stopColor="#3E85F3" stopOpacity={0.8} />
-//               <stop offset="100%" stopColor="#3E85F3" stopOpacity={0} />
-//             </linearGradient>
-//           </defs>
-
-//           <Bar
-//             dataKey="uv"
-//             fill="url(#colorUv)"
-//             legendType="none"
-//             barSize={chartbarSize}
-//             minPointSize="3"
-//           >
-//             <LabelList
-//               dataKey="uv"
-//               position="top"
-//               fontSize={chartLabelListFontSize}
-//               fontWeight={500}
-//               lineHeight={chartLabelListlineHeight}
-//               formatter={value => `${value}%`}
-//             />
-//           </Bar>
-
-//           <Bar
-//             dataKey="pv"
-//             fill="url(#colorPv)"
-//             legendType="none"
-//             barSize={chartbarSize}
-//             minPointSize="3"
-//           >
-//             <LabelList
-//               dataKey="pv"
-//               position="top"
-//               fontSize={chartLabelListFontSize}
-//               fontWeight={500}
-//               lineHeight={chartLabelListlineHeight}
-//               formatter={value => `${value}%`}
-//             />
-//           </Bar>
-//         </BarChart>
-//       </ResponsiveContainer>
-//     </ChartContainer>
-//   );
-// };
 
 export default StatisticsChart;
