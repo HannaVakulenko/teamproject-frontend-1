@@ -6,7 +6,7 @@ export const StatisticSection = styled.section`
   background-color: ${p => p.theme.secondaryBgColor};
   border-radius: 16px;
   padding: 28px 14px;
-  height: 100%;
+  /* height: 100%; */
 
   @media screen and (min-width: ${device.tablet}px) {
     padding: 132px 32px;
@@ -17,7 +17,12 @@ export const StatisticSection = styled.section`
 `;
 
 export const Zaglushka = styled.div`
-  height: 68px;
+  height: 34px;
   background-color: orangered;
-  margin-bottom: 40px;
+  margin-bottom: 20px;
+
+  @media screen and (min-width: ${device.tablet}px) {
+    margin-bottom: 40px;
+  }
 `;
+

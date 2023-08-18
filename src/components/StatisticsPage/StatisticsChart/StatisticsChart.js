@@ -21,7 +21,7 @@ import { selectTasksByCategory } from 'redux/tasks/selectors';
 import { category } from 'constants';
 
 import {
-  ChartContainer,
+  
   ResponsiveContainerStyled,
   ContainerSecondWrapper,
   ContainerFirstWrapper,
@@ -223,8 +223,8 @@ const StatisticsChart = () => {
   useEffect(() => {
     dispatch(
       fetchTasks({
-        monthStart: '2023-08-01',
-        monthEnd: '2023-08-31',
+        monthStart: '2023-08-18',
+        monthEnd: '2023-08-20',
       })
     );
   }, [dispatch]);
@@ -333,7 +333,6 @@ const StatisticsChart = () => {
             </Bar>
           </BarChart>
         </ResponsiveContainerStyled>
-        <ChartContainer></ChartContainer>
       </ContainerFirstWrapper>
     </ContainerSecondWrapper>
   );
