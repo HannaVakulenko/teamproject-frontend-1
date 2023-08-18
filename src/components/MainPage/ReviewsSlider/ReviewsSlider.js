@@ -1,4 +1,3 @@
-
 import React, { useEffect, useRef, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import SwiperCore from 'swiper';
@@ -28,9 +27,7 @@ import {
   Title,
 } from './ReviewsSlider.styled';
 
-
 import icon from 'assets/icons/symbol-defs.svg';
-
 
 const rateIcon = (
   <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"></path>
@@ -54,7 +51,7 @@ const ReviewsSlider = () => {
     dispatch(fetchReviews({ page: 1, limit: 8 }));
   }, [dispatch]);
 
-  const handleSlideChange = (swiper) => {
+  const handleSlideChange = swiper => {
     setCanGoPrev(!swiper.isBeginning);
     setCanGoNext(!swiper.isEnd);
   };
@@ -69,7 +66,7 @@ const ReviewsSlider = () => {
             initialSlide={1}
             slidesPerView={1}
             ref={swiperRef}
-            autoplay={{ delay: 8000 }} 
+            autoplay={{ delay: 8000 }}
             navigation={{
               prevEl: '#my-prev-button',
               nextEl: '#my-next-button',
@@ -118,23 +115,23 @@ const ReviewsSlider = () => {
         </SliderWrapper>
         <SwiperNavBox>
           <SwiperNavBtn
-  id="my-prev-button"
-  className={canGoPrev ? '' : 'disabled'}
-  onClick={() => swiperRef.current.swiper.slidePrev()}
->
-  <svg>
-    <use href={icon + '#icon-Vector-2'}></use>
-  </svg>
-</SwiperNavBtn>
-<SwiperNavBtn
-  id="my-next-button"
-  className={!canGoNext ? 'disabled' : ''}
-  onClick={() => swiperRef.current.swiper.slideNext()}
->
-  <svg>
-    <use href={icon + '#icon-Vector-3'}></use>
-  </svg>
-</SwiperNavBtn>
+            id="my-prev-button"
+            className={canGoPrev ? '' : 'disabled'}
+            onClick={() => swiperRef.current.swiper.slidePrev()}
+          >
+            <svg>
+              <use href={icon + '#icon-Vector-2'}></use>
+            </svg>
+          </SwiperNavBtn>
+          <SwiperNavBtn
+            id="my-next-button"
+            className={!canGoNext ? 'disabled' : ''}
+            onClick={() => swiperRef.current.swiper.slideNext()}
+          >
+            <svg>
+              <use href={icon + '#icon-Vector-3'}></use>
+            </svg>
+          </SwiperNavBtn>
         </SwiperNavBox>
       </Container>
     </Section>

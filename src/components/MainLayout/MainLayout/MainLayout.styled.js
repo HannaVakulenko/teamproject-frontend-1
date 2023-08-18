@@ -2,7 +2,6 @@ import styled from 'styled-components';
 import { device } from 'constants';
 const { tablet, desktop } = device;
 
-
 export const MainLayoutStyled = styled.div`
   display: flex;
   width: 100%;
