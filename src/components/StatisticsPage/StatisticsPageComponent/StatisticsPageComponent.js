@@ -1,19 +1,15 @@
 import StatisticsChart from '../StatisticsChart/StatisticsChart';
-import {
-  Zaglushka,
-  WrapperSideBar
- 
-} from './StatisticsPageComponent.styled';
+import { Zaglushka, WrapperPaginator } from './StatisticsPageComponent.styled';
 
 import  Statisticslegend  from "../StatisticsLegend/StatisticsLegend";
 
 const StatisticsPageComponent = () => {
   return (
     <>
-      <WrapperSideBar>
+      <WrapperPaginator>
         <Zaglushka />
         <Statisticslegend />
-      </WrapperSideBar>
+      </WrapperPaginator>
       <StatisticsChart />
     </>
   );

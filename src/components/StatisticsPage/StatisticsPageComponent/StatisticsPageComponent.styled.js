@@ -15,7 +15,7 @@ export const StatisticSection = styled.section`
     padding: 134px 113px;
   }
 `;
-export const WrapperSideBar = styled.div`
+export const WrapperPaginator = styled.div`
   display: inline-flex;
   flex-direction: column;
   width: 100%;
@@ -28,6 +28,12 @@ export const WrapperSideBar = styled.div`
     flex-wrap: nowrap;
     justify-content: space-between;
     align-items: center;
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+  @media screen and (min-width: ${device.desktop}px) {
+    padding-left: 40px;
+    padding-right: 40px;
   }
 `;
 
@@ -39,6 +45,7 @@ export const Zaglushka = styled.div`
 
   @media screen and (min-width: ${device.tablet}px) {
     width: 218px;
+    /* margin-left:64px */
   }
 `;
 

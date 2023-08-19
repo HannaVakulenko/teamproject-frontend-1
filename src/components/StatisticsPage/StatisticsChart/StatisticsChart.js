@@ -44,7 +44,9 @@ const StatisticsChart = () => {
   const doneByMonth = useSelector(state =>
     selectTasksByCategory(state, category.done)
   );
-
+  console.log(todoByMonth);
+  console.log(inprogressByMonth);
+  console.log(doneByMonth);
   // Задачи по категоріям за день
 
   const todoByDay = todoByMonth.filter(item =>
@@ -225,7 +227,7 @@ const StatisticsChart = () => {
     dispatch(
       fetchTasks({
         monthStart: '2023-08-18',
-        monthEnd: '2023-08-20',
+        monthEnd: '2023-08-30',
       })
     );
   }, [dispatch]);

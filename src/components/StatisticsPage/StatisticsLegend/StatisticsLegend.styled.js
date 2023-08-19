@@ -7,15 +7,13 @@ export const WrapperLegend = styled.div`
   flex-wrap: nowrap;
   align-items: center;
   justify-content: flex-start;
-  /* margin-bottom: 40px; */
-
   gap: 14px;
-  width: 199px;
-  height: 18px;
+ 
 
   @media screen and (min-width: ${device.tablet}px) {
     gap: 20px;
     margin-bottom:0;
+    
     
   }
 `;
