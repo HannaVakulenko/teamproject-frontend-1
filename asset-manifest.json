@@ -1,9 +1,9 @@
 {
   "files": {
     "main.css": "/teamproject-frontend-1/static/css/main.ba4169d3.css",
-    "main.js": "/teamproject-frontend-1/static/js/main.898d350a.js",
+    "main.js": "/teamproject-frontend-1/static/js/main.4dca1690.js",
     "static/js/394.40723938.chunk.js": "/teamproject-frontend-1/static/js/394.40723938.chunk.js",
-    "static/js/461.0533ecee.chunk.js": "/teamproject-frontend-1/static/js/461.0533ecee.chunk.js",
+    "static/js/461.863f8109.chunk.js": "/teamproject-frontend-1/static/js/461.863f8109.chunk.js",
     "static/js/97.84e62906.chunk.js": "/teamproject-frontend-1/static/js/97.84e62906.chunk.js",
     "static/media/mainpage-calendar-tabl@3x.png": "/teamproject-frontend-1/static/media/mainpage-calendar-tabl@3x.589377ec1ea92f785c22.png",
     "static/media/mainpage-calendar-desk@3x.png": "/teamproject-frontend-1/static/media/mainpage-calendar-desk@3x.7eb92153619fd464b254.png",
@@ -114,13 +114,13 @@
     "index.html": "/teamproject-frontend-1/index.html",
     "static/media/logo-mob-1x.webp": "/teamproject-frontend-1/static/media/logo-mob-1x.cd09cea1d315fcef8d71.webp",
     "main.ba4169d3.css.map": "/teamproject-frontend-1/static/css/main.ba4169d3.css.map",
-    "main.898d350a.js.map": "/teamproject-frontend-1/static/js/main.898d350a.js.map",
+    "main.4dca1690.js.map": "/teamproject-frontend-1/static/js/main.4dca1690.js.map",
     "394.40723938.chunk.js.map": "/teamproject-frontend-1/static/js/394.40723938.chunk.js.map",
-    "461.0533ecee.chunk.js.map": "/teamproject-frontend-1/static/js/461.0533ecee.chunk.js.map",
+    "461.863f8109.chunk.js.map": "/teamproject-frontend-1/static/js/461.863f8109.chunk.js.map",
     "97.84e62906.chunk.js.map": "/teamproject-frontend-1/static/js/97.84e62906.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.ba4169d3.css",
-    "static/js/main.898d350a.js"
+    "static/js/main.4dca1690.js"
   ]
 }
