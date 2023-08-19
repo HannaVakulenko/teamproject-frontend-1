@@ -26,7 +26,7 @@ import icon from 'assets/icons/symbol-defs.svg';
 
 
 
-const TaskForm = ({ onClose, action,column,priority, taskToEdit }) => {
+const TaskForm = ({ onClose, action,column,priority, taskToEdit, addTaskToList }) => {
   const dispatch = useDispatch();
   const { currentDay } = useParams();
   
@@ -82,6 +82,7 @@ const TaskForm = ({ onClose, action,column,priority, taskToEdit }) => {
       addNewTask(values).then(() => {
         onClose();
         actions.resetForm();
+         addTaskToList(values);
       });
     } else if (action === 'edit') {
       updateExistingTask(values).then(() => {
