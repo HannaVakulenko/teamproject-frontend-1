@@ -1,6 +1,5 @@
 import styled, { createGlobalStyle } from 'styled-components';
 import { Form as FormikForm, Field, ErrorMessage } from 'formik';
-import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css"; 
 import { device } from 'constants';
 const { tablet, desktop } = device;
@@ -30,7 +29,6 @@ export const FormWrap = styled.div`
   position: static;
     padding: 60px 0;
     border-radius: 16px;
-     grid-template-columns: repeat(2, 1fr);
     gap: 24px;
   }
 `;
@@ -50,32 +48,8 @@ export const Form = styled(FormikForm)`
     display: grid;
      grid-template-columns: 1fr 1fr;
     gap: 24px;
-     grid-column: span 2;
   }
 
-`;
-
-export const StyledDatePickerInput = styled(DatePicker)`
-  color: #111;
-  font-size: 14px;
-  font-weight: 600;
-  border-radius: 8px;
-  border: 1px solid rgba(17, 17, 17, 0.1);
-  width: 299px;
-  height: 42px;
-  padding: 8px;
-  outline: none;
-  background-color: ${props => (props.hasContent ? "transparent" : "white")};
-  transition: border-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
-
-  &::placeholder {
-    font-weight: normal;
-  }
-
-  &:hover,
-  &:focus {
-    border-color: #111111;
-  }
 `;
 
 export const FieldWrap = styled.div`
@@ -91,27 +65,28 @@ position: relative;
 
 
 export const Label = styled.label`
-  color: #111;
+color: ${p => p.theme.userFormLabelColor}; 
 font-size: 12px;
 font-weight: 400;
 line-height: 14px;
 `;
 
 export const Input = styled(Field)`
-  color: #111;
+  color: ${p => p.theme.mainTextColor};
   font-size: 14px;
   font-weight: 600;
+  line-height: 18px;
   border-radius: 8px;
-  border: 1px solid rgba(17, 17, 17, 0.1);
+  border: 1px solid  ${p => p.theme.userFormInputBorderColor}; 
   width: 299px;
   height: 42px;
   padding: 8px;
   outline: none;
-  background-color:  ${props => (props.hasContent ? 'transparent' : 'white')};
+  background-color:  ${props => (props.hasContent ? 'transparent' : p => p.theme.secondaryBgColor)};
   transition: border-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
   &::placeholder {
-    color: #111;
+color: ${p => p.theme.mainTextColor}; 
 font-size: 14px;
 font-weight: 600;
 line-height: 18px;
@@ -119,8 +94,14 @@ line-height: 18px;
 
   &:hover,
   &:focus {
-    border-color: #111111;
+    border-color: ${p => p.theme.mainTextColor};
   };
+
+   @media (min-width: ${tablet}px) {
+    width: 354px;
+  height: 46px;
+   font-size: 16px;
+   }
 `;
 
 export const ErrorText = styled(ErrorMessage)`
@@ -153,6 +134,7 @@ export const UserImage = styled.img`
   width: 72px;
   height: 72px;
   border-radius: 50%;
+  border: 2px solid #3E85F3;
 
    @media (min-width: ${tablet}px) {
      width: 124px;
@@ -178,11 +160,6 @@ export const Upload = styled.input`
     
     height: 18px;
 }
- @media (min-width: ${desktop}px)  {
-
-    width: 18px;
-  height: 18px;
-  }
 `;
 
 export const Icon = styled.svg`
@@ -199,28 +176,30 @@ export const Icon = styled.svg`
   z-index: 2;
 
    @media (min-width: ${tablet}px) {
-    width: 24px;
-    height: 24px;
+    width: 18px;
+    height: 18px;
      bottom: -3%;
   left: 70%;
 }
 `;
 
 export const BdayIcon = styled.svg`
-   position: relative;
-  right: 20px;
+   position: absolute;
+  right: 15px;
   width: 14px;
+  height: 14px;
   fill: none;
   height: 14px;
-  stroke: #111111;
+  stroke: ${p => p.theme.mainTextColor};
   border-radius: 50%;
   z-index: 2;
 
-   @media (min-width: ${desktop}px) {
-    position: relative; 
+    @media (min-width: ${tablet}px) {
+    width: 18px;
+    height: 18px;
+    position: absolute; 
     top: auto;
     transform: translateY(0);
-   right: 20px;
   }
 `;
 
@@ -258,17 +237,23 @@ display: flex;
 `;
 
 export const UserName = styled.span`
-color: #343434;
+color: ${p => p.theme.secondaryTextColor}; 
   font-size: 14px;
   font-weight: 700;
 
+  @media (min-width: ${tablet}px) {
+    font-size: 18px;
+  }
 `;
 
 export const UserStatus = styled.span`
-color: #343434;
+color: ${p => p.theme.userFormStatusColor}; 
   font-size: 12px;
   font-weight: 400;
-  // margin-bottom: 40px;
+
+   @media (min-width: ${tablet}px) {
+    font-size: 14px;
+  }
 
 `;
 
@@ -281,7 +266,7 @@ width: 195px;
   font-weight: 600;
   line-height: 1.28;
   border-radius: 16px;
-  color: ${p => p.theme.secondaryBgColor};
+  color: ${p => p.theme.buttonTextColor};
   background-color: ${p => p.theme.mainAccentColor};
   border: transparent;
   cursor: pointer;
@@ -293,10 +278,6 @@ width: 195px;
   &:focus {
     background-color: ${p => p.theme.mainAccentColorActive};
   }
-
-   @media (min-width: ${tablet}px)  and (max-width: ${desktop - 1}px) {
-margin-top: 40px;
-   }
 
   @media (min-width: ${desktop}px) {
     margin-top: 88px;
@@ -310,8 +291,11 @@ margin-top: 40px;
 
 export const StyledDatePickerInputWrapper = styled.div`
   position: relative;
-  display: inline-flex; 
+  display: grid;
   align-items: center;
+  justify-content: center; 
+  align-content: center;
+
 `;
 
 export const InputWrapperL = styled.div`
@@ -325,12 +309,8 @@ gap: 18px;
 
  @media (min-width: ${desktop}px) {
   gap: 24px;
-    display: flex;
-    flex-wrap: wrap;
-    align-content: flex-end;
-    justify-content: flex-start;
-    align-items: flex-start;
-    flex-direction: column;
+    display: grid;
+    justify-content: end;
   }
 
 `;
@@ -343,54 +323,209 @@ gap: 18px;
   gap: 24px;
  }
 
-
  @media (min-width: ${desktop}px) {
   gap: 24px;
-    display: flex;
-    flex-wrap: wrap;
-    align-content: flex-start;
-    justify-content: flex-start;
-    align-items: flex-start;
-    flex-direction: column;
-  }
-
+  display: grid;
+  align-content: flex-start;
+  align-items: flex-start;
+}
 `;
 
 export const DatePickerWrapperStyles = createGlobalStyle`
+
+.datepicker_icon_button {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: none;
+  border: none;
+  cursor: pointer;
+  opacity: 0; 
+  z-index: 4;
+}
+
+.datepicker_nav {
+   background-color:${p => p.theme.mainAccentColor};
+        margin: 10px;
+        display: flex;
+        justify-content: center;
+
+         @media (min-width: ${tablet}px) {
+          gap: 16px;
+         }
+        }
+
+.datepicker_select {
+  font-size: 16px !important;
+background-color: ${p => p.theme.mainAccentColor} !important;
+  border: none !important;
+  color:${p => p.theme.buttonTextColor} !important; 
+  outline: none !important;
+
+ @media (min-width: ${tablet}px) {
+font-size: 24px !important;
+line-height: 24px!important;
+ }
+
+}
+
+.datepicker_btn {
+background-color:${p => p.theme.mainAccentColor};
+  border: none; 
+  color:${p => p.theme.buttonTextColor};
+   outline: none;
+
+   @media (min-width: ${tablet}px) {
+width: 50px !important;
+ }
+}
 
 .react-datepicker {
   border: none !important;
    border-radius: 16px !important;
 }
 
-  .react-datepicker__header {
-    border-radius: 16px !important;
-    background-color: #3E85F3 !important;
-    border-bottom: none !important;
-  }
+.react-datepicker__header {
+    border-top-left-radius: 16px !important;
+    border-top-right-radius: 16px !important;
+    border-bottom-left-radius: 0; 
+    border-bottom-right-radius: 0; 
+    border-color: #FFFFFF33 !important;
+    background-color: ${p => p.theme.mainAccentColor} !important;
+   
+}
 
-  .react-datepicker__day--selected {
-    background-color: white !important;
-    color:  #3E85F3 !important;
+.react-datepicker__day-name {
+  font-size: 14px !important;
+line-height: 18px !important;
+
+     @media (min-width: ${tablet}px) {
+      width: 48px !important;
+      margin: auto !important;
+      font-size: 18px !important;
+line-height: 24px !important;
+padding: 12px !important;
+     }
+}
+
+.react-datepicker__day--selected {
+    background-color: ${p => p.theme.buttonTextColor}  !important; 
+    color: ${p => p.theme.mainAccentColor} !important;
     border-radius: 50% !important;
-  }
+
+    @media (min-width: ${tablet}px) {
+      width: 48px !important;
+      height: 48px !important;
+      padding: 12px!important;
+    }
+}
 
   .react-datepicker__day {
-    color: white !important;
+    color: ${p => p.theme.buttonTextColor}  !important;
      border-radius: 50% !important;
+
+      @media (min-width: ${tablet}px) {
+        padding: 12px!important;
+         width: 48px !important;
+       height: 48px !important;
+    font-size: 18px !important;
+     line-height: 24px !important;
+     margin: auto !important;
+      }
+    
   }
 
-   .react-datepicker__day.react-datepicker__day--selected {
- color:  #3E85F3 !important;
+   .react-datepicker__day:hover {
+     color:  ${p => p.theme.mainAccentColor} !important;
+     background-color: ${p => p.theme.buttonTextColor}  !important; 
+ border-radius: 50% !important;
+     @media (min-width: ${tablet}px) {
+       width: 48px !important;
+       height: 48px !important;
+    padding: 12px !important;
+     }
+
    }
 
+   .react-datepicker__day.react-datepicker__day--selected {
+ color: ${p => p.theme.mainAccentColor} !important;
+ background-color: ${p => p.theme.buttonTextColor}  !important; 
+
+  @media (min-width: ${tablet}px) {
+     width: 48px !important;
+height: 48px !important;
+    padding: 12px !important;
+  }
+   }
+
+   .react-datepicker__day--keyboard-selected {
+     color: ${p => p.theme.mainAccentColor} !important;
+ background-color: ${p => p.theme.buttonTextColor}  !important; 
+   }
+
+
  .react-datepicker__day-name {
-    color: white !important;
+    color: ${p => p.theme.buttonTextColor} !important;
+  }
+
+  .react-datepicker__month {
+ @media (min-width: ${tablet}px) {
+    margin: auto !important;
+    }
+
   }
 
   .react-datepicker__month-container{
-     background-color: #3E85F3 !important;
+     background-color: ${p => p.theme.mainAccentColor} !important;
     border: none  !important;
     border-radius: 16px !important;
+
+    @media (min-width: ${tablet}px) {
+      padding: 9px 18px;
+      width: 372px !important;
+    }
+  }
+
+   .react-datepicker__day--outside-month {
+     color: ${p => p.theme.buttonTextColor} !important;
+     opacity: 0% !important;
+     pointer-events: none; !important;
+   }
+
+   .react-datepicker__day-name:nth-child(6),
+.react-datepicker__day-name:nth-child(7) {
+     color: ${p => p.theme.buttonTextColor} !important;
+     opacity: 0.35 !important;
+}
+
+input {
+ color: ${p => p.theme.mainTextColor};
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 8px;
+  border: 1px solid ${p => p.theme.userFormInputBorderColor}; 
+  width: 299px;
+  height: 42px;
+  padding: 8px;
+  outline: none;
+  background-color: ${props => (props.hasContent ? "transparent" :  p => p.theme.secondaryBgColor)};
+  transition: border-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  &::placeholder {
+    font-weight: normal;
+  }
+
+  &:hover,
+  &:focus {
+    border-color: ${p => p.theme.mainTextColor};
+  }
+
+   @media (min-width: ${tablet}px) {
+    width: 354px;
+  height: 46px;
+   font-size: 16px;
+   }
   }
 `;

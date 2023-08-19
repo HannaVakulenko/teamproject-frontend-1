@@ -7,7 +7,7 @@ const TasksColumn = ({ title, tasks}) => {
   return (
     <Wrapper>
       <ColumnHeadBar title={title} />
-      {tasks && (<ColumnsTasksList tasks={tasks} />)}
+      {tasks.length > 0 && (<ColumnsTasksList tasks={tasks} />)}
       <AddTaskBtn />
     </Wrapper>
   );

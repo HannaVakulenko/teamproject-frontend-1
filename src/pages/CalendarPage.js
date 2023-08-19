@@ -4,11 +4,12 @@
 // import { ChoosedDay } from 'components/CalendarPage';
 import { Section } from 'components/Common';
 import { CalendarToolbar } from '../components/CalendarPage/index';
-// import React from 'react';
+import React from 'react';
 // import moment from 'moment';
 import { Outlet } from 'react-router-dom';
 
 const CalendarPage = () => {
+
   // const dispatch = useDispatch();
 
   // useEffect(() => {
@@ -23,10 +24,8 @@ const CalendarPage = () => {
       <CalendarToolbar />
       {/* <Section>
         <ChoosedMonth startDay={startDay} />
-      </Section>
-      <Section>
-        <ChoosedDay />
       </Section> */}
+      {/* <ChoosedDay /> */}
       <Section>
         <Outlet />
       </Section>

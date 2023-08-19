@@ -1,25 +1,18 @@
-import { useSelector } from 'react-redux';
-import TaskToolbar from '../TaskToolbar/TaskToolbar';
-import { TaskModal } from 'components/Common';
-import { selectAvatarURL } from 'redux/tasks/selectors';
-import {
-  Wrapper,
-  Title,
-  CardFooter,
-  AvatarWrapper,
-  AvatarImage,
-  Badge,
-} from './TaskColumnCard.styled';
+import { useSelector } from "react-redux";
+import TaskToolbar from "../TaskToolbar/TaskToolbar";
+import { TaskModal } from "components/Common";
+import { selectAvatarURL } from "redux/tasks/selectors";
+import { Wrapper, Text, CardFooter, AvatarWrapper, AvatarImage, Badge } from "./TaskColumnCard.styled";
 
 const TaskColumnCard = ({ task }) => {
   const avatar = useSelector(selectAvatarURL);
   return (
     <Wrapper>
-      <Title>{task.title}</Title>
+      <Text>{task.title}</Text>
       <CardFooter>
         <AvatarWrapper>
           <AvatarImage src={avatar} width="32" height="32" alt="User Avatar" />
-          <Badge>{task.priority}</Badge>
+          <Badge data-priority={task.priority}>{task.priority}</Badge>
         </AvatarWrapper>
         <TaskToolbar task={task} />
       </CardFooter>
