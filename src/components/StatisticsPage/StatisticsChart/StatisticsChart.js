@@ -22,8 +22,6 @@ import { selectTasksByCategory } from 'redux/tasks/selectors';
 import { category } from 'constants';
 
 import {
-  
- 
   ContainerSecondWrapper,
   ContainerFirstWrapper,
 } from './StatisticsChart.styled';
@@ -44,9 +42,7 @@ const StatisticsChart = () => {
   const doneByMonth = useSelector(state =>
     selectTasksByCategory(state, category.done)
   );
-  console.log(todoByMonth);
-  console.log(inprogressByMonth);
-  console.log(doneByMonth);
+  
   // Задачи по категоріям за день
 
   const todoByDay = todoByMonth.filter(item =>

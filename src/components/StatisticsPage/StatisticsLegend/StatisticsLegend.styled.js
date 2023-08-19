@@ -44,6 +44,7 @@ export const TextLegend = styled.p`
   font-size: 14px;
   font-weight: 400;
   line-height: 1.28;
+  
 
   @media screen and (min-width: ${device.tablet}px) {
    
