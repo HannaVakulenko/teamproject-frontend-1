@@ -48,7 +48,7 @@ const ReviewsSlider = () => {
   const [canGoNext, setCanGoNext] = useState(true);
 
   useEffect(() => {
-    dispatch(fetchReviews({ page: 1, limit: 8 }));
+    dispatch(fetchReviews({ page: 1, limit: 99999 }));
   }, [dispatch]);
 
   const handleSlideChange = swiper => {
