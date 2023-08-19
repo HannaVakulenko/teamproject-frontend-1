@@ -1,37 +1,26 @@
-// import { useEffect } from 'react';
-// import { useDispatch } from 'react-redux';
-// import { fetchTasks } from 'redux/tasks/operations';
-// import { ChoosedDay } from 'components/CalendarPage';
-import { Section } from 'components/Common';
+import { Suspense, useEffect } from 'react';
+import { Outlet, useNavigate, useLocation } from 'react-router-dom';
+import { format } from 'date-fns';
 import { CalendarToolbar } from '../components/CalendarPage/index';
-import React from 'react';
-// import moment from 'moment';
-import { Outlet } from 'react-router-dom';
 
 const CalendarPage = () => {
+  const navigate = useNavigate();
+  const { pathname } = useLocation();
 
-  // const dispatch = useDispatch();
-
-  // useEffect(() => {
-  //   dispatch(fetchTasks({
-  //     monthStart: "2023-08-01",
-  //     monthEnd: "2023-08-31"
-  //   }));
-  // }, [dispatch]);
+  useEffect(() => {
+    if (pathname === "/calendar" || "/calendar/") {
+      navigate(`/calendar/month/${format(new Date(), 'yyyy-MM-dd')}`);
+    }
+  }, [navigate, pathname]);
 
   return (
     <>
       <CalendarToolbar />
-      {/* <Section>
-        <ChoosedMonth startDay={startDay} />
-      </Section> */}
-      {/* <ChoosedDay /> */}
-      <Section>
+      <Suspense fallback={<div>Loading...</div>}>
         <Outlet />
-      </Section>
+      </Suspense>
     </>
   );
 };
-// const startDay = moment().startOf('month').startOf('week');
 
 export default CalendarPage;
