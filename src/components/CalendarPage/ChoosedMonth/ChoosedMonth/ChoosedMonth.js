@@ -3,10 +3,10 @@ import { useParams } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import moment from 'moment';
 import { startOfMonth, endOfMonth, format, parseISO } from 'date-fns';
+import Swal from 'sweetalert2';
 import { fetchTasks } from 'redux/tasks/operations';
 import MonthCalendarHead from './MonthCalendarHead/MonthCalendarHead';
 import CalendarTable from '../CalendarTable/CalendarTable';
-
 
 const ChoosedMonth = () => {
   const { currentDate } = useParams();
@@ -27,7 +27,12 @@ const ChoosedMonth = () => {
           monthEnd: formatedEndMonthDate,
         }));
       } catch (error) {
-        console.log(error);
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Something went wrong!',
+          confirmButtonColor: '#3E85F3',
+        });
       }
     };
     getAllTasks();
