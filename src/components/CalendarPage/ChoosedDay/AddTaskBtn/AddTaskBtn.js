@@ -50,4 +50,4 @@ const AddTaskBtn = () => {
   );
 };
 
-export default AddTaskBtn
+export default AddTaskBtn;

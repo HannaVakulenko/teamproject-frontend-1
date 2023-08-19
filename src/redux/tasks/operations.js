@@ -12,7 +12,7 @@ export const fetchTasks = createAsyncThunk(
         params: {
           monthStart: monthStart,
           monthEnd: monthEnd,
-        }
+        },
       });
       return response.data;
     } catch (error) {
@@ -43,6 +43,7 @@ export const updateTask = createAsyncThunk(
         category: task.category,
         start: task.start,
         end: task.end,
+        date: task.date,
       });
       return response.data;
     } catch (error) {

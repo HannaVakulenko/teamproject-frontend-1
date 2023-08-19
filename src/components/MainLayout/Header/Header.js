@@ -7,7 +7,7 @@ import {
   ThemeUserWrapper,
   ControllWrapper,
   StyledHeader,
-  Icon
+  Icon,
 } from './Header.styled';
 import icon from 'assets/icons/symbol-defs.svg';
 
