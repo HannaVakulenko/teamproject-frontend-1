@@ -1,3 +1,4 @@
+import { device } from 'constants';
 import { styled } from 'styled-components';
 
 export const Wrapper = styled.div`
@@ -20,6 +21,10 @@ export const Icon = styled.svg`
   fill: none;
   stroke: currentColor;
   transition: stroke 250ms cubic-bezier(0.4, 0, 0.2, 1);
+`;
+
+export const WrapperPopover = styled.div`
+  line-height: 0;
 `;
 
 export const WrapperMenu = styled.div`
@@ -50,5 +55,10 @@ export const ButtonMenu = styled.button`
 
   &:hover svg {
     stroke: ${p => p.theme.mainAccentColorActive};
+  }
+
+  @media (min-width: ${device.tablet}px) {
+    font-size: 14px;
+    line-height: 1.29;
   }
 `;
