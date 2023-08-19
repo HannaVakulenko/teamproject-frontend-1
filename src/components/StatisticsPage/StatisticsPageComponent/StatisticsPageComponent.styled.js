@@ -15,14 +15,30 @@ export const StatisticSection = styled.section`
     padding: 134px 113px;
   }
 `;
+export const WrapperSideBar = styled.div`
+  display: inline-flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 20px;
+  margin-bottom: 40px;
+
+  @media screen and (min-width: ${device.tablet}px) {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+  }
+`;
+
 
 export const Zaglushka = styled.div`
   height: 34px;
   background-color: orangered;
-  margin-bottom: 20px;
+  
 
   @media screen and (min-width: ${device.tablet}px) {
-    margin-bottom: 40px;
+    width: 218px;
   }
 `;
 

@@ -10,6 +10,7 @@ import {
   Legend,
   LabelList,
   Label,
+  ResponsiveContainer,
 } from 'recharts';
 
 import { device } from 'constants';
@@ -22,7 +23,7 @@ import { category } from 'constants';
 
 import {
   
-  ResponsiveContainerStyled,
+ 
   ContainerSecondWrapper,
   ContainerFirstWrapper,
 } from './StatisticsChart.styled';
@@ -232,7 +233,7 @@ const StatisticsChart = () => {
   return (
     <ContainerSecondWrapper>
       <ContainerFirstWrapper>
-        <ResponsiveContainerStyled width={'100%'} height={'100%'}>
+        <ResponsiveContainer width={'100%'} height={'100%'}>
           <BarChart
             width={chartWidth}
             height={chartHeight}
@@ -332,7 +333,7 @@ const StatisticsChart = () => {
               />
             </Bar>
           </BarChart>
-        </ResponsiveContainerStyled>
+        </ResponsiveContainer>
       </ContainerFirstWrapper>
     </ContainerSecondWrapper>
   );

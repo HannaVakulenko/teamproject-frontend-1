@@ -7,15 +7,16 @@ export const WrapperLegend = styled.div`
   flex-wrap: nowrap;
   align-items: center;
   justify-content: flex-start;
-  margin-bottom: 40px;
+  /* margin-bottom: 40px; */
 
   gap: 14px;
-  width: 100%;
+  width: 199px;
   height: 18px;
- 
 
   @media screen and (min-width: ${device.tablet}px) {
-   display: none;
+    gap: 20px;
+    margin-bottom:0;
+    
   }
 `;
 export const WrapperInner = styled.div`
@@ -45,4 +46,10 @@ export const TextLegend = styled.p`
   font-size: 14px;
   font-weight: 400;
   line-height: 1.28;
+
+  @media screen and (min-width: ${device.tablet}px) {
+   
+       font-size: 16px;
+       line-height: 1.12;
+  }
 `;
