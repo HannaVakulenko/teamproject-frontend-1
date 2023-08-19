@@ -14,7 +14,7 @@ const TaskColumnCard = ({ task }) => {
           <AvatarImage src={avatar} width="32" height="32" alt="User Avatar" />
           <Badge data-priority={task.priority}>{task.priority}</Badge>
         </AvatarWrapper>
-        <TaskToolbar />
+        <TaskToolbar task={task} />
       </CardFooter>
       <TaskModal />
     </Wrapper>
