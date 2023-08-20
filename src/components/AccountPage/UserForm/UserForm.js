@@ -26,12 +26,13 @@ import { selectUser } from 'redux/auth/selectors';
 import icon from 'assets/icons/symbol-defs.svg';
 import { Icon } from './UserForm.styled';
 import 'react-datepicker/dist/react-datepicker.css';
-import { getYear, getMonth, eachYearOfInterval } from 'date-fns';
+import { getYear, getMonth, eachYearOfInterval, format } from 'date-fns';
 import DatePicker from 'react-datepicker';
 import { registerLocale, setDefaultLocale } from 'react-datepicker';
 import enGB from 'date-fns/locale/en-GB';
 import { useRef } from 'react';
 import { updateUserAccount } from 'redux/auth/operations';
+import Swal from 'sweetalert2';
 
 const validationSchema = yup.object().shape({
   userName: yup
@@ -42,36 +43,72 @@ const validationSchema = yup.object().shape({
   birthday: yup.date(),
   phone: yup.string(),
   skype: yup.string().max(16, 'Max 16 characters').min(5, 'Min 5 characters'),
+  password: yup.string().min(7, 'Must be at least 7 characters long'),
 });
 
 const UserForm = () => {
   const user = useSelector(selectUser);
-  // console.log(user);
+
+  const formData = new FormData();
+  console.log(formData);
+
   const dispatch = useDispatch();
   const [formSubmitted, setFormSubmitted] = useState(false);
   const [userBirthday, setUserBirthday] = useState(user.birthday || new Date());
   const [userAvatar, setUserAvatar] = useState(user.avatarURL);
 
   const handleSubmit = values => {
-    console.log({
+    const updateUser = {
       name: values.userName,
       email: values.email,
       birthday: userBirthday,
       phone: values.phone,
       skype: values.skype,
       avatarURL: userAvatar,
+      password: values.password,
+    };
+
+    console.log(updateUser);
+
+    Object.entries(updateUser).forEach(([key, value]) => {
+      if (value) {
+        if (value instanceof File) {
+          formData.append(key, value);
+        } else if (typeof value === 'string') {
+          formData.append(key, value.trim());
+        } else {
+          formData.append(key, value);
+        }
+      } else if (key === 'birthday') {
+        const birthday = format(new Date(value[key]), 'yyyy-MM-dd');
+        formData.append('birthday', birthday);
+      }
     });
+    
+    console.log(formData);
+
     setFormSubmitted(true);
     try {
-         dispatch(updateUserAccount({
-          name: values.userName,
-          email: values.email,
-          birthday: userBirthday,
-          phone: values.phone,
-          skype: values.skype,
-          avatarURL: userAvatar,
-      }));
+      // dispatch(
+      //   updateUserAccount({
+      //     name: values.userName,
+      //     email: values.email,
+      //     birthday: userBirthday,
+      //     phone: values.phone,
+      //     skype: values.skype,
+      //     avatarURL: userAvatar,
+      //     password: values.password,
+      //   })
+      // );
     } catch (error) {
+      if (error.response && error.response.status === 409) {
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'User with this email address already exists!',
+          confirmButtonColor: '#3E85F3',
+        });
+      }
       console.error('Submission error:', error);
     } finally {
       setFormSubmitted(false);
@@ -143,6 +180,7 @@ const UserForm = () => {
           email: user.email,
           phone: user.phone || '',
           skype: user.skype || '',
+          password: user.password || '',
         }}
         validationSchema={validationSchema}
         onSubmit={values => {
@@ -272,15 +310,15 @@ const UserForm = () => {
             </FieldWrap>
 
             <FieldWrap>
-                  <Label htmlFor="password">Password:</Label>
-                  <Input
-                    id="password"
-                    name="password"
-                    type="password"
-                    placeholder="Change your password"
-                  />
-                  <ErrorText name="password" component="div" />
-                </FieldWrap>
+              <Label htmlFor="password">Password:</Label>
+              <Input
+                id="password"
+                name="password"
+                type="password"
+                placeholder="Change your password"
+              />
+              <ErrorText name="password" component="div" />
+            </FieldWrap>
           </InputWrapperR>
 
           <SaveChangesBtn type="submit" disabled={formSubmitted}>
