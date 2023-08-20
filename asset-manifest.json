@@ -1,9 +1,9 @@
 {
   "files": {
     "main.css": "/teamproject-frontend-1/static/css/main.ba4169d3.css",
-    "main.js": "/teamproject-frontend-1/static/js/main.dfcb3017.js",
+    "main.js": "/teamproject-frontend-1/static/js/main.447a559e.js",
     "static/js/132.704632de.chunk.js": "/teamproject-frontend-1/static/js/132.704632de.chunk.js",
-    "static/js/461.ff03e362.chunk.js": "/teamproject-frontend-1/static/js/461.ff03e362.chunk.js",
+    "static/js/461.d4a42fd7.chunk.js": "/teamproject-frontend-1/static/js/461.d4a42fd7.chunk.js",
     "static/js/97.84e62906.chunk.js": "/teamproject-frontend-1/static/js/97.84e62906.chunk.js",
     "static/media/mainpage-calendar-tabl@3x.png": "/teamproject-frontend-1/static/media/mainpage-calendar-tabl@3x.589377ec1ea92f785c22.png",
     "static/media/mainpage-calendar-desk@3x.png": "/teamproject-frontend-1/static/media/mainpage-calendar-desk@3x.7eb92153619fd464b254.png",
@@ -99,6 +99,7 @@
     "static/media/mainpage-calendar-mob-1x.webp": "/teamproject-frontend-1/static/media/mainpage-calendar-mob-1x.42a649e559a544f9572d.webp",
     "static/media/mainpage-goose-mob@2x.webp": "/teamproject-frontend-1/static/media/mainpage-goose-mob@2x.06490654e40d001c5d87.webp",
     "static/media/not-found-tabl-desk-1x.webp": "/teamproject-frontend-1/static/media/not-found-tabl-desk-1x.c5c0d2609ec402cece38.webp",
+    "static/media/mainlayout-header-desk@3x.webp": "/teamproject-frontend-1/static/media/mainlayout-header-desk@3x.cf6c1d6d3f11fbbc4d60.webp",
     "static/media/mainpage-one-mob-1x.webp": "/teamproject-frontend-1/static/media/mainpage-one-mob-1x.e38e3fd27f6e04ebbe06.webp",
     "static/media/mainpage-sidebar-mob-1x.webp": "/teamproject-frontend-1/static/media/mainpage-sidebar-mob-1x.250fbc7bac0d4717e66b.webp",
     "static/media/not-found-mob@2x.webp": "/teamproject-frontend-1/static/media/not-found-mob@2x.e07e8aa7ba0dee84b52a.webp",
@@ -108,19 +109,21 @@
     "static/media/logo-desk@2x.webp": "/teamproject-frontend-1/static/media/logo-desk@2x.bb420638145156ed2ec3.webp",
     "static/media/logo-tabl@2x.webp": "/teamproject-frontend-1/static/media/logo-tabl@2x.c2dc80f642e665f4cee9.webp",
     "static/media/not-found-mob-1x.webp": "/teamproject-frontend-1/static/media/not-found-mob-1x.b70c36b0cb3618566894.webp",
+    "static/media/mainlayout-header-desk@2x.webp": "/teamproject-frontend-1/static/media/mainlayout-header-desk@2x.4ab896bdd5935e63e7e0.webp",
     "static/media/logo-mob@2x.webp": "/teamproject-frontend-1/static/media/logo-mob@2x.371f6253b17509902e1d.webp",
     "static/media/logo-desk-1x.webp": "/teamproject-frontend-1/static/media/logo-desk-1x.afd277922e02777378ea.webp",
     "static/media/logo-tabl-1x.webp": "/teamproject-frontend-1/static/media/logo-tabl-1x.cec23fd06038f13e12d2.webp",
     "index.html": "/teamproject-frontend-1/index.html",
+    "static/media/mainlayout-header-desk-1x.webp": "/teamproject-frontend-1/static/media/mainlayout-header-desk-1x.31b73ed5a214835f1dc0.webp",
     "static/media/logo-mob-1x.webp": "/teamproject-frontend-1/static/media/logo-mob-1x.cd09cea1d315fcef8d71.webp",
     "main.ba4169d3.css.map": "/teamproject-frontend-1/static/css/main.ba4169d3.css.map",
-    "main.dfcb3017.js.map": "/teamproject-frontend-1/static/js/main.dfcb3017.js.map",
+    "main.447a559e.js.map": "/teamproject-frontend-1/static/js/main.447a559e.js.map",
     "132.704632de.chunk.js.map": "/teamproject-frontend-1/static/js/132.704632de.chunk.js.map",
-    "461.ff03e362.chunk.js.map": "/teamproject-frontend-1/static/js/461.ff03e362.chunk.js.map",
+    "461.d4a42fd7.chunk.js.map": "/teamproject-frontend-1/static/js/461.d4a42fd7.chunk.js.map",
     "97.84e62906.chunk.js.map": "/teamproject-frontend-1/static/js/97.84e62906.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.ba4169d3.css",
-    "static/js/main.dfcb3017.js"
+    "static/js/main.447a559e.js"
   ]
 }
