@@ -14,26 +14,37 @@ import DatePicker from "react-datepicker";
 import { registerLocale, setDefaultLocale } from 'react-datepicker';
 import enGB from 'date-fns/locale/en-GB';
 import { useRef } from 'react';
+import Swal from 'sweetalert2';
+import { phoneRegExp } from 'constants/phoneValidation';
 
 const validationSchema = yup.object().shape({
-  userName: yup.string().max(16, 'Max 16 characters').min(2, 'Min 2 characters'),
-  email: yup.string().email('Invalid email'),
+  name: yup.string().matches(/^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$/, 'Name may contain only letters, apostrophe, dash and spaces')
+    .min(2, 'Must be at least 2 characters long')
+    .required('Name is required'),
+  email: yup.string()
+    .email('Email address must contain an "@" sign').matches(/^\w+([.-]?\w+)*@\w+([.-]?\w+)*\.\w{2,3}$/,'Must be a valid email')
+    .required('Email is required'),
   birthday: yup.date(),
-  phone: yup.string(), 
+  phone: yup.string().matches(phoneRegExp, 'Phone number is not valid'), 
   skype: yup.string().max(16, 'Max 16 characters').min(5, 'Min 5 characters'),
+  password: yup
+    .string()
+    .min(7, 'Must be at least 7 characters long'),
 });
+
 
 const UserForm = () => {
   const user = useSelector(selectUser);
   const dispatch = useDispatch();
-  const [formSubmitted, setFormSubmitted] = useState(false);
+  const [formSubmitted] = useState(false);
   const [localUserData, setLocalUserData] = useState({
     profilePicture: '',
-    userName: '',
+    name: '',
     email: '',
     birthday: new Date(),
     phone: '',
     skype: '',
+    password: '',
   });
 
   useEffect(() => {
@@ -41,18 +52,21 @@ const UserForm = () => {
   }, [dispatch]);
 
   const handleSubmit = async (values) => {
-    setFormSubmitted(true);
     try {
       setLocalUserData({ ...values });
       await dispatch(fetchUserAccount(localUserData));
       await dispatch(refreshUser(localUserData));
     } catch (error) {
-      console.error('Submission error:', error);
-    } finally {
-      setFormSubmitted(false);
+      if (error.response && error.response.status === 409) {
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'User with this email address already exists!',
+          confirmButtonColor: '#3E85F3',
+        });
+      }
     }
   };
-  
   const years = eachYearOfInterval({ start: new Date(1900, 0, 1), end: new Date() });
   const months = [
     "January", "February", "March", "April", "May", "June",
@@ -70,7 +84,7 @@ const UserForm = () => {
   });
 
   const datePickerRef = useRef(null);
-  
+
   return (
     <FormWrap>
       <ImageContainer>
@@ -111,118 +125,151 @@ const UserForm = () => {
         initialValues={localUserData}
         validationSchema={validationSchema}
         onSubmit={handleSubmit}>
-        {({ dirty, isSubmitting }) => (
+        {formik => (
           <>
-            <>
-              <Form autoComplete="off">
-                <InputWrapperL className="left-column">
-                  <FieldWrap>
-                    <Label>User Name:</Label>
-                    <Input type="text" name="userName" placeholder="User Name" />
-                    <ErrorText name="userName" component="div" />
-                  </FieldWrap>
-                  <FieldWrap>
-                    <Label>Birthday:</Label>
-                    <StyledDatePickerInputWrapper>
-                      <DatePicker
-                        ref={datePickerRef}
-                        formatWeekDay={nameOfDay => nameOfDay.substr(0, 1)}
-                        selected={localUserData.birthday}
-                        onChange={date => setLocalUserData({ ...localUserData, birthday: date })}
-                        locale="en-GB"
-                        dateFormat="dd/MM/yyyy"
-                        calendarStartDay={1}
-                        placeholderText={`Select your birthday (current date: ${currentDateString})`}
-                        onChangeRaw={e => {
-                          e.preventDefault();
-                          setLocalUserData({
-                            ...localUserData,
-                            birthday: new Date(e.target.value),
-                          });
-                        }}
-                        renderCustomHeader={({ date, changeYear, changeMonth, decreaseMonth, increaseMonth, prevMonthButtonDisabled, nextMonthButtonDisabled }) => (
+            <Form autoComplete="off">
+              <InputWrapperL className="left-column">
+                <FieldWrap className={`${formik.touched.name && formik.errors.name
+                  ? 'error'
+                  : ''
+                  }`}
+                >
+                  <Label>User Name:</Label>
+                  <Input id="name" name="name" placeholder="User Name" />
+                  <ErrorText name="name" component="div" />
+                </FieldWrap>
+                <FieldWrap>
+                  <Label>Birthday:</Label>
+                  <StyledDatePickerInputWrapper>
+                    <DatePicker className={`${formik.touched.birthday && formik.errors.birthday
+                      ? 'error'
+                      : formik.touched.birthday && !formik.errors.birthday
+                        ? 'success'
+                        : ''
+                      }`}
+                      ref={datePickerRef}
+                      formatWeekDay={nameOfDay => nameOfDay.substr(0, 1)}
+                      selected={localUserData.birthday}
+                      onChange={date => setLocalUserData({ ...localUserData, birthday: date })}
+                      locale="en-GB"
+                      dateFormat="dd/MM/yyyy"
+                      calendarStartDay={1}
+                      id="birthday"
+                      name="birthday"
+                      type="birthday"
+
+                      placeholderText={`Select your birthday (current date: ${currentDateString})`}
+                      onChangeRaw={e => {
+                        e.preventDefault();
+                        setLocalUserData({
+                          ...localUserData,
+                          birthday: new Date(e.target.value),
+                        });
+                      }}
+                      renderCustomHeader={({ date, changeYear, changeMonth, decreaseMonth, increaseMonth, prevMonthButtonDisabled, nextMonthButtonDisabled }) => (
     
-                          <div className="datepicker_nav"
+                        <div className="datepicker_nav"
+                        >
+                          <button className="datepicker_btn" type="button" onClick={decreaseMonth} disabled={prevMonthButtonDisabled}>
+                            {"<"}
+                          </button>
+                          <select className="datepicker_select"
+                            value={getYear(date)}
+                            onChange={({ target: { value } }) => changeYear(value)}
                           >
-                            <button className="datepicker_btn" type="button" onClick={decreaseMonth} disabled={prevMonthButtonDisabled}>
-                              {"<"}
-                            </button>
-                            <select className="datepicker_select"
-                              value={getYear(date)}
-                              onChange={({ target: { value } }) => changeYear(value)}
-                            >
-                              {years.map((option) => (
-                                <option key={option} value={getYear(option)}>
-                                  {getYear(option)}
-                                </option>
-                              ))}
-                            </select>
-                            <select className="datepicker_select"
-                              value={months[getMonth(date)]}
-                              onChange={({ target: { value } }) =>
-                                changeMonth(months.indexOf(value))
-                              }
-                            >
-                              {months.map((option) => (
-                                <option key={option} value={option}>
-                                  {option}
-                                </option>
-                              ))}
-                            </select>
-                            <button className="datepicker_btn" type="button"
-                              onClick={increaseMonth} disabled={nextMonthButtonDisabled}>
-                              {">"}
-                            </button>
-                          </div>
+                            {years.map((option) => (
+                              <option key={option} value={getYear(option)}>
+                                {getYear(option)}
+                              </option>
+                            ))}
+                          </select>
+                          <select className="datepicker_select"
+                            value={months[getMonth(date)]}
+                            onChange={({ target: { value } }) =>
+                              changeMonth(months.indexOf(value))
+                            }
+                          >
+                            {months.map((option) => (
+                              <option key={option} value={option}>
+                                {option}
+                              </option>
+                            ))}
+                          </select>
+                          <button className="datepicker_btn" type="button"
+                            onClick={increaseMonth} disabled={nextMonthButtonDisabled}>
+                            {">"}
+                          </button>
+                        </div>
     
-                        )}
-                      />
-                      <button
-                        className="datepicker_icon_button"
-                        type="button"
-                        onClick={() => {
-                          if (datePickerRef.current) {
-                            datePickerRef.current.setOpen(true);
-                          }
-                        }}
-                      >
-     
-                      </button>
-                      <BdayIcon>
-                        <use href={icon + '#icon-chevron-down'}></use>
-                      </BdayIcon>
-                    </StyledDatePickerInputWrapper>
-                    <ErrorText name="birthday" component="div" /></FieldWrap>
-                  <FieldWrap>
-                    <Label>Email:</Label>
-                    <Input type="email" name="email" placeholder="Email" />
-                    <ErrorText name="email" component="div" />
-                  </FieldWrap>
-                </InputWrapperL>
-                <InputWrapperR className="right-column">
-                  <FieldWrap>
-                    <Label>Phone:</Label>
-                    <Input type="text" name="phone" placeholder="38 (097) 256 34 77" />
-                    <ErrorText name="phone" component="div" /></FieldWrap>
-                  <FieldWrap>
-                    <Label>Skype:</Label>
-                    <Input
-                      type="text"
-                      name="skype"
-                      placeholder="Enter your Skype ID"
+                      )}
                     />
-                    <ErrorText name="skype" component="div" />
-                  </FieldWrap>
-                </InputWrapperR>
-              </Form>
-              <SaveChangesBtn
-                type="submit"
-                disabled={!dirty || isSubmitting || formSubmitted}>
-                Save changes
-              </SaveChangesBtn>
+                    <button
+                      className="datepicker_icon_button"
+                      type="button"
+                      onClick={() => {
+                        if (datePickerRef.current) {
+                          datePickerRef.current.setOpen(true);
+                        }
+                      }}
+                    >
+     
+                    </button>
+                    <BdayIcon>
+                      <use href={icon + '#icon-chevron-down'}></use>
+                    </BdayIcon>
+                  </StyledDatePickerInputWrapper>
+                  <ErrorText name="birthday" component="div" />
+                </FieldWrap>
+                <FieldWrap className={`${formik.touched.email && formik.errors.email
+                  ? 'error'
+                  : ''
+                  }`}>
+                  <Label>Email:</Label>
+                  <Input id="email"
+                    name="email"
+                    type="email" placeholder="Email" />
+                  <ErrorText name="email" component="div" />
+                </FieldWrap>
+              </InputWrapperL>
+              <InputWrapperR className="right-column">
+                <FieldWrap >
+                  <Label>Phone:</Label>
+                  <Input id="phone"
+                    name="phone"
+                    type="phone" placeholder="38 (097) 256 34 77" />
+                  <ErrorText name="phone" component="div" />
+                 
+                </FieldWrap>
+                <FieldWrap>
+                  <Label>Skype:</Label>
+                  <Input
+                    id="skype"
+                    name="skype"
+                    type="skype"
+                    placeholder="Enter your Skype ID"
+                  />
+                  <ErrorText name="skype" component="div" />
+                </FieldWrap>
+                <FieldWrap>
+                  <Label htmlFor="password">Password:</Label>
+                  <Input
+                    id="password"
+                    name="password"
+                    type="password"
+                    placeholder="Change your password"
+                  />
+                  <ErrorText name="password" component="div" />
+                </FieldWrap>
+              </InputWrapperR>
+            </Form>
+            <SaveChangesBtn
+              type="submit"
+              disabled={formSubmitted}>
+              Save changes
+            </SaveChangesBtn>
               
-              <DatePickerWrapperStyles />
-            </>
+            <DatePickerWrapperStyles />
+            
           </>
         )}
       </Formik>
@@ -232,3 +279,4 @@ const UserForm = () => {
 };
 
 export default UserForm;
+
