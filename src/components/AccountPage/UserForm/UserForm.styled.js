@@ -532,7 +532,7 @@ height: 48px !important;
    .react-datepicker__day--outside-month {
      color: ${p => p.theme.buttonTextColor} !important;
      opacity: 0% !important;
-     pointer-events: none; !important;
+     pointer-events: none !important;
    }
 
    .react-datepicker__day-name:nth-child(6),
