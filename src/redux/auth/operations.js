@@ -91,7 +91,10 @@ export const fetchUserAccount = createAsyncThunk(
 
 export const updateUserAccount = createAsyncThunk(
   'auth/updateAccount',
-  async (user, thunkAPI) => {
+  async (formData, thunkAPI) => {
+
+    axios.defaults.headers.post['Content-Type'] = 'multipart/form-data';
+
     const state = thunkAPI.getState();
     const persistedToken = state.auth.token;
 
@@ -101,8 +104,8 @@ export const updateUserAccount = createAsyncThunk(
 
     try {
       setAuthHeader(persistedToken);
-      console.log(user);
-      const res = await axios.patch('/auth/account', user );
+      console.log(formData);
+      const res = await axios.patch('/auth/account', formData );
       console.log(res);
       return res.data;
     } catch (error) {

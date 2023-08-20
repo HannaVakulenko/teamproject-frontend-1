@@ -45,17 +45,18 @@ const validationSchema = yup.object().shape({
   skype: yup.string().max(16, 'Max 16 characters').min(5, 'Min 5 characters'),
   password: yup.string().min(7, 'Must be at least 7 characters long'),
 });
+const formData = new FormData();
 
 const UserForm = () => {
   const user = useSelector(selectUser);
-
-  const formData = new FormData();
-  console.log(formData);
 
   const dispatch = useDispatch();
   const [formSubmitted, setFormSubmitted] = useState(false);
   const [userBirthday, setUserBirthday] = useState(user.birthday || new Date());
   const [userAvatar, setUserAvatar] = useState(user.avatarURL);
+
+  // const date = format(new Date(userBirthday), 'yyyy-MM-dd');
+  // console.log(date);
 
   const handleSubmit = values => {
     const updateUser = {
@@ -67,39 +68,25 @@ const UserForm = () => {
       avatarURL: userAvatar,
       password: values.password,
     };
-
-    console.log(updateUser);
-
+console.log(userBirthday===true)
     Object.entries(updateUser).forEach(([key, value]) => {
       if (value) {
-        if (value instanceof File) {
-          formData.append(key, value);
-        } else if (typeof value === 'string') {
+         if (typeof value === 'string') {
           formData.append(key, value.trim());
         } else {
           formData.append(key, value);
         }
       } else if (key === 'birthday') {
-        const birthday = format(new Date(value[key]), 'yyyy-MM-dd');
-        formData.append('birthday', birthday);
+        const date = format(new Date(userBirthday), 'yyyy-MM-dd');
+        formData.append('birthday', date);
       }
     });
-    
-    console.log(formData);
+    console.log(formData.getAll('birthday'));
+
 
     setFormSubmitted(true);
     try {
-      // dispatch(
-      //   updateUserAccount({
-      //     name: values.userName,
-      //     email: values.email,
-      //     birthday: userBirthday,
-      //     phone: values.phone,
-      //     skype: values.skype,
-      //     avatarURL: userAvatar,
-      //     password: values.password,
-      //   })
-      // );
+      dispatch(updateUserAccount({ formData }));
     } catch (error) {
       if (error.response && error.response.status === 409) {
         Swal.fire({
