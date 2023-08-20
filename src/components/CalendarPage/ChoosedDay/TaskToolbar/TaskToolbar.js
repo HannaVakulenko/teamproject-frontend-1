@@ -11,14 +11,12 @@ import { Popover } from '@mui/material';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { categories } from 'constants';
-import { updateTask } from 'redux/tasks/operations';
+import { updateTask, deleteTask } from 'redux/tasks/operations';
 
 const TaskToolbar = ({ task }) => {
   const dispatch = useDispatch();
 
-  const categoriesValues = Object.values(categories);
-
-  const availableCategories = categoriesValues.filter(
+  const availableCategories = categories.filter(
     category => category !== task.category
   );
 
@@ -91,7 +89,12 @@ const TaskToolbar = ({ task }) => {
           <use href={icon + '#icon-pencil-01'}></use>
         </Icon>
       </Button>
-      <Button>
+      <Button
+        onClick={() => {
+          console.log(task._id);
+          dispatch(deleteTask(task._id));
+        }}
+      >
         <Icon width="14" height="14">
           <use href={icon + '#icon-trash-04'}></use>
         </Icon>
