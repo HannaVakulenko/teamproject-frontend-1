@@ -50,13 +50,21 @@ export const ThemeUserWrapper = styled.div`
 `;
 
 export const Icon = styled.svg`
-width: 24px;
-height: 24px;
-stroke: currentColor;
-fill: currentColor;
+  width: 24px;
+  height: 24px;
+  stroke: currentColor;
+  fill: currentColor;
 
-@media (min-width: ${device.tablet}px) {
-  width: 34px;
-  height: 34px;
+  @media (min-width: ${device.tablet}px) {
+    width: 34px;
+    height: 34px;
   }
+`;
+
+export const Flags = styled.div`
+  display: flex;
+  /* position: absolute; */
+  /* right: 0; */
+  /* padding-right: 20px; */
+  /* padding-top: 20px; */
 `;

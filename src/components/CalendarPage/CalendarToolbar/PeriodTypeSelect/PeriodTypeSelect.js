@@ -1,7 +1,11 @@
 import { useNavigate } from 'react-router-dom';
 import { ButtonMonth, ButtonDay } from './PeriodTypeSelect.styled';
+// import i18n from '../../../../i18n';
+import { useTranslation } from 'react-i18next';
 
 const PeriodTypeSelect = () => {
+  const { t } = useTranslation();
+
   const navigate = useNavigate();
 
   const toMonth = () => {
@@ -14,8 +18,12 @@ const PeriodTypeSelect = () => {
   };
   return (
     <>
-      <ButtonMonth onClick={toMonth}>Month</ButtonMonth>
-      <ButtonDay onClick={toDay}>Day</ButtonDay>
+      {/* <Suspense fallback="loading..."> */}
+      {/* <I18nextProvider i18n={i18n} defaultNS={'translation'}> */}
+      <ButtonMonth onClick={toMonth}>{t('month')}</ButtonMonth>
+      <ButtonDay onClick={toDay}>{t('day')}</ButtonDay>
+      {/* </I18nextProvider>
+      </Suspense> */}
     </>
   );
 };

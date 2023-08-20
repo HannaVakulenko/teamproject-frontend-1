@@ -19,6 +19,7 @@ import {
 import icon from 'assets/icons/symbol-defs.svg';
 
 import { login, refreshUser } from 'redux/auth/operations';
+import { useTranslation } from 'react-i18next';
 
 const schema = yup.object().shape({
   email: yup
@@ -41,6 +42,8 @@ const initialValues = {
 };
 
 const LoginForm = () => {
+  const { t } = useTranslation();
+
   const dispatch = useDispatch();
 
   const handleSubmit = async (values, { resetForm }) => {
@@ -62,7 +65,7 @@ const LoginForm = () => {
 
   return (
     <FormWrapper>
-      <FormTitle>Log In</FormTitle>
+      <FormTitle>{t('log_in')}</FormTitle>
       <Formik
         initialValues={initialValues}
         validationSchema={schema}
@@ -94,7 +97,7 @@ const LoginForm = () => {
               />
               <ErrorText name="email" component="div" />
               {formik.touched.email && !formik.errors.email && (
-                <SuccessText>This is a valid email</SuccessText>
+                <SuccessText>{t('valid_email')}</SuccessText>
               )}
             </FieldWrapper>
             <FieldWrapper
@@ -106,7 +109,7 @@ const LoginForm = () => {
                   : ''
               }`}
             >
-              <FormLabel htmlFor="password">Password</FormLabel>
+              <FormLabel htmlFor="password">{t('password')}</FormLabel>
               <ErrorIcon width="20" height="20" data-status="error">
                 <use href={icon + '#icon-Vector'}></use>
               </ErrorIcon>
@@ -121,11 +124,11 @@ const LoginForm = () => {
               />
               <ErrorText name="password" component="div" />
               {formik.touched.password && !formik.errors.password && (
-                <SuccessText>This is a valid password</SuccessText>
+                <SuccessText>{t('valid_pass')}</SuccessText>
               )}
             </FieldWrapper>
             <FormButton type="submit">
-              <span>Log In</span>
+              <span>{t('log_in')}</span>
               <Icon width="20" height="20">
                 <use href={icon + '#icon-login'}></use>
               </Icon>

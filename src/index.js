@@ -12,23 +12,21 @@ import { useSelector } from 'react-redux';
 import { selectTheme } from 'redux/themeSlice';
 import { LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
+
+import '/node_modules/flag-icons/css/flag-icons.min.css';
 import './i18n';
-import { I18nextProvider } from 'react-i18next';
-import i18n from './i18n';
 
 function AppWrapper() {
   const theme = useSelector(selectTheme);
 
   return (
     <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
-      <I18nextProvider i18n={i18n} defaultNS={'translation'}>
-        <GlobalStyle />
-        <BrowserRouter basename="/teamproject-frontend-1">
-          <LocalizationProvider dateAdapter={AdapterDateFns}>
-            <App />
-          </LocalizationProvider>
-        </BrowserRouter>
-      </I18nextProvider>
+      <GlobalStyle />
+      <BrowserRouter basename="/teamproject-frontend-1">
+        <LocalizationProvider dateAdapter={AdapterDateFns}>
+          <App />
+        </LocalizationProvider>
+      </BrowserRouter>
     </ThemeProvider>
   );
 }

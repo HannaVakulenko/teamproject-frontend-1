@@ -7,11 +7,19 @@ import {
   ThemeUserWrapper,
   ControllWrapper,
   StyledHeader,
-  Icon
+  Icon,
 } from './Header.styled';
 import icon from 'assets/icons/symbol-defs.svg';
+// import { useTranslation } from 'react-i18next';
+import LanguageFlags from './LanguageFlags';
 
 const Header = ({ toggleSidebar }) => {
+  // const { i18n } = useTranslation();
+
+  // const changeLanguage = lng => {
+  //   i18n.changeLanguage(lng);
+  // };
+
   return (
     <StyledHeader>
       <StyledButton onClick={toggleSidebar}>
@@ -22,6 +30,7 @@ const Header = ({ toggleSidebar }) => {
       <MainTitle title="Calendar" />
       <ControllWrapper>
         <AddFeedbackBtn />
+        <LanguageFlags />
         <ThemeUserWrapper>
           <ThemeToggler />
           <UserInfo />
