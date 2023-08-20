@@ -1,10 +1,8 @@
- 
-
-import{
+import {
   CircleDay,
   CircleMonth,
   WrapperLegend,
-WrapperInner,
+  WrapperInner,
   TextLegend,
 } from './StatisticsLegend.styled';
 
@@ -12,7 +10,6 @@ const Statisticslegend = () => {
   return (
     <>
       <WrapperLegend>
-        
         <WrapperInner>
           <CircleDay />
           <TextLegend>By Day</TextLegend>

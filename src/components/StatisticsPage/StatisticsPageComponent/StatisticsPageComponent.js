@@ -1,5 +1,4 @@
 import { useState } from 'react';
-
 import StatisticsChart from '../StatisticsChart/StatisticsChart';
 import PeriodPaginator from '../../../components/CalendarPage/CalendarToolbar/PeriodPaginator/PeriodPaginator';
 
@@ -11,6 +10,7 @@ import Statisticslegend from '../StatisticsLegend/StatisticsLegend';
 
 const StatisticsPageComponent = () => {
   const [date, setDate] = useState(new Date());
+  
   const [isOpen, setIsOpen] = useState(false);
  
   const changeDate = e => {

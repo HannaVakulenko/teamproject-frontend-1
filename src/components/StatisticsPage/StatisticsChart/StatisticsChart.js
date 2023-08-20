@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useMemo } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 import {
   Bar,
@@ -14,7 +14,7 @@ import {
 } from 'recharts';
 
 import { device } from 'constants';
-import { fetchTasks } from '../../../redux/tasks/operations';
+// import { fetchTasks } from '../../../redux/tasks/operations';
 
 import { selectDate } from '../../../redux/date/selectors';
 
@@ -27,7 +27,7 @@ import {
 } from './StatisticsChart.styled';
 
 const StatisticsChart = () => {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
   //Дата
   const dateStatistics = useSelector(selectDate);
@@ -219,14 +219,14 @@ const StatisticsChart = () => {
     };
   }, []);
 
-  useEffect(() => {
-    dispatch(
-      fetchTasks({
-        monthStart: '2023-08-18',
-        monthEnd: '2023-08-30',
-      })
-    );
-  }, [dispatch]);
+  // useEffect(() => {
+  //   dispatch(
+  //     fetchTasks({
+  //       monthStart: monthStart,
+  //       monthEnd: monthEnd,
+  //     })
+  //   );
+  // }, [dispatch]);
 
   return (
     <ContainerSecondWrapper>
