@@ -88,3 +88,25 @@ export const fetchUserAccount = createAsyncThunk(
     }
   }
 );
+
+export const updateUserAccount = createAsyncThunk(
+  'auth/updateAccount',
+  async (user, thunkAPI) => {
+    // const state = thunkAPI.getState();
+    // const persistedToken = state.auth.token;
+
+    // if (persistedToken === null) {
+    //   return thunkAPI.rejectWithValue('Unable to fetch user account');
+    // }
+
+    try {
+      // setAuthHeader(persistedToken);
+      console.log(user);
+      const res = await axios.patch('/auth/account', { ...user });
+      console.log(res);
+      return res.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error);
+    }
+  }
+);
