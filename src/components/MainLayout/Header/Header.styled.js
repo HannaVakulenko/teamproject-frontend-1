@@ -4,7 +4,8 @@ import { device } from 'constants';
 export const StyledHeader = styled.header`
   display: flex;
   width: 100%;
-  align-items: center;
+  outline: auto;
+  align-items: flex-start;
   justify-content: space-between;
 `;
 
@@ -18,7 +19,7 @@ export const ControllWrapper = styled.div`
   }
 `;
 
-export const StyledButton = styled.button`
+export const BurgerButton = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -40,6 +41,45 @@ export const StyledButton = styled.button`
   }
 `;
 
+export const TitleBurgerWrapper = styled.div`
+  height: 100%;
+  display: flex;
+  align-items: center;
+`;
+
+export const TitleWrapper = styled.div`
+  display: none;
+
+  @media (min-width: ${device.desktop}px) {
+    height: 100%;
+    display: flex;
+    gap: 8px;
+    align-items: center;
+  }
+`;
+
+export const GooseImg = styled.img`
+  width: 64px;
+  height: 60px;
+  flex-shrink: 0;
+`;
+
+export const MotivationText = styled.div`
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 18px;
+  span {
+    color: ${p => p.theme.mainAccentColor};
+  }
+`;
+
+export const TitleTextWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+`;
+
 export const ThemeUserWrapper = styled.div`
   display: flex;
   align-items: center;
@@ -50,13 +90,13 @@ export const ThemeUserWrapper = styled.div`
 `;
 
 export const Icon = styled.svg`
-width: 24px;
-height: 24px;
-stroke: currentColor;
-fill: currentColor;
+  width: 24px;
+  height: 24px;
+  stroke: currentColor;
+  fill: currentColor;
 
-@media (min-width: ${device.tablet}px) {
-  width: 34px;
-  height: 34px;
+  @media (min-width: ${device.tablet}px) {
+    width: 34px;
+    height: 34px;
   }
 `;
