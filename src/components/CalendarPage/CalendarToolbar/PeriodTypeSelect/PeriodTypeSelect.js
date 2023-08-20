@@ -1,30 +1,39 @@
 import { useNavigate } from 'react-router-dom';
-import { ButtonMonth, ButtonDay } from './PeriodTypeSelect.styled';
-// import i18n from '../../../../i18n';
+import { ButtonMonth, ButtonDay, Container } from './PeriodTypeSelect.styled';
+import { useLocation } from 'react-router-dom';
+import moment from 'moment';
 import { useTranslation } from 'react-i18next';
 
 const PeriodTypeSelect = () => {
   const { t } = useTranslation();
 
   const navigate = useNavigate();
+  const location = useLocation();
+  const currentDate = moment().format('YYYY-MM-DD');
 
   const toMonth = () => {
-    // какой маршрут??????
-    navigate('/calendar/month');
+    navigate(`/calendar/month/${currentDate}`);
   };
+
   const toDay = () => {
-    // какой маршрут??????
-    navigate('/calendar/day');
+    navigate(`/calendar/day/${currentDate}`);
   };
+
   return (
-    <>
-      {/* <Suspense fallback="loading..."> */}
-      {/* <I18nextProvider i18n={i18n} defaultNS={'translation'}> */}
-      <ButtonMonth onClick={toMonth}>{t('month')}</ButtonMonth>
-      <ButtonDay onClick={toDay}>{t('day')}</ButtonDay>
-      {/* </I18nextProvider>
-      </Suspense> */}
-    </>
+    <Container>
+      <ButtonMonth
+        $isActive={location.pathname.includes('day')}
+        onClick={toMonth}
+      >
+        Month
+      </ButtonMonth>
+      <ButtonDay
+        $isActive={location.pathname.includes('month')}
+        onClick={toDay}
+      >
+        Day
+      </ButtonDay>
+    </Container>
   );
 };
 export default PeriodTypeSelect;

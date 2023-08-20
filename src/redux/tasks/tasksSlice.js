@@ -4,7 +4,7 @@ import { logout } from 'redux/auth/operations';
 
 const initialState = {
   tasks: [],
-  avatarURL: "",
+  avatarURL: '',
   isLoading: false,
   error: null,
 };
@@ -34,27 +34,23 @@ const addTaskFulfilledReducer = (state, action) => {
 const updateTaskFulfilledReducer = (state, action) => {
   state.isLoading = false;
   state.error = null;
-  const index = state.tasks.findIndex(
-    task => task._id === action.payload._id
-  );
+  const index = state.tasks.findIndex(task => task._id === action.payload._id);
   state.tasks.splice(index, 1, action.payload);
 };
 
 const deleteTaskFulfilledReducer = (state, action) => {
   state.isLoading = false;
   state.error = null;
-  const index = state.tasks.findIndex(
-    task => task._id === action.payload._id
-  );
-  state.task.splice(index, 1);
+  const index = state.tasks.findIndex(task => task._id === action.payload._id);
+  state.tasks.splice(index, 1);
 };
 
-const clearTasksFulfilledReducer = (state) => {
+const clearTasksFulfilledReducer = state => {
   state.tasks = [];
-  state.avatarURL = "";
+  state.avatarURL = '';
   state.isLoading = false;
   state.error = null;
-}
+};
 
 const tasksSlice = createSlice({
   name: 'tasks',
@@ -73,7 +69,7 @@ const tasksSlice = createSlice({
       .addCase(deleteTask.pending, pendingReducer)
       .addCase(deleteTask.fulfilled, deleteTaskFulfilledReducer)
       .addCase(deleteTask.rejected, rejectedReducer)
-      .addCase(logout.fulfilled, clearTasksFulfilledReducer)
+      .addCase(logout.fulfilled, clearTasksFulfilledReducer),
 });
 
 export const tasksReducer = tasksSlice.reducer;

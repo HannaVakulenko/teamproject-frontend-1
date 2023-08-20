@@ -11,10 +11,12 @@ const reviewSlice = createSlice({
   name: 'reviews',
   initialState: {
     reviews: [],
-    userReview: [{
-      rating: null,
-      review: '',
-    }],
+    userReview: [
+      {
+        rating: null,
+        review: '',
+      },
+    ],
     isLoading: false,
     error: null,
   },
@@ -42,7 +44,6 @@ const reviewSlice = createSlice({
       })
       .addCase(addReview.fulfilled, (state, action) => {
         state.userReview = action.payload;
-        state.reviews = [...state.reviews, action.payload];
         state.isLoading = false;
         state.error = null;
       })
@@ -55,9 +56,6 @@ const reviewSlice = createSlice({
       })
       .addCase(deleteReview.fulfilled, (state, action) => {
         state.userReview = [];
-        state.reviews = state.reviews.filter(
-          review => review.id !== action.payload._id
-        );
         state.isLoading = false;
         state.error = null;
       })
@@ -70,7 +68,6 @@ const reviewSlice = createSlice({
       })
       .addCase(editReview.fulfilled, (state, action) => {
         state.userReview = action.payload;
-        state.reviews = [...state.reviews, action.payload];
         state.isLoading = false;
         state.error = null;
       })
@@ -85,10 +82,12 @@ const reviewSlice = createSlice({
         if (action.payload) {
           state.userReview = action.payload;
         } else {
-          state.userReview = [{
-            rating: '',
-            review: '',
-          }];
+          state.userReview = [
+            {
+              rating: '',
+              review: '',
+            },
+          ];
         }
         state.isLoading = false;
         state.error = null;

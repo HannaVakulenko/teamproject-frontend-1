@@ -1,108 +1,119 @@
-import { useState } from 'react';
-import { Routes, Route, useLocation } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useState, useEffect } from 'react';
+import { useLocation, useParams } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+// import { Routes, Route, useLocation } from 'react-router-dom';
+// import { useSelector } from 'react-redux';
 import { PeriodPaginator, PeriodTypeSelect } from '../../index';
 import { Container, ContainerSecond } from './CalendarToolbar.styled';
-
-// import { fetchTasks } from '../../../../redux/tasks/operations';
+import { parseISO, startOfMonth, endOfMonth, format } from 'date-fns';
+import 'react-datepicker/dist/react-datepicker.css';
+import { useNavigate } from 'react-router-dom';
+import { fetchTasks } from '../../../../redux/tasks/operations';
 
 const CalendarToolbar = () => {
-  const dateGlobal = useSelector(state => state.date.currentDate);
-  const [date, setDate] = useState(dateGlobal);
+  // const dateGlobal = useSelector(state => state.date.currentDate);
+  const [date, setDate] = useState(new Date());
+  const [isOpen, setIsOpen] = useState(false);
+
   const location = useLocation();
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const { currentDate } = useParams();
 
-  // const dispatch = useDispatch();
+  const monthFromURL = parseISO(currentDate).getMonth(currentDate) + 1;
+  const currentMonth = new Date().getMonth() + 1;
 
-  // const formatDateForFetch = date => {
-  //   const parts = date.split('-');
-  //   const year = parseInt(parts[0]);
-  //   const month = parseInt(parts[1]) - 1;
+  // console.log(sc); // Виводить щось на зразок "16-08-2023"
 
-  //   const firstDayOfMonth = new Date(year, month, 1);
-  //   const lastDayOfMonth = new Date(year, month + 1, 0);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const forFetchData = () => {
+    const parsedDate = new Date(date); // Парсинг даты в стандартном формате
+    const startDate = startOfMonth(parsedDate);
+    const endDate = endOfMonth(parsedDate);
 
-  //   const formattedFirstDay = `${year}-${(month + 1)
-  //     .toString()
-  //     .padStart(2, '0')}-01`;
-  //   const formattedLastDay = `${year}-${(month + 1)
-  //     .toString()
-  //     .padStart(2, '0')}-${lastDayOfMonth
-  //     .getDate()
-  //     .toString()
-  //     .padStart(2, '0')}`;
+    const formattedStartDate = format(startDate, 'yyyy-MM-dd');
+    const formattedEndDate = format(endDate, 'yyyy-MM-dd');
 
-  //   console.log({
-  //     monthStart: formattedFirstDay,
-  //     monthEnd: formattedLastDay,
-  //   });
+    return {
+      monthStart: formattedStartDate,
+      monthEnd: formattedEndDate,
+    };
+  };
 
-  //   return {
-  //     monthStart: formattedFirstDay,
-  //     monthEnd: formattedLastDay,
-  //   };
-  // };
-
-  // useEffect(() => {
-  //   dispatch(fetchTasks());
-  //   //  // formatDateForFetch(date); а потом записать их в selectTasks??
-  // }, [date, dateGlobal]);
+  useEffect(() => {
+    if (monthFromURL !== currentMonth) {
+      dispatch(fetchTasks(forFetchData()));
+    }
+  }, [currentMonth, dispatch, forFetchData, monthFromURL]);
 
   const changeDate = e => {
     const newDate = new Date(date);
 
-    if (location.pathname === '/calendar/day') {
-      if (e.currentTarget.className === 'sc-gJiVIX') {
+    let formattedDate = '';
+
+    if (location.pathname.startsWith('/calendar/day')) {
+      if (e.currentTarget.className.includes('decrease')) {
+        console.log('yes');
         newDate.setDate(newDate.getDate() - 1);
       } else {
         newDate.setDate(newDate.getDate() + 1);
       }
 
       setDate(newDate);
+      formattedDate = format(newDate, 'yyyy-MM-dd');
     } else {
-      if (e.currentTarget.className === 'sc-gJiVIX') {
+      if (e.currentTarget.className.includes('decrease')) {
         newDate.setMonth(newDate.getMonth() - 1);
       } else {
         newDate.setMonth(newDate.getMonth() + 1);
       }
 
       setDate(newDate);
+      formattedDate = format(newDate, 'yyyy-MM-dd');
     }
+    navigate(`/calendar/${location.pathname.split('/')[2]}/${formattedDate}`);
   };
 
-  const formatDateString = inputDate => {
-    if (location.pathname === '/calendar/day') {
-      const parsedDate = new Date(inputDate);
-      const options = { day: 'numeric', month: 'short', year: 'numeric' };
-      const formattedDate = parsedDate.toLocaleDateString('en-GB', options);
-      return formattedDate.replace(
-        parsedDate.toLocaleString('en-GB', { month: 'short' }),
-        parsedDate.toLocaleString('en-GB', { month: 'short' }).toUpperCase()
-      );
-    }
-    const parsedDate = new Date(inputDate);
-    const options = { month: 'short', year: 'numeric' };
-    const formattedDate = parsedDate.toLocaleDateString('en-GB', options);
-    const monthUpperCase = formattedDate.split(' ')[0].toUpperCase();
-    const year = formattedDate.split(' ')[1];
-    return `${monthUpperCase} ${year}`;
-  };
+  // const formatDateString = inputDate => {
+  //   if (location.pathname === '/calendar/day') {
+  //     const parsedDate = new Date(inputDate);
+  //     const options = { day: 'numeric', month: 'short', year: 'numeric' };
+  //     const formattedDate = parsedDate.toLocaleDateString('en-GB', options);
+  //     return formattedDate.replace(
+  //       parsedDate.toLocaleString('en-GB', { month: 'short' }),
+  //       parsedDate.toLocaleString('en-GB', { month: 'short' }).toUpperCase()
+  //     );
+  //   }
+  //   const parsedDate = new Date(inputDate);
+  //   const options = { month: 'short', year: 'numeric' };
+  //   const formattedDate = parsedDate.toLocaleDateString('en-GB', options);
+  //   const monthUpperCase = formattedDate.split(' ')[0].toUpperCase();
+  //   const year = formattedDate.split(' ')[1];
+  //   return `${monthUpperCase} ${year}`;
+  // };
 
-  const formattedDate = formatDateString(date);
+  // const formattedDate = formatDateString(date);
 
   return (
     <>
       <Container>
         <ContainerSecond>
-          <PeriodPaginator date={formattedDate} getTasks={changeDate} />
+          <PeriodPaginator
+            date={date}
+            getTasks={changeDate}
+            isOpen={isOpen}
+            setIsOpen={setIsOpen}
+            setDate={setDate}
+          />
         </ContainerSecond>
         <div>
           <PeriodTypeSelect />
         </div>
       </Container>
-      <Routes>
-        <Route path="/calendar/month" element={<div>month</div>} />
-        <Route path="/calendar/day" element={<div>day</div>} />
-      </Routes>
+      {/* <Routes>
+        <Route path="/month" element={<div>day</div>} />
+        <Route path="/day" element={<div>month</div>} />
+      </Routes> */}
     </>
   );
 };

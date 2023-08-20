@@ -1,10 +1,11 @@
 import React from 'react';
-import { LargeWeekday, WeekWrapper } from './WeekdayHeader.styled';
+import { LargeWeekday, WeekWrapper } from './MonthCalendarHead.styled';
 import { useMediaQuery } from 'react-responsive';
 import { useTranslation } from 'react-i18next';
 
-const WeekdayHeader = () => {
+const MonthCalendarHead = () => {
   const { t } = useTranslation();
+
   const isTabletOrDesktop = useMediaQuery({ minWidth: 376 });
 
   const monL = t('days.monL');
@@ -50,4 +51,4 @@ const WeekdayHeader = () => {
   );
 };
 
-export default WeekdayHeader;
+export default MonthCalendarHead;

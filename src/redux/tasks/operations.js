@@ -12,7 +12,7 @@ export const fetchTasks = createAsyncThunk(
         params: {
           monthStart: monthStart,
           monthEnd: monthEnd,
-        }
+        },
       });
       return response.data;
     } catch (error) {
@@ -43,6 +43,7 @@ export const updateTask = createAsyncThunk(
         category: task.category,
         start: task.start,
         end: task.end,
+        date: task.date,
       });
       return response.data;
     } catch (error) {
@@ -56,6 +57,7 @@ export const deleteTask = createAsyncThunk(
   async (taskId, thunkAPI) => {
     try {
       const response = await axios.delete(`/tasks/${taskId}`);
+      response.data._id = taskId;
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
