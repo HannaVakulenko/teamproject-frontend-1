@@ -4,7 +4,6 @@ import { device } from 'constants';
 export const StyledHeader = styled.header`
   display: flex;
   width: 100%;
-  outline: auto;
   align-items: flex-start;
   justify-content: space-between;
 `;
