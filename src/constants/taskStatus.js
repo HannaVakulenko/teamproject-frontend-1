@@ -1,9 +1,5 @@
 // "To do", "In progress", "Done"
 
-const category = {
-  toDo: "to-do",
-  inProgress: "in-progress",
-  done: "done",
-};
+const categories = ["to-do", "in-progress", "done"];
 
-export default category;
+export default categories;
