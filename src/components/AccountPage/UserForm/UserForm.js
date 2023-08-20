@@ -270,6 +270,17 @@ const UserForm = () => {
               />
               <ErrorText name="skype" component="div" />
             </FieldWrap>
+
+            <FieldWrap>
+                  <Label htmlFor="password">Password:</Label>
+                  <Input
+                    id="password"
+                    name="password"
+                    type="password"
+                    placeholder="Change your password"
+                  />
+                  <ErrorText name="password" component="div" />
+                </FieldWrap>
           </InputWrapperR>
 
           <SaveChangesBtn type="submit" disabled={formSubmitted}>
