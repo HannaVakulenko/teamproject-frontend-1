@@ -19,7 +19,7 @@ import { device } from 'constants';
 import { selectDate } from '../../../redux/date/selectors';
 
 import { selectTasksByCategory } from 'redux/tasks/selectors';
-import { category } from 'constants';
+import  categories  from '../../../constants/taskStatus';
 
 import {
   ContainerSecondWrapper,
@@ -34,15 +34,15 @@ const StatisticsChart = () => {
 
   // Задачи по категоріям за місяць
   const todoByMonth = useSelector(state =>
-    selectTasksByCategory(state, category.toDo)
+    selectTasksByCategory(state, categories.toDo)
   );
   const inprogressByMonth = useSelector(state =>
-    selectTasksByCategory(state, category.inProgress)
+    selectTasksByCategory(state, categories.inProgress)
   );
   const doneByMonth = useSelector(state =>
-    selectTasksByCategory(state, category.done)
+    selectTasksByCategory(state, categories.done)
   );
-  
+  console.log(todoByMonth);
   // Задачи по категоріям за день
 
   const todoByDay = todoByMonth.filter(item =>
