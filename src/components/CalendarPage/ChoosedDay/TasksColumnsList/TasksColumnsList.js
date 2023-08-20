@@ -3,7 +3,7 @@ import { Wrapper } from './TasksColumnsList.styled';
 import TasksColumn from '../TasksColumn/TasksColumn';
 import { useSelector } from 'react-redux';
 import { selectTasksByDate } from 'redux/tasks/selectors';
-import { categories } from 'constants';
+import { categoriesArray } from 'constants';
 
 const TasksColumnsList = () => {
   const { currentDay } = useParams();
@@ -12,7 +12,7 @@ const TasksColumnsList = () => {
 
   return (
     <Wrapper>
-      {categories.map((category, index) => (
+      {categoriesArray.map((category, index) => (
         <TasksColumn key={index} title={category} tasks={filteredTasks.filter(task => task.category === category)} />
       ))}
     </Wrapper>
