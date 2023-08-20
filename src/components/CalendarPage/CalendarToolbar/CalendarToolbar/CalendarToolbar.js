@@ -1,50 +1,50 @@
-import { useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { useLocation, useParams } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 // import { Routes, Route, useLocation } from 'react-router-dom';
 // import { useSelector } from 'react-redux';
 import { PeriodPaginator, PeriodTypeSelect } from '../../index';
 import { Container, ContainerSecond } from './CalendarToolbar.styled';
-// import { parse, startOfMonth, endOfMonth, format } from 'date-fns'; // Додайте імпорт
+import { parseISO, startOfMonth, endOfMonth, format } from 'date-fns';
 import 'react-datepicker/dist/react-datepicker.css';
-import { format } from 'date-fns';
 import { useNavigate } from 'react-router-dom';
-
-// import { fetchTasks } from '../../../../redux/tasks/operations';
+import { fetchTasks } from '../../../../redux/tasks/operations';
 
 const CalendarToolbar = () => {
   // const dateGlobal = useSelector(state => state.date.currentDate);
   const [date, setDate] = useState(new Date());
   const [isOpen, setIsOpen] = useState(false);
+
   const location = useLocation();
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const { currentDate } = useParams();
+
+  const monthFromURL = parseISO(currentDate).getMonth(currentDate) + 1;
+  const currentMonth = new Date().getMonth() + 1;
 
   // console.log(sc); // Виводить щось на зразок "16-08-2023"
 
-  // const dispatch = useDispatch();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const forFetchData = () => {
+    const parsedDate = new Date(date); // Парсинг даты в стандартном формате
+    const startDate = startOfMonth(parsedDate);
+    const endDate = endOfMonth(parsedDate);
 
-  //   return {
-  //     monthStart: formattedFirstDay,
-  //     monthEnd: formattedLastDay,
-  //   };
-  // };
-  // const forFetchData = () => {
-  //   const parsedDate = new Date(date); // Парсинг даты в стандартном формате
-  //   const startDate = startOfMonth(parsedDate);
-  //   const endDate = endOfMonth(parsedDate);
+    const formattedStartDate = format(startDate, 'yyyy-MM-dd');
+    const formattedEndDate = format(endDate, 'yyyy-MM-dd');
 
-  //   const formattedStartDate = format(startDate, 'yyyy-MM-dd');
-  //   const formattedEndDate = format(endDate, 'yyyy-MM-dd');
+    return {
+      monthStart: formattedStartDate,
+      monthEnd: formattedEndDate,
+    };
+  };
 
-  //   console.log('Start of the month:', formattedStartDate);
-  //   console.log('End of the month:', formattedEndDate);
-  // };
-
-  // forFetchData()
-
-  // useEffect(() => {
-  //   dispatch(fetchTasks());
-  //   //  // formatDateForFetch(date); а потом записать их в selectTasks??
-  // }, [date, dateGlobal]);
+  useEffect(() => {
+    if (monthFromURL !== currentMonth) {
+      dispatch(fetchTasks(forFetchData()));
+    }
+  }, [currentMonth, dispatch, forFetchData, monthFromURL]);
 
   const changeDate = e => {
     const newDate = new Date(date);
