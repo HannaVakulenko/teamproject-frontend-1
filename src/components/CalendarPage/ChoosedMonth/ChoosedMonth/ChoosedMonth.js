@@ -1,10 +1,10 @@
-import React from 'react';
+import moment from 'moment';
 import MonthCalendarHead from './MonthCalendarHead/MonthCalendarHead';
 import CalendarTable from '../CalendarTable/CalendarTable';
-import moment from 'moment';
 
 const ChoosedMonth = () => {
-  const startDay = moment().startOf('month').startOf('week');
+  const startDay = moment().startOf('month').startOf('week'); // Початок місяця
+
   return (
     <>
       <MonthCalendarHead />

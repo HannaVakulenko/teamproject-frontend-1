@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-
 export const Container = styled.div`
   display: inline-block;
 `;
@@ -22,10 +21,7 @@ export const ButtonMonth = styled.button`
 
   color: ${props =>
     props.$isActive ? '#3E85F3' : p => p.theme.sidebarMainActiveColor};
-
-  font-family: Inter;
   font-size: 14px;
-  font-style: normal;
   font-weight: 500;
   line-height: 1.3;
 
@@ -61,10 +57,7 @@ export const ButtonDay = styled.button`
       : p => p.theme.inactiveButtonDayMonth};
   color: ${props =>
     props.$isActive ? '#3E85F3' : p => p.theme.sidebarMainActiveColor};
-
-  font-family: Inter;
   font-size: 14px;
-  font-style: normal;
   font-weight: 500;
   line-height: 1.3;
 
