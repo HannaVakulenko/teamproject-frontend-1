@@ -13,7 +13,7 @@ export const Wrapper = styled.div`
   @media screen and (min-width: ${device.tablet}px) {
     min-width: 344px;
   };
-  @media screen and (min-width: ${device.desktop}px) {
+  @media screen and (min-width: 1128px) {
     width: 33%;
   };
 `;

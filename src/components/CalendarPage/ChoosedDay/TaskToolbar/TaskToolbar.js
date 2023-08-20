@@ -10,15 +10,15 @@ import {
 import { Popover } from '@mui/material';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { category } from 'constants';
+import { categories } from 'constants';
 import { updateTask } from 'redux/tasks/operations';
 
 const TaskToolbar = ({ task }) => {
   const dispatch = useDispatch();
 
-  const categories = Object.values(category);
+  const categoriesValues = Object.values(categories);
 
-  const availableCategories = categories.filter(
+  const availableCategories = categoriesValues.filter(
     category => category !== task.category
   );
 
