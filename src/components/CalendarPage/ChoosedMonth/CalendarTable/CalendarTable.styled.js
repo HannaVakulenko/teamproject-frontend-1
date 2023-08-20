@@ -37,15 +37,24 @@ export const CellWrapper = styled.div`
   display: flex;
   flex-direction: column;
 
+  position: relative;
+  justify-content: center;
+  align-items: center;
+
   @media (max-width: 375px) {
     padding: 8px 4px;
   }
   @media (min-width: 376px) and (max-width: 768px) {
-    padding: 14px 4px;
+    display: flex;
+    flex-direction: column;
+    padding: 4px;
+    position: relative;
+    justify-content: center;
+    align-items: center;
   }
 
   @media (min-width: 769px) and (max-width: 1440px) {
-    padding: 14px;
+    // padding: 14px;
   }
 `;
 
@@ -56,8 +65,11 @@ export const DayWrapper = styled.div`
   letter-spacing: 0em;
   text-align: right;
   padding: 4px 6px;
-  display: inline-flex;
-  align-self: flex-end;
+  // display: inline-flex;
+  // align-self: flex-end;
+  position: absolute;
+  top: 0;
+  right: 0;
 
   color: ${props => (props.$today ? '#FFFFFF' : '#343434')};
   background-color: ${props => (props.$today ? '#3E85F3' : 'transparent')};
@@ -90,18 +102,86 @@ export const DayWrapper = styled.div`
   }
 `;
 
-export const TaskContainer = styled.div`
-  // display: flex;
-
-  align-items: center;
-  // justify-content: center;
-  width: 44px;
-  height: 22px;
-`;
+export const TaskContainer = styled.div``;
 
 export const LowPriorityTask = styled.div`
-  background: #ceeefd;
   color: #3e85f3;
+  background: #ceeefd;
+  border-radius: 8px;
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 1.4;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  width: 44px;
+  height: 22px;
+  padding: 4px;
+
+  @media (max-width: 375px) {
+    color: #3e85f3;
+    background: #ceeefd;
+    border-radius: 8px;
+    font-size: 10px;
+    font-weight: 700;
+    line-height: 1.4;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    width: 44px;
+    height: 22px;
+    padding: 4px;
+  }
+
+  @media (min-width: 376px) and (max-width: 768px) {
+    color: #3e85f3;
+    background: #ceeefd;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 1.25;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    padding: 4px;
+    width: 70px;
+    height: 22px;
+  }
+
+  @media (min-width: 769px) and (max-width: 1440px) {
+    color: #3e85f3;
+    background: #ceeefd;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 1.25;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    padding: 4px;
+    width: 139px;
+    height: 26px;
+  }
+
+  @media (min-width: 1441px) {
+    color: #3e85f3;
+    background: #ceeefd;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1.25;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    padding: 4px;
+    width: 139px;
+    height: 26px;
+  }
+`;
+
+export const MediumPriorityTask = styled.div`
+  color: #f3b249;
+  background: #fcf0d4;
   border-radius: 8px;
   font-size: 10px;
   font-weight: 700;
@@ -109,35 +189,10 @@ export const LowPriorityTask = styled.div`
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
-  align-items: center;
+  padding: 4px;
   width: 44px;
   height: 22px;
-
-  // flex-shrink: 0;
-  @media (max-width: 375px) {
-  }
-
-  @media (min-width: 376px) and (max-width: 768px) {
-  }
-
-  @media (min-width: 769px) and (max-width: 1440px) {
-  }
-
-  @media (min-width: 1441px) {
-  }
-`;
-
-export const MediumPriorityTask = styled.div`
-  // background: #fcf0d4;
-  // color: #f3b249;
-  // border-radius: 8px;
-  // font-size: 10px;
-  // font-weight: 700;
-  // line-height: 14px;
-  // overflow: hidden;
-  // white-space: nowrap;
-  // width: 44px;
-  // height: 22px;
+  padding: 4px;
   // @media (max-width: 375px) {
   //   font-size: 10px;
   //   font-weight: 700;
@@ -160,16 +215,19 @@ export const MediumPriorityTask = styled.div`
 `;
 
 export const HighPriorityTask = styled.div`
-  // background: #ffd2dd;
-  // color: #ea3d65;
-  // border-radius: 8px;
-  // font-size: 10px;
-  // font-weight: 700;
-  // line-height: 14px;
-  // overflow: hidden;
-  // white-space: nowrap;
-  // width: 44px;
-  // height: 22px;
+  color: #ea3d65;
+  background: #ffd2dd;
+  border-radius: 8px;
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 14px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  padding: 4px;
+  width: 44px;
+  height: 22px;
+  padding: 4px;
   // @media (max-width: 375px) {
   //   font-size: 14px;
   //   line-height: 18px;
