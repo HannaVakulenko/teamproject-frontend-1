@@ -26,13 +26,16 @@ export const GridWrapper = styled.div`
 
   @media (min-width: 1441px) {
     width: 100%;
-    height: auto;
+    // height: auto;?????
+    height: 625px;
   }
 `;
 
 export const CellWrapper = styled.div`
   border: 1px solid rgba(220, 227, 229, 0.5);
   padding: 8px 4px;
+  display: flex;
+  flex-direction: column;
 
   @media (max-width: 375px) {
     padding: 8px 4px;
@@ -44,28 +47,6 @@ export const CellWrapper = styled.div`
   @media (min-width: 769px) and (max-width: 1440px) {
     padding: 14px;
   }
-
-  &:after {
-    content: '';
-    display: block;
-    padding-top: 100%;
-  }
-`;
-
-export const RowInCell = styled.div`
-  display: flex;
-  justify-content: ${props =>
-    props.justifyContent ? props.justifyContent : 'flex-end'};
-  align-items: center;
-
-  @media (max-width: 375px) {
-  }
-
-  @media (min-width: 376px) and (max-width: 768px) {
-  }
-
-  @media (min-width: 769px) and (max-width: 1440px) {
-  }
 `;
 
 export const DayWrapper = styled.div`
@@ -73,8 +54,10 @@ export const DayWrapper = styled.div`
   font-weight: 700;
   line-height: 116.667%;
   letter-spacing: 0em;
-  text-align: center;
+  text-align: right;
   padding: 4px 6px;
+  display: inline-flex;
+  align-self: flex-end;
 
   color: ${props => (props.$today ? '#FFFFFF' : '#343434')};
   background-color: ${props => (props.$today ? '#3E85F3' : 'transparent')};
@@ -105,4 +88,105 @@ export const DayWrapper = styled.div`
     text-transform: uppercase;
     border-radius: ${props => (props.$today ? '8px' : '0')};
   }
+`;
+
+export const TaskContainer = styled.div`
+  // display: flex;
+
+  align-items: center;
+  // justify-content: center;
+  width: 44px;
+  height: 22px;
+`;
+
+export const LowPriorityTask = styled.div`
+  background: #ceeefd;
+  color: #3e85f3;
+  border-radius: 8px;
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 14px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  align-items: center;
+  width: 44px;
+  height: 22px;
+
+  // flex-shrink: 0;
+  @media (max-width: 375px) {
+  }
+
+  @media (min-width: 376px) and (max-width: 768px) {
+  }
+
+  @media (min-width: 769px) and (max-width: 1440px) {
+  }
+
+  @media (min-width: 1441px) {
+  }
+`;
+
+export const MediumPriorityTask = styled.div`
+  // background: #fcf0d4;
+  // color: #f3b249;
+  // border-radius: 8px;
+  // font-size: 10px;
+  // font-weight: 700;
+  // line-height: 14px;
+  // overflow: hidden;
+  // white-space: nowrap;
+  // width: 44px;
+  // height: 22px;
+  // @media (max-width: 375px) {
+  //   font-size: 10px;
+  //   font-weight: 700;
+  // }
+
+  // @media (min-width: 376px) and (max-width: 768px) {
+  //   font-size: 14px;
+  //   line-height: 18px;
+  // }
+
+  // @media (min-width: 769px) and (max-width: 1440px) {
+  //   font-size: 14px;
+  //   line-height: 18px;
+  // }
+
+  // @media (min-width: 1441px) {
+  //   font-size: 16px;
+  //   line-height: 20px;
+  // }
+`;
+
+export const HighPriorityTask = styled.div`
+  // background: #ffd2dd;
+  // color: #ea3d65;
+  // border-radius: 8px;
+  // font-size: 10px;
+  // font-weight: 700;
+  // line-height: 14px;
+  // overflow: hidden;
+  // white-space: nowrap;
+  // width: 44px;
+  // height: 22px;
+  // @media (max-width: 375px) {
+  //   font-size: 14px;
+  //   line-height: 18px;
+  // }
+
+  // @media (min-width: 376px) and (max-width: 768px) {
+  //   // font-size: 14px;
+  //   // line-height: 18px;
+  // }
+
+  // @media (min-width: 769px) and (max-width: 1440px) {
+  //   // font-size: 14px;
+  //   // line-height: 18px;
+  // }
+
+  // @media (min-width: 1441px) {
+  //   // font-size: 16px;
+  //   // line-height: 20px;
+  // }
 `;
