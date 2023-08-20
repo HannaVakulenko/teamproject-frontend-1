@@ -91,7 +91,6 @@ const TaskToolbar = ({ task }) => {
       </Button>
       <Button
         onClick={() => {
-          console.log(task._id);
           dispatch(deleteTask(task._id));
         }}
       >
