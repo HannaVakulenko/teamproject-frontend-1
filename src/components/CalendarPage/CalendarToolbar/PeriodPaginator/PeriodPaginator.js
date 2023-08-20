@@ -18,11 +18,11 @@ const PeriodPaginator = ({ date, getTasks, isOpen, setIsOpen, setDate }) => {
   const location = useLocation();
 
   const handleChange = e => {
+    console.dir(date);
     setIsOpen(!isOpen);
     setDate(e);
   };
   const handleClick = e => {
-    console.dir(e.target);
     e.preventDefault();
     setIsOpen(!isOpen);
   };
