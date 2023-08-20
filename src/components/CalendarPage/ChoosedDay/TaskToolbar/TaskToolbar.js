@@ -11,7 +11,7 @@ import { Popover } from '@mui/material';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { categoriesArray } from 'constants';
-import { updateTask } from 'redux/tasks/operations';
+import { updateTask, deleteTask } from 'redux/tasks/operations';
 
 const TaskToolbar = ({ task }) => {
   const dispatch = useDispatch();
@@ -91,7 +91,6 @@ const TaskToolbar = ({ task }) => {
       </Button>
       <Button
         onClick={() => {
-          console.log(task._id);
           dispatch(deleteTask(task._id));
         }}
       >
