@@ -65,7 +65,6 @@ const CalendarToolbar = () => {
 
     if (location.pathname.startsWith('/calendar/day')) {
       if (e.currentTarget.className.includes('decrease')) {
-        console.log('yes');
         newDate.setDate(newDate.getDate() - 1);
       } else {
         newDate.setDate(newDate.getDate() + 1);
