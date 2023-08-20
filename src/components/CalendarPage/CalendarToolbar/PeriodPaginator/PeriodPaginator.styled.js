@@ -9,7 +9,6 @@ export const ForDatePicker = styled.div`
   position: relative;
   display: flex;
   flex-direction: column;
-  margin-right: ;
 `;
 
 export const ContainerFlex = styled.div`
@@ -21,8 +20,8 @@ export const Date = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 109px;
-  height: 30px;
+  /* width: 109px;
+  height: 30px; */
   padding: 6px 12px 6px 12px;
   border-radius: 8px;
   background-color: #3e85f3;
@@ -39,8 +38,8 @@ export const Date = styled.button`
   @media (min-width: 376px) and (max-width: 768px) {
     padding: 8px 12px 8px 12px;
     margin-right: 8px;
-    width: 121px;
-    height: 34px;
+    /* width: 121px;
+    height: 34px; */
 
     font-size: 16px;
     line-height: 1.1;
@@ -49,8 +48,8 @@ export const Date = styled.button`
   @media (min-width: 769px) and (max-width: 1440px) {
     padding: 8px 12px 8px 12px;
     margin-right: 8px;
-    width: 125px;
-    height: 34px;
+    /* width: 125px;
+    height: 34px; */
 
     font-size: 16px;
     line-height: 1.1;
