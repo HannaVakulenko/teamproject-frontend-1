@@ -1,5 +1,6 @@
 import { createSelector } from '@reduxjs/toolkit';
 import { format } from 'date-fns';
+import { category } from 'constants';
 
 export const selectTasks = state => state.tasks.tasks;
 export const selectAvatarURL = state => state.tasks.avatarURL;
@@ -25,5 +26,5 @@ export const selectTasksByDate = createSelector(
 );
 
 export const selectHasTasksInColumns = createSelector(selectTasks, tasks =>
-  tasks.some(task => task.category !== 'Done')
+  tasks.some(task => task.category !== category.done)
 );

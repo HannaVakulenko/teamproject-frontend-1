@@ -1,6 +1,6 @@
-// import { useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';
-// import { selectHasTasksInColumns } from 'redux/tasks/selectors';
+import { selectHasTasksInColumns } from 'redux/tasks/selectors';
 import { MainTitle } from 'components/Common';
 import AddFeedbackBtn from '../AddFeedbackBtn/AddFeedbackBtn';
 import ThemeToggler from '../ThemeToggler/ThemeToggler';
@@ -23,7 +23,7 @@ import { device } from 'constants';
 
 const Header = ({ toggleSidebar }) => {
   const location = useLocation();
-  // const hasTasksInColumns = useSelector(selectHasTasksInColumns);
+  const hasTasksInColumns = useSelector(selectHasTasksInColumns);
   let currentMainTitle = '';
 
   if (location.pathname.startsWith('/account')) {
@@ -35,8 +35,7 @@ const Header = ({ toggleSidebar }) => {
   }
 
   const onChoosedDayPage = location.pathname.startsWith('/calendar/day');
-  // const shouldShowMotivationMessage = onChoosedDayPage || hasTasksInColumns;
-  const shouldShowMotivationMessage = onChoosedDayPage;
+  const shouldShowMotivationMessage = onChoosedDayPage && hasTasksInColumns;
 
   return (
     <StyledHeader>
