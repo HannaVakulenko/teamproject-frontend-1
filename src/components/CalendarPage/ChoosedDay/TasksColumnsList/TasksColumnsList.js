@@ -8,15 +8,21 @@ import { categoriesArray } from 'constants';
 const TasksColumnsList = () => {
   const { currentDay } = useParams();
 
-  const filteredTasks = useSelector(state => selectTasksByDate(state, currentDay));
+  const filteredTasks = useSelector(state =>
+    selectTasksByDate(state, currentDay)
+  );
 
   return (
     <Wrapper>
       {categoriesArray.map((category, index) => (
-        <TasksColumn key={index} title={category} tasks={filteredTasks.filter(task => task.category === category)} />
+        <TasksColumn
+          key={index}
+          title={category}
+          tasks={filteredTasks.filter(task => task.category === category)}
+        />
       ))}
     </Wrapper>
-  )
-}
+  );
+};
 
 export default TasksColumnsList;
