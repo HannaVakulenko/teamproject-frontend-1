@@ -1,12 +1,13 @@
 import styled, { createGlobalStyle } from 'styled-components';
 import { Form as FormikForm, Field, ErrorMessage } from 'formik';
-import 'react-datepicker/dist/react-datepicker.css';
+import "react-datepicker/dist/react-datepicker.css"; 
 import { device } from 'constants';
 const { tablet, desktop } = device;
 
 export const FormWrap = styled.div`
-  @media (max-width: ${tablet - 1}px) {
-    display: grid;
+
+ @media (max-width: ${tablet - 1}px) {
+ display: grid;
     flex-direction: row;
     align-items: center;
     flex-wrap: wrap;
@@ -14,18 +15,18 @@ export const FormWrap = styled.div`
     padding: 40px 0;
     border-radius: 16px;
     background-color: ${p => p.theme.secondaryBgColor};
-  }
+}
 
   @media (min-width: ${tablet}px) and (max-width: ${desktop - 1}px) {
     position: static;
     border-radius: 16px;
     padding: 40px 0;
-    background-color: ${p => p.theme.secondaryBgColor};
+     background-color: ${p => p.theme.secondaryBgColor};
   }
 
-  @media (min-width: ${desktop}px) {
-    background-color: ${p => p.theme.secondaryBgColor};
-    position: static;
+ @media (min-width: ${desktop}px) {
+  background-color: ${p => p.theme.secondaryBgColor};
+  position: static;
     padding: 60px 0;
     border-radius: 16px;
     gap: 24px;
@@ -33,28 +34,49 @@ export const FormWrap = styled.div`
 `;
 
 export const Form = styled(FormikForm)`
-  @media (max-width: ${desktop - 1}px) {
-    display: flex;
-    gap: 18px;
+@media (max-width: ${desktop - 1}px)
+
+ {display: flex;
+  gap:18px;
     flex-direction: column;
     flex-wrap: wrap;
     align-content: center;
     justify-content: center;
-    align-items: flex-start;
-  }
+    align-items: flex-start;}
 
   @media (min-width: ${desktop}px) {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+     grid-template-columns: 1fr 1fr;
     gap: 24px;
   }
+
 `;
 
 export const FieldWrap = styled.div`
-  position: relative;
+position: relative;
   display: flex;
   flex-direction: column;
   gap: 8px;
+
+&.empty input {
+   border-color: 1px solid  #11111126;
+}
+
+ &.error label {
+    color: ${p => p.theme.authFieldOnErrorColor};
+  }
+
+  &.error input {
+    border-color: ${p => p.theme.authFieldOnErrorColor};
+  }
+
+  &.success label {
+    color: ${p => p.theme.authFieldOnSuccessColor};
+  }
+
+  &.success input {
+    border-color: ${p => p.theme.authFieldOnSuccessColor};
+  }
 
   @media (min-width: ${desktop}px) {
     gap: 8px;
@@ -62,10 +84,10 @@ export const FieldWrap = styled.div`
 `;
 
 export const Label = styled.label`
-  color: ${p => p.theme.userFormLabelColor};
-  font-size: 12px;
-  font-weight: 400;
-  line-height: 14px;
+color: ${p => p.theme.userFormLabelColor}; 
+font-size: 12px;
+font-weight: 400;
+line-height: 14px;
 `;
 
 export const Input = styled(Field)`
@@ -74,32 +96,31 @@ export const Input = styled(Field)`
   font-weight: 600;
   line-height: 18px;
   border-radius: 8px;
-  border: 1px solid ${p => p.theme.userFormInputBorderColor};
+  border: 1px solid  ${p => p.theme.userFormInputBorderColor}; 
   width: 299px;
   height: 42px;
   padding: 8px;
   outline: none;
-  background-color: ${props =>
-    props.hasContent ? 'transparent' : p => p.theme.secondaryBgColor};
+  background-color:  ${props => (props.hasContent ? 'transparent' : p => p.theme.secondaryBgColor)};
   transition: border-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
   &::placeholder {
-    color: ${p => p.theme.mainTextColor};
-    font-size: 14px;
-    font-weight: 600;
-    line-height: 18px;
+color: ${p => p.theme.mainTextColor}; 
+font-size: 14px;
+font-weight: 600;
+line-height: 18px;
   }
 
   &:hover,
   &:focus {
     border-color: ${p => p.theme.mainTextColor};
-  }
+  };
 
-  @media (min-width: ${tablet}px) {
+   @media (min-width: ${tablet}px) {
     width: 354px;
-    height: 46px;
-    font-size: 16px;
-  }
+  height: 46px;
+   font-size: 16px;
+   }
 `;
 
 export const ErrorText = styled(ErrorMessage)`
@@ -107,6 +128,15 @@ export const ErrorText = styled(ErrorMessage)`
   font-size: 12px;
   margin-top: 5px;
 `;
+
+export const SuccessText = styled.div`
+  margin-top: 8px;
+  margin-left: 18px;
+  font-size: 12px;
+  color: ${p => p.theme.authFieldOnSuccessColor};
+  line-height: 1.16;
+`;
+
 
 export const ImageContainer = styled.div`
   position: absolute;
@@ -118,25 +148,25 @@ export const ImageContainer = styled.div`
   align-items: center;
   z-index: 1;
 
-  @media (min-width: ${tablet}px) {
+   @media (min-width: ${tablet}px) {
     width: 124px;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-  }
+     position: relative;
+     display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+   }
 `;
 
 export const UserImage = styled.img`
   width: 72px;
   height: 72px;
   border-radius: 50%;
-  border: 2px solid #3e85f3;
+  border: 2px solid #3E85F3;
 
-  @media (min-width: ${tablet}px) {
-    width: 124px;
-    height: 124px;
+   @media (min-width: ${tablet}px) {
+     width: 124px;
+  height: 124px;
   }
 `;
 
@@ -153,11 +183,11 @@ export const Upload = styled.input`
   background-color: transparent;
   z-index: 3;
 
-  @media (min-width: ${tablet}px) {
-    width: 18px;
-
+   @media (min-width: ${tablet}px) {
+        width: 18px;
+    
     height: 18px;
-  }
+}
 `;
 
 export const Icon = styled.svg`
@@ -167,22 +197,22 @@ export const Icon = styled.svg`
   transform: translateX(-50%);
   width: 14px;
   fill: none;
-  background-color: #3e85f3;
+  background-color: #3E85F3;
   height: 14px;
   stroke: white;
   border-radius: 50%;
   z-index: 2;
 
-  @media (min-width: ${tablet}px) {
+   @media (min-width: ${tablet}px) {
     width: 18px;
     height: 18px;
-    bottom: -3%;
-    left: 70%;
-  }
+     bottom: -3%;
+  left: 70%;
+}
 `;
 
 export const BdayIcon = styled.svg`
-  position: absolute;
+   position: absolute;
   right: 15px;
   width: 14px;
   height: 14px;
@@ -192,10 +222,10 @@ export const BdayIcon = styled.svg`
   border-radius: 50%;
   z-index: 2;
 
-  @media (min-width: ${tablet}px) {
+    @media (min-width: ${tablet}px) {
     width: 18px;
     height: 18px;
-    position: absolute;
+    position: absolute; 
     top: auto;
     transform: translateY(0);
   }
@@ -212,7 +242,7 @@ export const PlaceholderContainer = styled.div`
 `;
 
 export const UserInfoWrap = styled.div`
-  display: flex;
+display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
@@ -220,21 +250,22 @@ export const UserInfoWrap = styled.div`
   margin-top: 18px;
   margin-bottom: 40px;
 
-  @media (min-width: ${tablet}px) and (max-width: ${desktop - 1}px) {
+   @media (min-width: ${tablet}px)  and (max-width: ${desktop - 1}px) {
     margin-top: 20px;
     gap: 8px;
   }
 
-  @media (min-width: ${desktop}px) {
+   @media (min-width: ${desktop}px) {
     display: grid;
     grid-column: 1 / span 2;
     text-align: center;
     margin-top: 20px;
+
   }
 `;
 
 export const UserName = styled.span`
-  color: ${p => p.theme.secondaryTextColor};
+color: ${p => p.theme.secondaryTextColor}; 
   font-size: 14px;
   font-weight: 700;
 
@@ -244,18 +275,19 @@ export const UserName = styled.span`
 `;
 
 export const UserStatus = styled.span`
-  color: ${p => p.theme.userFormStatusColor};
+color: ${p => p.theme.userFormStatusColor}; 
   font-size: 12px;
   font-weight: 400;
 
-  @media (min-width: ${tablet}px) {
+   @media (min-width: ${tablet}px) {
     font-size: 14px;
   }
+
 `;
 
 export const SaveChangesBtn = styled.button`
-  display: block;
-  width: 195px;
+display: block;
+width: 195px;
   margin-top: 40px;
   padding: 14px 0;
   font-size: 14px;
@@ -267,7 +299,7 @@ export const SaveChangesBtn = styled.button`
   border: transparent;
   cursor: pointer;
   transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
-  margin-left: auto;
+   margin-left: auto;
   margin-right: auto;
 
   &:hover,
@@ -277,49 +309,54 @@ export const SaveChangesBtn = styled.button`
 
   @media (min-width: ${desktop}px) {
     margin-top: 88px;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
+   display: block;
+  margin-left: auto;
+  margin-right: auto;
   }
+
+  
 `;
 
 export const StyledDatePickerInputWrapper = styled.div`
   position: relative;
   display: grid;
   align-items: center;
-  justify-content: center;
+  justify-content: center; 
   align-content: center;
+
 `;
 
 export const InputWrapperL = styled.div`
-  display: grid;
-  gap: 18px;
+display: grid;
+gap: 18px;
 
-  @media (min-width: ${tablet}px) and (max-width: ${desktop - 1}px) {
-    gap: 24px;
-  }
+ @media (min-width: ${tablet}px)  and (max-width: ${desktop - 1}px) {
+  gap: 24px;
+ }
 
-  @media (min-width: ${desktop}px) {
-    gap: 24px;
+
+ @media (min-width: ${desktop}px) {
+  gap: 24px;
     display: grid;
     justify-content: end;
   }
+
 `;
 
 export const InputWrapperR = styled.div`
+display: grid;
+gap: 18px;
+
+ @media (min-width: ${tablet}px)  and (max-width: ${desktop - 1}px) {
+  gap: 24px;
+ }
+
+ @media (min-width: ${desktop}px) {
+  gap: 24px;
   display: grid;
-  gap: 18px;
-
-  @media (min-width: ${tablet}px) and (max-width: ${desktop - 1}px) {
-    gap: 24px;
-  }
-
-  @media (min-width: ${desktop}px) {
-    gap: 24px;
-    display: grid;
-    align-content: flex-start;
-    align-items: flex-start;
-  }
+  align-content: flex-start;
+  align-items: flex-start;
+}
 `;
 
 export const DatePickerWrapperStyles = createGlobalStyle`
@@ -376,21 +413,6 @@ width: 50px !important;
 .react-datepicker {
   border: none !important;
    border-radius: 16px !important;
-
-     position: absolute !important;
-
-  top: 735% !important; 
-  left: 150% !important;
-  transform: translate(-50%, -50%) !important;
-  z-index: 2 !important; 
-
-  @media (min-width: 376px) and (max-width: 768px) {
-
-  top: 735% !important; 
-  left: 150% !important;
-  transform: translate(-50%, -50%) !important;
-  z-index: 2 !important; 
-  }
 }
 
 .react-datepicker__header {
@@ -456,6 +478,7 @@ padding: 12px !important;
    }
 
    .react-datepicker__day.react-datepicker__day--selected {
+    opacity: 1 !important;
  color: ${p => p.theme.mainAccentColor} !important;
  background-color: ${p => p.theme.buttonTextColor}  !important; 
 
@@ -483,6 +506,18 @@ height: 48px !important;
 
   }
 
+  .react-datepicker__day--weekend {
+     opacity: 0.35 !important;
+  }
+
+.react-datepicker__day--weekend:hover {
+  opacity: 1 !important;
+}
+
+.react-datepicker__day--weekend.react-datepicker__day--today {
+  opacity: 1 !important;
+}
+
   .react-datepicker__month-container{
      background-color: ${p => p.theme.mainAccentColor} !important;
     border: none  !important;
@@ -497,7 +532,7 @@ height: 48px !important;
    .react-datepicker__day--outside-month {
      color: ${p => p.theme.buttonTextColor} !important;
      opacity: 0% !important;
-     pointer-events: none !important;
+     pointer-events: none; !important;
    }
 
    .react-datepicker__day-name:nth-child(6),
@@ -516,8 +551,7 @@ input {
   height: 42px;
   padding: 8px;
   outline: none;
-  background-color: ${props =>
-    props.hasContent ? 'transparent' : p => p.theme.secondaryBgColor};
+  background-color: ${props => (props.hasContent ? "transparent" :  p => p.theme.secondaryBgColor)};
   transition: border-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
   &::placeholder {
