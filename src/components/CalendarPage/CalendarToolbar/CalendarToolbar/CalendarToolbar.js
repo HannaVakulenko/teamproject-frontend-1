@@ -6,6 +6,8 @@ import { PeriodPaginator, PeriodTypeSelect } from '../../index';
 import { Container, ContainerSecond } from './CalendarToolbar.styled';
 // import { parse, startOfMonth, endOfMonth, format } from 'date-fns'; // Додайте імпорт
 import 'react-datepicker/dist/react-datepicker.css';
+import { format } from 'date-fns';
+import { useNavigate } from 'react-router-dom';
 
 // import { fetchTasks } from '../../../../redux/tasks/operations';
 
@@ -14,6 +16,7 @@ const CalendarToolbar = () => {
   const [date, setDate] = useState(new Date());
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
+  const navigate = useNavigate();
 
   // console.log(sc); // Виводить щось на зразок "16-08-2023"
 
@@ -46,7 +49,9 @@ const CalendarToolbar = () => {
   const changeDate = e => {
     const newDate = new Date(date);
 
-    if (location.pathname === '/calendar/day') {
+    let formattedDate = '';
+
+    if (location.pathname.startsWith('/calendar/day')) {
       if (e.currentTarget.className.includes('decrease')) {
         console.log('yes');
         newDate.setDate(newDate.getDate() - 1);
@@ -55,6 +60,7 @@ const CalendarToolbar = () => {
       }
 
       setDate(newDate);
+      formattedDate = format(newDate, 'yyyy-MM-dd');
     } else {
       if (e.currentTarget.className.includes('decrease')) {
         newDate.setMonth(newDate.getMonth() - 1);
@@ -63,7 +69,9 @@ const CalendarToolbar = () => {
       }
 
       setDate(newDate);
+      formattedDate = format(newDate, 'yyyy-MM-dd');
     }
+    navigate(`/calendar/${location.pathname.split('/')[2]}/${formattedDate}`);
   };
 
   // const formatDateString = inputDate => {

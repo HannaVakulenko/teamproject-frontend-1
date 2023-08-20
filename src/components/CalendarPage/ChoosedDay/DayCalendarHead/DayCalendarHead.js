@@ -1,20 +1,16 @@
-import React from 'react';
-import { startOfWeek, eachDayOfInterval, format, addDays, formatISO, isSameDay } from 'date-fns';
+import { startOfWeek, eachDayOfInterval, format, addDays, isSameDay, parseISO } from 'date-fns';
 import { WeekDay, WeekDate, Item, List, Wrapper } from './DayCalendarHead.styled';
 import { useMediaQuery } from 'react-responsive';
-// import { useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
 const DayCalendarHead = () => {
-  // const { currentDay } = useParams();
-  const currentDate = new Date(); // currentDay;
-  // console.log('currentDate: ', currentDate);
-  const result = formatISO(currentDate, { representation: 'date' });
-  console.log('result: ', result);
+  const { currentDay } = useParams();
+  const result = parseISO(currentDay, 'yyyy-MM-dd');
 
   const isMobile = useMediaQuery({ maxWidth: 767 });
 
-  const startDay = startOfWeek(currentDate, { weekStartsOn: 1 }); // 1 - Monday
-  const lastDayOfWeek = addDays(startOfWeek(currentDate, { weekStartsOn: 1 }), 6) // 6 - Sunday
+  const startDay = startOfWeek(result, { weekStartsOn: 1 }); // 1 - Monday
+  const lastDayOfWeek = addDays(startOfWeek(result, { weekStartsOn: 1 }), 6) // 6 - Sunday
 
   const days = eachDayOfInterval({
     start: startDay,
@@ -32,7 +28,7 @@ const DayCalendarHead = () => {
             <Item key={index}>
               <WeekDay>{day}</WeekDay>
               <WeekDate className={
-                isSameDay(days[index], currentDate)
+                isSameDay(days[index], result)
                   ? 'current-day'
                   : ''
                 }
@@ -45,7 +41,7 @@ const DayCalendarHead = () => {
             <Item key={index}>
               <WeekDay>{day}</WeekDay>
               <WeekDate className={
-                isSameDay(days[index], currentDate)
+                isSameDay(days[index], result)
                   ? 'current-day'
                   : ''
                 }

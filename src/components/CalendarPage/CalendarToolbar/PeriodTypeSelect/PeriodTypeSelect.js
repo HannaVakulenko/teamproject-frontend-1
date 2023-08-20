@@ -6,19 +6,16 @@ import moment from 'moment';
 const PeriodTypeSelect = () => {
   const navigate = useNavigate();
   const location = useLocation();
+  const currentDate = moment().format('YYYY-MM-DD');
 
   const toMonth = () => {
-    // какой маршрут в итоге будет??????
-    // navigate('/calendar/month/:currentDate');
-    const currentDate = moment().format('YYYY-MM-DD');
     navigate(`/calendar/month/${currentDate}`);
   };
+
   const toDay = () => {
-    // какой маршрут в итоге будет??????
-    navigate('/calendar/day');
-    // const currentDate = moment().format('YYYY-MM-DD');
-    // navigate(`/calendar/day/${currentDate}`);
+    navigate(`/calendar/day/${currentDate}`);
   };
+
   return (
     <Container>
       <ButtonMonth

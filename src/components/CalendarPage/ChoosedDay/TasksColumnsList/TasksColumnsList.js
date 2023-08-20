@@ -1,28 +1,20 @@
-import React from 'react'
+import { useParams } from 'react-router-dom';
 import { Wrapper } from './TasksColumnsList.styled';
 import TasksColumn from '../TasksColumn/TasksColumn';
 import { useSelector } from 'react-redux';
-import { selectTasksByCategory } from 'redux/tasks/selectors';
-import { category } from 'constants';
+import { selectTasksByDate } from 'redux/tasks/selectors';
+import { categories } from 'constants';
 
 const TasksColumnsList = () => {
-  const tasksToDo = useSelector(state =>
-    selectTasksByCategory(state, category.toDo)
-  );
+  const { currentDay } = useParams();
 
-  const tasksInProgress = useSelector(state =>
-    selectTasksByCategory(state, category.inProgress)
-  );
-
-  const tasksDone = useSelector(state =>
-    selectTasksByCategory(state, category.done)
-  );
+  const filteredTasks = useSelector(state => selectTasksByDate(state, currentDay));
 
   return (
     <Wrapper>
-      <TasksColumn title="To do" tasks={tasksToDo} />
-      <TasksColumn title="In progress" tasks={tasksInProgress} />
-      <TasksColumn title="Done" tasks={tasksDone} />
+      {categories.map((category, index) => (
+        <TasksColumn key={index} title={category} tasks={filteredTasks.filter(task => task.category === category)} />
+      ))}
     </Wrapper>
   )
 }

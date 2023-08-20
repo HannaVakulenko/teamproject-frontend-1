@@ -1,37 +1,57 @@
-// import { useEffect } from 'react';
-// import { useDispatch } from 'react-redux';
-// import { fetchTasks } from 'redux/tasks/operations';
-// import { ChoosedDay } from 'components/CalendarPage';
-import { Section } from 'components/Common';
+import { Suspense, useEffect } from 'react';
+import { Outlet, useNavigate, useLocation } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { startOfMonth, endOfMonth, format, parseISO } from 'date-fns';
+import Swal from 'sweetalert2';
+import { fetchTasks } from 'redux/tasks/operations';
 import { CalendarToolbar } from '../components/CalendarPage/index';
-import React from 'react';
-// import moment from 'moment';
-import { Outlet } from 'react-router-dom';
 
 const CalendarPage = () => {
+  const navigate = useNavigate();
+  const { pathname } = useLocation();
+  const dispatch = useDispatch();
 
-  // const dispatch = useDispatch();
+  const currentDate = format(new Date(), 'yyyy-MM-dd');
 
-  // useEffect(() => {
-  //   dispatch(fetchTasks({
-  //     monthStart: "2023-08-01",
-  //     monthEnd: "2023-08-31"
-  //   }));
-  // }, [dispatch]);
+  const currentDateObject = parseISO(currentDate, 'yyyy-MM-dd', new Date());
+  const startOfMonthDate = startOfMonth(currentDateObject);
+  const endOfMonthDate = endOfMonth(currentDateObject);
+  const formatedStartMonthDate = format(startOfMonthDate, 'yyyy-MM-dd');
+  const formatedEndMonthDate = format(endOfMonthDate, 'yyyy-MM-dd');
+
+  useEffect(() => {
+    if ((pathname === "/calendar" || "/calendar/") && pathname.length < 11) {
+      navigate(`/calendar/month/${currentDate}`);
+    }
+  }, [currentDate, navigate, pathname]);
+
+  useEffect(() => {
+    const getAllTasks = async () => {
+      try {
+        await dispatch(fetchTasks({
+          monthStart: formatedStartMonthDate,
+          monthEnd: formatedEndMonthDate,
+        }));
+      } catch (error) {
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Something went wrong!',
+          confirmButtonColor: '#3E85F3',
+        });
+      }
+    };
+    getAllTasks();
+  }, [dispatch, formatedEndMonthDate, formatedStartMonthDate]);
 
   return (
     <>
       <CalendarToolbar />
-      {/* <Section>
-        <ChoosedMonth startDay={startDay} />
-      </Section> */}
-      {/* <ChoosedDay /> */}
-      <Section>
+      <Suspense fallback={<div>Loading...</div>}>
         <Outlet />
-      </Section>
+      </Suspense>
     </>
   );
 };
-// const startDay = moment().startOf('month').startOf('week');
 
 export default CalendarPage;

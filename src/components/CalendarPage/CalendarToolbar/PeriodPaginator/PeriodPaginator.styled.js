@@ -12,11 +12,13 @@ export const ForDatePicker = styled.div`
   display: flex;
   flex-direction: column;
 `;
+
 export const DatePickerWrapper = styled.div`
   position: absolute;
   top: 100%;
   left: 0;
   margin-top: 10px;
+
 `;
 
 export const ContainerFlex = styled.div`
@@ -31,6 +33,7 @@ export const Date = styled.button`
   justify-content: center;
   min-width: 109px;
   height: 30px;
+
   padding: 6px 12px 6px 12px;
   border-radius: 8px;
   background-color: #3e85f3;
@@ -50,6 +53,7 @@ export const Date = styled.button`
     min-width: 121px;
     height: 34px;
 
+
     font-size: 16px;
     line-height: 1.1;
   }
@@ -59,6 +63,7 @@ export const Date = styled.button`
     margin-right: 8px;
     min-width: 125px;
     height: 34px;
+
 
     font-size: 16px;
     line-height: 1.1;
@@ -306,7 +311,7 @@ height: 48px !important;
    .react-datepicker__day--outside-month {
      color: ${p => p.theme.buttonTextColor} !important;
      opacity: 0% !important;
-     pointer-events: none; !important;
+     pointer-events: none !important;
    }
 
    .react-datepicker__day--weekend:not(.react-datepicker__day--outside-month):not(.react-datepicker__day--keyboard-selected) {
