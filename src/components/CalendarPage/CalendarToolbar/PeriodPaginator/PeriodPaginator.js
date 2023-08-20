@@ -6,6 +6,7 @@ import {
   Date,
   ForDatePicker,
   Container,
+  DatePickerWrapper,
 } from './PeriodPaginator.styled';
 import DatePicker from 'react-datepicker';
 import icon from 'assets/icons/symbol-defs.svg';
@@ -15,13 +16,13 @@ import 'react-datepicker/dist/react-datepicker.css';
 
 const PeriodPaginator = ({ date, getTasks, isOpen, setIsOpen, setDate }) => {
   const location = useLocation();
-  // console.log(window);
 
   const handleChange = e => {
     setIsOpen(!isOpen);
     setDate(e);
   };
   const handleClick = e => {
+    console.dir(e.target);
     e.preventDefault();
     setIsOpen(!isOpen);
   };
@@ -36,7 +37,16 @@ const PeriodPaginator = ({ date, getTasks, isOpen, setIsOpen, setDate }) => {
             : format(date, 'MMMM yyyy')}
         </Date>
         {isOpen && (
-          <DatePicker selected={date} onChange={handleChange} inline />
+          <DatePickerWrapper>
+            {' '}
+            <DatePicker
+              onClickOutside={() => setIsOpen(!isOpen)}
+              formatWeekDay={nameOfDay => nameOfDay.substr(0, 1)}
+              selected={date}
+              onChange={handleChange}
+              inline
+            />
+          </DatePickerWrapper>
         )}
       </ForDatePicker>
 
