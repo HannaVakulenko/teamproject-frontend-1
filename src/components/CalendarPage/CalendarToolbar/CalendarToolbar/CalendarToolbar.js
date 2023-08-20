@@ -9,6 +9,7 @@ import { parseISO, startOfMonth, endOfMonth, format } from 'date-fns';
 import 'react-datepicker/dist/react-datepicker.css';
 import { useNavigate } from 'react-router-dom';
 import { fetchTasks } from '../../../../redux/tasks/operations';
+import Swal from 'sweetalert2';
 
 const CalendarToolbar = () => {
   // const dateGlobal = useSelector(state => state.date.currentDate);
@@ -20,16 +21,15 @@ const CalendarToolbar = () => {
   const dispatch = useDispatch();
   const { currentDate } = useParams();
 
-  const monthFromURL = parseISO(currentDate).getMonth(currentDate) + 1;
+  const monthFromURL = parseISO(currentDate);
   const currentMonth = new Date().getMonth() + 1;
 
   // console.log(sc); // Виводить щось на зразок "16-08-2023"
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const forFetchData = () => {
-    const parsedDate = new Date(date); // Парсинг даты в стандартном формате
-    const startDate = startOfMonth(parsedDate);
-    const endDate = endOfMonth(parsedDate);
+    const startDate = startOfMonth(monthFromURL);
+    const endDate = endOfMonth(monthFromURL);
 
     const formattedStartDate = format(startDate, 'yyyy-MM-dd');
     const formattedEndDate = format(endDate, 'yyyy-MM-dd');
@@ -41,9 +41,21 @@ const CalendarToolbar = () => {
   };
 
   useEffect(() => {
-    if (monthFromURL !== currentMonth) {
-      dispatch(fetchTasks(forFetchData()));
-    }
+    const getAllTasks = async () => {
+      if (monthFromURL !== currentMonth) {
+        try {
+          await dispatch(fetchTasks());
+        } catch (error) {
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Something went wrong!',
+            confirmButtonColor: '#3E85F3',
+          });
+        }
+      }
+    };
+    getAllTasks();
   }, [currentMonth, dispatch, forFetchData, monthFromURL]);
 
   const changeDate = e => {

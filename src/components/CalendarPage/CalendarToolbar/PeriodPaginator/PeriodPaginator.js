@@ -10,17 +10,24 @@ import {
 } from './PeriodPaginator.styled';
 import DatePicker from 'react-datepicker';
 import icon from 'assets/icons/symbol-defs.svg';
-import { useLocation } from 'react-router-dom';
-import { format } from 'date-fns'; // Додайте імпорт
+import { useLocation, useNavigate } from 'react-router-dom';
+import { format } from 'date-fns';
 import 'react-datepicker/dist/react-datepicker.css';
 
 const PeriodPaginator = ({ date, getTasks, isOpen, setIsOpen, setDate }) => {
   const location = useLocation();
+  const navigate = useNavigate();
 
   const handleChange = e => {
-    console.dir(date);
+    const formattedDate = format(e, 'yyyy-MM-dd');
+
     setIsOpen(!isOpen);
     setDate(e);
+
+    if (location.pathname.startsWith('/calendar/day')) {
+      navigate(`/calendar/month/${formattedDate}`);
+    }
+    navigate(`/calendar/day/${formattedDate}`);
   };
   const handleClick = e => {
     e.preventDefault();
