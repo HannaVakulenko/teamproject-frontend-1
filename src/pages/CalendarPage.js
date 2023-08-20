@@ -19,7 +19,6 @@ const CalendarPage = () => {
   const formatedStartMonthDate = format(startOfMonthDate, 'yyyy-MM-dd');
   const formatedEndMonthDate = format(endOfMonthDate, 'yyyy-MM-dd');
 
-  console.log(pathname);
   useEffect(() => {
     if ((pathname === "/calendar" || "/calendar/") && pathname.length < 11) {
       navigate(`/calendar/month/${currentDate}`);
