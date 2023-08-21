@@ -26,11 +26,9 @@ export const UserPhoto = styled.img`
 
 export const UserNameStyled = styled.span`
   color: ${p => p.theme.secondaryTextColor};
-  font-family: Inter;
   font-size: 14px;
-  font-style: normal;
   font-weight: 700;
-  line-height: 128.571%;
+  line-height: 1.28;
   
   @media (min-width: ${device.tablet}px) {
     font-size: 18px;
