@@ -113,8 +113,7 @@ export const ButtonIncrease = styled.button`
 `;
 
 export const IconLeft = styled.svg`
-  stroke: ${p => p.theme.chevronLeft};
-  opacity: ${p => p.theme.opacityChevron};
+  stroke: ${p => p.theme.mainTextColor};
 `;
 export const IconRight = styled.svg`
   stroke: ${p => p.theme.mainTextColor};

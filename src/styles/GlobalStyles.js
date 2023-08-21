@@ -143,5 +143,12 @@ export const GlobalStyle = createGlobalStyle`
 
 #nprogress .bar {
 background-color: ${({ theme }) => theme.mainTextColor};
+
 }
+
+.react-datepicker {
+  border: none !important;
+  background-color: transparent !important;
+}
+
 `;
