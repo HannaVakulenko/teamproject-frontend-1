@@ -23,15 +23,20 @@ export const lightTheme = {
   inactiveButtonDayMonth: '#CAE8FF',
   userFormStatusColor: '#343434',
   userFormLabelColor: '#111111',
-  userFormInputBorderColor: "#1111111A",
-
+  userFormInputBorderColor: '#1111111A',
+  calendarDeviderColor: '#DCE3E580',
+  modalBorderColor: 'transparent',
+  modalFieldBgColor: '#F6F6F6',
+  editBtnBgColor: '#E3F3FF',
   taskBgColor:
     'linear-gradient(0deg, rgba(220, 227, 229, 0.8), rgba(220, 227, 229, 0.8)), linear-gradient(0deg, #F7F6F9, #F7F6F9)',
   tasksListBgColor:
     'linear-gradient(0deg, rgba(220, 227, 229, 0.8), rgba(220, 227, 229, 0.8)), linear-gradient(0deg, #FFFFFF, #FFFFFF)',
-
   monthBorder: '1px solid rgba(62, 133, 243, 0.20)',
   buttonInDecBorder: '1px solid rgba(220, 227, 229, 0.50)',
+  chevronLeft: '#DCE3E5',
+  opacityChevron: '',
+  chartBorderColor: '#E3F3FF',
 };
 
 export const darkTheme = {
@@ -44,7 +49,7 @@ export const darkTheme = {
   mainTextColor: '#FFFFFF',
   secondaryTextColor: '#FFFFFF',
   buttonTextColor: '#FFFFFF',
-  calendarTextColor: '#343434',
+  calendarTextColor: '#FFFFFF',
   sidebarMainActiveColor: '#FFFFFF',
   sidebarBGColor: '#13151A',
   sidebarTextColor: '#FFFFFF',
@@ -59,12 +64,18 @@ export const darkTheme = {
   inactiveButtonDayMonth: '#3E85F3',
   userFormStatusColor: '#FAFAFA4D',
   userFormLabelColor: '#FAFAFA4D',
-  userFormInputBorderColor: "#FFFFFF26",
+  userFormInputBorderColor: '#FFFFFF26',
+  calendarDeviderColor: '#FFFFFF26',
+  modalBorderColor: '#FFFFFF26',
+  modalFieldBgColor: '#13151A',
+  editBtnBgColor: '#353647',
   taskBgColor:
     'linear-gradient(0deg, #171820, #171820), linear-gradient(0deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.15))',
   tasksListBgColor:
     'linear-gradient(0deg, #21222C, #21222C), linear-gradient(0deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.15))',
-
   monthBorder: '1px solid rgba(62, 133, 243, 0.20)',
   buttonInDecBorder: '1px solid rgba(255, 255, 255, 0.15)',
+  chevronLeft: '#ffffff',
+  opacityChevron: '0.15',
+  chartBorderColor: 'rgba(227, 243, 255, 0.15)',
 };

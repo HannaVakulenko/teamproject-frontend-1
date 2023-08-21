@@ -97,10 +97,10 @@ const TaskForm = ({ onClose, action, column, priority, taskToEdit }) => {
   return (
     <Formik
       initialValues={{
-        title: '',
-        start: '09:00',
-        end: '10:00',
-        priority: action === 'edit' ? priority : 'low',
+        title: taskToEdit?.title || '',
+        start: taskToEdit?.start || '09:00',
+        end: taskToEdit?.end || '10:00',
+        priority: taskToEdit?.priority || "Low",
         category: column,
         date: currentDay,
       }}
@@ -155,7 +155,7 @@ const TaskForm = ({ onClose, action, column, priority, taskToEdit }) => {
           ) : (
             <ButtonAction type="submit">
               <svg width="18" height="18">
-                <use href={icon + '#icon-pencil-01'} stroke="white"></use>
+                <use href={icon + '#icon-pencil-01'} stroke="white" fill="none"></use>
               </svg>
               {t('edit')}
             </ButtonAction>

@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux';
-import { useLocation } from 'react-router-dom';
-import { selectHasTasksInColumns } from 'redux/tasks/selectors';
+import { useLocation, useParams } from 'react-router-dom';
+import { selectUndoneTasks, selectTasksByDate } from 'redux/tasks/selectors';
 import { MainTitle } from 'components/Common';
 import AddFeedbackBtn from '../AddFeedbackBtn/AddFeedbackBtn';
 import ThemeToggler from '../ThemeToggler/ThemeToggler';
@@ -23,22 +23,23 @@ import { device } from 'constants';
 import LanguageFlags from '../../../LanguageFlags';
 import { useTranslation } from 'react-i18next';
 
+const getCurrentMainTitle = location => {
+  if (location.pathname.startsWith('/account')) return 'User Profile';
+  if (location.pathname.startsWith('/statistics')) return 'Statistics';
+  return 'Calendar';
+};
+
 const Header = ({ toggleSidebar }) => {
-  const { t } = useTranslation();
+  const { currentDay } = useParams();
   const location = useLocation();
-  const hasTasksInColumns = useSelector(selectHasTasksInColumns);
-  let currentMainTitle = '';
-
-  if (location.pathname.startsWith('/account')) {
-    currentMainTitle = t('user_profile');
-  } else if (location.pathname.startsWith('/statistics')) {
-    currentMainTitle = t('statistics');
-  } else {
-    currentMainTitle = t('calendar');
-  }
-
+  const tasksForCurrentDay = useSelector(state =>
+    selectTasksByDate(state, currentDay)
+  );
+  const hasTasksInColumns = useSelector(selectUndoneTasks);
+  const currentMainTitle = getCurrentMainTitle(location);
   const onChoosedDayPage = location.pathname.startsWith('/calendar/day');
-  const shouldShowMotivationMessage = onChoosedDayPage && hasTasksInColumns;
+  const shouldShowMotivationMessage =
+    onChoosedDayPage && hasTasksInColumns && tasksForCurrentDay.length > 0;
 
   return (
     <StyledHeader>

@@ -5,6 +5,7 @@ import {
   login,
   refreshUser,
   fetchUserAccount,
+  updateUserAccount,
 } from './operations';
 
 const initialState = {
@@ -14,7 +15,7 @@ const initialState = {
     birthday: null,
     phone: null,
     skype: null,
-    imageURL: null,
+    avatarURL: null,
   },
   token: null,
   isLoggedIn: false,
@@ -91,6 +92,10 @@ const authSlice = createSlice({
         state.isRefreshing = false;
       })
       .addCase(fetchUserAccount.fulfilled, (state, action) => {
+        state.user = action.payload;
+      })
+      .addCase(updateUserAccount.fulfilled, (state, action) => {
+        // console.log(action);
         state.user = action.payload;
       });
   },

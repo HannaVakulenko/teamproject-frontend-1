@@ -9,8 +9,9 @@ export const Backdrop = styled.div`
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  z-index: 1;
+  background-color: ${p => p.theme.backdropColor};
+  backdrop-filter: blur(3px);
+  z-index: 5;
   opacity: ${p => (p.$isOpen ? '1' : '0')};
   transition: opacity 0.3s ease-out;
   pointer-events: ${p => (p.$isOpen ? 'auto' : 'none')};
@@ -31,7 +32,7 @@ export const Sidebar = styled.aside`
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 2;
+  z-index: 6;
   padding: 24px 20px;
   display: flex;
   flex-direction: column;

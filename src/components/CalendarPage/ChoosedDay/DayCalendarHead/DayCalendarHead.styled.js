@@ -1,32 +1,34 @@
 import { styled } from 'styled-components';
+import { Link } from 'react-router-dom';
 import { device } from 'constants';
 
 export const Wrapper = styled.div`
   padding: 14px 18px;
   margin-bottom: 14px;
   border-radius: 8px;
-  border: 1px solid rgba(220, 227, 229, 0.50);
+  border: 1px solid ${p => p.theme.calendarDeviderColor};
   background-color: ${p => p.theme.secondaryBgColor};
 
   @media screen and (min-width: ${device.tablet}px) {
     padding: 10px 32px;
     margin-bottom: 16px;
-  };
+  }
 
   @media screen and (min-width: ${device.desktop}px) {
     padding: 10px 46px;
   }
 `;
 
-export const List = styled.ul`
+export const List = styled.div`
   display: flex;
   justify-content: space-between;
 `;
 
-export const Item = styled.li`
+export const DayLink = styled(Link)`
   display: flex;
   flex-direction: column;
   align-items: center;
+
   gap: 6px;
 
   @media screen and (min-width: ${device.tablet}px) {

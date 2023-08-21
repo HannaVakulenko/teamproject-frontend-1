@@ -12,10 +12,10 @@ export const Form = styled(FormikForm)`
   width: 303px;
   max-height: 420px;
   padding: 48px 18px 40px;
-  background-color: ${props => props.theme.buttonTextColor};
+  background-color: ${p => p.theme.sidebarBGColor};
 
   border-radius: 8px;
-  border: 1px solid rgba(52, 52, 52, 0.8);
+  border: 1px solid ${p => p.theme.modalBorderColor};
   box-shadow: 0px 4px 16px 0px rgba(17, 17, 17, 0.1);
 
   @media (min-width: ${device.tablet}px) {
@@ -29,11 +29,10 @@ export const Label = styled.label`
   flex-direction: column;
   gap: 8px;
 
-  color: rgba(52,52,52,0.8);
+  color: ${p => p.theme.calendarTextColor};
   font-size: 12px;
-  font-family: Inter;
   font-weight: 500;
-  line-height: 14px;
+  line-height: 1.16;
 `;
 
 export const InputTitle = styled(Field)`
@@ -41,14 +40,14 @@ export const InputTitle = styled(Field)`
   height: 42px;
   padding: 12px 14px;
   border-radius: 8px;
-  background: #F6F6F6;
-  border: 1px solid transparent;
 
-  color: ${props => props.theme.secondaryTextColor};
+  background: ${p => p.theme.modalFieldBgColor};
+  border: 1px solid ${p => p.theme.modalBorderColor};
+
+  color: ${p => p.theme.secondaryTextColor};
   font-size: 14px;
-  font-family: Inter;
   font-weight: 600;
-  line-height: 18px;
+  line-height: 1.25;
 
   @media (min-width: ${device.tablet}px) {
     width: 340px;
@@ -58,11 +57,10 @@ export const InputTitle = styled(Field)`
 
   &::placeholder {
     opacity: 1;
-    color: ${props => props.theme.secondaryTextColor};
+    color: ${p => p.theme.secondaryTextColor};
     font-size: 14px;
-    font-family: Inter;
     font-weight: 600;
-    line-height: 18px;
+    line-height: 1.28;
   }
 `;
 
@@ -81,15 +79,14 @@ export const InputTime = styled(Field)`
   height: 42px;
   padding: 12px 14px;
   border-radius: 8px;
-  background: #F6F6F6;
-  border: 1px solid transparent;
+  background: ${p => p.theme.modalFieldBgColor};
+  border: 1px solid ${p => p.theme.modalBorderColor};
   cursor: pointer;
 
   color: ${props => props.theme.calendarTextColor};
   font-size: 14px;
-  font-family: Inter;
   font-weight: 600;
-  line-height: 18px;
+  line-height: 1.28;
 
   @media (min-width: ${device.tablet}px) {
     width: 163px;
@@ -122,14 +119,13 @@ export const RadioLabel = styled.label`
 
   color: ${p=>p.theme.mainTextColor};
   font-size: 12px;
-  font-family: Inter;
   font-weight: 600;
-  line-height: 14px;
+  line-height: 1.16;
   cursor: pointer;
 
   @media (min-width: ${device.tablet}px) {
     font-size: 14px;
-    line-height: 18px;
+    line-height: 1.28;
     margin-top: 28px;
   }
 `;
@@ -192,9 +188,8 @@ export const ButtonAction = styled.button`
   color: #fff;
   text-align: center;
   font-size: 14px;
-  font-family: Inter;
   font-weight: 600;
-  line-height: 18px;
+  line-height: 1.28;
 
   transition: background-color 250ms linear;
 
@@ -223,9 +218,8 @@ export const ButtonCancel = styled.button`
   color: #111;
   text-align: center;
   font-size: 14px;
-  font-family: Inter;
   font-weight: 600;
-  line-height: 18px;
+  line-height: 1.28;
 
   transition: background-color 250ms linear;
 
@@ -264,7 +258,6 @@ export const ErrorMessage = styled(FormikErrorMessage)`
   max-width: 100%;
   color: #da1414;
   font-size: 12px;
-  font-family: Inter;
-  line-height: 14px;
+  line-height: 1.16;
 `;
 

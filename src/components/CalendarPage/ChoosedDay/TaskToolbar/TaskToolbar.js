@@ -12,8 +12,10 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { categoriesArray } from 'constants';
 import { updateTask, deleteTask } from 'redux/tasks/operations';
+import { TaskModal } from 'components/Common';
 
 const TaskToolbar = ({ task }) => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const dispatch = useDispatch();
 
   const availableCategories = categoriesArray.filter(
@@ -35,6 +37,13 @@ const TaskToolbar = ({ task }) => {
     handleClose();
   };
 
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
   // ---popover---
   const [anchorEl, setAnchorEl] = useState(null);
   const handleClick = event => {
@@ -50,7 +59,11 @@ const TaskToolbar = ({ task }) => {
   return (
     <Wrapper>
       <WrapperPopover>
-        <Button aria-describedby={id} variant="contained" onClick={handleClick}>
+        <Button
+          aria-describedby={id}
+          $variant="contained"
+          onClick={handleClick}
+        >
           <Icon width="14" height="14">
             <use href={icon + '#icon-arrow-circle-broken-right'}></use>
           </Icon>
@@ -84,11 +97,19 @@ const TaskToolbar = ({ task }) => {
         </Popover>
       </WrapperPopover>
 
-      <Button>
+      <Button onClick={openModal}>
         <Icon width="14" height="14">
           <use href={icon + '#icon-pencil-01'}></use>
         </Icon>
       </Button>
+      {isModalOpen && (
+        <TaskModal
+          taskToEdit={task}
+          onClose={closeModal}
+          action={'edit'}
+          column={task.category}
+        />
+      )}
       <Button
         onClick={() => {
           dispatch(deleteTask(task._id));

@@ -1,35 +1,45 @@
 import { useState, useEffect } from 'react';
 import { useLocation, useParams } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-// import { Routes, Route, useLocation } from 'react-router-dom';
-// import { useSelector } from 'react-redux';
 import { PeriodPaginator, PeriodTypeSelect } from '../../index';
 import { Container, ContainerSecond } from './CalendarToolbar.styled';
 import { parseISO, startOfMonth, endOfMonth, format } from 'date-fns';
 import 'react-datepicker/dist/react-datepicker.css';
 import { useNavigate } from 'react-router-dom';
 import { fetchTasks } from '../../../../redux/tasks/operations';
+import Swal from 'sweetalert2';
 
 const CalendarToolbar = () => {
-  // const dateGlobal = useSelector(state => state.date.currentDate);
-  const [date, setDate] = useState(new Date());
+  const { currentDate } = useParams();
+  const { currentDay } = useParams();
+  // console.log(currentDay);
+
+  const dayDate = currentDay || currentDate;
+  const newDate = parseISO(dayDate);
+  // console.log(dayDate);
+
+  const formatDate =
+    newDate === 'Invalid Date' ? new Date(newDate) : new Date();
+
+  const [date, setDate] = useState(formatDate);
   const [isOpen, setIsOpen] = useState(false);
 
   const location = useLocation();
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { currentDate } = useParams();
 
-  const monthFromURL = parseISO(currentDate).getMonth(currentDate) + 1;
-  const currentMonth = new Date().getMonth() + 1;
+  // const { currentDate } = useParams();
+  // const { currentDay } = useParams();
 
-  // console.log(sc); // Виводить щось на зразок "16-08-2023"
+  // const dayDate = currentDate || currentDay;
+
+  // const currentMonth = new Date().getMonth() + 1;
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const forFetchData = () => {
-    const parsedDate = new Date(date); // Парсинг даты в стандартном формате
-    const startDate = startOfMonth(parsedDate);
-    const endDate = endOfMonth(parsedDate);
+    const monthFromURL = parseISO(dayDate);
+    const startDate = startOfMonth(monthFromURL);
+    const endDate = endOfMonth(monthFromURL);
 
     const formattedStartDate = format(startDate, 'yyyy-MM-dd');
     const formattedEndDate = format(endDate, 'yyyy-MM-dd');
@@ -41,19 +51,39 @@ const CalendarToolbar = () => {
   };
 
   useEffect(() => {
-    if (monthFromURL !== currentMonth) {
-      dispatch(fetchTasks(forFetchData()));
-    }
-  }, [currentMonth, dispatch, forFetchData, monthFromURL]);
+    const getAllTasks = async () => {
+      if (dayDate) {
+        try {
+          await dispatch(fetchTasks(forFetchData())).unwrap();
+        } catch (error) {
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Something went wrong!',
+            confirmButtonColor: '#3E85F3',
+          });
+        }
+      }
+    };
+    getAllTasks();
+  }, [dayDate, dispatch, forFetchData]);
+
+    useEffect(() => {
+      if (dayDate) {
+        const newDate = new Date(dayDate);
+        setDate(newDate);
+      }
+    }, [dayDate]);
 
   const changeDate = e => {
     const newDate = new Date(date);
-
     let formattedDate = '';
 
-    if (location.pathname.startsWith('/calendar/day')) {
+    if (
+      location.pathname.startsWith('/calendar/day') ||
+      location.pathname.startsWith('/statistics')
+    ) {
       if (e.currentTarget.className.includes('decrease')) {
-        console.log('yes');
         newDate.setDate(newDate.getDate() - 1);
       } else {
         newDate.setDate(newDate.getDate() + 1);
@@ -71,28 +101,15 @@ const CalendarToolbar = () => {
       setDate(newDate);
       formattedDate = format(newDate, 'yyyy-MM-dd');
     }
-    navigate(`/calendar/${location.pathname.split('/')[2]}/${formattedDate}`);
+
+    if (location.pathname.startsWith('/calendar/day')) {
+      navigate(`/calendar/${location.pathname.split('/')[2]}/${formattedDate}`);
+    } else if (location.pathname.startsWith('/calendar/month')) {
+      navigate(`/calendar/${location.pathname.split('/')[2]}/${formattedDate}`);
+    } else {
+      navigate(`/statistics/${formattedDate}`);
+    }
   };
-
-  // const formatDateString = inputDate => {
-  //   if (location.pathname === '/calendar/day') {
-  //     const parsedDate = new Date(inputDate);
-  //     const options = { day: 'numeric', month: 'short', year: 'numeric' };
-  //     const formattedDate = parsedDate.toLocaleDateString('en-GB', options);
-  //     return formattedDate.replace(
-  //       parsedDate.toLocaleString('en-GB', { month: 'short' }),
-  //       parsedDate.toLocaleString('en-GB', { month: 'short' }).toUpperCase()
-  //     );
-  //   }
-  //   const parsedDate = new Date(inputDate);
-  //   const options = { month: 'short', year: 'numeric' };
-  //   const formattedDate = parsedDate.toLocaleDateString('en-GB', options);
-  //   const monthUpperCase = formattedDate.split(' ')[0].toUpperCase();
-  //   const year = formattedDate.split(' ')[1];
-  //   return `${monthUpperCase} ${year}`;
-  // };
-
-  // const formattedDate = formatDateString(date);
 
   return (
     <>
@@ -106,14 +123,14 @@ const CalendarToolbar = () => {
             setDate={setDate}
           />
         </ContainerSecond>
-        <div>
-          <PeriodTypeSelect />
-        </div>
+        {location.pathname.includes('statistics') ? (
+          ''
+        ) : (
+          <div>
+            <PeriodTypeSelect />
+          </div>
+        )}
       </Container>
-      {/* <Routes>
-        <Route path="/month" element={<div>day</div>} />
-        <Route path="/day" element={<div>month</div>} />
-      </Routes> */}
     </>
   );
 };

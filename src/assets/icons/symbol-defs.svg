@@ -36,16 +36,16 @@
                 d="M14.4 20.8h3.2v3.2h-3.2v-3.2zM14.4 8h3.2v9.6h-3.2v-9.6zM15.984 0c-8.832 0-15.984 7.168-15.984 16s7.152 16 15.984 16c8.848 0 16.016-7.168 16.016-16s-7.168-16-16.016-16zM16 28.8c-7.072 0-12.8-5.728-12.8-12.8s5.728-12.8 12.8-12.8c7.072 0 12.8 5.728 12.8 12.8s-5.728 12.8-12.8 12.8z">
             </path>
         </symbol>
-        <symbol id="icon-chevron-right" viewBox="0 0 32 32">
-            <path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="2.6667"
-                d="M12 24l8-8-8-8"></path>
+        <symbol id="icon-chevron-right" viewBox="0 0 6 12" fill="none">
+           <path d="M0.75 10.5L5.25 6L0.75 1.5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
         </symbol>
         <symbol id="icon-chevron-down" viewBox="0 0 18 18">
             <path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="2"
                 d="M4.5 6.75L9 11.25L13.5 6.75"></path>
         </symbol>
-        <symbol id="icon-chevron-left" viewBox="0 0 32 32">
-            <path stroke-linejoin="round" stroke-linecap="round" stroke-width="2.6667" d="M20 24l-8-8 8-8"></path>
+        <symbol id="icon-chevron-left" viewBox="0 0 6 12" fill="none">
+           <path d="M5.25 10.5L0.75 6L5.25 1.5"  stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+
         </symbol>
         <symbol id="icon-x-close" viewBox="0 0 32 32">
             <path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="2.6667"

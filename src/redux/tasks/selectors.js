@@ -25,6 +25,6 @@ export const selectTasksByDate = createSelector(
   }
 );
 
-export const selectHasTasksInColumns = createSelector(selectTasks, tasks =>
+export const selectUndoneTasks = createSelector(selectTasks, tasks =>
   tasks.some(task => task.category !== category.done)
 );

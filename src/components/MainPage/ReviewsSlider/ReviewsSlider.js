@@ -53,22 +53,25 @@ const ReviewsSlider = () => {
     dispatch(fetchReviews({ page: 1, limit: 99999 }));
   }, [dispatch]);
 
+
+  
   const handleSlideChange = swiper => {
     setCanGoPrev(!swiper.isBeginning);
     setCanGoNext(!swiper.isEnd);
   };
 
-  const slides = Array.isArray(reviews.reviews) ? reviews.reviews : [];
+  
+  const slides = reviews.reviews || [];
   return (
     <Section>
       <Container>
         <Title>{t('rewiews_home')}</Title>
         <SliderWrapper>
           <Swiper
-            initialSlide={1}
+            initialSlide={0}
             slidesPerView={1}
             ref={swiperRef}
-            autoplay={{ delay: 8000 }}
+            autoplay={{delay:5000}}
             navigation={{
               prevEl: '#my-prev-button',
               nextEl: '#my-next-button',
@@ -80,7 +83,11 @@ const ReviewsSlider = () => {
             spaceBetween={24}
             loop={true}
             breakpoints={{
-              320: {
+              375: {
+                slidesPerView: 1,
+                slidesPerGroup: 1,
+              },
+              768: {
                 slidesPerView: 1,
                 slidesPerGroup: 1,
               },
@@ -89,9 +96,13 @@ const ReviewsSlider = () => {
                 slidesPerGroup: 2,
               },
             }}
+            simulateTouch={true}
+            touchRatio={0.2}
+            effect="slide"
+            
           >
             {slides.map((slide, index) => (
-              <SwiperSlide key={index} virtualIndex={index}>
+              <SwiperSlide key={index} virtualIndex={index} >
                 <ReviewSliderCard>
                   <ReviewContentBox>
                     <AvatarWrapper>

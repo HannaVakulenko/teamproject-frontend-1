@@ -5,6 +5,8 @@ import { startOfMonth, endOfMonth, format, parseISO } from 'date-fns';
 import Swal from 'sweetalert2';
 import { fetchTasks } from 'redux/tasks/operations';
 import { CalendarToolbar } from '../components/CalendarPage/index';
+import { Spinner } from 'components/Common';
+import CalendarSection from 'components/Common/CalendarSection/CalendarSection';
 import { useTranslation } from 'react-i18next';
 
 const CalendarPage = () => {
@@ -37,7 +39,7 @@ const CalendarPage = () => {
             monthStart: formatedStartMonthDate,
             monthEnd: formatedEndMonthDate,
           })
-        );
+        ).unwrap();
       } catch (error) {
         Swal.fire({
           icon: 'error',
@@ -51,12 +53,12 @@ const CalendarPage = () => {
   }, [dispatch, formatedEndMonthDate, formatedStartMonthDate]);
 
   return (
-    <>
+    <CalendarSection>
       <CalendarToolbar />
-      <Suspense fallback={<div>Loading...</div>}>
+      <Suspense fallback={<Spinner />}>
         <Outlet />
       </Suspense>
-    </>
+    </CalendarSection>
   );
 };
 

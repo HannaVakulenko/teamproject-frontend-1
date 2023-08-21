@@ -9,6 +9,7 @@ const PeriodTypeSelect = () => {
 
   const navigate = useNavigate();
   const location = useLocation();
+
   const currentDate = moment().format('YYYY-MM-DD');
 
   const toMonth = () => {
