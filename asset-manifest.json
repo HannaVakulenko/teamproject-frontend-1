@@ -1,10 +1,10 @@
 {
   "files": {
     "main.css": "/teamproject-frontend-1/static/css/main.ba4169d3.css",
-    "main.js": "/teamproject-frontend-1/static/js/main.026a675a.js",
-    "static/js/132.afa7024f.chunk.js": "/teamproject-frontend-1/static/js/132.afa7024f.chunk.js",
-    "static/js/461.f109d33e.chunk.js": "/teamproject-frontend-1/static/js/461.f109d33e.chunk.js",
-    "static/js/673.5d3fdb59.chunk.js": "/teamproject-frontend-1/static/js/673.5d3fdb59.chunk.js",
+    "main.js": "/teamproject-frontend-1/static/js/main.4a639483.js",
+    "static/js/35.c59af529.chunk.js": "/teamproject-frontend-1/static/js/35.c59af529.chunk.js",
+    "static/js/461.d0629bf8.chunk.js": "/teamproject-frontend-1/static/js/461.d0629bf8.chunk.js",
+    "static/js/673.86a00bd8.chunk.js": "/teamproject-frontend-1/static/js/673.86a00bd8.chunk.js",
     "static/js/304.ac075aa8.chunk.js": "/teamproject-frontend-1/static/js/304.ac075aa8.chunk.js",
     "static/media/mainpage-calendar-tabl@3x.png": "/teamproject-frontend-1/static/media/mainpage-calendar-tabl@3x.589377ec1ea92f785c22.png",
     "static/media/mainpage-calendar-desk@3x.png": "/teamproject-frontend-1/static/media/mainpage-calendar-desk@3x.7eb92153619fd464b254.png",
@@ -81,7 +81,7 @@
     "static/media/mainpage-calendar-desk-1x.webp": "/teamproject-frontend-1/static/media/mainpage-calendar-desk-1x.f8b9cc287137e056e986.webp",
     "static/media/not-found-tabl-desk@2x.webp": "/teamproject-frontend-1/static/media/not-found-tabl-desk@2x.852b52af5c9280333f1d.webp",
     "static/media/mainpage-goose-mob@2x.png": "/teamproject-frontend-1/static/media/mainpage-goose-mob@2x.25ec5effc7b701f5748c.png",
-    "static/media/symbol-defs.svg": "/teamproject-frontend-1/static/media/symbol-defs.4d8b968c82fa2a74781dbf44c3e739ab.svg",
+    "static/media/symbol-defs.svg": "/teamproject-frontend-1/static/media/symbol-defs.2d4e93d2c30de0ce1e3bf58d4079fbe5.svg",
     "static/media/not-found-mob@2x.png": "/teamproject-frontend-1/static/media/not-found-mob@2x.ee1741e79e9159d7a596.png",
     "static/media/mainpage-one-tabl-1x.webp": "/teamproject-frontend-1/static/media/mainpage-one-tabl-1x.5610107cba953c5cd840.webp",
     "static/media/mainpage-one-mob@2x.webp": "/teamproject-frontend-1/static/media/mainpage-one-mob@2x.96174e1530f1d9216c78.webp",
@@ -118,14 +118,14 @@
     "static/media/mainlayout-header-desk-1x.webp": "/teamproject-frontend-1/static/media/mainlayout-header-desk-1x.31b73ed5a214835f1dc0.webp",
     "static/media/logo-mob-1x.webp": "/teamproject-frontend-1/static/media/logo-mob-1x.cd09cea1d315fcef8d71.webp",
     "main.ba4169d3.css.map": "/teamproject-frontend-1/static/css/main.ba4169d3.css.map",
-    "main.026a675a.js.map": "/teamproject-frontend-1/static/js/main.026a675a.js.map",
-    "132.afa7024f.chunk.js.map": "/teamproject-frontend-1/static/js/132.afa7024f.chunk.js.map",
-    "461.f109d33e.chunk.js.map": "/teamproject-frontend-1/static/js/461.f109d33e.chunk.js.map",
-    "673.5d3fdb59.chunk.js.map": "/teamproject-frontend-1/static/js/673.5d3fdb59.chunk.js.map",
+    "main.4a639483.js.map": "/teamproject-frontend-1/static/js/main.4a639483.js.map",
+    "35.c59af529.chunk.js.map": "/teamproject-frontend-1/static/js/35.c59af529.chunk.js.map",
+    "461.d0629bf8.chunk.js.map": "/teamproject-frontend-1/static/js/461.d0629bf8.chunk.js.map",
+    "673.86a00bd8.chunk.js.map": "/teamproject-frontend-1/static/js/673.86a00bd8.chunk.js.map",
     "304.ac075aa8.chunk.js.map": "/teamproject-frontend-1/static/js/304.ac075aa8.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.ba4169d3.css",
-    "static/js/main.026a675a.js"
+    "static/js/main.4a639483.js"
   ]
 }
