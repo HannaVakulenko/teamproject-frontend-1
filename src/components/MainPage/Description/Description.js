@@ -16,8 +16,10 @@ import {
 import { mainpageCalendar } from 'assets/images/mainpageCalendar';
 import { mainpageSidebar } from 'assets/images/mainpageSidebar';
 import { mainpageOne } from 'assets/images/mainpageOne';
+import { useTranslation } from 'react-i18next';
 
 const Description = () => {
+  const { t } = useTranslation();
   return (
     <DescriptionSection>
       <ContainerMainPage>
@@ -25,13 +27,11 @@ const Description = () => {
           <ItemDescription>
             <WrappInfo>
               <Number>1.</Number>
-              <TitleDescription>Calendar</TitleDescription>
-              <AfterTitleDescription>view</AfterTitleDescription>
-              <TextDescription>
-                GooseTrack's Calendar view provides a comprehensive overview of
-                your schedule, displaying all your tasks, events, and
-                appointments in a visually appealing and intuitive layout.
-              </TextDescription>
+              <TitleDescription>{t('first_home_title')}</TitleDescription>
+              <AfterTitleDescription>
+                {t('first_home_title_1')}
+              </AfterTitleDescription>
+              <TextDescription>{t('first_home_description')}</TextDescription>
             </WrappInfo>
             <picture>
               {/* Webp */}
@@ -75,13 +75,11 @@ const Description = () => {
             <OddNumbered>
               <WrappInfo>
                 <Number>2.</Number>
-                <AfterTitleDescription>sidebar</AfterTitleDescription>
+                <AfterTitleDescription>
+                  {t('second_home_title')}
+                </AfterTitleDescription>
                 <TextDescription>
-                  GooseTrack offers easy access to your account settings,
-                  calendar, and filters. The "My Account" section allows you to
-                  manage your profile information and preferences, while the
-                  calendar provides a quick and convenient way to view your
-                  upcoming events and tasks.
+                  {t('second_home_description')}
                 </TextDescription>
               </WrappInfo>
             </OddNumbered>
@@ -126,14 +124,11 @@ const Description = () => {
           <ItemDescription>
             <WrappInfo>
               <Number>3.</Number>
-              <TitleDescription>all in</TitleDescription>
-              <AfterTitleDescription>one</AfterTitleDescription>
-              <TextDescription>
-                GooseTrack is an all-in-one productivity tool that helps you
-                stay on top of your tasks, events, and deadlines. Say goodbye to
-                scattered to-do lists and hello to streamlined productivity with
-                GooseTrack.
-              </TextDescription>
+              <TitleDescription>{t('third_home_title')}</TitleDescription>
+              <AfterTitleDescription>
+                {t('third_home_title_1')}
+              </AfterTitleDescription>
+              <TextDescription>{t('third_home_description')}</TextDescription>
             </WrappInfo>
             <picture>
               {/* Webp */}

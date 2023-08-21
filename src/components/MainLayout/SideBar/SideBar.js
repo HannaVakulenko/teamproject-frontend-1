@@ -27,8 +27,10 @@ import { useSelector } from 'react-redux';
 import { selectLoggedIn } from 'redux/auth/selectors';
 import LogoutBtn from '../LogoutBtn/LogoutBtn';
 import { disableScrolling } from 'helpers/disableScrolling';
+import { useTranslation } from 'react-i18next';
 
 const SideBar = ({ isOpen, toggleSidebar, mainLayoutRef }) => {
+  const { t } = useTranslation();
   const sidebarRef = useRef(null);
   const isLoggedIn = useSelector(selectLoggedIn);
   const location = useLocation();
@@ -158,7 +160,7 @@ const SideBar = ({ isOpen, toggleSidebar, mainLayoutRef }) => {
           </LogoAndTitle>
 
           <Navigation>
-            <Panel>User Panel</Panel>
+            <Panel>{t('user_panel')}</Panel>
             <NavigationList>
               <li>
                 <NavigationItem
@@ -169,7 +171,7 @@ const SideBar = ({ isOpen, toggleSidebar, mainLayoutRef }) => {
                   <Icon>
                     <use href={icon + '#icon-user-check-01'}></use>
                   </Icon>
-                  <NavItemName>My account</NavItemName>
+                  <NavItemName>{t('my_account')}</NavItemName>
                 </NavigationItem>
               </li>
 
@@ -182,7 +184,7 @@ const SideBar = ({ isOpen, toggleSidebar, mainLayoutRef }) => {
                   <Icon>
                     <use href={icon + '#icon-calendar-check-02'}></use>
                   </Icon>
-                  <NavItemName>Calendar</NavItemName>
+                  <NavItemName>{t('calendar')}</NavItemName>
                 </NavigationItem>
               </li>
 
@@ -195,7 +197,7 @@ const SideBar = ({ isOpen, toggleSidebar, mainLayoutRef }) => {
                   <Icon>
                     <use href={icon + '#icon-shape'}></use>
                   </Icon>
-                  <NavItemName to="/statistics">Statistics</NavItemName>
+                  <NavItemName to="/statistics">{t('statistics')}</NavItemName>
                 </NavigationItem>
               </li>
             </NavigationList>

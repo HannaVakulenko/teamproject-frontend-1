@@ -5,6 +5,7 @@ import { startOfMonth, endOfMonth, format, parseISO } from 'date-fns';
 import Swal from 'sweetalert2';
 import { fetchTasks } from 'redux/tasks/operations';
 import { CalendarToolbar } from '../components/CalendarPage/index';
+import { useTranslation } from 'react-i18next';
 
 const CalendarPage = () => {
   const navigate = useNavigate();
@@ -20,23 +21,28 @@ const CalendarPage = () => {
   const formatedEndMonthDate = format(endOfMonthDate, 'yyyy-MM-dd');
 
   useEffect(() => {
-    if ((pathname === "/calendar" || "/calendar/") && pathname.length < 11) {
+    if ((pathname === '/calendar' || '/calendar/') && pathname.length < 11) {
       navigate(`/calendar/month/${currentDate}`);
     }
   }, [currentDate, navigate, pathname]);
 
+  const { t } = useTranslation();
+  const error_text = t('error_text');
+
   useEffect(() => {
     const getAllTasks = async () => {
       try {
-        await dispatch(fetchTasks({
-          monthStart: formatedStartMonthDate,
-          monthEnd: formatedEndMonthDate,
-        }));
+        await dispatch(
+          fetchTasks({
+            monthStart: formatedStartMonthDate,
+            monthEnd: formatedEndMonthDate,
+          })
+        );
       } catch (error) {
         Swal.fire({
           icon: 'error',
           title: 'Oops...',
-          text: 'Something went wrong!',
+          text: error_text,
           confirmButtonColor: '#3E85F3',
         });
       }

@@ -20,19 +20,21 @@ import {
 import icon from 'assets/icons/symbol-defs.svg';
 import { mainlayout } from 'assets/images/mainlayoutHeader';
 import { device } from 'constants';
-import LanguageFlags from './LanguageFlags';
+import LanguageFlags from '../../../LanguageFlags';
+import { useTranslation } from 'react-i18next';
 
 const Header = ({ toggleSidebar }) => {
+  const { t } = useTranslation();
   const location = useLocation();
   const hasTasksInColumns = useSelector(selectHasTasksInColumns);
   let currentMainTitle = '';
 
   if (location.pathname.startsWith('/account')) {
-    currentMainTitle = 'User Profile';
+    currentMainTitle = t('user_profile');
   } else if (location.pathname.startsWith('/statistics')) {
-    currentMainTitle = 'Statistics';
+    currentMainTitle = t('statistics');
   } else {
-    currentMainTitle = 'Calendar';
+    currentMainTitle = t('calendar');
   }
 
   const onChoosedDayPage = location.pathname.startsWith('/calendar/day');

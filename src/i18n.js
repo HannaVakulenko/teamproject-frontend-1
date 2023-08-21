@@ -13,6 +13,7 @@ const resources = {
       sign_up: 'Sign Up',
       log_in: 'Log In',
       log_out: 'Log Out',
+
       first_home_title: 'Calendar',
       first_home_title_1: 'View',
       first_home_description:
@@ -25,43 +26,96 @@ const resources = {
       third_home_description:
         'GooseTrack is an all-in-one productivity tool that helps you stay on top of your tasks, events, and deadlines. Say goodbye to scattered to-do lists and hello to streamlined productivity with GooseTrack.',
       rewiews_home: 'Reviews',
+
       user_panel: 'User Panel',
+      user_profile: 'User Profile',
       my_account: 'My Account',
       calendar: 'Calendar',
       statistics: 'Statistics',
       feedback: 'Feedback',
+
       name: 'Name',
-      password: 'Password',
-      valid_email: 'This is a valid email',
-      valid_pass: 'This is a valid password',
-      user_name: 'User Name',
-      phone: 'Phone',
-      birthday: 'Birthday',
-      skype: 'Skype',
+      enter_name: 'Enter your name',
+      name_valid: 'This is a valid name',
+
       email: 'Email',
+      valid_email: 'This is a valid email',
+      enter_email: 'Enter email',
+      email_exist: 'User with this email address already exists!',
+      schema_email_yup: 'Email address must contain an "@" sign',
+      schema_email_mat: 'Must be a valid email',
+      schema_email_req: 'Email is required',
+
+      password: 'Password',
+      enter_pass: 'Enter password',
+      valid_pass: 'This is a valid password',
+      change_pass: 'Change your password',
+      schema_pass_yup: 'Must be at least 7 characters long',
+      schema_pass_req: 'Password is required',
+
+      error: 'Error',
+      error_text: 'Something went wrong!',
+      swal_error_text: 'Email or password is wrong!',
+
+      user: 'User',
+      user_name: 'User Name',
+      user_name_reg:
+        'Name may contain only letters, apostrophe, dash and spaces',
+      user_name_length: 'Must be at least 2 characters long',
+      user_name_req: 'Name is required',
+
+      phone: 'Phone',
+      phone_valid: 'Phone number is not valid',
+
+      skype: 'Skype',
+      enter_skype: 'Enter your Skype ID',
+      skype_min: 'Min 5 characters',
+      skype_max: 'Max 16 characters',
+
+      birthday: 'Birthday',
+      select_birthday: 'Select your birthday (current date:',
+
       save_changes: 'Save Changes',
       add_task: 'Add Task',
       edit_task: 'Edit Task',
       delete_task: 'Delete Task',
+
       task: 'Task',
       to_do: 'To Do',
       in_progress: 'In Progress',
       done: 'Done',
       by_day: 'By Day',
       by_month: 'By Month',
+
       title: 'Title',
+      title_lenght: 'Title is too long',
+      title_req: 'Title is required',
+
       description: 'Enter text',
       start_time: 'Start',
+      start_time_req: 'Start time is required',
+
       end_time: 'End',
+      end_time_req: 'End time is required',
+      end_time_test_1: 'is-greater',
+      end_time_test_2: 'End time should be greater than start time',
+
       low: 'Low',
       medium: 'Medium',
       high: 'High',
       save: 'Save',
+      add: 'Add',
       cancel: 'Cancel',
       delete: 'Delete',
       edit: 'Edit',
       close: 'Close',
       update: 'Update',
+      priority_req: 'Priority is required',
+      category_req: 'Category is required',
+
+      rating: 'Rating',
+      review: 'Review',
+
       month: 'Month',
       day: 'Day',
       days: {
@@ -80,7 +134,8 @@ const resources = {
         satS: 's',
         sunS: 's',
       },
-      404: "We're sorry, the page you requested could not be found. Please go back to the homepage.",
+      page_404:
+        "We're sorry, the page you requested could not be found. Please go back to the homepage.",
       back: 'Back to home',
     },
   },
@@ -89,7 +144,8 @@ const resources = {
       language: 'Мова',
       sign_up: 'Реєстрація',
       log_in: 'Увійти',
-      log_out: 'Вийти',
+      log_out: 'Вихід',
+
       first_home_title: 'Вигляд',
       first_home_title_1: 'календаря',
       first_home_description:
@@ -102,20 +158,53 @@ const resources = {
       third_home_description:
         'GooseTrack - це комплексний інструмент продуктивності, який допомагає вам бути в курсі ваших завдань, подій та термінів. Попрощайтеся з розсіяними списками справ і вітайте організовану продуктивність з GooseTrack.',
       rewiews_home: 'Відгуки',
+
       user_panel: 'Панель користувача',
+      user_profile: 'Профіль користувача',
+
       my_account: 'Мій обліковий запис',
       calendar: 'Календар',
       statistics: 'Статистика',
       feedback: "Зворотній зв'язок",
+
       name: "Ім'я",
       password: 'Пароль',
+      change_pass: 'Змінити пароль',
+
       valid_email: 'Це дійсна електронна пошта',
       valid_pass: 'Це дійсний пароль',
+      schema_email_yup: 'Адреса електронної пошти повинна містити символ "@"',
+      schema_email_mat: 'Повинна бути дійсною електронною адресою',
+      schema_email_req: "Адреса електронної пошти обов'язкова",
+      schema_pass_yup: 'Пароль повинен містити щонайменше 7 символів',
+      schema_pass_req: "Пароль обов'язковий",
+      swal_error_text: 'Електронна пошта або пароль невірні!',
+      enter_email: 'Введіть електронну пошту',
+      enter_pass: 'Введіть пароль',
+
+      error: 'Помилка',
+
+      user: 'User',
       user_name: "Ім'я користувача",
+      user_name_reg:
+        "Ім'я може містити лише букви, апостроф, тире та прогалини",
+      user_name_length: 'Повинно містити щонайменше 2 символи',
+      user_name_req: "Ім'я обов'язкове",
+
       phone: 'Телефон',
-      birthday: 'День народження',
+      phone_valid: 'Номер телефону недійсний',
+
       skype: 'Skype',
+      enter_skype: 'Введіть свій Skype ID',
+      skype_min: 'Мін. 5 символів',
+      skype_max: 'Макс. 16 символів',
+
+      birthday: 'День народження',
+      select_birthday: 'Виберіть свій день народження (поточна дата:',
+
       email: 'Email',
+      email_exist: 'User with this email address already exists!',
+
       save_changes: 'Зберегти зміни',
       add_task: 'Додати завдання',
       edit_task: 'Редагувати завдання',
@@ -126,19 +215,36 @@ const resources = {
       done: 'Виконано',
       by_day: 'За день',
       by_month: 'За місяць',
+
       title: 'Заголовок',
+      title_lenght: 'Заголовок занадто довгий',
+      title_req: "Заголовок обов'язковий",
+
       description: 'Введіть текст',
       start_time: 'Початок',
+      start_time_req: "Початковий час обов'язковий",
+
       end_time: 'Завершення',
+      end_time_req: "Кінцевий час обов'язковий",
+      end_time_test_1: 'більше-ніж',
+      end_time_test_2: 'Кінцевий час повинен бути більшим за початковий час',
+
       low: 'Низький',
       medium: 'Середній',
       high: 'Високий',
       save: 'Зберегти',
+      add: 'Додати',
       cancel: 'Скасувати',
       delete: 'Видалити',
       edit: 'Редагувати',
       close: 'Закрити',
       update: 'Оновити',
+      priority_req: "Пріоритет обов'язковий",
+      category_req: "Категорія обов'язкова",
+
+      rating: 'Рейтинг',
+      review: 'Відгук',
+
       month: 'Місяць',
       day: 'День',
       days: {
@@ -157,7 +263,8 @@ const resources = {
         satS: 'с',
         sunS: 'н',
       },
-      404: 'Вибачте, сторінку, яку ви запросили, не вдалося знайти. Будь ласка, поверніться на головну сторінку.',
+      page_404:
+        'Вибачте, сторінку, яку ви запросили, не вдалося знайти. Будь ласка, поверніться на головну сторінку.',
       back: 'Повернутися на головну',
     },
   },
@@ -167,7 +274,9 @@ const resources = {
       sign_up: 'Registrieren',
       log_in: 'Anmelden',
       log_out: 'Abmelden',
-      first_home_title: 'Kalenderansicht',
+
+      first_home_title: 'Kalender',
+      first_home_title_1: 'ansicht',
       first_home_description:
         'Die Kalenderansicht von GooseTrack verschafft Ihnen einen umfassenden Überblick über Ihren Zeitplan und stellt alle Ihre Aufgaben, Ereignisse und Termine in einem visuell ansprechenden und intuitiven Design dar.',
       second_home_title: 'Seitenleiste',
@@ -178,20 +287,53 @@ const resources = {
       third_home_description:
         'GooseTrack ist eine All-in-One-Produktivitätslösung, die Ihnen dabei hilft, Ihre Aufgaben, Ereignisse und Fristen im Blick zu behalten. Verabschieden Sie sich von verstreuten Aufgabenlisten und sagen Sie hallo zur effizienteren Produktivität mit GooseTrack.',
       rewiews_home: 'Bewertungen',
+
       user_panel: 'Benutzerpanel',
+      user_profile: 'Benutzerprofil',
+
       my_account: 'Mein Konto',
       calendar: 'Kalender',
       statistics: 'Statistiken',
       feedback: 'Rückmeldung',
+
       name: 'Name',
       password: 'Passwort',
+      change_pass: 'Passwort ändern',
+
       valid_email: 'Dies ist eine gültige E-Mail-Adresse',
       valid_pass: 'Dies ist ein gültiges Passwort',
+      schema_email_yup: 'Die E-Mail-Adresse muss ein "@"-Zeichen enthalten',
+      schema_email_mat: 'Muss eine gültige E-Mail-Adresse sein',
+      schema_email_req: 'E-Mail ist erforderlich',
+      schema_pass_yup: 'Muss mindestens 7 Zeichen lang sein',
+      schema_pass_req: 'Passwort ist erforderlich',
+      swal_error_text: 'E-Mail oder Passwort ist falsch!',
+      enter_email: 'Geben Sie Ihre E-Mail-Adresse ein',
+      enter_pass: 'Geben Sie Ihr Passwort ein',
+
+      error: 'Fehler',
+
+      user: 'User',
       user_name: 'Benutzername',
+      user_name_reg:
+        'Der Name darf nur Buchstaben, Apostroph, Bindestrich und Leerzeichen enthalten',
+      user_name_length: 'Muss mindestens 2 Zeichen lang sein',
+      user_name_req: 'Der Name ist erforderlich',
+
       phone: 'Telefon',
-      birthday: 'Geburtstag',
+      phone_valid: 'Die Telefonnummer ist ungültig',
+
       skype: 'Skype',
+      enter_skype: 'Geben Sie Ihre Skype-ID ein',
+      skype_min: 'Min. 5 Zeichen',
+      skype_max: 'Max. 16 Zeichen',
+
+      birthday: 'Geburtstag',
+      select_birthday: 'Wählen Sie Ihren Geburtstag (aktuelles Datum:',
+
       email: 'Email',
+      email_exist: 'User with this email address already exists!',
+
       save_changes: 'Änderungen speichern',
       add_task: 'Aufgabe hinzufügen',
       edit_task: 'Aufgabe bearbeiten',
@@ -202,19 +344,36 @@ const resources = {
       done: 'Erledigt',
       by_day: 'Pro Tag',
       by_month: 'Pro Monat',
+
       title: 'Titel',
+      title_lenght: 'Der Titel ist zu lang',
+      title_req: 'Der Titel ist erforderlich',
+
       description: 'Text eingeben',
       start_time: 'Start',
+      start_time_req: 'Startzeit ist erforderlich',
+
       end_time: 'Ende',
+      end_time_req: 'Endzeit ist erforderlich',
+      end_time_test_1: 'ist-größer',
+      end_time_test_2: 'Die Endzeit sollte größer sein als die Startzeit',
+
       low: 'Niedrig',
       medium: 'Mittel',
       high: 'Hoch',
       save: 'Speichern',
+      add: 'Hinzufügen',
       cancel: 'Abbrechen',
       delete: 'Löschen',
       edit: 'Bearbeiten',
       close: 'Schließen',
       update: 'Aktualisieren',
+      priority_req: 'Priorität ist erforderlich',
+      category_req: 'Kategorie ist erforderlich',
+
+      rating: 'Bewertung',
+      review: 'Rezension',
+
       month: 'Monat',
       day: 'Tag',
       days: {
@@ -233,7 +392,8 @@ const resources = {
         satS: 's',
         sunS: 's',
       },
-      404: 'Es tut uns leid, die von Ihnen angeforderte Seite konnte nicht gefunden werden. Bitte gehen Sie zurück zur Startseite.',
+      page_404:
+        'Es tut uns leid, die von Ihnen angeforderte Seite konnte nicht gefunden werden. Bitte gehen Sie zurück zur Startseite.',
       back: 'Zurück zur Startseite',
     },
   },

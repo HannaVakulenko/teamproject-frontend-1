@@ -25,13 +25,13 @@ const PeriodTypeSelect = () => {
         $isActive={location.pathname.includes('day')}
         onClick={toMonth}
       >
-        Month
+        {t('month')}
       </ButtonMonth>
       <ButtonDay
         $isActive={location.pathname.includes('month')}
         onClick={toDay}
       >
-        Day
+        {t('day')}
       </ButtonDay>
     </Container>
   );

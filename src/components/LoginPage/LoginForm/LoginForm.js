@@ -19,21 +19,31 @@ import {
 import icon from 'assets/icons/symbol-defs.svg';
 
 import { login, refreshUser } from 'redux/auth/operations';
-import { useTranslation } from 'react-i18next';
+import { Trans, useTranslation } from 'react-i18next';
 
 const schema = yup.object().shape({
   email: yup
     .string()
-    .email('Email address must contain an "@" sign')
+    .email(
+      <Trans i18nKey="schema_email_yup">
+        Email address must contain an "@" sign
+      </Trans>
+    )
+
     .matches(
       /^\w+([.-]?\w+)*@\w+([.-]?\w+)*\.\w{2,3}$/,
       'Must be a valid email'
     )
-    .required('Email is required'),
+    .required(<Trans i18nKey="schema_email_req">Email is required</Trans>),
   password: yup
     .string()
-    .min(7, 'Must be at least 7 characters long')
-    .required('Password is required'),
+    .min(
+      7,
+      <Trans i18nKey="schema_pass_yup">
+        Must be at least 7 characters long
+      </Trans>
+    )
+    .required(<Trans i18nKey="schema_pass_req">Password is required</Trans>),
 });
 
 const initialValues = {
@@ -43,6 +53,7 @@ const initialValues = {
 
 const LoginForm = () => {
   const { t } = useTranslation();
+  const swal_error_text = t('swal_error_text');
 
   const dispatch = useDispatch();
 
@@ -56,7 +67,7 @@ const LoginForm = () => {
         Swal.fire({
           icon: 'error',
           title: 'Oops...',
-          text: 'Email or password is wrong!',
+          text: swal_error_text,
           confirmButtonColor: '#3E85F3',
         });
       }
@@ -93,7 +104,7 @@ const LoginForm = () => {
                 id="email"
                 name="email"
                 type="email"
-                placeholder="Enter email"
+                placeholder={t('enter_email')}
               />
               <ErrorText name="email" component="div" />
               {formik.touched.email && !formik.errors.email && (
@@ -120,7 +131,7 @@ const LoginForm = () => {
                 id="password"
                 name="password"
                 type="password"
-                placeholder="Enter password"
+                placeholder={t('enter_pass')}
               />
               <ErrorText name="password" component="div" />
               {formik.touched.password && !formik.errors.password && (

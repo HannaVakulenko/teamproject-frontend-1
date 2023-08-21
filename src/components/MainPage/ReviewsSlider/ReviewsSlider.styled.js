@@ -143,6 +143,7 @@ export const Title = styled.h2`
   color: ${p => p.theme.mainAccentColor};
   text-align: center;
   margin: 0 auto 40px auto;
+  text-transform: uppercase;
   @media (min-width: ${device.tablet}px) {
     font-size: 40px;
     line-height: 1.1;

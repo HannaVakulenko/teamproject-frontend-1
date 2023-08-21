@@ -11,28 +11,35 @@ import LanguageIcon from '@mui/icons-material/Language';
 import { useTranslation } from 'react-i18next';
 import i18next from 'i18next';
 // import classNames from 'classnames';
-import { Flags } from './Header.styled';
+import { Flags } from './components/MainLayout/Header/Header.styled';
+
+// import { ReactComponent as EnIcon } from './assets/images/flags/gb.svg';
+// import { ReactComponent as DeIcon } from './assets/images/flags/de.svg';
+// import { ReactComponent as UaIcon } from './assets/images/flags/ua.svg';
 
 export default function LanguageFlags() {
+  const { i18n, t } = useTranslation();
+  const currentLanguage = i18n.language;
+
   const languages = [
     {
-      id: 'en',
+      code: 'en',
       country_code: 'gb',
       name: 'English',
     },
     {
-      id: 'ua',
+      code: 'ua',
       country_code: 'ua',
       name: 'Українська',
     },
     {
-      id: 'de',
+      code: 'de',
       country_code: 'de',
       name: 'Deutsch',
     },
   ];
 
-  const { t } = useTranslation();
+  let otherLanguages = languages.filter(lang => lang.code !== currentLanguage);
 
   const currentLanguageCode = cookies.get('i18next') || 'en';
 
@@ -46,6 +53,21 @@ export default function LanguageFlags() {
     setAnchorEl(null);
   };
 
+  // const handleLangIcon = lang => {
+  //   switch (lang) {
+  //     case 'uk':
+  //       return <UaIcon width="30" height="22.5" />;
+  //     case 'de':
+  //       return <DeIcon width="30" height="22.5" />;
+  //     case 'gb':
+  //       return <EnIcon width="30" height="22.5" />;
+  //     default:
+  //       <EnIcon width="30" height="22.5" />;
+  //   }
+  // };
+
+  // console.log(otherLanguages);
+  // console.log(handleLangIcon);
   return (
     <Flags>
       <Tooltip title={t('language')} arrow>
@@ -89,39 +111,29 @@ export default function LanguageFlags() {
           },
         }}
       >
-        {languages.map(({ id, name, country_code }) => (
-          // <li key={id} title={name} arrow placement="left">
-          //   <button>
-          //     <div
-          //       // className={`flag-icon flag-icon-${country_code}`}
-          //       style={{
-          //         opacity: currentLanguageCode === id ? 1 : 0.3,
-          //         width: '1rem',
-          //         height: '.5rem',
-          //       }}
-          //     ></div>
-          //   </button>
-          // </li>
-          <Tooltip key={id} title={name} arrow placement="left">
+        {languages.map(({ code, name, country_code }) => (
+          <Tooltip key={code} title={name} arrow placement="left">
             <MenuItem
-              key={id}
+              key={code}
               style={{
                 backgroundColor:
-                  currentLanguageCode === id ? '#D8D8D8' : '#F8F8F8',
+                  currentLanguageCode === code ? '#D8D8D8' : '#F8F8F8',
                 border:
-                  currentLanguageCode === id ? '1px solid #989898' : '#F8F8F8',
+                  currentLanguageCode === code
+                    ? '1px solid #989898'
+                    : '#F8F8F8',
               }}
             >
               <IconButton
                 // className={classNames('dropdown-item')}
                 onClick={() => {
-                  i18next.changeLanguage(id);
+                  i18next.changeLanguage(code);
                 }}
               >
                 <div
                   className={`flag-icon flag-icon-${country_code}`}
                   style={{
-                    opacity: currentLanguageCode === id ? 1 : 0.3,
+                    opacity: currentLanguageCode === code ? 1 : 0.3,
                     width: '1rem',
                     height: '.5rem',
                   }}
