@@ -8,13 +8,11 @@ export const WrapperLegend = styled.div`
   align-items: center;
   justify-content: flex-start;
   gap: 14px;
- 
+  margin-top: -24px;
 
   @media screen and (min-width: ${device.tablet}px) {
     gap: 20px;
-    margin-bottom:0;
-    
-    
+    margin-bottom: 0;
   }
 `;
 export const WrapperInner = styled.div`
