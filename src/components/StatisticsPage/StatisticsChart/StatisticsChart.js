@@ -28,10 +28,13 @@ import {
 
 const StatisticsChart = () => {
   //Дата
-  const dateStatistics = useSelector(selectDate);
-  const { currentDay } = useParams();
-  
-  
+  let dateStatistics = useSelector(selectDate);
+  const { currentDate } = useParams();
+
+  console.log({ currentDate });
+  if (currentDate) {
+    dateStatistics = currentDate;
+  }
   // Задачи по категоріям за місяць
   const todoByMonth = useSelector(state =>
     selectTasksByCategory(state, category.toDo)
@@ -218,6 +221,17 @@ const StatisticsChart = () => {
       window.removeEventListener('resize', handleResize);
     };
   }, []);
+
+  // useEffect(() => {
+   
+  //     dispatch(
+  //       fetchTasks({
+  //         monthStart: monthStart,
+  //         monthEnd: monthEnd,
+  //       })
+  //     );
+  //   }
+  // , [formattedDate, monthStart, monthEnd, dispatch, dateStatistics]);
 
   return (
     <ContainerSecondWrapper>
