@@ -1,5 +1,9 @@
 // "To do", "In progress", "Done"
 
-const categories = ["to-do", "in-progress", "done"];
+export const categoriesArray = ["to-do", "in-progress", "done"];
 
-export default categories;
+export const category = {
+  toDo: "to-do",
+  inProgress: "in-progress",
+  done: "done",
+};

@@ -10,15 +10,15 @@ import {
 import { Popover } from '@mui/material';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { categories } from 'constants';
-import { updateTask } from 'redux/tasks/operations';
+import { categoriesArray } from 'constants';
+import { updateTask, deleteTask } from 'redux/tasks/operations';
+import { TaskModal } from 'components/Common';
 
 const TaskToolbar = ({ task }) => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const dispatch = useDispatch();
 
-  const categoriesValues = Object.values(categories);
-
-  const availableCategories = categoriesValues.filter(
+  const availableCategories = categoriesArray.filter(
     category => category !== task.category
   );
 
@@ -37,6 +37,13 @@ const TaskToolbar = ({ task }) => {
     handleClose();
   };
 
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
   // ---popover---
   const [anchorEl, setAnchorEl] = useState(null);
   const handleClick = event => {
@@ -86,12 +93,24 @@ const TaskToolbar = ({ task }) => {
         </Popover>
       </WrapperPopover>
 
-      <Button>
+      <Button onClick={openModal}>
         <Icon width="14" height="14">
           <use href={icon + '#icon-pencil-01'}></use>
         </Icon>
       </Button>
-      <Button>
+      {isModalOpen && (
+        <TaskModal
+          taskToEdit={task}
+          onClose={closeModal}
+          action={'edit'}
+          column={task.category}
+        />
+      )}
+      <Button
+        onClick={() => {
+          dispatch(deleteTask(task._id));
+        }}
+      >
         <Icon width="14" height="14">
           <use href={icon + '#icon-trash-04'}></use>
         </Icon>

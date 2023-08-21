@@ -9,7 +9,7 @@ export const Container = styled.div`
     margin-bottom: 24px;
   }
 
-  @media (min-width: 769px) and (max-width: 1440px) {
+  @media (min-width: 769px) {
     display: flex;
     justify-content: space-between;
     margin-bottom: 32px;

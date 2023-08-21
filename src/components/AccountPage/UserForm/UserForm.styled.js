@@ -58,11 +58,30 @@ position: relative;
   flex-direction: column;
   gap: 8px;
 
+&.empty input {
+   border-color: 1px solid  #11111126;
+}
+
+ &.error label {
+    color: ${p => p.theme.authFieldOnErrorColor};
+  }
+
+  &.error input {
+    border-color: ${p => p.theme.authFieldOnErrorColor};
+  }
+
+  &.success label {
+    color: ${p => p.theme.authFieldOnSuccessColor};
+  }
+
+  &.success input {
+    border-color: ${p => p.theme.authFieldOnSuccessColor};
+  }
+
   @media (min-width: ${desktop}px) {
     gap: 8px;
   }
 `;
-
 
 export const Label = styled.label`
 color: ${p => p.theme.userFormLabelColor}; 
@@ -109,6 +128,15 @@ export const ErrorText = styled(ErrorMessage)`
   font-size: 12px;
   margin-top: 5px;
 `;
+
+export const SuccessText = styled.div`
+  margin-top: 8px;
+  margin-left: 18px;
+  font-size: 12px;
+  color: ${p => p.theme.authFieldOnSuccessColor};
+  line-height: 1.16;
+`;
+
 
 export const ImageContainer = styled.div`
   position: absolute;
@@ -450,6 +478,7 @@ padding: 12px !important;
    }
 
    .react-datepicker__day.react-datepicker__day--selected {
+    opacity: 1 !important;
  color: ${p => p.theme.mainAccentColor} !important;
  background-color: ${p => p.theme.buttonTextColor}  !important; 
 
@@ -477,6 +506,18 @@ height: 48px !important;
 
   }
 
+  .react-datepicker__day--weekend {
+     opacity: 0.35 !important;
+  }
+
+.react-datepicker__day--weekend:hover {
+  opacity: 1 !important;
+}
+
+.react-datepicker__day--weekend.react-datepicker__day--today {
+  opacity: 1 !important;
+}
+
   .react-datepicker__month-container{
      background-color: ${p => p.theme.mainAccentColor} !important;
     border: none  !important;
@@ -491,7 +532,7 @@ height: 48px !important;
    .react-datepicker__day--outside-month {
      color: ${p => p.theme.buttonTextColor} !important;
      opacity: 0% !important;
-     pointer-events: none; !important;
+     pointer-events: none !important;
    }
 
    .react-datepicker__day-name:nth-child(6),

@@ -23,7 +23,7 @@ export const lightTheme = {
   inactiveButtonDayMonth: '#CAE8FF',
   userFormStatusColor: '#343434',
   userFormLabelColor: '#111111',
-  userFormInputBorderColor: "#1111111A",
+  userFormInputBorderColor: '#1111111A',
 
   taskBgColor:
     'linear-gradient(0deg, rgba(220, 227, 229, 0.8), rgba(220, 227, 229, 0.8)), linear-gradient(0deg, #F7F6F9, #F7F6F9)',
@@ -32,6 +32,7 @@ export const lightTheme = {
 
   monthBorder: '1px solid rgba(62, 133, 243, 0.20)',
   buttonInDecBorder: '1px solid rgba(220, 227, 229, 0.50)',
+  chartBorderColor: '#E3F3FF',
 };
 
 export const darkTheme = {
@@ -59,7 +60,7 @@ export const darkTheme = {
   inactiveButtonDayMonth: '#3E85F3',
   userFormStatusColor: '#FAFAFA4D',
   userFormLabelColor: '#FAFAFA4D',
-  userFormInputBorderColor: "#FFFFFF26",
+  userFormInputBorderColor: '#FFFFFF26',
   taskBgColor:
     'linear-gradient(0deg, #171820, #171820), linear-gradient(0deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.15))',
   tasksListBgColor:
@@ -67,4 +68,5 @@ export const darkTheme = {
 
   monthBorder: '1px solid rgba(62, 133, 243, 0.20)',
   buttonInDecBorder: '1px solid rgba(255, 255, 255, 0.15)',
+  chartBorderColor: 'rgba(227, 243, 255, 0.15)',
 };

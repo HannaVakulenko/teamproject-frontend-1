@@ -21,54 +21,51 @@ import {
   TimeWrapper,
 } from './TaskForm.styled';
 
-
 import icon from 'assets/icons/symbol-defs.svg';
 
-
-
-const TaskForm = ({ onClose, action,column,priority, taskToEdit, addTaskToList }) => {
+const TaskForm = ({ onClose, action, column, priority, taskToEdit }) => {
   const dispatch = useDispatch();
   const { currentDay } = useParams();
-  
+
   const TaskSchema = Yup.object().shape({
-  title: Yup.string()
-    .max(250, 'Title is too long')
-    .required('Title is required'),
-  start: Yup.string().required('Start time is required'),
-  end: Yup.string()
-    .required('End time is required')
-    .test(
-      'is-greater',
-      'End time should be greater than start time',
-      function (value) {
-        const { start } = this.parent;
-        if (start && value) {
-          const startTime = new Date(`2000-01-01T${start}`);
-          const endTime = new Date(`2000-01-01T${value}`);
-          return endTime > startTime;
+    title: Yup.string()
+      .max(250, 'Title is too long')
+      .required('Title is required'),
+    start: Yup.string().required('Start time is required'),
+    end: Yup.string()
+      .required('End time is required')
+      .test(
+        'is-greater',
+        'End time should be greater than start time',
+        function (value) {
+          const { start } = this.parent;
+          if (start && value) {
+            const startTime = new Date(`2000-01-01T${start}`);
+            const endTime = new Date(`2000-01-01T${value}`);
+            return endTime > startTime;
+          }
+          return true;
         }
-        return true;
-      }
-    ),
-  priority: Yup.string()
-    .oneOf(['low', 'medium', 'high'])
-    .required('Priority is required')
-    .transform((value, originalValue) => {
-      if (originalValue) {
-        const [year, month, day] = originalValue.split('-');
-        if (year && month && day) {
-         return new Date(
-          `${year}-${month.padStart(2, '0')}-${day.padStart(2, '0')}`
-        );
-       }
-      }
-      return value;
-    }),
-  category: Yup.string()
-    .oneOf(['to-do', 'in-progress', 'done'])
-    .required('Category is required'),
+      ),
+    priority: Yup.string()
+      .oneOf(['low', 'medium', 'high'])
+      .required('Priority is required')
+      .transform((value, originalValue) => {
+        if (originalValue) {
+          const [year, month, day] = originalValue.split('-');
+          if (year && month && day) {
+            return new Date(
+              `${year}-${month.padStart(2, '0')}-${day.padStart(2, '0')}`
+            );
+          }
+        }
+        return value;
+      }),
+    category: Yup.string()
+      .oneOf(['to-do', 'in-progress', 'done'])
+      .required('Category is required'),
   });
-  
+
   const addNewTask = async values => {
     await dispatch(addTask(values));
   };
@@ -82,7 +79,6 @@ const TaskForm = ({ onClose, action,column,priority, taskToEdit, addTaskToList }
       addNewTask(values).then(() => {
         onClose();
         actions.resetForm();
-         addTaskToList(values);
       });
     } else if (action === 'edit') {
       updateExistingTask(values).then(() => {
@@ -91,26 +87,21 @@ const TaskForm = ({ onClose, action,column,priority, taskToEdit, addTaskToList }
       });
     }
   };
-   const setCategory = () => {
-    if (column === 'To do') return 'to-do';
-    if (column === 'In progress') return 'in-progress';
-    if (column === 'Done') return 'done';
-  };
 
   return (
     <Formik
       initialValues={{
-    title: '',
-    start:'09:00',
-    end: '10:00',
-    priority: action === 'edit' ? priority : 'low',
-    category: setCategory(),
-    date: currentDay,
+        title: taskToEdit?.title || '',
+        start: taskToEdit?.start || '09:00',
+        end: taskToEdit?.end || '10:00',
+        priority: taskToEdit?.priority || "Low",
+        category: column,
+        date: currentDay,
       }}
       validationSchema={TaskSchema}
       onSubmit={handleSubmit}
     >
-       <Form>
+      <Form>
         <Label>
           Title
           <InputTitle type="text" name="title" placeholder="Enter text" />
@@ -147,19 +138,19 @@ const TaskForm = ({ onClose, action,column,priority, taskToEdit, addTaskToList }
             High
           </RadioLabel>
         </RadioWrapper>
-<ButtonWrapper>
+        <ButtonWrapper>
           {action === 'add' ? (
             <ButtonAction type="submit">
               <svg width="18" height="18">
-              <use href={icon + '#icon-plus'} stroke="white"></use>
-            </svg>
+                <use href={icon + '#icon-plus'} stroke="white"></use>
+              </svg>
               Add
             </ButtonAction>
           ) : (
             <ButtonAction type="submit">
               <svg width="18" height="18">
-              <use href={icon + '#icon-pencil-01'} stroke="white"></use>
-            </svg>
+                <use href={icon + '#icon-pencil-01'} stroke="white"></use>
+              </svg>
               Edit
             </ButtonAction>
           )}
@@ -169,16 +160,16 @@ const TaskForm = ({ onClose, action,column,priority, taskToEdit, addTaskToList }
           </ButtonCancel>
         </ButtonWrapper>
         <ButtonCloseWrap
-  type="button"
-  aria-label="close button"
-  onClick={onClose}
->
-  <svg width="24" height="24" >
-    <use href={icon + '#icon-x-close'} stroke="#111111"></use>
-  </svg>
-</ButtonCloseWrap>
+          type="button"
+          aria-label="close button"
+          onClick={onClose}
+        >
+          <svg width="24" height="24">
+            <use href={icon + '#icon-x-close'} stroke="#111111"></use>
+          </svg>
+        </ButtonCloseWrap>
       </Form>
-  </Formik>
+    </Formik>
   );
 };
 export default TaskForm;
