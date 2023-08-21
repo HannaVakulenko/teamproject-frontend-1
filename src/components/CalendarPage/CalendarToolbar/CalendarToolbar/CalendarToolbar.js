@@ -16,7 +16,7 @@ const CalendarToolbar = () => {
 
   const dayDate = currentDay || currentDate;
   const newDate = parseISO(dayDate);
-  console.log(newDate);
+  console.log(dayDate);
 
   const formatDate =
     newDate === 'Invalid Date' ? new Date(newDate) : new Date();
@@ -68,9 +68,15 @@ const CalendarToolbar = () => {
     getAllTasks();
   }, [dayDate, dispatch, forFetchData]);
 
+    useEffect(() => {
+      if (dayDate) {
+        const newDate = new Date(dayDate);
+        setDate(newDate);
+      }
+    }, [dayDate]);
+
   const changeDate = e => {
     const newDate = new Date(date);
-
     let formattedDate = '';
 
     if (
