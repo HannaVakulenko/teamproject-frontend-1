@@ -12,10 +12,10 @@ export const Form = styled(FormikForm)`
   width: 303px;
   max-height: 420px;
   padding: 48px 18px 40px;
-  background-color: ${props => props.theme.buttonTextColor};
+  background-color: ${p => p.theme.sidebarBGColor};
 
   border-radius: 8px;
-  border: 1px solid rgba(52, 52, 52, 0.8);
+  border: 1px solid ${p => p.theme.modalBorderColor};
   box-shadow: 0px 4px 16px 0px rgba(17, 17, 17, 0.1);
 
   @media (min-width: ${device.tablet}px) {
@@ -29,7 +29,7 @@ export const Label = styled.label`
   flex-direction: column;
   gap: 8px;
 
-  color: rgba(52,52,52,0.8);
+  color: ${p => p.theme.calendarTextColor};
   font-size: 12px;
   font-weight: 500;
   line-height: 1.16;
@@ -40,10 +40,11 @@ export const InputTitle = styled(Field)`
   height: 42px;
   padding: 12px 14px;
   border-radius: 8px;
-  background: #F6F6F6;
-  border: 1px solid transparent;
 
-  color: ${props => props.theme.secondaryTextColor};
+  background: ${p => p.theme.modalFieldBgColor};
+  border: 1px solid ${p => p.theme.modalBorderColor};
+
+  color: ${p => p.theme.secondaryTextColor};
   font-size: 14px;
   font-weight: 600;
   line-height: 1.25;
@@ -56,7 +57,7 @@ export const InputTitle = styled(Field)`
 
   &::placeholder {
     opacity: 1;
-    color: ${props => props.theme.secondaryTextColor};
+    color: ${p => p.theme.secondaryTextColor};
     font-size: 14px;
     font-weight: 600;
     line-height: 1.28;
@@ -78,8 +79,8 @@ export const InputTime = styled(Field)`
   height: 42px;
   padding: 12px 14px;
   border-radius: 8px;
-  background: #F6F6F6;
-  border: 1px solid transparent;
+  background: ${p => p.theme.modalFieldBgColor};
+  border: 1px solid ${p => p.theme.modalBorderColor};
   cursor: pointer;
 
   color: ${props => props.theme.calendarTextColor};

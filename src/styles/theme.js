@@ -25,6 +25,8 @@ export const lightTheme = {
   userFormLabelColor: '#111111',
   userFormInputBorderColor: '#1111111A',
   calendarDeviderColor: '#DCE3E580',
+  modalBorderColor: 'transparent',
+  modalFieldBgColor: '#F6F6F6',
   taskBgColor:
     'linear-gradient(0deg, rgba(220, 227, 229, 0.8), rgba(220, 227, 229, 0.8)), linear-gradient(0deg, #F7F6F9, #F7F6F9)',
   tasksListBgColor:
@@ -34,7 +36,6 @@ export const lightTheme = {
   chevronLeft: '#DCE3E5',
   opacityChevron: '',
   chartBorderColor: '#E3F3FF',
-
 };
 
 export const darkTheme = {
@@ -47,7 +48,7 @@ export const darkTheme = {
   mainTextColor: '#FFFFFF',
   secondaryTextColor: '#FFFFFF',
   buttonTextColor: '#FFFFFF',
-  calendarTextColor: '#343434',
+  calendarTextColor: '#FFFFFF',
   sidebarMainActiveColor: '#FFFFFF',
   sidebarBGColor: '#13151A',
   sidebarTextColor: '#FFFFFF',
@@ -64,6 +65,8 @@ export const darkTheme = {
   userFormLabelColor: '#FAFAFA4D',
   userFormInputBorderColor: '#FFFFFF26',
   calendarDeviderColor: '#FFFFFF26',
+  modalBorderColor: '#FFFFFF26',
+  modalFieldBgColor: '#13151A',
   taskBgColor:
     'linear-gradient(0deg, #171820, #171820), linear-gradient(0deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.15))',
   tasksListBgColor:
