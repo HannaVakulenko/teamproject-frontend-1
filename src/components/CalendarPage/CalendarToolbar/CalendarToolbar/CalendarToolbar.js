@@ -22,16 +22,20 @@ const CalendarToolbar = () => {
 
   const dayDate = currentDate || currentDay;
 
-  const monthFromURL = parseISO(dayDate).getMonth() + 1;
-  const currentMonth = new Date().getMonth() + 1;
+  // const currentMonth = new Date().getMonth() + 1;
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const forFetchData = () => {
+    const monthFromURL = parseISO(dayDate);
     const startDate = startOfMonth(monthFromURL);
     const endDate = endOfMonth(monthFromURL);
 
+    console.log(startDate, endDate);
+
     const formattedStartDate = format(startDate, 'yyyy-MM-dd');
     const formattedEndDate = format(endDate, 'yyyy-MM-dd');
+
+    console.log(formattedStartDate, formattedEndDate);
 
     return {
       monthStart: formattedStartDate,
@@ -41,7 +45,7 @@ const CalendarToolbar = () => {
 
   useEffect(() => {
     const getAllTasks = async () => {
-      if (monthFromURL !== currentMonth && dayDate) {
+      if (dayDate) {
         try {
           await dispatch(fetchTasks(forFetchData()));
         } catch (error) {
@@ -55,7 +59,7 @@ const CalendarToolbar = () => {
       }
     };
     getAllTasks();
-  }, [dayDate, currentMonth, dispatch, forFetchData, monthFromURL]);
+  }, [dayDate, dispatch, forFetchData]);
 
   const changeDate = e => {
     const newDate = new Date(date);
