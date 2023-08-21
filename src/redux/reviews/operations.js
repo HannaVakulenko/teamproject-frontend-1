@@ -1,6 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 import { AXIOS_BASE_URL } from 'constants/axiosBaseUrl';
+import Swal from 'sweetalert2';
 
 axios.defaults.baseURL = AXIOS_BASE_URL;
 
@@ -33,6 +34,12 @@ export const deleteReview = createAsyncThunk(
   async (_, thunkAPI) => {
     try {
       const { data } = await axios.delete(`/reviews/own`);
+      Swal.fire({
+        icon: 'success',
+        title: 'Success',
+        text: 'Your review has been successfully deleted!',
+        confirmButtonColor: '#3E85F3',
+      });
       return data;
     } catch (e) {
       thunkAPI.rejectWithValue(e.message);
