@@ -39,7 +39,8 @@ const PeriodPaginator = ({ date, getTasks, isOpen, setIsOpen, setDate }) => {
       <ForDatePicker>
         {' '}
         <Date className="example-custom-input" onClick={handleClick}>
-          {location.pathname.startsWith('/calendar/day')
+          {location.pathname.startsWith('/calendar/day') ||
+          location.pathname === '/statistics'
             ? format(date, 'dd MMM yyyy')
             : format(date, 'MMMM yyyy')}
         </Date>
