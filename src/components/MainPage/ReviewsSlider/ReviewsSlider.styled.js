@@ -56,8 +56,6 @@ export const AvatarImg = styled.img`
 `;
 
 export const Name = styled.h1`
-  font-family: 'Inter';
-  font-style: normal;
   font-weight: 700;
   font-size: 18px;
   line-height: 1;
@@ -71,8 +69,6 @@ export const Rate = styled.div`
 `;
 
 export const ReviewText = styled.p`
-  font-family: 'Inter';
-  font-style: normal;
   font-weight: 500;
   font-size: 14px;
   line-height: 1.29;
@@ -135,8 +131,6 @@ export const SliderWrapper = styled.div`
 `;
 
 export const Title = styled.h2`
-  font-family: 'Inter';
-  font-style: normal;
   font-weight: 700;
   font-size: 28px;
   line-height: 1.14;

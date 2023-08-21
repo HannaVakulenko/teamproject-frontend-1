@@ -35,7 +35,7 @@ const CalendarPage = () => {
             monthStart: formatedStartMonthDate,
             monthEnd: formatedEndMonthDate,
           })
-        );
+        ).unwrap();
       } catch (error) {
         Swal.fire({
           icon: 'error',

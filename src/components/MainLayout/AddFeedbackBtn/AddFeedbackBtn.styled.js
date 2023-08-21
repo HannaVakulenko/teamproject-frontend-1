@@ -26,14 +26,12 @@ export const StyledFeedbackBtn = styled.button`
 export const FeedBackBtnText = styled.span`
   color: ${p => p.theme.buttonTextColor};
   text-align: center;
-  font-family: Inter;
   font-size: 12px;
-  font-style: normal;
   font-weight: 600;
-  line-height: 133.333%;
+  line-height: 1.33;
 
   @media (min-width: ${device.tablet}px) {
     font-size: 14px;
-    line-height: 128.571%;
+    line-height: 1.28;
   }
 `;

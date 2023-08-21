@@ -1,4 +1,5 @@
 import { styled } from 'styled-components';
+import { Link } from 'react-router-dom';
 import { device } from 'constants';
 
 export const Wrapper = styled.div`
@@ -18,15 +19,16 @@ export const Wrapper = styled.div`
   }
 `;
 
-export const List = styled.ul`
+export const List = styled.div`
   display: flex;
   justify-content: space-between;
 `;
 
-export const Item = styled.li`
+export const DayLink = styled(Link)`
   display: flex;
   flex-direction: column;
   align-items: center;
+
   gap: 6px;
 
   @media screen and (min-width: ${device.tablet}px) {
