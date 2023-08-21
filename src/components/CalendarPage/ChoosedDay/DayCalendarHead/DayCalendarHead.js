@@ -1,7 +1,7 @@
 import { startOfWeek, eachDayOfInterval, format, addDays, isSameDay, parseISO } from 'date-fns';
 import { WeekDay, WeekDate, Item, List, Wrapper } from './DayCalendarHead.styled';
 import { useMediaQuery } from 'react-responsive';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 
 const DayCalendarHead = () => {
   const { currentDay } = useParams();
@@ -26,27 +26,32 @@ const DayCalendarHead = () => {
         {isMobile
           ? daysOfWeekForMobile.map((day, index) => (
             <Item key={index}>
-              <WeekDay>{day}</WeekDay>
-              <WeekDate className={
-                isSameDay(days[index], result)
-                  ? 'current-day'
-                  : ''
-                }
-              >
-                {daysOfMonth[index]}
-              </WeekDate>
+              <Link>
+                <WeekDay>{day}</WeekDay>
+                <WeekDate className={
+                  isSameDay(days[index], result)
+                    ? 'current-day'
+                    : ''
+                  }
+                >
+                  {daysOfMonth[index]}
+                </WeekDate>
+              </Link>
             </Item>
           ))
           : daysOfWeek.map((day, index) => (
             <Item key={index}>
-              <WeekDay>{day}</WeekDay>
-              <WeekDate className={
-                isSameDay(days[index], result)
-                  ? 'current-day'
-                  : ''
-                }
-              >
-                {daysOfMonth[index]}</WeekDate>
+              <Link>
+                <WeekDay>{day}</WeekDay>
+                <WeekDate className={
+                  isSameDay(days[index], result)
+                    ? 'current-day'
+                    : ''
+                  }
+                >
+                  {daysOfMonth[index]}
+                </WeekDate>
+              </Link>
             </Item>
           ))}
       </List>
