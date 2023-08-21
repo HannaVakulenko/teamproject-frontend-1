@@ -29,6 +29,7 @@
     "react-scripts": "5.0.1",
     "react-scroll-to-top": "^3.0.0",
     "react-use": "^17.4.0",
+    "recharts": "^2.7.3",
     "redux-persist": "^6.0.0",
     "styled-components": "^6.0.7",
     "sweetalert2": "^11.7.23",
