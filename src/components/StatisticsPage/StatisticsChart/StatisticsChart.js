@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { useSelector } from 'react-redux';
-
+import { useParams } from 'react-router-dom';
 
 import {
   Bar,
@@ -29,7 +29,9 @@ import {
 const StatisticsChart = () => {
   //Дата
   const dateStatistics = useSelector(selectDate);
-
+  const { currentDay } = useParams();
+  
+  
   // Задачи по категоріям за місяць
   const todoByMonth = useSelector(state =>
     selectTasksByCategory(state, category.toDo)
