@@ -2,7 +2,9 @@ import { useSelector } from 'react-redux';
 import { useLocation, useParams } from 'react-router-dom';
 import { selectUndoneTasks, selectTasksByDate } from 'redux/tasks/selectors';
 import { MainTitle } from 'components/Common';
-import { AddFeedbackBtn, ThemeToggler, UserInfo } from 'components/MainLayout';
+import AddFeedbackBtn from '../AddFeedbackBtn/AddFeedbackBtn';
+import ThemeToggler from '../ThemeToggler/ThemeToggler';
+import UserInfo from '../UserInfo/UserInfo';
 import {
   BurgerButton,
   ThemeUserWrapper,
