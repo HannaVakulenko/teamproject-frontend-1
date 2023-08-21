@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { useSelector } from 'react-redux';
 
+
 import {
   Bar,
   BarChart,
@@ -14,12 +15,11 @@ import {
 } from 'recharts';
 
 import { device } from 'constants';
-// import { fetchTasks } from '../../../redux/tasks/operations';
 
 import { selectDate } from '../../../redux/date/selectors';
 
 import { selectTasksByCategory } from 'redux/tasks/selectors';
-import  categories  from '../../../constants/taskStatus';
+import { category }  from '../../../constants/taskStatus';
 
 import {
   ContainerSecondWrapper,
@@ -27,20 +27,18 @@ import {
 } from './StatisticsChart.styled';
 
 const StatisticsChart = () => {
-  // const dispatch = useDispatch();
-
   //Дата
   const dateStatistics = useSelector(selectDate);
 
   // Задачи по категоріям за місяць
   const todoByMonth = useSelector(state =>
-    selectTasksByCategory(state, categories.toDo)
+    selectTasksByCategory(state, category.toDo)
   );
   const inprogressByMonth = useSelector(state =>
-    selectTasksByCategory(state, categories.inProgress)
+    selectTasksByCategory(state, category.inProgress)
   );
   const doneByMonth = useSelector(state =>
-    selectTasksByCategory(state, categories.done)
+    selectTasksByCategory(state, category.done)
   );
   console.log(todoByMonth);
   // Задачи по категоріям за день
@@ -218,15 +216,6 @@ const StatisticsChart = () => {
       window.removeEventListener('resize', handleResize);
     };
   }, []);
-
-  // useEffect(() => {
-  //   dispatch(
-  //     fetchTasks({
-  //       monthStart: monthStart,
-  //       monthEnd: monthEnd,
-  //     })
-  //   );
-  // }, [dispatch]);
 
   return (
     <ContainerSecondWrapper>

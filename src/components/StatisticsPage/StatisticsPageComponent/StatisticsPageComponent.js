@@ -23,6 +23,7 @@ const StatisticsPageComponent = () => {
         newDate.setDate(newDate.getDate() + 1);
       }
     setDate(newDate);
+    console.log(newDate);
   };
   return (
     <>
