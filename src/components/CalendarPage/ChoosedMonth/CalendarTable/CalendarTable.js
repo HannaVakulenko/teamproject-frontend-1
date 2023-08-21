@@ -1,5 +1,14 @@
 import React from 'react';
-import moment from 'moment';
+import { useParams } from 'react-router-dom';
+import {
+  format,
+  startOfMonth,
+  startOfWeek,
+  isToday,
+  isSameMonth,
+  isSameDay,
+  addDays,
+} from 'date-fns';
 import { useSelector } from 'react-redux';
 import { selectTasks } from 'redux/tasks/selectors';
 import {
@@ -11,38 +20,21 @@ import {
   TaskContainerWrapper,
 } from './CalendarTable.styled';
 
-const CalendarTable = ({ startDay }) => {
-  const currentDate = moment();
-  const firstDayOfCurrentMonth = currentDate.clone().startOf('month');
-  const lastDayOfCurrentMonth = currentDate.clone().endOf('month');
+const CalendarTable = () => {
+  const { dateParam } = useParams();
+  const currentDate = dateParam ? new Date(dateParam) : new Date();
 
   const daysArray = [];
-  let currentDay = startDay.clone();
-  if (currentDay.day() === 0) currentDay.add(1, 'day');
-  let isCurrentMonth = false;
-  for (let i = 0; i < 35; i++) {
-    if (currentDay.isSame(firstDayOfCurrentMonth, 'day')) {
-      isCurrentMonth = true;
-    }
-    if (
-      !isCurrentMonth ||
-      currentDay.isSameOrBefore(lastDayOfCurrentMonth, 'day')
-    ) {
-      daysArray.push({
-        day: isCurrentMonth ? currentDay.clone() : null,
-        isCurrentMonth: isCurrentMonth,
-      });
-    }
-    if (isCurrentMonth && currentDay.isSame(lastDayOfCurrentMonth, 'day')) {
-      break;
-    }
-    currentDay.add(1, 'day');
-  }
+  const firstDayOfMonth = startOfMonth(currentDate);
+  const firstDayOfWeek = startOfWeek(firstDayOfMonth, { weekStartsOn: 1 });
 
-  while (daysArray.length < 35) {
+  for (let i = 0; i < 35; i++) {
+    const currentDay = addDays(firstDayOfWeek, i);
+    const isCurrentMonth = isSameMonth(currentDay, currentDate);
+
     daysArray.push({
-      day: null,
-      isCurrentMonth: false,
+      day: currentDay,
+      isCurrentMonth: isCurrentMonth,
     });
   }
 
@@ -51,19 +43,20 @@ const CalendarTable = ({ startDay }) => {
   return (
     <GridWrapper>
       {daysArray.map(({ day, isCurrentMonth }, i) => (
-        <CellWrapper key={day ? day.format('DDMMYYYY') : `empty-${i}`}>
-          {day && (
+        <CellWrapper key={day ? format(day, 'ddMMyyyy') : `empty-${i}`}>
+          {day && isCurrentMonth && (
             <DayWrapper
               className={isCurrentMonth ? 'current-month' : ''}
-              $today={day && day.isSame(currentDate, 'day')}
+              $today={isToday(day)}
             >
-              {day ? day.format('D') : ''}
+              {format(day, 'd')}
             </DayWrapper>
           )}
-          {day && (
-            <TaskContainerWrapper key={`day-${day.format('DDMMYYYY')}`}>
+          {day && isCurrentMonth && (
+            <TaskContainerWrapper key={`day-${format(day, 'ddMMyyyy')}`}>
               {tasks.map((task, index) => {
-                if (day.isSame(task.date, 'day')) {
+                const taskDate = new Date(task.date);
+                if (isSameDay(day, taskDate)) {
                   return (
                     <TaskContainer
                       key={task.id ? `task-${task.id}` : `task-${index}`}
