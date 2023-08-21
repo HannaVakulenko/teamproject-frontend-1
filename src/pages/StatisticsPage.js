@@ -1,10 +1,11 @@
-import CalendarToolbar from '../components/CalendarPage/CalendarToolbar/CalendarToolbar/CalendarToolbar';
+import { StatisticSection } from 'components/StatisticsPage/StatisticsPageComponent/StatisticsPageComponent.styled';
+import { StatisticsPageComponent } from '../components/StatisticsPage';
 
-const StatisticsPage = () => (
-  <>
-    <CalendarToolbar />
-    <div>StatisticsPage</div>
-  </>
-);
-
+const StatisticsPage = () => {
+  return (
+      <StatisticSection>
+      <StatisticsPageComponent />
+    </StatisticSection>
+  );
+};
 export default StatisticsPage;

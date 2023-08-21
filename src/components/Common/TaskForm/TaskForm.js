@@ -91,10 +91,10 @@ const TaskForm = ({ onClose, action, column, priority, taskToEdit }) => {
   return (
     <Formik
       initialValues={{
-        title: '',
-        start: '09:00',
-        end: '10:00',
-        priority: action === 'edit' ? priority : 'low',
+        title: taskToEdit?.title || '',
+        start: taskToEdit?.start || '09:00',
+        end: taskToEdit?.end || '10:00',
+        priority: taskToEdit?.priority || "Low",
         category: column,
         date: currentDay,
       }}
