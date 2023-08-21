@@ -14,6 +14,7 @@ export const fetchTasks = createAsyncThunk(
           monthEnd: monthEnd,
         },
       });
+      console.log(response);
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error);

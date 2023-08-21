@@ -16,12 +16,12 @@ const CalendarToolbar = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const a = useParams();
-  console.log(a);
   const { currentDate } = useParams();
-  console.log(currentDate);
+  const { currentDay } = useParams();
 
-  const monthFromURL = parseISO(currentDate).getMonth() + 1;
+  const dayDate = currentDate || currentDay;
+
+  const monthFromURL = parseISO(dayDate).getMonth() + 1;
   const currentMonth = new Date().getMonth() + 1;
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -39,10 +39,10 @@ const CalendarToolbar = () => {
   };
 
   useEffect(() => {
-    if (monthFromURL !== currentMonth && currentDate) {
+    if (monthFromURL !== currentMonth && dayDate) {
       dispatch(fetchTasks(forFetchData()));
     }
-  }, [currentDate, currentMonth, dispatch, forFetchData, monthFromURL]);
+  }, [dayDate, currentMonth, dispatch, forFetchData, monthFromURL]);
 
   //   const getAllTasks = async () => {
   //     if (monthFromURL !== currentMonth) {
