@@ -34,22 +34,27 @@ export const FormWrap = styled.div`
 `;
 
 export const Form = styled(FormikForm)`
-@media (max-width: ${desktop - 1}px)
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+`;
 
- {display: flex;
-  gap:18px;
+export const BoxWrap = styled.div`
+  @media (max-width: ${desktop - 1}px) {
+    display: flex;
+    gap: 18px;
     flex-direction: column;
     flex-wrap: wrap;
     align-content: center;
     justify-content: center;
-    align-items: flex-start;}
+    align-items: flex-start;
+  }
 
   @media (min-width: ${desktop}px) {
     display: grid;
-     grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
     gap: 24px;
   }
-
 `;
 
 export const FieldWrap = styled.div`
