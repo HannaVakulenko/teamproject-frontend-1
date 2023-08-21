@@ -1,6 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 import { AXIOS_BASE_URL } from 'constants/axiosBaseUrl';
+import Swal from 'sweetalert2';
 
 axios.defaults.baseURL = AXIOS_BASE_URL;
 
@@ -59,6 +60,12 @@ export const deleteTask = createAsyncThunk(
     try {
       const response = await axios.delete(`/tasks/${taskId}`);
       response.data._id = taskId;
+       Swal.fire({
+        icon: 'success',
+        title: 'Success',
+        text: 'Your task has been successfully deleted!',
+        confirmButtonColor: '#3E85F3',
+      });
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
