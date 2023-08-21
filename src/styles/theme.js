@@ -27,6 +27,7 @@ export const lightTheme = {
   calendarDeviderColor: '#DCE3E580',
   modalBorderColor: 'transparent',
   modalFieldBgColor: '#F6F6F6',
+  editBtnBgColor: '#E3F3FF',
   taskBgColor:
     'linear-gradient(0deg, rgba(220, 227, 229, 0.8), rgba(220, 227, 229, 0.8)), linear-gradient(0deg, #F7F6F9, #F7F6F9)',
   tasksListBgColor:
@@ -67,6 +68,7 @@ export const darkTheme = {
   calendarDeviderColor: '#FFFFFF26',
   modalBorderColor: '#FFFFFF26',
   modalFieldBgColor: '#13151A',
+  editBtnBgColor: '#353647',
   taskBgColor:
     'linear-gradient(0deg, #171820, #171820), linear-gradient(0deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.15))',
   tasksListBgColor:

@@ -9,7 +9,8 @@ export const Backdrop = styled.div`
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: ${p => p.theme.backdropColor};
+  backdrop-filter: blur(3px);
   z-index: 5;
   opacity: ${p => (p.$isOpen ? '1' : '0')};
   transition: opacity 0.3s ease-out;
