@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { useSelector } from 'react-redux';
-
+import { useParams } from 'react-router-dom';
 
 import {
   Bar,
@@ -28,8 +28,13 @@ import {
 
 const StatisticsChart = () => {
   //Дата
-  const dateStatistics = useSelector(selectDate);
+  let dateStatistics = useSelector(selectDate);
+  const { currentDate } = useParams();
 
+  
+  if (currentDate) {
+    dateStatistics = currentDate;
+  }
   // Задачи по категоріям за місяць
   const todoByMonth = useSelector(state =>
     selectTasksByCategory(state, category.toDo)
@@ -40,7 +45,7 @@ const StatisticsChart = () => {
   const doneByMonth = useSelector(state =>
     selectTasksByCategory(state, category.done)
   );
-  console.log(todoByMonth);
+ 
   // Задачи по категоріям за день
 
   const todoByDay = todoByMonth.filter(item =>
@@ -216,6 +221,17 @@ const StatisticsChart = () => {
       window.removeEventListener('resize', handleResize);
     };
   }, []);
+
+  // useEffect(() => {
+   
+  //     dispatch(
+  //       fetchTasks({
+  //         monthStart: monthStart,
+  //         monthEnd: monthEnd,
+  //       })
+  //     );
+  //   }
+  // , [formattedDate, monthStart, monthEnd, dispatch, dateStatistics]);
 
   return (
     <ContainerSecondWrapper>
