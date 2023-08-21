@@ -31,9 +31,8 @@ export const Label = styled.label`
 
   color: rgba(52,52,52,0.8);
   font-size: 12px;
-  font-family: Inter;
   font-weight: 500;
-  line-height: 14px;
+  line-height: 1.16;
 `;
 
 export const InputTitle = styled(Field)`
@@ -46,9 +45,8 @@ export const InputTitle = styled(Field)`
 
   color: ${props => props.theme.secondaryTextColor};
   font-size: 14px;
-  font-family: Inter;
   font-weight: 600;
-  line-height: 18px;
+  line-height: 1.25;
 
   @media (min-width: ${device.tablet}px) {
     width: 340px;
@@ -60,9 +58,8 @@ export const InputTitle = styled(Field)`
     opacity: 1;
     color: ${props => props.theme.secondaryTextColor};
     font-size: 14px;
-    font-family: Inter;
     font-weight: 600;
-    line-height: 18px;
+    line-height: 1.28;
   }
 `;
 
@@ -87,9 +84,8 @@ export const InputTime = styled(Field)`
 
   color: ${props => props.theme.calendarTextColor};
   font-size: 14px;
-  font-family: Inter;
   font-weight: 600;
-  line-height: 18px;
+  line-height: 1.28;
 
   @media (min-width: ${device.tablet}px) {
     width: 163px;
@@ -122,14 +118,13 @@ export const RadioLabel = styled.label`
 
   color: ${p=>p.theme.mainTextColor};
   font-size: 12px;
-  font-family: Inter;
   font-weight: 600;
-  line-height: 14px;
+  line-height: 1.16;
   cursor: pointer;
 
   @media (min-width: ${device.tablet}px) {
     font-size: 14px;
-    line-height: 18px;
+    line-height: 1.28;
     margin-top: 28px;
   }
 `;
@@ -192,9 +187,8 @@ export const ButtonAction = styled.button`
   color: #fff;
   text-align: center;
   font-size: 14px;
-  font-family: Inter;
   font-weight: 600;
-  line-height: 18px;
+  line-height: 1.28;
 
   transition: background-color 250ms linear;
 
@@ -223,9 +217,8 @@ export const ButtonCancel = styled.button`
   color: #111;
   text-align: center;
   font-size: 14px;
-  font-family: Inter;
   font-weight: 600;
-  line-height: 18px;
+  line-height: 1.28;
 
   transition: background-color 250ms linear;
 
@@ -264,7 +257,6 @@ export const ErrorMessage = styled(FormikErrorMessage)`
   max-width: 100%;
   color: #da1414;
   font-size: 12px;
-  font-family: Inter;
-  line-height: 14px;
+  line-height: 1.16;
 `;
 
