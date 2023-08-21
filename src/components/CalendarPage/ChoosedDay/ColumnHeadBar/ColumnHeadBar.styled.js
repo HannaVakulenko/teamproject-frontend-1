@@ -17,7 +17,6 @@ export const Title = styled.h3`
   font-size: 18px;
   font-weight: 700;
   line-height: 1.11;
-  color: #111;
 
   @media screen and (min-width: ${device.tablet}px) {
     font-size: 20px;
@@ -37,6 +36,7 @@ export const Button = styled.button`
 
 export const Icon = styled.svg`
   fill: none;
+  color: ${p => p.theme.mainTextColor};
   stroke: currentColor;
   transition: stroke 250ms cubic-bezier(0.4, 0, 0.2, 1);
 `;

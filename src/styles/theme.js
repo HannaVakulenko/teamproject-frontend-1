@@ -24,12 +24,11 @@ export const lightTheme = {
   userFormStatusColor: '#343434',
   userFormLabelColor: '#111111',
   userFormInputBorderColor: '#1111111A',
-
+  calendarDeviderColor: '#DCE3E580',
   taskBgColor:
     'linear-gradient(0deg, rgba(220, 227, 229, 0.8), rgba(220, 227, 229, 0.8)), linear-gradient(0deg, #F7F6F9, #F7F6F9)',
   tasksListBgColor:
     'linear-gradient(0deg, rgba(220, 227, 229, 0.8), rgba(220, 227, 229, 0.8)), linear-gradient(0deg, #FFFFFF, #FFFFFF)',
-
   monthBorder: '1px solid rgba(62, 133, 243, 0.20)',
   buttonInDecBorder: '1px solid rgba(220, 227, 229, 0.50)',
   chevronLeft: '#DCE3E5',
@@ -64,15 +63,14 @@ export const darkTheme = {
   userFormStatusColor: '#FAFAFA4D',
   userFormLabelColor: '#FAFAFA4D',
   userFormInputBorderColor: '#FFFFFF26',
+  calendarDeviderColor: '#FFFFFF26',
   taskBgColor:
     'linear-gradient(0deg, #171820, #171820), linear-gradient(0deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.15))',
   tasksListBgColor:
     'linear-gradient(0deg, #21222C, #21222C), linear-gradient(0deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.15))',
-
   monthBorder: '1px solid rgba(62, 133, 243, 0.20)',
   buttonInDecBorder: '1px solid rgba(255, 255, 255, 0.15)',
   chevronLeft: '#ffffff',
   opacityChevron: '0.15',
   chartBorderColor: 'rgba(227, 243, 255, 0.15)',
-
 };

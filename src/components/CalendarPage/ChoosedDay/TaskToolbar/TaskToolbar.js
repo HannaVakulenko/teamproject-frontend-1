@@ -59,7 +59,11 @@ const TaskToolbar = ({ task }) => {
   return (
     <Wrapper>
       <WrapperPopover>
-        <Button aria-describedby={id} variant="contained" onClick={handleClick}>
+        <Button
+          aria-describedby={id}
+          $variant="contained"
+          onClick={handleClick}
+        >
           <Icon width="14" height="14">
             <use href={icon + '#icon-arrow-circle-broken-right'}></use>
           </Icon>
