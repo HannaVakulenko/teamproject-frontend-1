@@ -10,17 +10,28 @@ import { fetchTasks } from '../../../../redux/tasks/operations';
 import Swal from 'sweetalert2';
 
 const CalendarToolbar = () => {
-  const [date, setDate] = useState(new Date());
+  const { currentDate } = useParams();
+  const { currentDay } = useParams();
+  console.log(currentDay);
+
+  const dayDate = currentDay || currentDate;
+  const newDate = parseISO(dayDate);
+  console.log(newDate);
+
+  const formatDate =
+    newDate === 'Invalid Date' ? new Date(newDate) : new Date();
+
+  const [date, setDate] = useState(formatDate);
   const [isOpen, setIsOpen] = useState(false);
 
   const location = useLocation();
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const { currentDate } = useParams();
-  const { currentDay } = useParams();
+  // const { currentDate } = useParams();
+  // const { currentDay } = useParams();
 
-  const dayDate = currentDate || currentDay;
+  // const dayDate = currentDate || currentDay;
 
   // const currentMonth = new Date().getMonth() + 1;
 
@@ -30,12 +41,8 @@ const CalendarToolbar = () => {
     const startDate = startOfMonth(monthFromURL);
     const endDate = endOfMonth(monthFromURL);
 
-    console.log(startDate, endDate);
-
     const formattedStartDate = format(startDate, 'yyyy-MM-dd');
     const formattedEndDate = format(endDate, 'yyyy-MM-dd');
-
-    console.log(formattedStartDate, formattedEndDate);
 
     return {
       monthStart: formattedStartDate,
@@ -71,7 +78,6 @@ const CalendarToolbar = () => {
       location.pathname.startsWith('/statistics')
     ) {
       if (e.currentTarget.className.includes('decrease')) {
-        console.log('yes');
         newDate.setDate(newDate.getDate() - 1);
       } else {
         newDate.setDate(newDate.getDate() + 1);
