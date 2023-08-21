@@ -22,15 +22,15 @@ export const EditBtn = styled.button`
   justify-content: center;
   align-items: center;
   border-radius: 50px;
-  background: #e3f3ff;
+  background: ${p => p.theme.editBtnBgColor};
   border: none;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  color: #3e85f3;
+  color: ${p => p.theme.mainAccentColor};
 
   &:hover,
   &:focus {
-    background: #3e85f3;
-    color: #ffffff;
+    background: ${p => p.theme.mainAccentColor};
+    color: ${p => p.theme.buttonTextColor};
   }
 `;
 
@@ -42,7 +42,7 @@ export const DeleteBtn = styled.button`
   justify-content: center;
   align-items: center;
   border-radius: 50px;
-  background: rgba(234, 61, 101, 0.2);
+  background: #ea3d6533;
   border: none;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 
@@ -59,7 +59,6 @@ export const Icon = styled.svg`
 
 export const TextReview = styled.p`
   margin-bottom: 8px;
-  color: rgba(52, 52, 52, 0.8);
   font-size: 12px;
   font-weight: 500;
   line-height: 1.17;
@@ -72,11 +71,12 @@ export const TextFeedback = styled.textarea`
   border-color: transparent;
   border: none;
   border-radius: 8px;
-  background: #f6f6f6;
+  background: ${p => p.theme.modalFieldBgColor};
   resize: none;
   outline: none;
+  border: 1px solid ${p => p.theme.modalBorderColor};
 
-  color: #343434;
+  color: ${p => p.theme.secondaryTextColor};
   font-size: 14px;
   font-weight: 600;
   line-height: 1.29;

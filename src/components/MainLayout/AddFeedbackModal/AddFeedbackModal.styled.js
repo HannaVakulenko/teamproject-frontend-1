@@ -10,7 +10,7 @@ export const Overlay = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: rgba(246, 246, 246, 0.8);
+  background-color: ${p => p.theme.backdropColor};
   backdrop-filter: blur(3px);
   z-index: 1200;
 `;
@@ -24,8 +24,8 @@ export const ModalDiv = styled.div`
   overflow: hidden;
   transform: translate(-50%, -50%);
   border-radius: 8px;
-  border: 1px solid rgba(220, 227, 229, 0.8);
-  background: #fff;
+  border: 1px solid ${p => p.theme.modalBorderColor};
+  background-color: ${p => p.theme.sidebarBGColor};
   box-shadow: 0px 4px 57px 0px rgba(17, 17, 17, 0.05);
 
   @media (min-width: ${device.tablet}px) {
@@ -40,12 +40,13 @@ export const CloseBtn = styled.button`
   right: 14px;
   padding: 0;
   background-color: transparent;
+  color: ${p => p.theme.mainTextColor};
   border: none;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 
   &:hover,
   &:focus {
-    color: #3e85f3;
+    color: ${p => p.theme.mainAccentColor};
   }
 
   @media (min-width: ${device.tablet}px) {
