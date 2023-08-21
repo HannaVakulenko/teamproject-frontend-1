@@ -8,11 +8,14 @@ import {
   Container,
   DatePickerWrapper,
 } from './PeriodPaginator.styled';
-import DatePicker from 'react-datepicker';
+import DatePicker, { registerLocale } from 'react-datepicker';
 import icon from 'assets/icons/symbol-defs.svg';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { format } from 'date-fns';
 import 'react-datepicker/dist/react-datepicker.css';
+import { enGB } from 'date-fns/locale';
+
+registerLocale('enGB', enGB);
 
 const PeriodPaginator = ({ date, getTasks, isOpen, setIsOpen, setDate }) => {
   const location = useLocation();
@@ -37,7 +40,6 @@ const PeriodPaginator = ({ date, getTasks, isOpen, setIsOpen, setDate }) => {
   return (
     <>
       <ForDatePicker>
-        {' '}
         <Date className="example-custom-input" onClick={handleClick}>
           {location.pathname.startsWith('/calendar/day')
             ? format(date, 'dd MMM yyyy')
@@ -45,8 +47,8 @@ const PeriodPaginator = ({ date, getTasks, isOpen, setIsOpen, setDate }) => {
         </Date>
         {isOpen && (
           <DatePickerWrapper>
-            {' '}
             <DatePicker
+              locale="enGB"
               onClickOutside={() => setIsOpen(!isOpen)}
               formatWeekDay={nameOfDay => nameOfDay.substr(0, 1)}
               selected={date}
@@ -58,7 +60,6 @@ const PeriodPaginator = ({ date, getTasks, isOpen, setIsOpen, setDate }) => {
       </ForDatePicker>
 
       <Container>
-        {' '}
         <ButtonDecrease className="decrease" onClick={getTasks}>
           <Icon width="18" height="18">
             <use href={icon + '#icon-chevron-left'}></use>

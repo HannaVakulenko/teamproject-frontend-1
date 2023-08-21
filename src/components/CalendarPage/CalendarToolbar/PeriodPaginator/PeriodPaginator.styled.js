@@ -18,7 +18,6 @@ export const DatePickerWrapper = styled.div`
   top: 100%;
   left: 0;
   margin-top: 10px;
-
 `;
 
 export const ContainerFlex = styled.div`
@@ -53,7 +52,6 @@ export const Date = styled.button`
     min-width: 121px;
     height: 34px;
 
-
     font-size: 16px;
     line-height: 1.1;
   }
@@ -63,7 +61,6 @@ export const Date = styled.button`
     margin-right: 8px;
     min-width: 125px;
     height: 34px;
-
 
     font-size: 16px;
     line-height: 1.1;
@@ -326,6 +323,18 @@ height: 48px !important;
          opacity: 1 !important;
  border-radius: 50% !important;}
 .react-datepicker__current-month{color:#FFFFFF;}
+
+.react-datepickerday--weekend {
+     opacity: 0.35 !important;
+  } 
+
+.react-datepickerday--weekend:hover {
+  opacity: 1 !important;
+}
+
+.react-datepickerday--weekend.react-datepickerday--today {
+  opacity: 1 !important;
+}
 
 
 input {

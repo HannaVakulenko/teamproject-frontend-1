@@ -1,30 +1,29 @@
 import { useState, useEffect } from 'react';
 import { useLocation, useParams } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-// import { Routes, Route, useLocation } from 'react-router-dom';
-// import { useSelector } from 'react-redux';
 import { PeriodPaginator, PeriodTypeSelect } from '../../index';
 import { Container, ContainerSecond } from './CalendarToolbar.styled';
 import { parseISO, startOfMonth, endOfMonth, format } from 'date-fns';
 import 'react-datepicker/dist/react-datepicker.css';
 import { useNavigate } from 'react-router-dom';
 import { fetchTasks } from '../../../../redux/tasks/operations';
-import Swal from 'sweetalert2';
+// import Swal from 'sweetalert2';
 
 const CalendarToolbar = () => {
-  // const dateGlobal = useSelector(state => state.date.currentDate);
   const [date, setDate] = useState(new Date());
   const [isOpen, setIsOpen] = useState(false);
 
   const location = useLocation();
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
+  const a = useParams();
+  console.log(a);
   const { currentDate } = useParams();
+  console.log(currentDate);
 
-  const monthFromURL = parseISO(currentDate);
+  const monthFromURL = parseISO(currentDate).getMonth() + 1;
   const currentMonth = new Date().getMonth() + 1;
-
-  // console.log(sc); // Виводить щось на зразок "16-08-2023"
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const forFetchData = () => {
@@ -41,22 +40,27 @@ const CalendarToolbar = () => {
   };
 
   useEffect(() => {
-    const getAllTasks = async () => {
-      if (monthFromURL !== currentMonth) {
-        try {
-          await dispatch(fetchTasks());
-        } catch (error) {
-          Swal.fire({
-            icon: 'error',
-            title: 'Oops...',
-            text: 'Something went wrong!',
-            confirmButtonColor: '#3E85F3',
-          });
-        }
-      }
-    };
-    getAllTasks();
-  }, [currentMonth, dispatch, forFetchData, monthFromURL]);
+    if (monthFromURL !== currentMonth && currentDate) {
+      dispatch(fetchTasks(forFetchData()));
+    }
+  }, [currentDate, currentMonth, dispatch, forFetchData, monthFromURL]);
+
+  //   const getAllTasks = async () => {
+  //     if (monthFromURL !== currentMonth) {
+  //       try {
+  //         console.log('HI');
+  //         await dispatch(fetchTasks(forFetchData()));
+  //       } catch (error) {
+  //         Swal.fire({
+  //           icon: 'error',
+  //           title: 'Oops...',
+  //           text: 'Something went wrong!',
+  //           confirmButtonColor: '#3E85F3',
+  //         });
+  //       }
+  //     }
+  //   };
+  //   getAllTasks();
 
   const changeDate = e => {
     const newDate = new Date(date);
@@ -86,26 +90,6 @@ const CalendarToolbar = () => {
     navigate(`/calendar/${location.pathname.split('/')[2]}/${formattedDate}`);
   };
 
-  // const formatDateString = inputDate => {
-  //   if (location.pathname === '/calendar/day') {
-  //     const parsedDate = new Date(inputDate);
-  //     const options = { day: 'numeric', month: 'short', year: 'numeric' };
-  //     const formattedDate = parsedDate.toLocaleDateString('en-GB', options);
-  //     return formattedDate.replace(
-  //       parsedDate.toLocaleString('en-GB', { month: 'short' }),
-  //       parsedDate.toLocaleString('en-GB', { month: 'short' }).toUpperCase()
-  //     );
-  //   }
-  //   const parsedDate = new Date(inputDate);
-  //   const options = { month: 'short', year: 'numeric' };
-  //   const formattedDate = parsedDate.toLocaleDateString('en-GB', options);
-  //   const monthUpperCase = formattedDate.split(' ')[0].toUpperCase();
-  //   const year = formattedDate.split(' ')[1];
-  //   return `${monthUpperCase} ${year}`;
-  // };
-
-  // const formattedDate = formatDateString(date);
-
   return (
     <>
       <Container>
@@ -122,10 +106,6 @@ const CalendarToolbar = () => {
           <PeriodTypeSelect />
         </div>
       </Container>
-      {/* <Routes>
-        <Route path="/month" element={<div>day</div>} />
-        <Route path="/day" element={<div>month</div>} />
-      </Routes> */}
     </>
   );
 };
