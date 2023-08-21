@@ -1,7 +1,8 @@
 import {
   ButtonIncrease,
   ButtonDecrease,
-  Icon,
+  IconLeft,
+  IconRight,
   DatePickerWrapperStyles,
   Date,
   ForDatePicker,
@@ -29,8 +30,11 @@ const PeriodPaginator = ({ date, getTasks, isOpen, setIsOpen, setDate }) => {
 
     if (location.pathname.startsWith('/calendar/day')) {
       navigate(`/calendar/month/${formattedDate}`);
+    } else if (location.pathname.startsWith('/statistics')) {
+      navigate(`/statistics/${formattedDate}`);
+    } else {
+      navigate(`/calendar/day/${formattedDate}`);
     }
-    navigate(`/calendar/day/${formattedDate}`);
   };
   const handleClick = e => {
     e.preventDefault();
@@ -41,7 +45,8 @@ const PeriodPaginator = ({ date, getTasks, isOpen, setIsOpen, setDate }) => {
     <>
       <ForDatePicker>
         <Date className="example-custom-input" onClick={handleClick}>
-          {location.pathname.startsWith('/calendar/day')
+          {location.pathname.startsWith('/calendar/day') ||
+          location.pathname.startsWith('/statistics')
             ? format(date, 'dd MMM yyyy')
             : format(date, 'MMMM yyyy')}
         </Date>
@@ -61,14 +66,14 @@ const PeriodPaginator = ({ date, getTasks, isOpen, setIsOpen, setDate }) => {
 
       <Container>
         <ButtonDecrease className="decrease" onClick={getTasks}>
-          <Icon width="18" height="18">
+          <IconLeft height="9">
             <use href={icon + '#icon-chevron-left'}></use>
-          </Icon>
+          </IconLeft>
         </ButtonDecrease>
         <ButtonIncrease className="increase" onClick={getTasks}>
-          <svg width="18" height="18">
+          <IconRight height="9">
             <use href={icon + '#icon-chevron-right'}></use>
-          </svg>
+          </IconRight>
         </ButtonIncrease>
       </Container>
 

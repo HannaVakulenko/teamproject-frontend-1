@@ -7,7 +7,6 @@ import { parseISO, startOfMonth, endOfMonth, format } from 'date-fns';
 import 'react-datepicker/dist/react-datepicker.css';
 import { useNavigate } from 'react-router-dom';
 import { fetchTasks } from '../../../../redux/tasks/operations';
-// import Swal from 'sweetalert2';
 
 const CalendarToolbar = () => {
   const [date, setDate] = useState(new Date());
@@ -67,7 +66,10 @@ const CalendarToolbar = () => {
 
     let formattedDate = '';
 
-    if (location.pathname.startsWith('/calendar/day')) {
+    if (
+      location.pathname.startsWith('/calendar/day') ||
+      location.pathname.startsWith('/statistics')
+    ) {
       if (e.currentTarget.className.includes('decrease')) {
         console.log('yes');
         newDate.setDate(newDate.getDate() - 1);
@@ -87,7 +89,14 @@ const CalendarToolbar = () => {
       setDate(newDate);
       formattedDate = format(newDate, 'yyyy-MM-dd');
     }
-    navigate(`/calendar/${location.pathname.split('/')[2]}/${formattedDate}`);
+
+    if (location.pathname.startsWith('/calendar/day')) {
+      navigate(`/calendar/${location.pathname.split('/')[2]}/${formattedDate}`);
+    } else if (location.pathname.startsWith('/calendar/month')) {
+      navigate(`/calendar/${location.pathname.split('/')[2]}/${formattedDate}`);
+    } else {
+      navigate(`/statistics/${formattedDate}`);
+    }
   };
 
   return (
@@ -102,9 +111,13 @@ const CalendarToolbar = () => {
             setDate={setDate}
           />
         </ContainerSecond>
-        <div>
-          <PeriodTypeSelect />
-        </div>
+        {location.pathname.includes('statistics') ? (
+          ''
+        ) : (
+          <div>
+            <PeriodTypeSelect />
+          </div>
+        )}
       </Container>
     </>
   );

@@ -113,7 +113,13 @@ export const ButtonIncrease = styled.button`
   }
 `;
 
-export const Icon = styled.svg``;
+export const IconLeft = styled.svg`
+  stroke: ${p => p.theme.chevronLeft};
+  opacity: ${p => p.theme.opacityChevron};
+`;
+export const IconRight = styled.svg`
+  stroke: ${p => p.theme.mainTextColor};
+`;
 
 export const DatePickerWrapperStyles = createGlobalStyle`
 
