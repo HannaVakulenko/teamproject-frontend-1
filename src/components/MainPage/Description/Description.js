@@ -36,9 +36,9 @@ const Description = () => {
             <picture>
               {/* Webp */}
               <source
-                srcSet={`${mainpageCalendar.mob1xWebp}, ${mainpageCalendar.mob2xWebp} 2x, ${mainpageCalendar.mob3xWebp} 3x`}
+                srcSet={`${mainpageCalendar.desk1xWebp}, ${mainpageCalendar.desk2xWebp} 2x, ${mainpageCalendar.desk3xWebp} 3x`}
                 type="image/webp"
-                media={`(min-width: 150px)`}
+                media={`(min-width: ${device.desktop}px)`}
               />
               <source
                 srcSet={`${mainpageCalendar.tabl1xWebp}, ${mainpageCalendar.tabl2xWebp} 2x, ${mainpageCalendar.tabl3xWebp} 3x`}
@@ -46,23 +46,23 @@ const Description = () => {
                 media={`(min-width: ${device.tablet}px)`}
               />
               <source
-                srcSet={`${mainpageCalendar.desk1xWebp}, ${mainpageCalendar.desk2xWebp} 2x, ${mainpageCalendar.desk3xWebp} 3x`}
+                srcSet={`${mainpageCalendar.mob1xWebp}, ${mainpageCalendar.mob2xWebp} 2x, ${mainpageCalendar.mob3xWebp} 3x`}
                 type="image/webp"
-                media={`(min-width: ${device.desktop}px)`}
+                media={`(min-width: 150px)`}
               />
 
               {/* png */}
               <source
-                srcSet={`${mainpageCalendar.mob1xPng}, ${mainpageCalendar.mob2xPng} 2x, ${mainpageCalendar.mob3xPng} 3x`}
-                media={`(min-width: 150px)`}
+                srcSet={`${mainpageCalendar.desk1xPng}, ${mainpageCalendar.desk2xPng} 2x, ${mainpageCalendar.desk3xPng} 3x`}
+                media={`(min-width: ${device.desktop}px)`}
               />
               <source
                 srcSet={`${mainpageCalendar.tabl1xPng}, ${mainpageCalendar.tabl2xPng} 2x, ${mainpageCalendar.tabl3xPng} 3x`}
                 media={`(min-width: ${device.tablet}px)`}
               />
               <source
-                srcSet={`${mainpageCalendar.desk1xPng}, ${mainpageCalendar.desk2xPng} 2x, ${mainpageCalendar.desk3xPng} 3x`}
-                media={`(min-width: ${device.desktop}px)`}
+                srcSet={`${mainpageCalendar.mob1xPng}, ${mainpageCalendar.mob2xPng} 2x, ${mainpageCalendar.mob3xPng} 3x`}
+                media={`(min-width: 150px)`}
               />
               <ImgDescription
                 src={mainpageCalendar.desk1xPng}
@@ -88,9 +88,9 @@ const Description = () => {
             <picture>
               {/* Webp */}
               <source
-                srcSet={`${mainpageSidebar.mob1xWebp}, ${mainpageSidebar.mob2xWebp} 2x, ${mainpageSidebar.mob3xWebp} 3x`}
+                srcSet={`${mainpageSidebar.desk1xWebp}, ${mainpageSidebar.desk2xWebp} 2x, ${mainpageSidebar.desk3xWebp} 3x`}
                 type="image/webp"
-                media={`(min-width: 150px)`}
+                media={`(min-width: ${device.desktop}px)`}
               />
               <source
                 srcSet={`${mainpageSidebar.tabl1xWebp}, ${mainpageSidebar.tabl2xWebp} 2x, ${mainpageSidebar.tabl3xWebp} 3x`}
@@ -98,23 +98,23 @@ const Description = () => {
                 media={`(min-width: ${device.tablet}px)`}
               />
               <source
-                srcSet={`${mainpageSidebar.desk1xWebp}, ${mainpageSidebar.desk2xWebp} 2x, ${mainpageSidebar.desk3xWebp} 3x`}
+                srcSet={`${mainpageSidebar.mob1xWebp}, ${mainpageSidebar.mob2xWebp} 2x, ${mainpageSidebar.mob3xWebp} 3x`}
                 type="image/webp"
-                media={`(min-width: ${device.desktop}px)`}
+                media={`(min-width: 150px)`}
               />
 
               {/* png */}
               <source
-                srcSet={`${mainpageSidebar.mob1xPng}, ${mainpageSidebar.mob2xPng} 2x, ${mainpageSidebar.mob3xPng} 3x`}
-                media={`(min-width: 150px)`}
+                srcSet={`${mainpageSidebar.desk1xPng}, ${mainpageSidebar.desk2xPng} 2x, ${mainpageSidebar.desk3xPng} 3x`}
+                media={`(min-width: ${device.desktop}px)`}
               />
               <source
                 srcSet={`${mainpageSidebar.tabl1xPng}, ${mainpageSidebar.tabl2xPng} 2x, ${mainpageSidebar.tabl3xPng} 3x`}
                 media={`(min-width: ${device.tablet}px)`}
               />
               <source
-                srcSet={`${mainpageSidebar.desk1xPng}, ${mainpageSidebar.desk2xPng} 2x, ${mainpageSidebar.desk3xPng} 3x`}
-                media={`(min-width: ${device.desktop}px)`}
+                srcSet={`${mainpageSidebar.mob1xPng}, ${mainpageSidebar.mob2xPng} 2x, ${mainpageSidebar.mob3xPng} 3x`}
+                media={`(min-width: 150px)`}
               />
               <ImgDescription
                 src={mainpageSidebar.desk1xPng}
@@ -138,9 +138,9 @@ const Description = () => {
             <picture>
               {/* Webp */}
               <source
-                srcSet={`${mainpageOne.mob1xWebp}, ${mainpageOne.mob2xWebp} 2x, ${mainpageOne.mob3xWebp} 3x`}
+                srcSet={`${mainpageOne.desk1xWebp}, ${mainpageOne.desk2xWebp} 2x, ${mainpageOne.desk3xWebp} 3x`}
                 type="image/webp"
-                media={`(min-width: 150px)`}
+                media={`(min-width: ${device.desktop}px)`}
               />
               <source
                 srcSet={`${mainpageOne.tabl1xWebp}, ${mainpageOne.tabl2xWebp} 2x, ${mainpageOne.tabl3xWebp} 3x`}
@@ -148,9 +148,9 @@ const Description = () => {
                 media={`(min-width: ${device.tablet}px)`}
               />
               <source
-                srcSet={`${mainpageOne.desk1xWebp}, ${mainpageOne.desk2xWebp} 2x, ${mainpageOne.desk3xWebp} 3x`}
+                srcSet={`${mainpageOne.mob1xWebp}, ${mainpageOne.mob2xWebp} 2x, ${mainpageOne.mob3xWebp} 3x`}
                 type="image/webp"
-                media={`(min-width: ${device.desktop}px)`}
+                media={`(min-width: 150px)`}
               />
 
               {/* png */}
