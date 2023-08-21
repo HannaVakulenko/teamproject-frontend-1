@@ -91,11 +91,11 @@ const TaskForm = ({ onClose, action, column, priority, taskToEdit }) => {
   return (
     <Formik
       initialValues={{
-        title: taskToEdit.title,
-        start: taskToEdit.start,
-        end: taskToEdit.end,
-        priority: taskToEdit.priority,
-        category: taskToEdit.category,
+        title: taskToEdit?.title || '',
+        start: taskToEdit?.start || '09:00',
+        end: taskToEdit?.end || '10:00',
+        priority: taskToEdit?.priority || "Low",
+        category: column,
         date: currentDay,
       }}
       validationSchema={TaskSchema}
