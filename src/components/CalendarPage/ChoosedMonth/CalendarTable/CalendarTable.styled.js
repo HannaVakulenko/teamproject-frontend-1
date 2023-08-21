@@ -1,4 +1,24 @@
 import { styled } from 'styled-components';
+export const Container = styled.div`
+  @media (max-width: 375px) {
+    display: flex;
+    width: 335px;
+  }
+
+  @media (min-width: 376px) and (max-width: 768px) {
+    display: flex;
+    width: 704px;
+    height: 720px;
+  }
+
+  @media (min-width: 769px) and (max-width: 1440px) {
+    display: flex;
+  }
+
+  @media (min-width: 1441px) {
+    display: flex;
+  }
+`;
 
 export const GridWrapper = styled.div`
   display: grid;
@@ -8,24 +28,28 @@ export const GridWrapper = styled.div`
   border-radius: 8px;
   background-color: white;
   width: 335px;
+  height: 470px;
 
   @media (max-width: 375px) {
-    // grid-template-columns: repeat(7, minmax(0, 1fr));
+    // grid-template-columns: repeat(7, 1fr);
+    border-radius: 8px;
     background-color: white;
     width: 335px;
     height: 470px;
   }
 
   @media (min-width: 376px) and (max-width: 768px) {
-    // grid-template-columns: repeat(7, minmax(0, 1fr));
+    grid-template-columns: repeat(7, 1fr);
+    border-radius: 8px;
     background-color: white;
-    // width: 704px;
-    // height: 720px;
+    width: 704px;
+    height: 720px;
   }
 
   @media (min-width: 769px) and (max-width: 1440px) {
+    grid-template-columns: repeat(7, 156px);
     background-color: white;
-    max-width: 1087px;
+    width: 1087px;
     height: 625px;
   }
 
@@ -46,21 +70,26 @@ export const CellWrapper = styled.div`
   position: relative;
   justify-content: center;
   align-items: center;
-  // width: calc(47px + 1px);
-
+  min-width: 47.85px;
+  //  width: calc(47px + 1px);
   @media (max-width: 375px) {
+    background-color: white;
     // width: calc(46px + 2px);
+    min-width: 47.85px;
   }
 
   @media (min-width: 376px) and (max-width: 768px) {
+    background-color: white;
     // width: calc(70px + 4px);
   }
 
   @media (min-width: 769px) and (max-width: 1440px) {
+    background-color: white;
     // width: calc(139px + 8px);
-    width: 156px;
+    // width: 156px;
   }
   @media (min-width: 1441px) {
+    background-color: white;
     // width: calc(139px + 8px);
   }
 `;
@@ -128,40 +157,17 @@ const taskMediaStyles = (fontSize, width, height) => `
   @media (min-width: 769px) and (max-width: 1440px) {
     font-size: ${fontSize}px;
     line-height: 1.25;
-    width: 139px; /* Зміни ширину на 139px від 768px до 1440px */
-    height: ${height + 4}px; /* Збільшити висоту на 4px */
+    width: 139px; 
+    height: ${height + 4}px; 
   }
 
   @media (min-width: 1441px) {
-    font-size: ${fontSize + 2}px; /* Збільшити розмір шрифта на 2px */
+    font-size: ${fontSize + 2}px; 
     line-height: 1.25;
-    width: 146px; /* Зміни ширину на 146px понад 1440px */
-    height: ${height + 4}px; /* Збільшити висоту на 4px */
+    width: 146px; 
+    height: ${height + 4}px; 
   }
 `;
-
-// const taskMediaStyles = (fontSize, width, height) => `
-//   @media (min-width: 376px) and (max-width: 768px) {
-//     font-size: ${fontSize}px;
-//     line-height: 1.25;
-//     width: ${width}px;
-//     height: ${height}px;
-//   }
-
-//   @media (min-width: 769px) and (max-width: 1440px) {
-//     font-size: ${fontSize}px;
-//     line-height: 1.25;
-//     width: ${width}px;
-//     height: ${height + 4}px; /* Збільшити висоту на 4px */
-//   }
-
-//   @media (min-width: 1441px) {
-//     font-size: ${fontSize + 2}px; /* Збільшити розмір шрифта на 2px */
-//     line-height: 1.25;
-//     width: ${width}px;
-//     height: ${height + 4}px; /* Збільшити висоту на 4px */
-//   }
-// `;
 
 export const LowPriorityTask = styled.div`
   color: #3e85f3;
@@ -193,6 +199,28 @@ export const HighPriorityTask = styled.div`
   ${taskMediaStyles(14, 70, 22)}
 `;
 // ***********************************екекекеекекенунпвампцуравис
+// const taskMediaStyles = (fontSize, width, height) => `
+//   @media (min-width: 376px) and (max-width: 768px) {
+//     font-size: ${fontSize}px;
+//     line-height: 1.25;
+//     width: ${width}px;
+//     height: ${height}px;
+//   }
+
+//   @media (min-width: 769px) and (max-width: 1440px) {
+//     font-size: ${fontSize}px;
+//     line-height: 1.25;
+//     width: ${width}px;
+//     height: ${height + 4}px; /* Збільшити висоту на 4px */
+//   }
+
+//   @media (min-width: 1441px) {
+//     font-size: ${fontSize + 2}px; /* Збільшити розмір шрифта на 2px */
+//     line-height: 1.25;
+//     width: ${width}px;
+//     height: ${height + 4}px; /* Збільшити висоту на 4px */
+//   }
+// `;
 
 // export const CellWrapper = styled.div`
 //   border: 1px solid rgba(220, 227, 229, 0.5);
