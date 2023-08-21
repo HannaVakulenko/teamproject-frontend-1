@@ -36,9 +36,6 @@ import { updateUserAccount } from 'redux/auth/operations';
 import Swal from 'sweetalert2';
 import { phoneRegExp } from 'constants/phoneValidation';
 
-// import axios from 'axios'; // Assuming you're using Axios for HTTP requests
-
-// const formData = new FormData();
 const UserForm = () => {
   const validationSchema = yup.object().shape({
     userName: yup
@@ -77,17 +74,7 @@ const UserForm = () => {
   const [userAvatarLocal, setUserAvatarLocal] = useState(user.avatarURL);
 
   const handleSubmit = async values => {
-    // const updateUser = {
-    //   name: values.userName,
-    //   email: values.email,
-    //   birthday: userBirthday,
-    //   phone: values.phone,
-    //   skype: values.skype,
-    //   avatar: userAvatar,
-    //   password: values.password,
-    // };
 
-    console.log(userAvatar);
     const formData = new FormData();
     if (typeof userAvatar !== 'string') {
       formData.append('avatar', userAvatar);
@@ -112,25 +99,16 @@ const UserForm = () => {
       formData.append('birthday', userBirthday);
     }
 
-    // Object.entries(updateUser).forEach(([key, value]) => {
-    //   if (value) {
-    //     if (typeof value === 'string') {
-    //       formData.append(key, value.trim());
-    //     } else {
-    //       formData.append(key, value);
-    //     }
-    //   } else if (key === 'birthday') {
-    //     const date = format(new Date(userBirthday), 'yyyy-MM-dd');
-    //     formData.append('birthday', date);
-    //   }
-    // });
-
-    console.log(formData.getAll('avatar'));
-
     setFormSubmitted(true);
 
     try {
       dispatch(updateUserAccount(formData));
+      Swal.fire({
+      icon: 'success',
+      title: 'Success',
+      text: 'Your information has been successfully updated!',
+      confirmButtonColor: '#3E85F3',
+    });
     } catch (error) {
       if (error.response && error.response.status === 409) {
         Swal.fire({
@@ -140,7 +118,6 @@ const UserForm = () => {
           confirmButtonColor: '#3E85F3',
         });
       }
-      console.error('Submission error:', error);
     } finally {
       setFormSubmitted(false);
     }
@@ -250,7 +227,6 @@ const UserForm = () => {
                       selected={userBirthday}
                       onChange={date => {
                         setUserBirthday(date);
-                        console.log(userBirthday);
                       }}
                       locale="en-GB"
                       dateFormat="dd/MM/yyyy"
@@ -349,7 +325,6 @@ const UserForm = () => {
                   }`}>
                   <Label>Phone:</Label>
                   <Input
-                   
                     type="phone"
                     name="phone"
                     placeholder="38 (097) 256 34 77"
