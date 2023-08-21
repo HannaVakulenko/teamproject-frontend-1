@@ -31,7 +31,7 @@ const CalendarPage = () => {
         await dispatch(fetchTasks({
           monthStart: formatedStartMonthDate,
           monthEnd: formatedEndMonthDate,
-        }));
+        })).unwrap();
       } catch (error) {
         Swal.fire({
           icon: 'error',

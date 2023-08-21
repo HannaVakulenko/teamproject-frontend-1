@@ -47,7 +47,7 @@ const CalendarToolbar = () => {
     const getAllTasks = async () => {
       if (dayDate) {
         try {
-          await dispatch(fetchTasks(forFetchData()));
+          await dispatch(fetchTasks(forFetchData())).unwrap();
         } catch (error) {
           Swal.fire({
             icon: 'error',
