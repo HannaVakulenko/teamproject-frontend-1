@@ -1,18 +1,22 @@
 import {
   ButtonIncrease,
   ButtonDecrease,
-  Icon,
+  IconLeft,
+  IconRight,
   DatePickerWrapperStyles,
   Date,
   ForDatePicker,
   Container,
   DatePickerWrapper,
 } from './PeriodPaginator.styled';
-import DatePicker from 'react-datepicker';
+import DatePicker, { registerLocale } from 'react-datepicker';
 import icon from 'assets/icons/symbol-defs.svg';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { format } from 'date-fns';
 import 'react-datepicker/dist/react-datepicker.css';
+import { enGB } from 'date-fns/locale';
+
+registerLocale('enGB', enGB);
 
 const PeriodPaginator = ({ date, getTasks, isOpen, setIsOpen, setDate }) => {
   const location = useLocation();
@@ -26,8 +30,11 @@ const PeriodPaginator = ({ date, getTasks, isOpen, setIsOpen, setDate }) => {
 
     if (location.pathname.startsWith('/calendar/day')) {
       navigate(`/calendar/month/${formattedDate}`);
+    } else if (location.pathname.startsWith('/statistics')) {
+      navigate(`/statistics/${formattedDate}`);
+    } else {
+      navigate(`/calendar/day/${formattedDate}`);
     }
-    navigate(`/calendar/day/${formattedDate}`);
   };
   const handleClick = e => {
     e.preventDefault();
@@ -37,17 +44,16 @@ const PeriodPaginator = ({ date, getTasks, isOpen, setIsOpen, setDate }) => {
   return (
     <>
       <ForDatePicker>
-        {' '}
         <Date className="example-custom-input" onClick={handleClick}>
           {location.pathname.startsWith('/calendar/day') ||
-          location.pathname === '/statistics'
+          location.pathname.startsWith('/statistics')
             ? format(date, 'dd MMM yyyy')
             : format(date, 'MMMM yyyy')}
         </Date>
         {isOpen && (
           <DatePickerWrapper>
-            {' '}
             <DatePicker
+              locale="enGB"
               onClickOutside={() => setIsOpen(!isOpen)}
               formatWeekDay={nameOfDay => nameOfDay.substr(0, 1)}
               selected={date}
@@ -59,16 +65,15 @@ const PeriodPaginator = ({ date, getTasks, isOpen, setIsOpen, setDate }) => {
       </ForDatePicker>
 
       <Container>
-        {' '}
         <ButtonDecrease className="decrease" onClick={getTasks}>
-          <Icon width="18" height="18">
+          <IconLeft height="9">
             <use href={icon + '#icon-chevron-left'}></use>
-          </Icon>
+          </IconLeft>
         </ButtonDecrease>
         <ButtonIncrease className="increase" onClick={getTasks}>
-          <svg width="18" height="18">
+          <IconRight height="9">
             <use href={icon + '#icon-chevron-right'}></use>
-          </svg>
+          </IconRight>
         </ButtonIncrease>
       </Container>
 

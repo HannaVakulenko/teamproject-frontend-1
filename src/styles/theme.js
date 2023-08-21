@@ -32,7 +32,10 @@ export const lightTheme = {
 
   monthBorder: '1px solid rgba(62, 133, 243, 0.20)',
   buttonInDecBorder: '1px solid rgba(220, 227, 229, 0.50)',
+  chevronLeft: '#DCE3E5',
+  opacityChevron: '',
   chartBorderColor: '#E3F3FF',
+
 };
 
 export const darkTheme = {
@@ -68,5 +71,8 @@ export const darkTheme = {
 
   monthBorder: '1px solid rgba(62, 133, 243, 0.20)',
   buttonInDecBorder: '1px solid rgba(255, 255, 255, 0.15)',
+  chevronLeft: '#ffffff',
+  opacityChevron: '0.15',
   chartBorderColor: 'rgba(227, 243, 255, 0.15)',
+
 };
