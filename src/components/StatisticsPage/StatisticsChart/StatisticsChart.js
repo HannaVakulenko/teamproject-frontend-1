@@ -31,7 +31,7 @@ const StatisticsChart = () => {
   let dateStatistics = useSelector(selectDate);
   const { currentDate } = useParams();
 
-  console.log({ currentDate });
+  
   if (currentDate) {
     dateStatistics = currentDate;
   }
@@ -45,7 +45,7 @@ const StatisticsChart = () => {
   const doneByMonth = useSelector(state =>
     selectTasksByCategory(state, category.done)
   );
-  console.log(todoByMonth);
+ 
   // Задачи по категоріям за день
 
   const todoByDay = todoByMonth.filter(item =>
