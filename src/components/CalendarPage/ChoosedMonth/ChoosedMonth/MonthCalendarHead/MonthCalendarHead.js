@@ -1,5 +1,9 @@
 import React from 'react';
-import { LargeWeekday, WeekWrapper } from './MonthCalendarHead.styled';
+import {
+  LargeWeekday,
+  WeekWrapper,
+  WeekDayWrapper,
+} from './MonthCalendarHead.styled';
 import { useMediaQuery } from 'react-responsive';
 
 const MonthCalendarHead = () => {
@@ -7,27 +11,41 @@ const MonthCalendarHead = () => {
 
   return (
     <WeekWrapper>
-      <LargeWeekday $weekend={false}>
-        {isTabletOrDesktop ? 'mon' : 'm'}
-      </LargeWeekday>
-      <LargeWeekday $weekend={false}>
-        {isTabletOrDesktop ? 'tue' : 't'}
-      </LargeWeekday>
-      <LargeWeekday $weekend={false}>
-        {isTabletOrDesktop ? 'wed' : 'w'}
-      </LargeWeekday>
-      <LargeWeekday $weekend={false}>
-        {isTabletOrDesktop ? 'thu' : 't'}
-      </LargeWeekday>
-      <LargeWeekday $weekend={false}>
-        {isTabletOrDesktop ? 'fri' : 'f'}
-      </LargeWeekday>
-      <LargeWeekday $weekend={true}>
-        {isTabletOrDesktop ? 'sat' : 's'}
-      </LargeWeekday>
-      <LargeWeekday $weekend={true}>
-        {isTabletOrDesktop ? 'sun' : 's'}
-      </LargeWeekday>
+      <WeekDayWrapper>
+        <LargeWeekday $weekend={false}>
+          {isTabletOrDesktop ? 'mon' : 'm'}
+        </LargeWeekday>
+      </WeekDayWrapper>
+      <WeekDayWrapper>
+        <LargeWeekday $weekend={false}>
+          {isTabletOrDesktop ? 'tue' : 't'}
+        </LargeWeekday>
+      </WeekDayWrapper>
+      <WeekDayWrapper>
+        <LargeWeekday $weekend={false}>
+          {isTabletOrDesktop ? 'wed' : 'w'}
+        </LargeWeekday>
+      </WeekDayWrapper>
+      <WeekDayWrapper>
+        <LargeWeekday $weekend={false}>
+          {isTabletOrDesktop ? 'thu' : 't'}
+        </LargeWeekday>
+      </WeekDayWrapper>
+      <WeekDayWrapper>
+        <LargeWeekday $weekend={false}>
+          {isTabletOrDesktop ? 'fri' : 'f'}
+        </LargeWeekday>
+      </WeekDayWrapper>
+      <WeekDayWrapper>
+        <LargeWeekday $weekend={true}>
+          {isTabletOrDesktop ? 'sat' : 's'}
+        </LargeWeekday>
+      </WeekDayWrapper>
+      <WeekDayWrapper>
+        <LargeWeekday $weekend={true}>
+          {isTabletOrDesktop ? 'sun' : 's'}
+        </LargeWeekday>
+      </WeekDayWrapper>
     </WeekWrapper>
   );
 };

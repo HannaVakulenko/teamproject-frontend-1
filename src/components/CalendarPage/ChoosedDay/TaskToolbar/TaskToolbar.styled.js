@@ -11,16 +11,17 @@ export const Button = styled.button`
   padding: 0;
   background-color: transparent;
   border: none;
+  color: ${p => p.theme.mainTextColor};
 
   &:hover svg {
-    stroke: ${p => p.theme.mainAccentColorActive};
+    color: ${p => p.theme.mainAccentColorActive};
   }
 `;
 
 export const Icon = styled.svg`
   fill: none;
   stroke: currentColor;
-  transition: stroke 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 `;
 
 export const WrapperPopover = styled.div`

@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
-export const CalendarWrapper = styled.div`
+export const StyledSection = styled.section`
+  height: 100%;
   display: flex;
   flex-direction: column;
-  align-items: center;
 `;

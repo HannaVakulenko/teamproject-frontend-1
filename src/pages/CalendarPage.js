@@ -5,6 +5,8 @@ import { startOfMonth, endOfMonth, format, parseISO } from 'date-fns';
 import Swal from 'sweetalert2';
 import { fetchTasks } from 'redux/tasks/operations';
 import { CalendarToolbar } from '../components/CalendarPage/index';
+import { Spinner } from 'components/Common';
+import CalendarSection from 'components/Common/CalendarSection/CalendarSection';
 
 const CalendarPage = () => {
   const navigate = useNavigate();
@@ -20,7 +22,7 @@ const CalendarPage = () => {
   const formatedEndMonthDate = format(endOfMonthDate, 'yyyy-MM-dd');
 
   useEffect(() => {
-    if ((pathname === "/calendar" || "/calendar/") && pathname.length < 11) {
+    if ((pathname === '/calendar' || '/calendar/') && pathname.length < 11) {
       navigate(`/calendar/month/${currentDate}`);
     }
   }, [currentDate, navigate, pathname]);
@@ -28,10 +30,12 @@ const CalendarPage = () => {
   useEffect(() => {
     const getAllTasks = async () => {
       try {
-        await dispatch(fetchTasks({
-          monthStart: formatedStartMonthDate,
-          monthEnd: formatedEndMonthDate,
-        })).unwrap();
+        await dispatch(
+          fetchTasks({
+            monthStart: formatedStartMonthDate,
+            monthEnd: formatedEndMonthDate,
+          })
+        ).unwrap();
       } catch (error) {
         Swal.fire({
           icon: 'error',
@@ -45,12 +49,12 @@ const CalendarPage = () => {
   }, [dispatch, formatedEndMonthDate, formatedStartMonthDate]);
 
   return (
-    <>
+    <CalendarSection>
       <CalendarToolbar />
-      <Suspense fallback={<div>Loading...</div>}>
+      <Suspense fallback={<Spinner />}>
         <Outlet />
       </Suspense>
-    </>
+    </CalendarSection>
   );
 };
 
