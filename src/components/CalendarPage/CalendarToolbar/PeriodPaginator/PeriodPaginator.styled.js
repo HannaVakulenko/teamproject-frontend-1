@@ -55,7 +55,7 @@ export const Date = styled.button`
     line-height: 1.1;
   }
 
-  @media (min-width: 769px) and (max-width: 1440px) {
+  @media (min-width: 769px) {
     padding: 8px 12px 8px 12px;
     margin-right: 8px;
     min-width: 125px;
