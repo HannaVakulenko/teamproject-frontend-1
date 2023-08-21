@@ -18,6 +18,7 @@ export const DatePickerWrapper = styled.div`
   top: 100%;
   left: 0;
   margin-top: 10px;
+  z-index: 999;
 `;
 
 export const ContainerFlex = styled.div`
