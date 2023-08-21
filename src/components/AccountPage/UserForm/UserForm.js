@@ -54,6 +54,7 @@ const UserForm = () => {
   const [formSubmitted, setFormSubmitted] = useState(false);
   const [userBirthday, setUserBirthday] = useState(user.birthday || new Date());
   const [userAvatar, setUserAvatar] = useState(user.avatarURL);
+  const [userAvatarLocal, setUserAvatarLocal] = useState(user.avatarURL);
 
   // const date = format(new Date(userBirthday), 'yyyy-MM-dd');
   // console.log(date);
@@ -65,13 +66,14 @@ const UserForm = () => {
       birthday: userBirthday,
       phone: values.phone,
       skype: values.skype,
-      avatarURL: userAvatar,
+      avatar: userAvatar,
       password: values.password,
     };
-console.log(userBirthday===true)
+    console.log(values.phone);
+    console.log(userAvatar);
     Object.entries(updateUser).forEach(([key, value]) => {
       if (value) {
-         if (typeof value === 'string') {
+        if (typeof value === 'string') {
           formData.append(key, value.trim());
         } else {
           formData.append(key, value);
@@ -81,12 +83,13 @@ console.log(userBirthday===true)
         formData.append('birthday', date);
       }
     });
-    console.log(formData.getAll('birthday'));
 
+
+    // console.log(formData.getAll('birthday'));
 
     setFormSubmitted(true);
     try {
-      dispatch(updateUserAccount({ formData }));
+      dispatch(updateUserAccount(formData));
     } catch (error) {
       if (error.response && error.response.status === 409) {
         Swal.fire({
@@ -136,16 +139,17 @@ console.log(userBirthday===true)
   return (
     <FormWrap>
       <ImageContainer>
-        <UserImage src={userAvatar} alt="User Profile" />
+        <UserImage src={userAvatarLocal} alt="User Profile" />
         <Upload
           type="file"
           accept="image/*"
           onChange={e => {
+            setUserAvatar(e.target.files[0]);
             const file = e.target.files[0];
             if (file) {
               const reader = new FileReader();
               reader.onload = event => {
-                setUserAvatar(event.target.result);
+                setUserAvatarLocal(event.target.result);
               };
               reader.readAsDataURL(file);
             }
@@ -319,4 +323,52 @@ console.log(userBirthday===true)
   );
 };
 
+// export default UserForm;
+// import React, { useState } from 'react';
+// import axios from 'axios'; // Assuming you're using Axios for HTTP requests
+
+// function UserForm() {
+//   const [photo, setPhoto] = useState(null);
+//   const [mobileNumber, setMobileNumber] = useState('');
+
+//   const handleSubmit = async event => {
+//     event.preventDefault();
+
+//     const formData = new FormData();
+//     console.log(photo);
+//     console.log(mobileNumber);
+//     if (photo) {
+//       formData.append('avatar', photo);
+//     }
+//     formData.append('phone', mobileNumber);
+
+//     try {
+//       const response = await axios.patch(
+//         'http://localhost:8080/api/auth/account',
+//         formData
+//       );
+//       console.log(response.data);
+//     } catch (error) {
+//       console.error('Error updating account:', error);
+//     }
+//   };
+
+//   return (
+//     <form onSubmit={handleSubmit}>
+//       <div>
+//         <label>Photo:</label>
+//         <input type="file" onChange={e => setPhoto(e.target.files[0])} />
+//       </div>
+//       <div>
+//         <label>Mobile Number:</label>
+//         <input
+//           type="tel"
+//           value={mobileNumber}
+//           onChange={e => setMobileNumber(e.target.value)}
+//         />
+//       </div>
+//       <button type="submit">Update Account</button>
+//     </form>
+//   );
+// }
 export default UserForm;
