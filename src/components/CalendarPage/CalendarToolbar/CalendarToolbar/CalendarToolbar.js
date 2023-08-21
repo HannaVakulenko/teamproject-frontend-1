@@ -41,7 +41,7 @@ const CalendarToolbar = () => {
 
   useEffect(() => {
     const getAllTasks = async () => {
-      if (monthFromURL !== currentMonth) {
+      if (monthFromURL !== currentMonth && dayDate) {
         try {
           await dispatch(fetchTasks(forFetchData()));
         } catch (error) {
