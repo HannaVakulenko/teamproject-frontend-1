@@ -7,6 +7,7 @@ import { parseISO, startOfMonth, endOfMonth, format } from 'date-fns';
 import 'react-datepicker/dist/react-datepicker.css';
 import { useNavigate } from 'react-router-dom';
 import { fetchTasks } from '../../../../redux/tasks/operations';
+import Swal from 'sweetalert2';
 
 const CalendarToolbar = () => {
   const [date, setDate] = useState(new Date());
@@ -39,27 +40,22 @@ const CalendarToolbar = () => {
   };
 
   useEffect(() => {
-    if (monthFromURL !== currentMonth && dayDate) {
-      dispatch(fetchTasks(forFetchData()));
-    }
+    const getAllTasks = async () => {
+      if (monthFromURL !== currentMonth) {
+        try {
+          await dispatch(fetchTasks(forFetchData()));
+        } catch (error) {
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Something went wrong!',
+            confirmButtonColor: '#3E85F3',
+          });
+        }
+      }
+    };
+    getAllTasks();
   }, [dayDate, currentMonth, dispatch, forFetchData, monthFromURL]);
-
-  //   const getAllTasks = async () => {
-  //     if (monthFromURL !== currentMonth) {
-  //       try {
-  //         console.log('HI');
-  //         await dispatch(fetchTasks(forFetchData()));
-  //       } catch (error) {
-  //         Swal.fire({
-  //           icon: 'error',
-  //           title: 'Oops...',
-  //           text: 'Something went wrong!',
-  //           confirmButtonColor: '#3E85F3',
-  //         });
-  //       }
-  //     }
-  //   };
-  //   getAllTasks();
 
   const changeDate = e => {
     const newDate = new Date(date);
