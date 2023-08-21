@@ -95,7 +95,7 @@ const authSlice = createSlice({
         state.user = action.payload;
       })
       .addCase(updateUserAccount.fulfilled, (state, action) => {
-        console.log(action);
+        // console.log(action);
         state.user = action.payload;
       });
   },
