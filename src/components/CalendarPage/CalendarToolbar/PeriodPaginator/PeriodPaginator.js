@@ -12,9 +12,9 @@ import {
 import DatePicker, { registerLocale } from 'react-datepicker';
 import icon from 'assets/icons/symbol-defs.svg';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { format } from 'date-fns';
 import 'react-datepicker/dist/react-datepicker.css';
 import { enGB } from 'date-fns/locale';
+import { format } from 'date-fns';
 
 registerLocale('enGB', enGB);
 
@@ -28,7 +28,7 @@ const PeriodPaginator = ({ date, getTasks, isOpen, setIsOpen, setDate }) => {
     setIsOpen(!isOpen);
     setDate(e);
 
-    if (location.pathname.startsWith('/calendar/day')) {
+    if (location.pathname.startsWith('/calendar/month')) {
       navigate(`/calendar/month/${formattedDate}`);
     } else if (location.pathname.startsWith('/statistics')) {
       navigate(`/statistics/${formattedDate}`);
@@ -40,6 +40,8 @@ const PeriodPaginator = ({ date, getTasks, isOpen, setIsOpen, setDate }) => {
     e.preventDefault();
     setIsOpen(!isOpen);
   };
+
+  console.log(date);
 
   return (
     <>

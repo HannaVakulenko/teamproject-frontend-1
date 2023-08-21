@@ -277,7 +277,11 @@ export const DatePickerWrapperStyles = createGlobalStyle`
   }
 }
 
-.react-datepicker__day--keyboard-selected, .react-datepicker__day--today {
+ .react-datepicker__day--today{
+  border: 1px solid white;
+  border-radius: 50%!important;}
+
+.react-datepicker__day--keyboard-selected {
   color: ${p => p.theme.mainAccentColor} !important;
   background-color: ${p => p.theme.buttonTextColor}  !important; 
 }

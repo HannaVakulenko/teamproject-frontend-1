@@ -15,7 +15,7 @@ export const fetchTasks = createAsyncThunk(
           monthEnd: monthEnd,
         },
       });
-      console.log(response);
+
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
@@ -60,7 +60,7 @@ export const deleteTask = createAsyncThunk(
     try {
       const response = await axios.delete(`/tasks/${taskId}`);
       response.data._id = taskId;
-       Swal.fire({
+      Swal.fire({
         icon: 'success',
         title: 'Success',
         text: 'Your task has been successfully deleted!',
