@@ -26,7 +26,7 @@ import { selectUser } from 'redux/auth/selectors';
 import icon from 'assets/icons/symbol-defs.svg';
 import { Icon } from './UserForm.styled';
 import 'react-datepicker/dist/react-datepicker.css';
-import { getYear, getMonth, eachYearOfInterval, format } from 'date-fns';
+import { getYear, getMonth, eachYearOfInterval } from 'date-fns';
 import DatePicker from 'react-datepicker';
 import { registerLocale, setDefaultLocale } from 'react-datepicker';
 import enGB from 'date-fns/locale/en-GB';
@@ -34,60 +34,96 @@ import { useRef } from 'react';
 import { updateUserAccount } from 'redux/auth/operations';
 import Swal from 'sweetalert2';
 
-const validationSchema = yup.object().shape({
-  userName: yup
-    .string()
-    .max(16, 'Max 16 characters')
-    .min(2, 'Min 2 characters'),
-  email: yup.string().email('Invalid email'),
-  birthday: yup.date(),
-  phone: yup.string(),
-  skype: yup.string().max(16, 'Max 16 characters').min(5, 'Min 5 characters'),
-  password: yup.string().min(7, 'Must be at least 7 characters long'),
-});
-const formData = new FormData();
+// import axios from 'axios'; // Assuming you're using Axios for HTTP requests
+
+// const formData = new FormData();
 
 const UserForm = () => {
-  const user = useSelector(selectUser);
+  const validationSchema = yup.object().shape({
+    userName: yup
+      .string()
+      .max(16, 'Max 16 characters')
+      .min(2, 'Min 2 characters'),
+    email: yup.string().email('Invalid email'),
+    birthday: yup.date(),
+    phone: yup.string(),
+    skype: yup.string().max(16, 'Max 16 characters').min(5, 'Min 5 characters'),
+    password: yup.string().min(7, 'Must be at least 7 characters long'),
+  });
 
+
+  const user = useSelector(selectUser);
+  let dataNorm;
+  if (!user.birthday) {
+    dataNorm = new Date();
+  } else {
+    dataNorm = new Date(user.birthday);
+  }
   const dispatch = useDispatch();
   const [formSubmitted, setFormSubmitted] = useState(false);
-  const [userBirthday, setUserBirthday] = useState(user.birthday || new Date());
+
+  const [userBirthday, setUserBirthday] = useState(
+    dataNorm
+
+  );
+
   const [userAvatar, setUserAvatar] = useState(user.avatarURL);
   const [userAvatarLocal, setUserAvatarLocal] = useState(user.avatarURL);
 
-  // const date = format(new Date(userBirthday), 'yyyy-MM-dd');
-  // console.log(date);
 
-  const handleSubmit = values => {
-    const updateUser = {
-      name: values.userName,
-      email: values.email,
-      birthday: userBirthday,
-      phone: values.phone,
-      skype: values.skype,
-      avatar: userAvatar,
-      password: values.password,
-    };
-    console.log(values.phone);
+  const handleSubmit = async values => {
+    // const updateUser = {
+    //   name: values.userName,
+    //   email: values.email,
+    //   birthday: userBirthday,
+    //   phone: values.phone,
+    //   skype: values.skype,
+    //   avatar: userAvatar,
+    //   password: values.password,
+    // };
+
     console.log(userAvatar);
-    Object.entries(updateUser).forEach(([key, value]) => {
-      if (value) {
-        if (typeof value === 'string') {
-          formData.append(key, value.trim());
-        } else {
-          formData.append(key, value);
-        }
-      } else if (key === 'birthday') {
-        const date = format(new Date(userBirthday), 'yyyy-MM-dd');
-        formData.append('birthday', date);
-      }
-    });
+    const formData = new FormData();
+    if (typeof userAvatar !== "string") {
+      formData.append('avatar', userAvatar);
+    }
+    if (values.email) {
+      formData.append('email', values.email);
+    }
 
+    if (values.phone) {
+      formData.append('phone', values.phone);
+    }
+    if (values.userName) {
+      formData.append('name', values.userName);
+    }
+    if (values.password) {
+      formData.append('password', values.password);
+    }
+    if (values.skype) {
+      formData.append('skype', values.skype);
+    }
+    if (userBirthday) {
+      formData.append('birthday', userBirthday);
+    }
 
-    // console.log(formData.getAll('birthday'));
+    // Object.entries(updateUser).forEach(([key, value]) => {
+    //   if (value) {
+    //     if (typeof value === 'string') {
+    //       formData.append(key, value.trim());
+    //     } else {
+    //       formData.append(key, value);
+    //     }
+    //   } else if (key === 'birthday') {
+    //     const date = format(new Date(userBirthday), 'yyyy-MM-dd');
+    //     formData.append('birthday', date);
+    //   }
+    // });
+
+    console.log(formData.getAll('avatar'));
 
     setFormSubmitted(true);
+
     try {
       dispatch(updateUserAccount(formData));
     } catch (error) {
@@ -101,6 +137,7 @@ const UserForm = () => {
       }
       console.error('Submission error:', error);
     } finally {
+ 
       setFormSubmitted(false);
     }
   };
@@ -194,13 +231,17 @@ const UserForm = () => {
                   ref={datePickerRef}
                   formatWeekDay={nameOfDay => nameOfDay.substr(0, 1)}
                   selected={userBirthday}
-                  onChange={date => setUserBirthday(date)}
+                  onChange={date => {
+                    setUserBirthday(date);
+                    console.log(userBirthday);
+                  }}
                   locale="en-GB"
                   dateFormat="dd/MM/yyyy"
                   calendarStartDay={1}
                   placeholderText={`Select your birthday (current date: ${currentDateString})`}
                   onChangeRaw={e => {
                     e.preventDefault();
+
                     setUserBirthday(new Date(e.target.value));
                   }}
                   renderCustomHeader={({
@@ -323,52 +364,4 @@ const UserForm = () => {
   );
 };
 
-// export default UserForm;
-// import React, { useState } from 'react';
-// import axios from 'axios'; // Assuming you're using Axios for HTTP requests
-
-// function UserForm() {
-//   const [photo, setPhoto] = useState(null);
-//   const [mobileNumber, setMobileNumber] = useState('');
-
-//   const handleSubmit = async event => {
-//     event.preventDefault();
-
-//     const formData = new FormData();
-//     console.log(photo);
-//     console.log(mobileNumber);
-//     if (photo) {
-//       formData.append('avatar', photo);
-//     }
-//     formData.append('phone', mobileNumber);
-
-//     try {
-//       const response = await axios.patch(
-//         'http://localhost:8080/api/auth/account',
-//         formData
-//       );
-//       console.log(response.data);
-//     } catch (error) {
-//       console.error('Error updating account:', error);
-//     }
-//   };
-
-//   return (
-//     <form onSubmit={handleSubmit}>
-//       <div>
-//         <label>Photo:</label>
-//         <input type="file" onChange={e => setPhoto(e.target.files[0])} />
-//       </div>
-//       <div>
-//         <label>Mobile Number:</label>
-//         <input
-//           type="tel"
-//           value={mobileNumber}
-//           onChange={e => setMobileNumber(e.target.value)}
-//         />
-//       </div>
-//       <button type="submit">Update Account</button>
-//     </form>
-//   );
-// }
 export default UserForm;

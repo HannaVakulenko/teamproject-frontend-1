@@ -3,6 +3,7 @@ import axios from 'axios';
 import { setLightTheme } from '../themeSlice';
 import { AXIOS_BASE_URL } from 'constants/axiosBaseUrl';
 
+
 axios.defaults.baseURL = AXIOS_BASE_URL;
 
 const setAuthHeader = token => {
@@ -82,6 +83,8 @@ export const fetchUserAccount = createAsyncThunk(
     try {
       setAuthHeader(persistedToken);
       const res = await axios.get('/auth/account');
+
+
       return res.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
@@ -92,8 +95,7 @@ export const fetchUserAccount = createAsyncThunk(
 export const updateUserAccount = createAsyncThunk(
   'auth/updateAccount',
   async (formData, thunkAPI) => {
-
-    axios.defaults.headers.post['Content-Type'] = 'multipart/form-data';
+    // axios.defaults.headers.post['Content-Type'] = 'multipart/form-data';
 
     const state = thunkAPI.getState();
     const persistedToken = state.auth.token;
@@ -104,8 +106,8 @@ export const updateUserAccount = createAsyncThunk(
 
     try {
       setAuthHeader(persistedToken);
-      console.log(formData);
-      const res = await axios.patch('/auth/account', formData );
+      console.log(formData.getAll('avatar'));
+      const res = await axios.patch('/auth/account', formData);
       console.log(res);
       return res.data;
     } catch (error) {
