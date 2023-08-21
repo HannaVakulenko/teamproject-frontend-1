@@ -1,11 +1,11 @@
 import { startOfWeek, eachDayOfInterval, format, addDays, isSameDay, parseISO } from 'date-fns';
-import { WeekDay, WeekDate, Item, List, Wrapper } from './DayCalendarHead.styled';
+import { WeekDay, WeekDate, DayLink, List, Wrapper } from './DayCalendarHead.styled';
 import { useMediaQuery } from 'react-responsive';
-import { Link, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
 const DayCalendarHead = () => {
   const { currentDay } = useParams();
-  const result = parseISO(currentDay, 'yyyy-MM-dd');
+  const result = parseISO(currentDay, 'yyyy-MM-dd'); // 2021-08-09T00:00:00.000Z
 
   const isMobile = useMediaQuery({ maxWidth: 767 });
 
@@ -25,34 +25,36 @@ const DayCalendarHead = () => {
       <List>
         {isMobile
           ? daysOfWeekForMobile.map((day, index) => (
-            <Item key={index}>
-              <Link>
-                <WeekDay>{day}</WeekDay>
-                <WeekDate className={
-                  isSameDay(days[index], result)
-                    ? 'current-day'
-                    : ''
-                  }
-                >
-                  {daysOfMonth[index]}
-                </WeekDate>
-              </Link>
-            </Item>
+            <DayLink
+              to={`/calendar/day/${format(days[index], 'yyyy-MM-dd')}`}
+              key={index}
+            >
+              <WeekDay>{day}</WeekDay>
+              <WeekDate className={
+                isSameDay(days[index], result)
+                  ? 'current-day'
+                  : ''
+                }
+              >
+                {daysOfMonth[index]}
+              </WeekDate>
+            </DayLink>
           ))
           : daysOfWeek.map((day, index) => (
-            <Item key={index}>
-              <Link>
-                <WeekDay>{day}</WeekDay>
-                <WeekDate className={
-                  isSameDay(days[index], result)
-                    ? 'current-day'
-                    : ''
-                  }
-                >
-                  {daysOfMonth[index]}
-                </WeekDate>
-              </Link>
-            </Item>
+            <DayLink
+              to={`/calendar/day/${format(days[index], 'yyyy-MM-dd')}`}
+              key={index}
+            >
+              <WeekDay>{day}</WeekDay>
+              <WeekDate className={
+                isSameDay(days[index], result)
+                  ? 'current-day'
+                  : ''
+                }
+              >
+                {daysOfMonth[index]}
+              </WeekDate>
+            </DayLink>
           ))}
       </List>
     </Wrapper>
