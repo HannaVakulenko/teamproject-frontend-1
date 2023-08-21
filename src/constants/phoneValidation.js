@@ -1,1 +1,1 @@
-export const phoneRegExp = /^(?:\+?\d{2,3}[-.(\s)]?)?\d{10}$|^38 \(\d{3}\) \d{3} \d{2} \d{2}$/;
+export const phoneRegExp = /^(?:\+380\d{9}|0\d{9}|380\d{9}|38\s\d{3}\s\d{3}\s\d{2}\s\d{2})$/;
