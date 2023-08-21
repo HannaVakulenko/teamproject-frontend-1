@@ -1,11 +1,17 @@
 import React from 'react';
 import moment from 'moment';
-
+import { useSelector } from 'react-redux';
+import { selectTasks } from '../../../../redux/tasks/selectors';
 import {
   GridWrapper,
   CellWrapper,
-  RowInCell,
+  // RowInCell,
   DayWrapper,
+  LowPriorityTask,
+  MediumPriorityTask,
+  HighPriorityTask,
+  TaskContainer,
+  Container,
 } from './CalendarTable.styled';
 
 const CalendarTable = ({ startDay }) => {
@@ -50,23 +56,52 @@ const CalendarTable = ({ startDay }) => {
       isCurrentMonth: false,
     });
   }
+  const tasks = useSelector(selectTasks);
 
   return (
     <div>
-      <GridWrapper>
-        {daysArray.map(({ day, isCurrentMonth }, i) => (
-          <CellWrapper key={day ? day.format('DDMMYYYY') : `empty-${i}`}>
-            <RowInCell>
-              <DayWrapper
-                className={isCurrentMonth ? 'current-month' : ''}
-                $today={day && day.isSame(currentDate, 'day')}
-              >
-                {day ? day.format('D') : ''}
-              </DayWrapper>
-            </RowInCell>
-          </CellWrapper>
-        ))}
-      </GridWrapper>
+      <Container>
+        <GridWrapper>
+          {daysArray.map(({ day, isCurrentMonth }, i) => (
+            <CellWrapper key={day ? day.format('DDMMYYYY') : `empty-${i}`}>
+              {day && (
+                <DayWrapper
+                  className={isCurrentMonth ? 'current-month' : ''}
+                  $today={day && day.isSame(currentDate, 'day')}
+                >
+                  {day ? day.format('D') : ''}
+                </DayWrapper>
+              )}
+              {day && (
+                <div key={`day-${day.format('DDMMYYYY')}`}>
+                  {tasks.map((task, index) => {
+                    if (day.isSame(task.date, 'day')) {
+                      let TaskComponent = null;
+
+                      if (task.priority === 'low') {
+                        TaskComponent = LowPriorityTask;
+                      } else if (task.priority === 'medium') {
+                        TaskComponent = MediumPriorityTask;
+                      } else if (task.priority === 'high') {
+                        TaskComponent = HighPriorityTask;
+                      }
+
+                      return (
+                        <TaskContainer
+                          key={task.id ? `task-${task.id}` : `task-${index}`}
+                        >
+                          <TaskComponent>{task.title}</TaskComponent>
+                        </TaskContainer>
+                      );
+                    }
+                    return null;
+                  })}
+                </div>
+              )}
+            </CellWrapper>
+          ))}
+        </GridWrapper>
+      </Container>
     </div>
   );
 };
