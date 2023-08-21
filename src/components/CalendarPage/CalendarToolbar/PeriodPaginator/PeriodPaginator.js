@@ -41,7 +41,7 @@ const PeriodPaginator = ({ date, getTasks, isOpen, setIsOpen, setDate }) => {
     setIsOpen(!isOpen);
   };
 
-  console.log(date);
+  // console.log(date);
 
   return (
     <>

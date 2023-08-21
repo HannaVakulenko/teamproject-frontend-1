@@ -106,9 +106,9 @@ export const updateUserAccount = createAsyncThunk(
 
     try {
       setAuthHeader(persistedToken);
-      console.log(formData.getAll('avatar'));
+      // console.log(formData.getAll('avatar'));
       const res = await axios.patch('/auth/account', formData);
-      console.log(res);
+      // console.log(res);
       return res.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error);

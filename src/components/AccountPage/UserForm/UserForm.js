@@ -78,7 +78,7 @@ const UserForm = () => {
     //   password: values.password,
     // };
 
-    console.log(userAvatar);
+    // console.log(userAvatar);
     const formData = new FormData();
     if (typeof userAvatar !== 'string') {
       formData.append('avatar', userAvatar);
@@ -116,7 +116,7 @@ const UserForm = () => {
     //   }
     // });
 
-    console.log(formData.getAll('avatar'));
+    // console.log(formData.getAll('avatar'));
 
     setFormSubmitted(true);
 
@@ -229,7 +229,7 @@ const UserForm = () => {
                     selected={userBirthday}
                     onChange={date => {
                       setUserBirthday(date);
-                      console.log(userBirthday);
+                      // console.log(userBirthday);
                     }}
                     locale="en-GB"
                     dateFormat="dd/MM/yyyy"
