@@ -62,7 +62,7 @@ const CalendarToolbar = () => {
       }
     };
     getAllTasks();
-  }, [dayDate, dispatch, forFetchData]);
+  }, [dayDate, dispatch, error_text, forFetchData]);
 
   useEffect(() => {
     if (dayDate) {

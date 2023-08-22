@@ -50,7 +50,7 @@ const CalendarPage = () => {
       }
     };
     getAllTasks();
-  }, [dispatch, formatedEndMonthDate, formatedStartMonthDate]);
+  }, [dispatch, error_text, formatedEndMonthDate, formatedStartMonthDate]);
 
   return (
     <CalendarSection>
