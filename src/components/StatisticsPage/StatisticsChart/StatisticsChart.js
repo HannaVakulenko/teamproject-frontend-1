@@ -19,19 +19,20 @@ import { device } from 'constants';
 import { selectDate } from '../../../redux/date/selectors';
 
 import { selectTasksByCategory } from 'redux/tasks/selectors';
-import { category }  from '../../../constants/taskStatus';
+import { category } from '../../../constants/taskStatus';
 
 import {
   ContainerSecondWrapper,
   ContainerFirstWrapper,
 } from './StatisticsChart.styled';
+import { useTranslation } from 'react-i18next';
 
 const StatisticsChart = () => {
+  const { t } = useTranslation();
   //Дата
   let dateStatistics = useSelector(selectDate);
   const { currentDate } = useParams();
 
-  
   if (currentDate) {
     dateStatistics = currentDate;
   }
@@ -45,7 +46,7 @@ const StatisticsChart = () => {
   const doneByMonth = useSelector(state =>
     selectTasksByCategory(state, category.done)
   );
- 
+
   // Задачи по категоріям за день
 
   const todoByDay = todoByMonth.filter(item =>
@@ -223,7 +224,7 @@ const StatisticsChart = () => {
   }, []);
 
   // useEffect(() => {
-   
+
   //     dispatch(
   //       fetchTasks({
   //         monthStart: monthStart,
@@ -285,7 +286,7 @@ const StatisticsChart = () => {
                 fontWeight={600}
                 lineHeight={1.5}
               >
-                Tasks
+                {t('task')}
               </Label>
             </YAxis>
 

@@ -8,8 +8,13 @@ import 'react-datepicker/dist/react-datepicker.css';
 import { useNavigate } from 'react-router-dom';
 import { fetchTasks } from '../../../../redux/tasks/operations';
 import Swal from 'sweetalert2';
+import { useTranslation } from 'react-i18next';
 
 const CalendarToolbar = () => {
+  const { t } = useTranslation();
+
+  const error_text = t('error_text');
+
   const { currentDate } = useParams();
   const { currentDay } = useParams();
   // console.log(currentDay);
@@ -59,7 +64,7 @@ const CalendarToolbar = () => {
           Swal.fire({
             icon: 'error',
             title: 'Oops...',
-            text: 'Something went wrong!',
+            text: error_text,
             confirmButtonColor: '#3E85F3',
           });
         }
@@ -68,12 +73,12 @@ const CalendarToolbar = () => {
     getAllTasks();
   }, [dayDate, dispatch, forFetchData]);
 
-    useEffect(() => {
-      if (dayDate) {
-        const newDate = new Date(dayDate);
-        setDate(newDate);
-      }
-    }, [dayDate]);
+  useEffect(() => {
+    if (dayDate) {
+      const newDate = new Date(dayDate);
+      setDate(newDate);
+    }
+  }, [dayDate]);
 
   const changeDate = e => {
     const newDate = new Date(date);

@@ -93,7 +93,7 @@ const LoginForm = () => {
                   : ''
               }`}
             >
-              <FormLabel htmlFor="email">Email</FormLabel>
+              <FormLabel htmlFor="email">{t('email')}</FormLabel>
               <ErrorIcon width="20" height="20" data-status="error">
                 <use href={icon + '#icon-Vector'}></use>
               </ErrorIcon>

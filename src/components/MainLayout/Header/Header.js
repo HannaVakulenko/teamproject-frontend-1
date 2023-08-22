@@ -21,7 +21,6 @@ import icon from 'assets/icons/symbol-defs.svg';
 import { mainlayout } from 'assets/images/mainlayoutHeader';
 import { device } from 'constants';
 import LanguageFlags from '../../../LanguageFlags';
-import { useTranslation } from 'react-i18next';
 
 const getCurrentMainTitle = location => {
   if (location.pathname.startsWith('/account')) return 'User Profile';

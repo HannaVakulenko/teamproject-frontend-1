@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 import { device } from 'constants';
+import LanguageFlags from 'LanguageFlags';
 
 export const WrappAuthSection = styled.section`
   display: flex;
@@ -16,6 +17,9 @@ export const ImgHero = styled.img`
   @media (min-width: ${device.tablet}px) {
     width: 150px;
   }
+`;
+export const LanguageFlagsStyled = styled(LanguageFlags)`
+  position: absolute;
 `;
 
 export const HeroTitle = styled.h1`

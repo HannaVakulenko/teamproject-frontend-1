@@ -29,6 +29,7 @@ const resources = {
 
       user_panel: 'User Panel',
       user_profile: 'User Profile',
+
       my_account: 'My Account',
       calendar: 'Calendar',
       statistics: 'Statistics',
@@ -40,6 +41,7 @@ const resources = {
 
       email: 'Email',
       valid_email: 'This is a valid email',
+      email_invalid: 'Invalid email',
       enter_email: 'Enter email',
       email_exist: 'User with this email address already exists!',
       schema_email_yup: 'Email address must contain an "@" sign',
@@ -61,7 +63,8 @@ const resources = {
       user_name: 'User Name',
       user_name_reg:
         'Name may contain only letters, apostrophe, dash and spaces',
-      user_name_length: 'Must be at least 2 characters long',
+      user_name_max: 'Max 16 characters',
+      user_name_min: 'Min 2 characters',
       user_name_req: 'Name is required',
 
       phone: 'Phone',
@@ -80,7 +83,7 @@ const resources = {
       edit_task: 'Edit Task',
       delete_task: 'Delete Task',
 
-      task: 'Task',
+      task: 'Tasks',
       to_do: 'To Do',
       in_progress: 'In Progress',
       done: 'Done',
@@ -114,7 +117,11 @@ const resources = {
       category_req: 'Category is required',
 
       rating: 'Rating',
+      rating_req: 'Rating',
       review: 'Review',
+
+      feedback_text_lenght: 'Must be 300 characters or less',
+      feedback_text_req: 'Field review is required',
 
       month: 'Month',
       day: 'Day',
@@ -137,6 +144,11 @@ const resources = {
       page_404:
         "We're sorry, the page you requested could not be found. Please go back to the homepage.",
       back: 'Back to home',
+      go_back: 'Go Back',
+
+      success: 'Success',
+      success_text_review: 'Your review has been successfully deleted!',
+      success_text_task: 'Your task has been successfully deleted!',
     },
   },
   ua: {
@@ -168,21 +180,28 @@ const resources = {
       feedback: "Зворотній зв'язок",
 
       name: "Ім'я",
-      password: 'Пароль',
-      change_pass: 'Змінити пароль',
+      enter_name: "Введіть ваше ім'я",
+      name_valid: "Це дійсне ім'я",
 
+      email: 'Email',
       valid_email: 'Це дійсна електронна пошта',
-      valid_pass: 'Це дійсний пароль',
+      email_invalid: 'Недійсна електронна пошта',
+      enter_email: 'Введіть електронну пошту',
+      email_exist: 'Користувач з цією адресою електронної пошти вже існує!',
       schema_email_yup: 'Адреса електронної пошти повинна містити символ "@"',
       schema_email_mat: 'Повинна бути дійсною електронною адресою',
       schema_email_req: "Адреса електронної пошти обов'язкова",
+
+      password: 'Пароль',
+      enter_pass: 'Введіть пароль',
+      valid_pass: 'Це дійсний пароль',
+      change_pass: 'Змінити пароль',
       schema_pass_yup: 'Пароль повинен містити щонайменше 7 символів',
       schema_pass_req: "Пароль обов'язковий",
-      swal_error_text: 'Електронна пошта або пароль невірні!',
-      enter_email: 'Введіть електронну пошту',
-      enter_pass: 'Введіть пароль',
 
       error: 'Помилка',
+      error_text: 'Щось пішло не так!',
+      swal_error_text: 'Електронна пошта або пароль невірні!',
 
       user: 'User',
       user_name: "Ім'я користувача",
@@ -202,13 +221,11 @@ const resources = {
       birthday: 'День народження',
       select_birthday: 'Виберіть свій день народження (поточна дата:',
 
-      email: 'Email',
-      email_exist: 'User with this email address already exists!',
-
       save_changes: 'Зберегти зміни',
       add_task: 'Додати завдання',
       edit_task: 'Редагувати завдання',
       delete_task: 'Видалити завдання',
+
       task: 'Завдання',
       to_do: 'Виконати',
       in_progress: 'В процесі',
@@ -243,9 +260,14 @@ const resources = {
       category_req: "Категорія обов'язкова",
 
       rating: 'Рейтинг',
+      rating_req: "Обов'язково",
       review: 'Відгук',
 
+      feedback_text_lenght: 'Повинно бути 300 символів або менше',
+      feedback_text_req: "Обов'язкове поле відгуку",
+
       month: 'Місяць',
+      formattedDate: 'месяц {{date}}',
       day: 'День',
       days: {
         monL: 'пн',
@@ -266,6 +288,11 @@ const resources = {
       page_404:
         'Вибачте, сторінку, яку ви запросили, не вдалося знайти. Будь ласка, поверніться на головну сторінку.',
       back: 'Повернутися на головну',
+      go_back: 'Повернутися назад',
+
+      success: 'Успіх',
+      success_text_review: 'Ваш відгук успішно видалено!',
+      success_text_task: 'Ваше завдання успішно видалено!',
     },
   },
   de: {
@@ -297,21 +324,28 @@ const resources = {
       feedback: 'Rückmeldung',
 
       name: 'Name',
-      password: 'Passwort',
-      change_pass: 'Passwort ändern',
+      enter_name: 'Geben Sie Ihren Namen ein',
+      name_valid: 'Dies ist ein gültiger Name',
 
+      email: 'Email',
       valid_email: 'Dies ist eine gültige E-Mail-Adresse',
-      valid_pass: 'Dies ist ein gültiges Passwort',
+      email_invalid: 'Ungültige E-Mail-Adresse',
+      enter_email: 'Geben Sie Ihre E-Mail-Adresse ein',
+      email_exist: 'Ein Benutzer mit dieser E-Mail-Adresse existiert bereits!',
       schema_email_yup: 'Die E-Mail-Adresse muss ein "@"-Zeichen enthalten',
       schema_email_mat: 'Muss eine gültige E-Mail-Adresse sein',
       schema_email_req: 'E-Mail ist erforderlich',
+
+      password: 'Passwort',
+      enter_pass: 'Geben Sie Ihr Passwort ein',
+      change_pass: 'Passwort ändern',
+      valid_pass: 'Dies ist ein gültiges Passwort',
       schema_pass_yup: 'Muss mindestens 7 Zeichen lang sein',
       schema_pass_req: 'Passwort ist erforderlich',
-      swal_error_text: 'E-Mail oder Passwort ist falsch!',
-      enter_email: 'Geben Sie Ihre E-Mail-Adresse ein',
-      enter_pass: 'Geben Sie Ihr Passwort ein',
 
       error: 'Fehler',
+      error_text: ' Etwas ist schiefgegangen!',
+      swal_error_text: 'E-Mail oder Passwort ist falsch!',
 
       user: 'User',
       user_name: 'Benutzername',
@@ -331,14 +365,11 @@ const resources = {
       birthday: 'Geburtstag',
       select_birthday: 'Wählen Sie Ihren Geburtstag (aktuelles Datum:',
 
-      email: 'Email',
-      email_exist: 'User with this email address already exists!',
-
+      task: 'Aufgaben',
       save_changes: 'Änderungen speichern',
       add_task: 'Aufgabe hinzufügen',
       edit_task: 'Aufgabe bearbeiten',
       delete_task: 'Aufgabe löschen',
-      task: 'Aufgabe',
       to_do: 'Zu erledigen',
       in_progress: 'In Bearbeitung',
       done: 'Erledigt',
@@ -372,7 +403,11 @@ const resources = {
       category_req: 'Kategorie ist erforderlich',
 
       rating: 'Bewertung',
+      rating_req: 'Erforderlich',
       review: 'Rezension',
+
+      feedback_text_lenght: 'Muss 300 Zeichen oder weniger sein',
+      feedback_text_req: 'Feld Bewertung ist erforderlich',
 
       month: 'Monat',
       day: 'Tag',
@@ -395,6 +430,11 @@ const resources = {
       page_404:
         'Es tut uns leid, die von Ihnen angeforderte Seite konnte nicht gefunden werden. Bitte gehen Sie zurück zur Startseite.',
       back: 'Zurück zur Startseite',
+      go_back: 'Zurück gehen',
+
+      success: 'Erfolg',
+      success_text_review: 'Ihre Bewertung wurde erfolgreich gelöscht!',
+      success_text_task: 'Ihre Aufgabe wurde erfolgreich gelöscht!',
     },
   },
 };

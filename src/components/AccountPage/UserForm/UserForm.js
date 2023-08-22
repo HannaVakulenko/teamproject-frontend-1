@@ -34,7 +34,7 @@ import enGB from 'date-fns/locale/en-GB';
 import { useRef } from 'react';
 import { updateUserAccount } from 'redux/auth/operations';
 import Swal from 'sweetalert2';
-import { useTranslation } from 'react-i18next';
+import { Trans, useTranslation } from 'react-i18next';
 
 // import axios from 'axios'; // Assuming you're using Axios for HTTP requests
 
@@ -45,13 +45,25 @@ const UserForm = () => {
   const validationSchema = yup.object().shape({
     userName: yup
       .string()
-      .max(16, 'Max 16 characters')
-      .min(2, 'Min 2 characters'),
-    email: yup.string().email('Invalid email'),
+      .max(16, <Trans i18nKey="user_name_max">Max 16 characters</Trans>)
+      .min(2, <Trans i18nKey="user_name_min">Min 2 characters</Trans>),
+    email: yup
+      .string()
+      .email(<Trans i18nKey="email_invalid">Invalid email</Trans>),
     birthday: yup.date(),
     phone: yup.string(),
-    skype: yup.string().max(16, 'Max 16 characters').min(5, 'Min 5 characters'),
-    password: yup.string().min(7, 'Must be at least 7 characters long'),
+    skype: yup
+      .string()
+      .max(16, <Trans i18nKey="skype_max">Max 16 characters</Trans>)
+      .min(5, <Trans i18nKey="skype_min">Min 5 characters</Trans>),
+    password: yup
+      .string()
+      .min(
+        7,
+        <Trans i18nKey="schema_pass_yup">
+          Must be at least 7 characters long
+        </Trans>
+      ),
   });
 
   const user = useSelector(selectUser);
@@ -215,13 +227,17 @@ const UserForm = () => {
           <BoxWrap>
             <InputWrapperL className="left-column">
               <FieldWrap>
-                <Label>User Name:</Label>
-                <Input type="text" name="userName" placeholder="User Name" />
+                <Label>{t('user_name')}:</Label>
+                <Input
+                  type="text"
+                  name="userName"
+                  placeholder={t('user_name')}
+                />
                 <ErrorText name="userName" component="div" />
               </FieldWrap>
 
               <FieldWrap>
-                <Label>Birthday:</Label>
+                <Label>{t('birthday')}:</Label>
                 <StyledDatePickerInputWrapper>
                   <DatePicker
                     name="birthday"
@@ -313,15 +329,15 @@ const UserForm = () => {
               </FieldWrap>
 
               <FieldWrap>
-                <Label>Email:</Label>
-                <Input type="email" name="email" placeholder="Email" />
+                <Label>{t('email')}:</Label>
+                <Input type="email" name="email" placeholder={t('email')} />
                 <ErrorText name="email" component="div" />
               </FieldWrap>
             </InputWrapperL>
 
             <InputWrapperR className="right-column">
               <FieldWrap>
-                <Label>Phone:</Label>
+                <Label>{t('phone')}:</Label>
                 <Input
                   type="text"
                   name="phone"
@@ -331,22 +347,22 @@ const UserForm = () => {
               </FieldWrap>
 
               <FieldWrap>
-                <Label>Skype:</Label>
+                <Label>{t('skype')}:</Label>
                 <Input
                   type="text"
                   name="skype"
-                  placeholder="Enter your Skype ID"
+                  placeholder={t('enter_skype')}
                 />
                 <ErrorText name="skype" component="div" />
               </FieldWrap>
 
               <FieldWrap>
-                <Label htmlFor="password">Password:</Label>
+                <Label htmlFor="password">{t('password')}:</Label>
                 <Input
                   id="password"
                   name="password"
                   type="password"
-                  placeholder="Change your password"
+                  placeholder={t('change_pass')}
                 />
                 <ErrorText name="password" component="div" />
               </FieldWrap>
@@ -354,7 +370,7 @@ const UserForm = () => {
           </BoxWrap>
 
           <SaveChangesBtn type="submit" disabled={formSubmitted}>
-            Save changes
+            {t('save_changes')}
           </SaveChangesBtn>
 
           <DatePickerWrapperStyles />

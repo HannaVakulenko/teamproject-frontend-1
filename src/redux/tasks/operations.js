@@ -1,6 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 import { AXIOS_BASE_URL } from 'constants/axiosBaseUrl';
+
 import Swal from 'sweetalert2';
 
 axios.defaults.baseURL = AXIOS_BASE_URL;

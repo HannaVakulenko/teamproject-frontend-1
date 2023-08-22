@@ -101,9 +101,8 @@ export const Icon = styled.svg`
 `;
 
 export const Flags = styled.div`
-  display: flex;
-  /* position: absolute; */
-  /* right: 0; */
-  /* padding-right: 20px; */
-  /* padding-top: 20px; */
+  display: ${p => (p.$type === 'user' ? 'flex' : 'block')};
+  position: ${p => (p.$type === 'user' ? 'static' : 'absolute')};
+  right: 20px;
+  top: 20px;
 `;

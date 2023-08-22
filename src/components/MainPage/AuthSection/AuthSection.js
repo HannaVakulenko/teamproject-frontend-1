@@ -8,19 +8,18 @@ import {
   RegisterNavLink,
   WrappAuthSection,
   WrapLink,
+  LanguageFlagsStyled,
 } from 'components/MainPage/AuthSection/AuthSection.styled';
 
 import { mainpageGoose } from 'assets/images/mainpageGoose';
-import LanguageFlags from 'LanguageFlags';
+// import LanguageFlags from 'LanguageFlags';
 import { useTranslation } from 'react-i18next';
 
 const AuthSection = () => {
   const { t } = useTranslation();
   return (
     <WrappAuthSection>
-      <LanguageFlags
-        style={{ position: 'absolute', marginRight: '10px', marginTop: '10px' }}
-      />
+      <LanguageFlagsStyled />
       <picture>
         {/* Webp */}
         <source
