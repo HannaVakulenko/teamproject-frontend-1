@@ -213,7 +213,7 @@ export const DatePickerWrapperStyles = createGlobalStyle`
 
 .react-datepicker__day-name {
   font-size: 14px !important;
-  ine-height: 18px !important;
+  line-height: 18px !important;
 
   @media (min-width: ${tablet}px) {
     width: 48px !important;
