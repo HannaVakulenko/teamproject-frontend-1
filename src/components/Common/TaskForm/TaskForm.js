@@ -94,7 +94,7 @@ const TaskForm = ({ onClose, action, column, priority, taskToEdit }) => {
         title: taskToEdit?.title || '',
         start: taskToEdit?.start || '09:00',
         end: taskToEdit?.end || '10:00',
-        priority: taskToEdit?.priority || "Low",
+        priority: taskToEdit?.priority || "low",
         category: column,
         date: currentDay,
       }}
