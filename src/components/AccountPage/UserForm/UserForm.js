@@ -57,45 +57,60 @@ const UserForm = () => {
     password: yup.string().min(7, 'Must be at least 7 characters long'),
   });
 
+  const dispatch = useDispatch();
   const user = useSelector(selectUser);
+
   let dataNorm;
   if (!user.birthday) {
     dataNorm = new Date();
   } else {
     dataNorm = new Date(user.birthday);
   }
-  const dispatch = useDispatch();
+
   const [formSubmitted, setFormSubmitted] = useState(false);
-
   const [userBirthday, setUserBirthday] = useState(dataNorm);
-
   const [userAvatar, setUserAvatar] = useState(user.avatarURL);
   const [userAvatarLocal, setUserAvatarLocal] = useState(user.avatarURL);
 
   const handleSubmit = async values => {
     const formData = new FormData();
+
+    Object.entries(values).forEach(([key, value]) => {
+      if (value) {
+        if (key === 'userName') {
+          formData.append('name', value);
+          return;
+        }
+        formData.append(key, value);
+      }
+    });
+
     if (typeof userAvatar !== 'string') {
       formData.append('avatar', userAvatar);
     }
-    if (values.email) {
-      formData.append('email', values.email);
-    }
+    // if (values.email) {
+    //   formData.append('email', values.email);
+    // }
 
-    if (values.phone) {
-      formData.append('phone', values.phone);
-    }
-    if (values.userName) {
-      formData.append('name', values.userName);
-    }
-    if (values.password) {
-      formData.append('password', values.password);
-    }
-    if (values.skype) {
-      formData.append('skype', values.skype);
-    }
+    // if (values.phone) {
+    //   formData.append('phone', values.phone);
+    // }
+    // if (values.userName) {
+    //   formData.append('name', values.userName);
+    // }
+    // if (values.password) {
+    //   formData.append('password', values.password);
+    // }
+    // if (values.skype) {
+    //   formData.append('skype', values.skype);
+    // }
     if (userBirthday) {
       formData.append('birthday', userBirthday);
     }
+
+    // for (let [name, value] of formData) {
+    //   console.log(`${name} = ${value}`);
+    // }
 
     setFormSubmitted(true);
 
