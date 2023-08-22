@@ -20,6 +20,7 @@ export const Button = styled.button`
 
 export const Icon = styled.svg`
   fill: none;
+  color: ${p => p.theme.mainTextColor};
   stroke: currentColor;
   transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 `;
@@ -46,6 +47,7 @@ export const ButtonMenu = styled.button`
   font-size: 12px;
   font-weight: 500;
   line-height: 1.17;
+  color: ${p => p.theme.mainTextColor};
   background-color: transparent;
   border: none;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
