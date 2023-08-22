@@ -4,7 +4,6 @@ import { device } from 'constants';
 export const GridWrapper = styled.div`
   display: grid;
   grid-template-columns: repeat(7, 1fr);
-  grid-template-rows: ; /* Залиште порожнім */
   border: 1px solid ${p => p.theme.calendarDeviderColor};
   border-radius: 8px;
   background-color: ${p => p.theme.secondaryBgColor};
@@ -67,7 +66,7 @@ export const TaskContainerWrapper = styled.div`
   flex-direction: column;
   gap: 10px;
   height: 1px;
-  overflow: hidden;
+  overflow: auto;
   flex-grow: 1;
   flex-shrink: 1;
 `;
