@@ -2,6 +2,9 @@ import { styled } from 'styled-components';
 import { device } from 'constants';
 
 export const Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   padding: 14px 18px;
   border-radius: 8px;
   border: 1px solid ${p => p.theme.calendarDeviderColor};
