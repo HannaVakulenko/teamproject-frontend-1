@@ -19,6 +19,7 @@ import { Form, Formik, useField } from 'formik';
 import { useDispatch, useSelector } from 'react-redux';
 import { addReview, deleteReview, editReview } from 'redux/reviews/operations';
 import { selectUserReview } from 'redux/reviews/selectors';
+import { Trans, useTranslation } from 'react-i18next';
 
 const TextArea = ({ label, ...props }) => {
   const [field, meta] = useField(props);
@@ -32,6 +33,10 @@ const TextArea = ({ label, ...props }) => {
 };
 
 const FeedbackForm = ({ closeModal }) => {
+  const { t } = useTranslation();
+  const edit = t('edit');
+  const save = t('save');
+
   const dispatch = useDispatch();
 
   const isFeedback = useSelector(selectUserReview);
@@ -49,10 +54,19 @@ const FeedbackForm = ({ closeModal }) => {
         feedbacText: isFeedback.length === 0 ? '' : isFeedback[0].review,
       }}
       validationSchema={Yup.object({
-        rating: Yup.number().required('Required'),
+        rating: Yup.number().required(
+          <Trans i18nKey="rating_req">Required</Trans>
+        ),
         feedbacText: Yup.string()
-          .max(300, 'Must be 300 characters or less')
-          .required('Field review is required'),
+          .max(
+            300,
+            <Trans i18nKey="feedback_text_lenght">
+              Must be 300 characters or less
+            </Trans>
+          )
+          .required(
+            <Trans i18nKey="feedback_text_req">Field review is required</Trans>
+          ),
       })}
       onSubmit={values => {
         if (!isEdit) {
@@ -74,7 +88,7 @@ const FeedbackForm = ({ closeModal }) => {
       }}
     >
       <Form>
-        <TextReview>Rating</TextReview>
+        <TextReview>{t('rating')}</TextReview>
 
         <Rating
           name="rating"
@@ -96,7 +110,7 @@ const FeedbackForm = ({ closeModal }) => {
         />
 
         <FormFieldReview>
-          <TextReview>Review</TextReview>
+          <TextReview>{t('review')}</TextReview>
           {(isFeedback.length || isEdit) && (
             <>
               <EditBtn
@@ -129,14 +143,14 @@ const FeedbackForm = ({ closeModal }) => {
           disabled={!(isFeedback.length === 0) && !isEdit}
           name="feedbacText"
           rows="6"
-          placeholder="Enter text"
+          placeholder={t('description')}
         />
 
         {(!isFeedback.length || isEdit) && (
           <WrapControlBtn>
-            <SaveBtn type="submit">{isEdit ? 'Edit' : 'Save'}</SaveBtn>
+            <SaveBtn type="submit">{isEdit ? edit : save}</SaveBtn>
             <CancelBtn onClick={closeModal} type="button">
-              Cancel
+              {t('cancel')}
             </CancelBtn>
           </WrapControlBtn>
         )}

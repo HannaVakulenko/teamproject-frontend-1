@@ -99,3 +99,10 @@ export const Icon = styled.svg`
     height: 34px;
   }
 `;
+
+export const Flags = styled.div`
+  display: ${p => (p.$type === 'user' ? 'flex' : 'block')};
+  position: ${p => (p.$type === 'user' ? 'static' : 'absolute')};
+  right: 20px;
+  top: 20px;
+`;

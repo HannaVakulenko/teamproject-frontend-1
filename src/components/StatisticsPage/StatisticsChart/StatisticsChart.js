@@ -25,8 +25,11 @@ import {
   ContainerSecondWrapper,
   ContainerFirstWrapper,
 } from './StatisticsChart.styled';
+import { useTranslation } from 'react-i18next';
 
 const StatisticsChart = () => {
+  const { t } = useTranslation();
+
   // Date
   let dateStatistics = useSelector(selectDate);
   const { currentDate } = useParams();
@@ -273,7 +276,7 @@ const StatisticsChart = () => {
                 fontWeight={600}
                 lineHeight={1.5}
               >
-                Tasks
+                {t('task')}
               </Label>
             </YAxis>
 

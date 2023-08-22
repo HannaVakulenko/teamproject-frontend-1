@@ -20,6 +20,7 @@ import {
 import icon from 'assets/icons/symbol-defs.svg';
 import { mainlayout } from 'assets/images/mainlayoutHeader';
 import { device } from 'constants';
+import LanguageFlags from '../../../LanguageFlags';
 
 const getCurrentMainTitle = location => {
   if (location.pathname.startsWith('/account')) return 'User Profile';
@@ -80,6 +81,7 @@ const Header = ({ toggleSidebar }) => {
       </TitleBurgerWrapper>
       <ControllWrapper>
         <AddFeedbackBtn />
+        <LanguageFlags />
         <ThemeUserWrapper>
           <ThemeToggler />
           <UserInfo />

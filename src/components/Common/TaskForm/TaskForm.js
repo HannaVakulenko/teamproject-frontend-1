@@ -22,21 +22,27 @@ import {
 } from './TaskForm.styled';
 
 import icon from 'assets/icons/symbol-defs.svg';
+import { Trans, useTranslation } from 'react-i18next';
 
 const TaskForm = ({ onClose, action, column, priority, taskToEdit }) => {
+  const { t } = useTranslation();
   const dispatch = useDispatch();
   const { currentDay } = useParams();
 
   const TaskSchema = Yup.object().shape({
     title: Yup.string()
-      .max(250, 'Title is too long')
-      .required('Title is required'),
-    start: Yup.string().required('Start time is required'),
+      .max(250, <Trans i18nKey="title_lenght">Title is too long</Trans>)
+      .required(<Trans i18nKey="title_req">Title is required</Trans>),
+    start: Yup.string().required(
+      <Trans i18nKey="start_time_req">Start time is required</Trans>
+    ),
     end: Yup.string()
-      .required('End time is required')
+      .required(<Trans i18nKey="end_time_req">End time is required</Trans>)
       .test(
-        'is-greater',
-        'End time should be greater than start time',
+        <Trans i18nKey="end_time_test_1">is-greater</Trans>,
+        <Trans i18nKey="end_time_test_2">
+          End time should be greater than start time
+        </Trans>,
         function (value) {
           const { start } = this.parent;
           if (start && value) {
@@ -49,7 +55,7 @@ const TaskForm = ({ onClose, action, column, priority, taskToEdit }) => {
       ),
     priority: Yup.string()
       .oneOf(['low', 'medium', 'high'])
-      .required('Priority is required')
+      .required(<Trans i18nKey="priority_req">Priority is required</Trans>)
       .transform((value, originalValue) => {
         if (originalValue) {
           const [year, month, day] = originalValue.split('-');
@@ -63,7 +69,7 @@ const TaskForm = ({ onClose, action, column, priority, taskToEdit }) => {
       }),
     category: Yup.string()
       .oneOf(['to-do', 'in-progress', 'done'])
-      .required('Category is required'),
+      .required(<Trans i18nKey="category_req">Category is required</Trans>),
   });
 
   const addNewTask = async values => {
@@ -103,19 +109,19 @@ const TaskForm = ({ onClose, action, column, priority, taskToEdit }) => {
     >
       <Form>
         <Label>
-          Title
-          <InputTitle type="text" name="title" placeholder="Enter text" />
+          {t('title')}
+          <InputTitle type="text" name="title" placeholder={t('description')} />
           <ErrorMessage name="title" component="div" />
         </Label>
 
         <TimeWrapper>
           <Label>
-            Start
+            {t('start_time')}
             <InputTime type="time" name="start" />
             <ErrorMessage name="start" component="div" />
           </Label>
           <Label>
-            End
+            {t('end_time')}
             <InputTime type="time" name="end" />
             <ErrorMessage name="end" component="div" />
           </Label>
@@ -125,17 +131,17 @@ const TaskForm = ({ onClose, action, column, priority, taskToEdit }) => {
           <RadioLabel>
             <RadioField type="radio" name="priority" value="low" />
             <RadioSpan value="low" />
-            Low
+            {t('low')}
           </RadioLabel>
           <RadioLabel>
             <RadioField type="radio" name="priority" value="medium" />
             <RadioSpan value="medium" />
-            Medium
+            {t('medium')}
           </RadioLabel>
           <RadioLabel>
             <RadioField type="radio" name="priority" value="high" />
             <RadioSpan value="high" />
-            High
+            {t('high')}
           </RadioLabel>
         </RadioWrapper>
         <ButtonWrapper>
@@ -144,7 +150,7 @@ const TaskForm = ({ onClose, action, column, priority, taskToEdit }) => {
               <svg width="18" height="18">
                 <use href={icon + '#icon-plus'} stroke="white"></use>
               </svg>
-              Add
+              {t('add')}
             </ButtonAction>
           ) : (
             <ButtonAction type="submit">
@@ -155,12 +161,12 @@ const TaskForm = ({ onClose, action, column, priority, taskToEdit }) => {
                   fill="none"
                 ></use>
               </svg>
-              Edit
+              {t('edit')}
             </ButtonAction>
           )}
 
           <ButtonCancel type="button" onClick={onClose}>
-            Cancel
+            {t('cancel')}
           </ButtonCancel>
         </ButtonWrapper>
         <ButtonCloseWrap

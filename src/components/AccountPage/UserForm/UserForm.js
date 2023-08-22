@@ -34,27 +34,37 @@ import enGB from 'date-fns/locale/en-GB';
 import { useRef } from 'react';
 import { updateUserAccount } from 'redux/auth/operations';
 import Swal from 'sweetalert2';
+import { Trans, useTranslation } from 'react-i18next';
 import { phoneRegExp } from 'constants/phoneValidation';
 
 const UserForm = () => {
+  const { t } = useTranslation();
   const validationSchema = yup.object().shape({
     userName: yup
       .string()
-      .max(16, 'Max 16 characters')
-      .min(2, 'Min 2 characters')
-      .required('Name is required'),
+      .max(16, <Trans i18nKey="user_name_max">Max 16 characters</Trans>)
+      .min(2, <Trans i18nKey="user_name_min">Min 2 characters</Trans>),
     email: yup
       .string()
-      .email('Email address must contain an "@" sign')
       .matches(
         /^\w+([.-]?\w+)*@\w+([.-]?\w+)*\.\w{2,3}$/,
         'Must be a valid email'
       )
-      .required('Email is required'),
+      .email(<Trans i18nKey="email_invalid">Invalid email</Trans>),
     birthday: yup.date(),
     phone: yup.string().matches(phoneRegExp, 'Phone number is not valid'),
-    skype: yup.string().max(16, 'Max 16 characters').min(5, 'Min 5 characters'),
-    password: yup.string().min(7, 'Must be at least 7 characters long'),
+    skype: yup
+      .string()
+      .max(16, <Trans i18nKey="skype_max">Max 16 characters</Trans>)
+      .min(5, <Trans i18nKey="skype_min">Min 5 characters</Trans>),
+    password: yup
+      .string()
+      .min(
+        7,
+        <Trans i18nKey="schema_pass_yup">
+          Must be at least 7 characters long
+        </Trans>
+      ),
   });
 
   const dispatch = useDispatch();
@@ -127,7 +137,7 @@ const UserForm = () => {
         Swal.fire({
           icon: 'error',
           title: 'Oops...',
-          text: 'User with this email address already exists!',
+          text: t('email_exist'),
           confirmButtonColor: '#3E85F3',
         });
       }
@@ -135,7 +145,6 @@ const UserForm = () => {
       setFormSubmitted(false);
     }
   };
-
   const years = eachYearOfInterval({
     start: new Date(1900, 0, 1),
     end: new Date(),
@@ -193,7 +202,7 @@ const UserForm = () => {
 
       <UserInfoWrap>
         <UserName>{user.name}</UserName>
-        <UserStatus>User</UserStatus>
+        <UserStatus>{t('user')}</UserStatus>
       </UserInfoWrap>
 
       <Formik
@@ -220,17 +229,17 @@ const UserForm = () => {
                       : ''
                   }`}
                 >
-                  <Label>User Name:</Label>
+                  <Label>{t('user_name')}:</Label>
                   <Input
                     id="userName"
                     name="userName"
-                    placeholder="User Name"
+                    placeholder={t('user_name')}
                   />
                   <ErrorText name="userName" component="div" />
                 </FieldWrap>
 
                 <FieldWrap>
-                  <Label>Birthday:</Label>
+                  <Label>{t('birthday')}:</Label>
                   <StyledDatePickerInputWrapper>
                     <DatePicker
                       className={`${
@@ -334,8 +343,8 @@ const UserForm = () => {
                     formik.touched.email && formik.errors.email ? 'error' : ''
                   }`}
                 >
-                  <Label>Email:</Label>
-                  <Input type="text" name="email" placeholder="Email" />
+                  <Label>{t('email')}:</Label>
+                  <Input type="text" name="email" placeholder={t('email')} />
                   <ErrorText name="email" component="div" />
                 </FieldWrap>
               </InputWrapperL>
@@ -346,7 +355,7 @@ const UserForm = () => {
                     formik.touched.phone && formik.errors.phone ? 'error' : ''
                   }`}
                 >
-                  <Label>Phone:</Label>
+                  <Label>{t('phone')}:</Label>
                   <Input
                     type="phone"
                     name="phone"
@@ -360,11 +369,11 @@ const UserForm = () => {
                     formik.touched.skype && formik.errors.skype ? 'error' : ''
                   }`}
                 >
-                  <Label>Skype:</Label>
+                  <Label>{t('skype')}:</Label>
                   <Input
                     name="skype"
                     type="text"
-                    placeholder="Enter your Skype ID"
+                    placeholder={t('enter_skype')}
                   />
                   <ErrorText name="skype" component="div" />
                 </FieldWrap>
@@ -376,12 +385,12 @@ const UserForm = () => {
                       : ''
                   }`}
                 >
-                  <Label htmlFor="password">Password:</Label>
+                  <Label htmlFor="password">{t('password')}:</Label>
                   <Input
                     id="password"
                     name="password"
                     type="password"
-                    placeholder="Change your password"
+                    placeholder={t('change_pass')}
                   />
                   <ErrorText name="password" component="div" />
                 </FieldWrap>
@@ -389,7 +398,7 @@ const UserForm = () => {
             </BoxWrap>
 
             <SaveChangesBtn type="submit" disabled={formSubmitted}>
-              Save changes
+            {t('save_changes')}
             </SaveChangesBtn>
 
             <DatePickerWrapperStyles />

@@ -19,21 +19,31 @@ import {
 import icon from 'assets/icons/symbol-defs.svg';
 
 import { login, refreshUser } from 'redux/auth/operations';
+import { Trans, useTranslation } from 'react-i18next';
 import { emailRegExp } from 'constants';
 
 const schema = yup.object().shape({
   email: yup
     .string()
-    .email('Email address must contain an "@" sign')
+    .email(
+      <Trans i18nKey="schema_email_yup">
+        Email address must contain an "@" sign
+      </Trans>
+    )
     .matches(
       emailRegExp,
       'Must be a valid email'
     )
-    .required('Email is required'),
+    .required(<Trans i18nKey="schema_email_req">Email is required</Trans>),
   password: yup
     .string()
-    .min(7, 'Must be at least 7 characters long')
-    .required('Password is required'),
+    .min(
+      7,
+      <Trans i18nKey="schema_pass_yup">
+        Must be at least 7 characters long
+      </Trans>
+    )
+    .required(<Trans i18nKey="schema_pass_req">Password is required</Trans>),
 });
 
 const initialValues = {
@@ -42,6 +52,9 @@ const initialValues = {
 };
 
 const LoginForm = () => {
+  const { t } = useTranslation();
+  const swal_error_text = t('swal_error_text');
+
   const dispatch = useDispatch();
 
   const handleSubmit = async (values, { resetForm }) => {
@@ -54,7 +67,7 @@ const LoginForm = () => {
         Swal.fire({
           icon: 'error',
           title: 'Oops...',
-          text: 'Email or password is wrong!',
+          text: swal_error_text,
           confirmButtonColor: '#3E85F3',
         });
       }
@@ -63,7 +76,7 @@ const LoginForm = () => {
 
   return (
     <FormWrapper>
-      <FormTitle>Log In</FormTitle>
+      <FormTitle>{t('log_in')}</FormTitle>
       <Formik
         initialValues={initialValues}
         validationSchema={schema}
@@ -80,7 +93,7 @@ const LoginForm = () => {
                   : ''
               }`}
             >
-              <FormLabel htmlFor="email">Email</FormLabel>
+              <FormLabel htmlFor="email">{t('email')}</FormLabel>
               <ErrorIcon width="20" height="20" data-status="error">
                 <use href={icon + '#icon-Vector'}></use>
               </ErrorIcon>
@@ -91,11 +104,11 @@ const LoginForm = () => {
                 id="email"
                 name="email"
                 type="email"
-                placeholder="Enter email"
+                placeholder={t('enter_email')}
               />
               <ErrorText name="email" component="div" />
               {formik.touched.email && !formik.errors.email && (
-                <SuccessText>This is a valid email</SuccessText>
+                <SuccessText>{t('valid_email')}</SuccessText>
               )}
             </FieldWrapper>
             <FieldWrapper
@@ -107,7 +120,7 @@ const LoginForm = () => {
                   : ''
               }`}
             >
-              <FormLabel htmlFor="password">Password</FormLabel>
+              <FormLabel htmlFor="password">{t('password')}</FormLabel>
               <ErrorIcon width="20" height="20" data-status="error">
                 <use href={icon + '#icon-Vector'}></use>
               </ErrorIcon>
@@ -118,15 +131,15 @@ const LoginForm = () => {
                 id="password"
                 name="password"
                 type="password"
-                placeholder="Enter password"
+                placeholder={t('enter_pass')}
               />
               <ErrorText name="password" component="div" />
               {formik.touched.password && !formik.errors.password && (
-                <SuccessText>This is a valid password</SuccessText>
+                <SuccessText>{t('valid_pass')}</SuccessText>
               )}
             </FieldWrapper>
             <FormButton type="submit">
-              <span>Log In</span>
+              <span>{t('log_in')}</span>
               <Icon width="20" height="20">
                 <use href={icon + '#icon-login'}></use>
               </Icon>

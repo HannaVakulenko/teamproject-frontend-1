@@ -13,6 +13,9 @@ import { selectTheme } from 'redux/themeSlice';
 import { LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 
+import '/node_modules/flag-icons/css/flag-icons.min.css';
+import './i18n';
+
 function AppWrapper() {
   const theme = useSelector(selectTheme);
 

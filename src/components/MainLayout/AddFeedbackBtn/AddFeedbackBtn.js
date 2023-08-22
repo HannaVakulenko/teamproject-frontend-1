@@ -3,8 +3,10 @@ import { StyledFeedbackBtn, FeedBackBtnText } from './AddFeedbackBtn.styled';
 import AddFeedbackModal from '../AddFeedbackModal/AddFeedbackModal';
 import { useDispatch } from 'react-redux';
 import { fetchReviewOwn } from 'redux/reviews/operations';
+import { useTranslation } from 'react-i18next';
 
 const AddFeedbackBtn = () => {
+  const { t } = useTranslation();
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -22,7 +24,7 @@ const AddFeedbackBtn = () => {
   return (
     <>
       <StyledFeedbackBtn onClick={openModal} type="button">
-        <FeedBackBtnText>Feedback</FeedBackBtnText>
+        <FeedBackBtnText>{t('feedback')}</FeedBackBtnText>
       </StyledFeedbackBtn>
       {isShowModal && <AddFeedbackModal closeModal={closeModal} />}
     </>

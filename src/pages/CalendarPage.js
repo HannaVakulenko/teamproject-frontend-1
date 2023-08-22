@@ -7,6 +7,7 @@ import { fetchTasks } from 'redux/tasks/operations';
 import { CalendarToolbar } from '../components/CalendarPage/index';
 import { Spinner } from 'components/Common';
 import CalendarSection from 'components/Common/CalendarSection/CalendarSection';
+import { useTranslation } from 'react-i18next';
 
 const CalendarPage = () => {
   const navigate = useNavigate();
@@ -27,6 +28,9 @@ const CalendarPage = () => {
     }
   }, [currentDate, navigate, pathname]);
 
+  const { t } = useTranslation();
+  const error_text = t('error_text');
+
   useEffect(() => {
     const getAllTasks = async () => {
       try {
@@ -40,13 +44,13 @@ const CalendarPage = () => {
         Swal.fire({
           icon: 'error',
           title: 'Oops...',
-          text: 'Something went wrong!',
+          text: error_text,
           confirmButtonColor: '#3E85F3',
         });
       }
     };
     getAllTasks();
-  }, [dispatch, formatedEndMonthDate, formatedStartMonthDate]);
+  }, [dispatch, error_text, formatedEndMonthDate, formatedStartMonthDate]);
 
   return (
     <CalendarSection>

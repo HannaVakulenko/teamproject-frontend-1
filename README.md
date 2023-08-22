@@ -45,7 +45,7 @@ The frontend part of the web-app is deployed on gh-pages.
 
 1. [Hanna Vakulenko](https://github.com/HannaVakulenko)
 2. [Dmitro Smirnov](https://github.com/Lucky13identify)
-3. [Mykhailo kleban](https://github.com/DarkSwarp)
+3. [Mykhailo Kleban](https://github.com/DarkSwarp)
 4. [Dmytro Petrenko](https://github.com/petrenkodmytro)
 5. [Oleksandra Selezen](https://github.com/sandra-selezen)
 6. [Ann Dolbina](https://github.com/Dolbina)

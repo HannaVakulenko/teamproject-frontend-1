@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import {
   CircleDay,
   CircleMonth,
@@ -7,16 +8,17 @@ import {
 } from './StatisticsLegend.styled';
 
 const Statisticslegend = () => {
+  const { t } = useTranslation();
   return (
     <>
       <WrapperLegend>
         <WrapperInner>
           <CircleDay />
-          <TextLegend>By Day</TextLegend>
+          <TextLegend>{t('by_day')}</TextLegend>
         </WrapperInner>
         <WrapperInner>
           <CircleMonth />
-          <TextLegend>By Month</TextLegend>
+          <TextLegend>{t('by_month')}</TextLegend>
         </WrapperInner>
       </WrapperLegend>
     </>

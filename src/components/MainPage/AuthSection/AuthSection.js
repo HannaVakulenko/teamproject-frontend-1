@@ -8,13 +8,18 @@ import {
   RegisterNavLink,
   WrappAuthSection,
   WrapLink,
+  LanguageFlagsStyled,
 } from 'components/MainPage/AuthSection/AuthSection.styled';
 
 import { mainpageGoose } from 'assets/images/mainpageGoose';
+// import LanguageFlags from 'LanguageFlags';
+import { useTranslation } from 'react-i18next';
 
 const AuthSection = () => {
+  const { t } = useTranslation();
   return (
     <WrappAuthSection>
+      <LanguageFlagsStyled />
       <picture>
         {/* Webp */}
         <source
@@ -44,12 +49,12 @@ const AuthSection = () => {
       </HeroTitle>
       <WrapLink>
         <LoginNavLink to="/login">
-          Log in
+          {t('log_in')}
           <IconLogin>
             <use href={icon + '#icon-login'}></use>
           </IconLogin>
         </LoginNavLink>
-        <RegisterNavLink to="/register">Sign up</RegisterNavLink>
+        <RegisterNavLink to="/register">{t('sign_up')}</RegisterNavLink>
       </WrapLink>
     </WrappAuthSection>
   );

@@ -9,16 +9,31 @@ import {
   Container,
   DatePickerWrapper,
 } from './PeriodPaginator.styled';
-import DatePicker, { registerLocale } from 'react-datepicker';
+import DatePicker, { registerLocale, setDefaultLocale } from 'react-datepicker';
 import icon from 'assets/icons/symbol-defs.svg';
 import { useLocation, useNavigate } from 'react-router-dom';
 import 'react-datepicker/dist/react-datepicker.css';
-import { enGB } from 'date-fns/locale';
+import uk from 'date-fns/locale/uk';
+import de from 'date-fns/locale/de';
+import enGB from 'date-fns/locale/en-GB'; //
 import { format } from 'date-fns';
+import { useTranslation } from 'react-i18next';
 
-registerLocale('enGB', enGB);
+registerLocale('uk', uk);
+registerLocale('de', de);
+registerLocale('en-GB', enGB);
+setDefaultLocale('en-GB');
+
+const i18nextLocaleMap = {
+  ua: 'uk',
+  de: 'de',
+  en: 'en-GB',
+};
 
 const PeriodPaginator = ({ date, getTasks, isOpen, setIsOpen, setDate }) => {
+  const { i18n } = useTranslation();
+  const currentLanguage = i18n.language;
+
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -41,6 +56,8 @@ const PeriodPaginator = ({ date, getTasks, isOpen, setIsOpen, setDate }) => {
     setIsOpen(!isOpen);
   };
 
+  const datePickerLocale = i18nextLocaleMap[currentLanguage];
+
   return (
     <>
       <ForDatePicker>
@@ -53,7 +70,7 @@ const PeriodPaginator = ({ date, getTasks, isOpen, setIsOpen, setDate }) => {
         {isOpen && (
           <DatePickerWrapper>
             <DatePicker
-              locale="enGB"
+              locale={datePickerLocale}
               onClickOutside={() => setIsOpen(!isOpen)}
               formatWeekDay={nameOfDay => nameOfDay.substr(0, 1)}
               selected={date}

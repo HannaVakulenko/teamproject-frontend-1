@@ -19,6 +19,7 @@ import {
 import icon from 'assets/icons/symbol-defs.svg';
 
 import { register, refreshUser } from 'redux/auth/operations';
+import { Trans, useTranslation } from 'react-i18next';
 import { nameRegExp, emailRegExp } from 'constants';
 
 const schema = yup.object().shape({
@@ -29,19 +30,28 @@ const schema = yup.object().shape({
       'Name may contain only letters, apostrophe, dash and spaces'
     )
     .min(2, 'Must be at least 2 characters long')
-    .required('Name is required'),
+    .required(<Trans i18nKey="user_name_req">Name is required</Trans>),
   email: yup
     .string()
-    .email('Email address must contain an "@" sign')
+    .email(
+      <Trans i18nKey="schema_email_yup">
+        Email address must contain an "@" sign
+      </Trans>
+    )
     .matches(
       emailRegExp,
       'Must be a valid email'
     )
-    .required('Email is required'),
+    .required(<Trans i18nKey="schema_email_req">Email is required</Trans>),
   password: yup
     .string()
-    .min(7, 'Must be at least 7 characters long')
-    .required('Password is required'),
+    .min(
+      7,
+      <Trans i18nKey="schema_pass_yup">
+        Must be at least 7 characters long
+      </Trans>
+    )
+    .required(<Trans i18nKey="schema_pass_req">Password is required</Trans>),
 });
 
 const initialValues = {
@@ -51,6 +61,8 @@ const initialValues = {
 };
 
 const RegisterForm = () => {
+  const { t } = useTranslation();
+  const email_exist = t('email_exist');
   const dispatch = useDispatch();
 
   const handleSubmit = async (values, { resetForm }) => {
@@ -63,7 +75,7 @@ const RegisterForm = () => {
         Swal.fire({
           icon: 'error',
           title: 'Oops...',
-          text: 'User with this email address already exists!',
+          text: email_exist,
           confirmButtonColor: '#3E85F3',
         });
       }
@@ -72,7 +84,7 @@ const RegisterForm = () => {
 
   return (
     <FormWrapper>
-      <FormTitle>Sign Up</FormTitle>
+      <FormTitle>{t('sign_up')}</FormTitle>
       <Formik
         initialValues={initialValues}
         validationSchema={schema}
@@ -89,17 +101,17 @@ const RegisterForm = () => {
                   : ''
               }`}
             >
-              <FormLabel htmlFor="name">Name</FormLabel>
+              <FormLabel htmlFor="name">{t('name')}</FormLabel>
               <ErrorIcon width="20" height="20" data-status="error">
                 <use href={icon + '#icon-Vector'}></use>
               </ErrorIcon>
               <SuccessIcon width="20" height="20" data-status="success">
                 <use href={icon + '#icon-Vector-1'}></use>
               </SuccessIcon>
-              <FormField id="name" name="name" placeholder="Enter your name" />
+              <FormField id="name" name="name" placeholder={t('enter_name')} />
               <ErrorText name="name" component="div" />
               {formik.touched.name && !formik.errors.name && (
-                <SuccessText>This is a valid name</SuccessText>
+                <SuccessText>{t('name_valid')}</SuccessText>
               )}
             </FieldWrapper>
             <FieldWrapper
@@ -111,7 +123,7 @@ const RegisterForm = () => {
                   : ''
               }`}
             >
-              <FormLabel htmlFor="email">Email</FormLabel>
+              <FormLabel htmlFor="email">{t('email')}</FormLabel>
               <ErrorIcon width="20" height="20" data-status="error">
                 <use href={icon + '#icon-Vector'}></use>
               </ErrorIcon>
@@ -122,11 +134,11 @@ const RegisterForm = () => {
                 id="email"
                 name="email"
                 type="email"
-                placeholder="Enter email"
+                placeholder={t('enter_email')}
               />
               <ErrorText name="email" component="div" />
               {formik.touched.email && !formik.errors.email && (
-                <SuccessText>This is a valid email</SuccessText>
+                <SuccessText>{t('valid_email')}</SuccessText>
               )}
             </FieldWrapper>
             <FieldWrapper
@@ -138,7 +150,7 @@ const RegisterForm = () => {
                   : ''
               }`}
             >
-              <FormLabel htmlFor="password">Password</FormLabel>
+              <FormLabel htmlFor="password">{t('password')}</FormLabel>
               <ErrorIcon width="20" height="20" data-status="error">
                 <use href={icon + '#icon-Vector'}></use>
               </ErrorIcon>
@@ -149,15 +161,15 @@ const RegisterForm = () => {
                 id="password"
                 name="password"
                 type="password"
-                placeholder="Enter password"
+                placeholder={t('enter_pass')}
               />
               <ErrorText name="password" component="div" />
               {formik.touched.password && !formik.errors.password && (
-                <SuccessText>This is a valid password</SuccessText>
+                <SuccessText>{t('valid_pass')}</SuccessText>
               )}
             </FieldWrapper>
             <FormButton type="submit">
-              <span>Sign Up</span>
+              <span>{t('sign_up')}</span>
               <Icon width="20" height="20">
                 <use href={icon + '#icon-login'}></use>
               </Icon>

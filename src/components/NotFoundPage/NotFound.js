@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import {
   NotFoundContainer,
   NotFoundTitle,
@@ -8,6 +9,7 @@ import {
 } from './NotFound.styled';
 
 const NotFound = () => {
+  const { t } = useTranslation();
   return (
     <NotFoundContainer>
       <NotFoundWrapper>
@@ -15,11 +17,8 @@ const NotFound = () => {
         <NotFoundImg></NotFoundImg>
         <NotFoundTitle>4</NotFoundTitle>
       </NotFoundWrapper>
-      <NotFoundText>
-        We’re sorry, the page you requested could not be found. Please go back
-        to the homepage.
-      </NotFoundText>
-      <NotFoundLink to={'/'}>Back to home</NotFoundLink>
+      <NotFoundText>{t('page_404')}</NotFoundText>
+      <NotFoundLink to={'/'}>{t('back')}</NotFoundLink>
     </NotFoundContainer>
   );
 };
