@@ -18,7 +18,7 @@ import {
 } from './RegisterForm.styled';
 import icon from 'assets/icons/symbol-defs.svg';
 
-import { register, refreshUser } from 'redux/auth/operations';
+import { register } from 'redux/auth/operations';
 import { nameRegExp, emailRegExp } from 'constants';
 
 const schema = yup.object().shape({
