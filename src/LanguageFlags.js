@@ -77,7 +77,9 @@ export default function LanguageFlags() {
     <Flags $type={type}>
       <Tooltip title={t('language')} arrow>
         <IconButton onClick={handleClick} size="small" sx={{ ml: 2 }}>
-          <LanguageIcon style={{ width: '32px', height: '32px' }} />
+          <LanguageIcon
+            style={{ width: '32px', height: '32px', fill: 'green' }}
+          />
         </IconButton>
       </Tooltip>
       <Menu
@@ -91,9 +93,7 @@ export default function LanguageFlags() {
       >
         {languages.map(({ code, name, country_code, lang }) => (
           <Tooltip key={code} title={name} arrow placement="left">
-            <MenuItem
-              key={code}
-            >
+            <MenuItem key={code}>
               <IconButton
                 onClick={() => {
                   i18next.changeLanguage(code);
