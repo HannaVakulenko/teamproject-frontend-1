@@ -2,12 +2,14 @@ import React from 'react';
 import { useParams } from 'react-router-dom';
 import {
   format,
+  lastDayOfMonth,
   startOfMonth,
   startOfWeek,
   isToday,
   isSameMonth,
   isSameDay,
   addDays,
+  getDate,
 } from 'date-fns';
 import { useSelector } from 'react-redux';
 import { selectTasks } from 'redux/tasks/selectors';
@@ -21,21 +23,51 @@ import {
 } from './CalendarTable.styled';
 
 const CalendarTable = () => {
-  const { dateParam } = useParams();
-  const currentDate = dateParam ? new Date(dateParam) : new Date();
+  const { currentDate } = useParams();
+
+  const dateParam = currentDate ? new Date(currentDate) : new Date();
 
   const daysArray = [];
-  const firstDayOfMonth = startOfMonth(currentDate);
+  const firstDayOfMonth = startOfMonth(dateParam);
+  const endDayOfMonth = lastDayOfMonth(dateParam);
+  const numberOfDays = getDate(endDayOfMonth);
+  const date = new Date(firstDayOfMonth);
+  const daysOfWeek = [
+    'Sunday',
+    'Monday',
+    'Tuesday',
+    'Wednesday',
+    'Thursday',
+    'Friday',
+    'Saturday',
+  ];
+  const dayOfWeek = daysOfWeek[date.getDay()];
   const firstDayOfWeek = startOfWeek(firstDayOfMonth, { weekStartsOn: 1 });
 
-  for (let i = 0; i < 35; i++) {
-    const currentDay = addDays(firstDayOfWeek, i);
-    const isCurrentMonth = isSameMonth(currentDay, currentDate);
+  if (
+    (dayOfWeek === 'Saturday' && numberOfDays === 31) ||
+    (dayOfWeek === 'Sunday' && numberOfDays === 31) ||
+    (dayOfWeek === 'Sunday' && numberOfDays === 30)
+  ) {
+    for (let i = 0; i < 42; i++) {
+      const currentDay = addDays(firstDayOfWeek, i);
+      const isCurrentMonth = isSameMonth(currentDay, dateParam);
 
-    daysArray.push({
-      day: currentDay,
-      isCurrentMonth: isCurrentMonth,
-    });
+      daysArray.push({
+        day: currentDay,
+        isCurrentMonth: isCurrentMonth,
+      });
+    }
+  } else {
+    for (let i = 0; i < 35; i++) {
+      const currentDay = addDays(firstDayOfWeek, i);
+      const isCurrentMonth = isSameMonth(currentDay, dateParam);
+
+      daysArray.push({
+        day: currentDay,
+        isCurrentMonth: isCurrentMonth,
+      });
+    }
   }
 
   const tasks = useSelector(selectTasks);
