@@ -77,6 +77,9 @@ const TaskToolbar = ({ task }) => {
             vertical: 'bottom',
             horizontal: 'right',
           }}
+          sx={{
+            backgroundColor: 'transparent',
+          }}
         >
           <WrapperMenu>
             <ButtonMenu onClick={() => replaceTask(availableCategories[0])}>
