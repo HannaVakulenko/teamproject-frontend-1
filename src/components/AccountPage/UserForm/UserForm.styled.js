@@ -177,20 +177,19 @@ export const UserImage = styled.img`
 export const Upload = styled.input`
   opacity: 0;
   position: absolute;
-  bottom: -3%;
+  bottom: -5%;
   left: 70%;
   transform: translateX(-50%);
-  width: 14px;
-  height: 14px;
+  width: 34px;
+  height: 34px;
   cursor: pointer;
-  border-radius: 50%;
+  border-radius: 10%;
   background-color: transparent;
-  z-index: 3;
+  z-index: 4;
 
   @media (min-width: ${tablet}px) {
-    width: 24px;
-
-    height: 24px;
+    width: 60px;
+    height: 60px;
   }
 `;
 
@@ -200,12 +199,13 @@ export const Icon = styled.svg`
   left: 70%;
   transform: translateX(-50%);
   width: 14px;
+  height: 14px;
   fill: none;
   background-color: #3e85f3;
-  height: 14px;
   stroke: white;
   border-radius: 50%;
-  z-index: 2;
+  z-index: 3;
+  cursor: pointer;
 
   @media (min-width: ${tablet}px) {
     width: 24px;
