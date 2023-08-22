@@ -130,7 +130,7 @@ const ReviewsSlider = () => {
             className={canGoPrev ? '' : 'disabled'}
             onClick={() => swiperRef.current.swiper.slidePrev()}
           >
-            <svg>
+            <svg width="61px" height="61px">
               <use href={icon + '#icon-Vector-2'}></use>
             </svg>
           </SwiperNavBtn>
@@ -139,7 +139,7 @@ const ReviewsSlider = () => {
             className={!canGoNext ? 'disabled' : ''}
             onClick={() => swiperRef.current.swiper.slideNext()}
           >
-            <svg>
+            <svg width="61px" height="61px">
               <use href={icon + '#icon-Vector-3'}></use>
             </svg>
           </SwiperNavBtn>
