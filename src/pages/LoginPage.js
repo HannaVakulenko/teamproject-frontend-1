@@ -6,17 +6,13 @@ import {
   BgImage,
 } from 'components/LoginPage/LoginPage/LoginPage.styled';
 
-
-const LoginPage = () => {
-
-  return (
-    <PageContainer>
-      <BgImage />
-      <LoginForm />
-      <AuthNavigate route="/register" text="Sign Up" />
-      <GoBackNavigate route="/" text="Go Back" />
-    </PageContainer>
-  )
-};
+const LoginPage = () => (
+  <PageContainer>
+    <BgImage />
+    <LoginForm />
+    <AuthNavigate route="/register" text="Sign Up" />
+    <GoBackNavigate route="/" text="Go Back" />
+  </PageContainer>
+);
 
 export default LoginPage;
