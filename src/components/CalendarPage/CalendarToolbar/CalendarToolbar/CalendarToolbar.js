@@ -12,11 +12,9 @@ import Swal from 'sweetalert2';
 const CalendarToolbar = () => {
   const { currentDate } = useParams();
   const { currentDay } = useParams();
-  // console.log(currentDay);
 
   const dayDate = currentDay || currentDate;
   const newDate = parseISO(dayDate);
-  // console.log(dayDate);
 
   const formatDate =
     newDate === 'Invalid Date' ? new Date(newDate) : new Date();
