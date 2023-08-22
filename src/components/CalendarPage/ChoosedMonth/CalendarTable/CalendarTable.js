@@ -1,15 +1,18 @@
 import React from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
+// import { useLocation, useNavigate } from 'react-router-dom';
 import {
   format,
   lastDayOfMonth,
   startOfMonth,
   startOfWeek,
+  endOfWeek,
   isToday,
   isSameMonth,
   isSameDay,
   addDays,
   getDate,
+  eachDayOfInterval,
 } from 'date-fns';
 import { useSelector } from 'react-redux';
 import { selectTasks } from 'redux/tasks/selectors';
@@ -24,6 +27,7 @@ import {
 
 const CalendarTable = () => {
   const { currentDate } = useParams();
+  const navigate = useNavigate();
 
   const dateParam = currentDate ? new Date(currentDate) : new Date();
 
@@ -43,6 +47,7 @@ const CalendarTable = () => {
   ];
   const dayOfWeek = daysOfWeek[date.getDay()];
   const firstDayOfWeek = startOfWeek(firstDayOfMonth, { weekStartsOn: 1 });
+  const lastDayOfWeek = endOfWeek(endDayOfMonth, { weekStartsOn: 1 });
 
   if (
     (dayOfWeek === 'Saturday' && numberOfDays === 31) ||
@@ -70,12 +75,34 @@ const CalendarTable = () => {
     }
   }
 
+  const days = eachDayOfInterval({
+    start: firstDayOfWeek,
+    end: lastDayOfWeek,
+  });
+
   const tasks = useSelector(selectTasks);
+// setHours(endDayOfMonth.getHours() + 3);
+  const handleClick = day => {
+    const endDayOfMonthLocal = new Date(
+      new Date(endDayOfMonth).setHours(new Date(endDayOfMonth).getHours() + 3)
+    );
+    if (
+      new Date(day) < new Date(firstDayOfMonth) ||
+      new Date(day) > new Date(endDayOfMonthLocal)
+    ) {
+      return;
+    }
+    navigate(`/calendar/day/${day}`);
+  };
 
   return (
     <GridWrapper>
       {daysArray.map(({ day, isCurrentMonth }, i) => (
-        <CellWrapper key={day ? format(day, 'ddMMyyyy') : `empty-${i}`}>
+        <CellWrapper
+          key={format(days[i], 'yyyy-MM-dd')}
+          to={`/calendar/day/${format(days[i], 'yyyy-MM-dd')}`}
+          onClick={() => handleClick(format(days[i], 'yyyy-MM-dd'))}
+        >
           {day && isCurrentMonth && (
             <DayWrapper
               className={isCurrentMonth ? 'current-month' : ''}

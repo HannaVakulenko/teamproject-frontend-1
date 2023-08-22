@@ -19,6 +19,7 @@ export const CellWrapper = styled.div`
   flex-direction: column;
   gap: 10px;
   min-width: 47.85px;
+  cursor: pointer;
 `;
 
 export const DayWrapper = styled.div`
