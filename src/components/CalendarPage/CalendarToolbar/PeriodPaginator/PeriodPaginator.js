@@ -31,7 +31,7 @@ const i18nextLocaleMap = {
 };
 
 const PeriodPaginator = ({ date, getTasks, isOpen, setIsOpen, setDate }) => {
-  const { i18n, t } = useTranslation();
+  const { i18n } = useTranslation();
   const currentLanguage = i18n.language;
 
   const location = useLocation();
