@@ -39,6 +39,20 @@ export const login = createAsyncThunk(
   }
 );
 
+export const verifyEmail = createAsyncThunk(
+  'auth/verifyEmail',
+  async (verificationToken, thunkAPI) => {
+    try {
+      const res = await axios.get(
+        `${AXIOS_BASE_URL}/auth/verify/${verificationToken}`
+      );
+      return res.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error);
+    }
+  }
+);
+
 export const logout = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
   try {
     await axios.post('/auth/logout');

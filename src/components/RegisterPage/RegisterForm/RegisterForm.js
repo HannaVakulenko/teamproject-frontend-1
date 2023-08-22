@@ -18,7 +18,7 @@ import {
 } from './RegisterForm.styled';
 import icon from 'assets/icons/symbol-defs.svg';
 
-import { register, refreshUser } from 'redux/auth/operations';
+import { register } from 'redux/auth/operations';
 import { nameRegExp, emailRegExp } from 'constants';
 
 const schema = yup.object().shape({
@@ -56,7 +56,7 @@ const RegisterForm = () => {
   const handleSubmit = async (values, { resetForm }) => {
     try {
       await dispatch(register(values)).unwrap();
-      await dispatch(refreshUser()).unwrap();
+      // await dispatch(refreshUser()).unwrap();
       resetForm();
     } catch (error) {
       if (error.response.status === 409) {
