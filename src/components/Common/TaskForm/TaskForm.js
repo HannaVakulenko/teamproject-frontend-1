@@ -94,7 +94,7 @@ const TaskForm = ({ onClose, action, column, priority, taskToEdit }) => {
         title: taskToEdit?.title || '',
         start: taskToEdit?.start || '09:00',
         end: taskToEdit?.end || '10:00',
-        priority: taskToEdit?.priority || "low",
+        priority: taskToEdit?.priority || 'low',
         category: column,
         date: currentDay,
       }}
@@ -149,7 +149,11 @@ const TaskForm = ({ onClose, action, column, priority, taskToEdit }) => {
           ) : (
             <ButtonAction type="submit">
               <svg width="18" height="18">
-                <use href={icon + '#icon-pencil-01'} stroke="white" fill="none"></use>
+                <use
+                  href={icon + '#icon-pencil-01'}
+                  stroke="white"
+                  fill="none"
+                ></use>
               </svg>
               Edit
             </ButtonAction>

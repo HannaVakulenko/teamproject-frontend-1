@@ -1,6 +1,6 @@
-import { Link } from "react-router-dom";
-import { styled } from "styled-components";
-import { device } from "constants";
+import { Link } from 'react-router-dom';
+import { styled } from 'styled-components';
+import { device } from 'constants';
 
 export const Wrapper = styled.div`
   padding-top: 18px;
@@ -8,7 +8,7 @@ export const Wrapper = styled.div`
 
   @media screen and (min-width: ${device.tablet}px) {
     padding-top: 24px;
-  };
+  }
 `;
 
 export const AuthLink = styled(Link)`
@@ -23,7 +23,7 @@ export const AuthLink = styled(Link)`
   &:hover,
   &:focus {
     color: ${p => p.theme.mainAccentColorActive};
-  };
+  }
 
   &::after {
     content: '';
@@ -37,7 +37,7 @@ export const AuthLink = styled(Link)`
     border-radius: 2px;
     transform: scaleX(0);
     transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
-  };
+  }
 
   &:hover::after,
   &:focus::after {
@@ -47,5 +47,5 @@ export const AuthLink = styled(Link)`
   @media screen and (min-width: ${device.tablet}px) {
     font-size: 18px;
     line-height: 1.33;
-  };
+  }
 `;

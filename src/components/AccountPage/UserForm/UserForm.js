@@ -73,8 +73,6 @@ const UserForm = () => {
   const [userAvatarLocal, setUserAvatarLocal] = useState(user.avatarURL);
 
   const handleSubmit = async values => {
-    // console.log(values);
-
     const formData = new FormData();
 
     Object.entries(values).forEach(([key, value]) => {

@@ -117,7 +117,7 @@ export const RadioLabel = styled.label`
   align-items: center;
   margin-top: 16px;
 
-  color: ${p=>p.theme.mainTextColor};
+  color: ${p => p.theme.mainTextColor};
   font-size: 12px;
   font-weight: 600;
   line-height: 1.16;
@@ -245,13 +245,11 @@ export const ButtonCloseWrap = styled.button`
   border: none;
   background-color: transparent;
   cursor: pointer;
-    &:hover svg use,
+  &:hover svg use,
   &:focus svg use {
-    stroke: lightgray; 
+    stroke: lightgray;
   }
 `;
-
-
 
 export const ErrorMessage = styled(FormikErrorMessage)`
   margin-left: 18px;
@@ -260,4 +258,3 @@ export const ErrorMessage = styled(FormikErrorMessage)`
   font-size: 12px;
   line-height: 1.16;
 `;
-

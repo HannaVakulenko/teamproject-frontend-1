@@ -12,11 +12,9 @@ import Swal from 'sweetalert2';
 const CalendarToolbar = () => {
   const { currentDate } = useParams();
   const { currentDay } = useParams();
-  // console.log(currentDay);
 
   const dayDate = currentDay || currentDate;
   const newDate = parseISO(dayDate);
-  // console.log(dayDate);
 
   const formatDate =
     newDate === 'Invalid Date' ? new Date(newDate) : new Date();
@@ -27,13 +25,6 @@ const CalendarToolbar = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const dispatch = useDispatch();
-
-  // const { currentDate } = useParams();
-  // const { currentDay } = useParams();
-
-  // const dayDate = currentDate || currentDay;
-
-  // const currentMonth = new Date().getMonth() + 1;
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const forFetchData = () => {
@@ -68,12 +59,12 @@ const CalendarToolbar = () => {
     getAllTasks();
   }, [dayDate, dispatch, forFetchData]);
 
-    useEffect(() => {
-      if (dayDate) {
-        const newDate = new Date(dayDate);
-        setDate(newDate);
-      }
-    }, [dayDate]);
+  useEffect(() => {
+    if (dayDate) {
+      const newDate = new Date(dayDate);
+      setDate(newDate);
+    }
+  }, [dayDate]);
 
   const changeDate = e => {
     const newDate = new Date(date);

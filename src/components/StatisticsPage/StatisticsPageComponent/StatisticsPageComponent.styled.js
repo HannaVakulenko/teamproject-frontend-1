@@ -6,7 +6,6 @@ export const StatisticSection = styled.section`
   background-color: ${p => p.theme.secondaryBgColor};
   border-radius: 16px;
   padding: 28px 14px 135px;
-  
 
   @media screen and (min-width: ${device.tablet}px) {
     padding: 132px 32px 224px 32px;
@@ -19,7 +18,7 @@ export const WrapperPaginator = styled.div`
   display: inline-flex;
   flex-direction: column;
   width: 100%;
- 
+
   margin-bottom: 40px;
 
   @media screen and (min-width: ${device.tablet}px) {
@@ -28,7 +27,7 @@ export const WrapperPaginator = styled.div`
     flex-wrap: nowrap;
     justify-content: space-between;
     align-items: baseline;
-   
+
     padding-left: 32px;
     padding-right: 32px;
     margin-bottom: -2px;
@@ -39,7 +38,3 @@ export const WrapperPaginator = styled.div`
     margin-bottom: 0px;
   }
 `;
-
-
-
-
