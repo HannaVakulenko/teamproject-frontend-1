@@ -1,9 +1,11 @@
-import moment from 'moment';
+import React from 'react';
+import { startOfMonth, startOfWeek } from 'date-fns';
 import MonthCalendarHead from './MonthCalendarHead/MonthCalendarHead';
 import CalendarTable from '../CalendarTable/CalendarTable';
 
 const ChoosedMonth = () => {
-  const startDay = moment().startOf('month').startOf('week'); // Початок місяця
+  const currentDate = new Date();
+  const startDay = startOfWeek(startOfMonth(currentDate), { weekStartsOn: 1 });
 
   return (
     <>
