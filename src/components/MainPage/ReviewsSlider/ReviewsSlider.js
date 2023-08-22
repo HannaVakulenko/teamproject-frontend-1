@@ -53,14 +53,11 @@ const ReviewsSlider = () => {
     dispatch(fetchReviews({ page: 1, limit: 99999 }));
   }, [dispatch]);
 
-
-  
   const handleSlideChange = swiper => {
     setCanGoPrev(!swiper.isBeginning);
     setCanGoNext(!swiper.isEnd);
   };
 
-  
   const slides = reviews.reviews || [];
   return (
     <Section>
@@ -71,7 +68,7 @@ const ReviewsSlider = () => {
             initialSlide={0}
             slidesPerView={1}
             ref={swiperRef}
-            autoplay={{delay:5000}}
+            autoplay={{ delay: 5000 }}
             navigation={{
               prevEl: '#my-prev-button',
               nextEl: '#my-next-button',
@@ -99,10 +96,9 @@ const ReviewsSlider = () => {
             simulateTouch={true}
             touchRatio={0.2}
             effect="slide"
-            
           >
             {slides.map((slide, index) => (
-              <SwiperSlide key={index} virtualIndex={index} >
+              <SwiperSlide key={index} virtualIndex={index}>
                 <ReviewSliderCard>
                   <ReviewContentBox>
                     <AvatarWrapper>
@@ -132,7 +128,7 @@ const ReviewsSlider = () => {
             className={canGoPrev ? '' : 'disabled'}
             onClick={() => swiperRef.current.swiper.slidePrev()}
           >
-            <svg>
+            <svg width="61px" height="61px">
               <use href={icon + '#icon-Vector-2'}></use>
             </svg>
           </SwiperNavBtn>
@@ -141,7 +137,7 @@ const ReviewsSlider = () => {
             className={!canGoNext ? 'disabled' : ''}
             onClick={() => swiperRef.current.swiper.slideNext()}
           >
-            <svg>
+            <svg width="61px" height="61px">
               <use href={icon + '#icon-Vector-3'}></use>
             </svg>
           </SwiperNavBtn>

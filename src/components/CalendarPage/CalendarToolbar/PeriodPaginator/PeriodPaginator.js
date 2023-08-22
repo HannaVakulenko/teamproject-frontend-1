@@ -56,7 +56,6 @@ const PeriodPaginator = ({ date, getTasks, isOpen, setIsOpen, setDate }) => {
     setIsOpen(!isOpen);
   };
 
-  // console.log(date);
   const datePickerLocale = i18nextLocaleMap[currentLanguage];
 
   return (

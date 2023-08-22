@@ -105,7 +105,7 @@ export const SwiperNavBtn = styled.div`
   align-items: center;
   border-radius: 16px;
   width: 50px;
-  height: 46px;
+  height: 50px;
   cursor: pointer;
   transition: 300ms cubic-bezier(0.4, 0, 0.2, 1);
   &:hover {
@@ -114,7 +114,7 @@ export const SwiperNavBtn = styled.div`
   }
   @media (min-width: ${device.tablet}px) {
     width: 61px;
-    height: 48px;
+    height: 61px;
   }
   &.disabled {
     pointer-events: none;
@@ -127,7 +127,13 @@ export const Section = styled.section`
 `;
 
 export const SliderWrapper = styled.div`
-  margin-bottom: 32px;
+  margin-bottom: 8px;
+  @media (min-width: ${device.tablet}px) {
+    margin-bottom: 18px;
+  }
+  @media (min-width: ${device.desktop}px) {
+    margin-bottom: 32px;
+  }
 `;
 
 export const Title = styled.h2`
@@ -152,15 +158,18 @@ export const Container = styled.div`
 
   @media (min-width: ${device.mobile}px) {
     width: 375px;
+    padding-bottom: 64px;
   }
   @media (min-width: ${device.tablet}px) {
     width: 768px;
     padding-left: 32px;
     padding-right: 32px;
+    padding-bottom: 100px;
   }
   @media (min-width: ${device.desktop}px) {
     width: 1440px;
     padding-left: 128px;
     padding-right: 128px;
+    padding-bottom: 118x;
   }
 `;

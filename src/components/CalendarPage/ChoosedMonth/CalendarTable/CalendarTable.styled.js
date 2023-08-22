@@ -4,14 +4,13 @@ import { device } from 'constants';
 export const GridWrapper = styled.div`
   display: grid;
   grid-template-columns: repeat(7, 1fr);
-  grid-template-rows: repeat(5, 1fr);
   border: 1px solid ${p => p.theme.calendarDeviderColor};
   border-radius: 8px;
   background-color: ${p => p.theme.secondaryBgColor};
   flex-grow: 1;
   flex-shrink: 1;
+  grid-auto-rows: 1fr;
 `;
-
 export const CellWrapper = styled.div`
   border: 1px solid ${p => p.theme.calendarDeviderColor};
   padding: 12px 10px;
@@ -19,8 +18,8 @@ export const CellWrapper = styled.div`
   flex-direction: column;
   gap: 10px;
   min-width: 47.85px;
+  cursor: pointer;
 `;
-
 export const DayWrapper = styled.div`
   box-sizing: border-box;
   align-self: flex-end;
@@ -67,7 +66,7 @@ export const TaskContainerWrapper = styled.div`
   flex-direction: column;
   gap: 10px;
   height: 1px;
-  overflow: hidden;
+  overflow: auto;
   flex-grow: 1;
   flex-shrink: 1;
 `;

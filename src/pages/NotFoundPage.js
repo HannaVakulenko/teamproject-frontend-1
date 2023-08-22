@@ -3,8 +3,8 @@ import NotFound from '../components/NotFoundPage/NotFound';
 const NotFoundPage = () => {
   return (
     <>
-      <NotFound/>
-        </>
+      <NotFound />
+    </>
   );
 };
 

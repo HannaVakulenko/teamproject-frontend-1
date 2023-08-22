@@ -103,9 +103,6 @@ const FeedbackForm = ({ closeModal }) => {
               <use href={icon + '#icon-star'}></use>
             </IconStar>
           }
-          // defaultValue={
-          //   isFeedback.length === 0 ? ratingValue : isFeedback[0].rating
-          // }
           value={ratingValue}
           onChange={(_, newValue) => {
             setRatingValue(newValue);

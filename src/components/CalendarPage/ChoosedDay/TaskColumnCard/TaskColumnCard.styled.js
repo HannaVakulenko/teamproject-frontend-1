@@ -10,10 +10,10 @@ export const Wrapper = styled.div`
   background-color: ${p => p.theme.mainBGColor};
   @media screen and (max-width: ${device.tablet - 1}px) {
     height: 108px;
-  };
+  }
   @media screen and (min-width: ${device.tablet}px) {
     height: 112px;
-  };
+  }
 `;
 
 export const Text = styled.p`
@@ -52,16 +52,16 @@ export const Badge = styled.span`
   font-size: 10px;
   font-weight: 600;
   line-height: 1.2;
-  color:  ${p => p.theme.mainBGColor};
+  color: ${p => p.theme.mainBGColor};
   border-radius: 4px;
 
-  &[data-priority="low"] {
-    background-color: #72C2F8;
-  };
-  &[data-priority="medium"] {
-    background-color: #F3B249;
-  };
-  &[data-priority="high"] {
-    background-color: #EA3D65;
-  };
+  &[data-priority='low'] {
+    background-color: #72c2f8;
+  }
+  &[data-priority='medium'] {
+    background-color: #f3b249;
+  }
+  &[data-priority='high'] {
+    background-color: #ea3d65;
+  }
 `;

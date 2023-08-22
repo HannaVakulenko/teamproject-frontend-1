@@ -29,14 +29,15 @@ import { useTranslation } from 'react-i18next';
 
 const StatisticsChart = () => {
   const { t } = useTranslation();
-  //Дата
+
+  // Date
   let dateStatistics = useSelector(selectDate);
   const { currentDate } = useParams();
 
   if (currentDate) {
     dateStatistics = currentDate;
   }
-  // Задачи по категоріям за місяць
+  // Tasks by category for the month
   const todoByMonth = useSelector(state =>
     selectTasksByCategory(state, category.toDo)
   );
@@ -47,7 +48,7 @@ const StatisticsChart = () => {
     selectTasksByCategory(state, category.done)
   );
 
-  // Задачи по категоріям за день
+  // Tasks by category for the day
 
   const todoByDay = todoByMonth.filter(item =>
     item.date.includes(dateStatistics)
@@ -59,25 +60,25 @@ const StatisticsChart = () => {
     item.date.includes(dateStatistics)
   );
 
-  //кількість задач за місяць кожної категорії
+  // The number of tasks per month of each category
   const todoByMonthCount = todoByMonth.length || 0;
   const inprogressByMonthCount = inprogressByMonth.length || 0;
   const doneByMonthCount = doneByMonth.length || 0;
 
-  //кількість задач за день кожної категорії
+  // The number of tasks per day of each category
   const todoByDayCount = todoByDay.length || 0;
   const inprogressByDayCount = inprogressByDay.length || 0;
   const doneByDayCount = doneByDay.length || 0;
 
-  //кількість всього задач за місяць
+  // Total number of tasks per month
   const totalTasksByMonth =
     todoByMonthCount + inprogressByMonthCount + doneByMonthCount;
 
-  //кількість всього задач за день
+  // Total number of tasks per day
   const totalTasksByDay =
     todoByDayCount + inprogressByDayCount + doneByDayCount;
 
-  //відсоткове відношення задач за місяць
+  // Percentage ratio of tasks per month
   const todoByMonthPercentage =
     totalTasksByMonth === 0
       ? 0
@@ -93,7 +94,7 @@ const StatisticsChart = () => {
       ? 0
       : Number((doneByMonthCount / totalTasksByMonth) * 100).toFixed();
 
-  //відсоткове відношення задач за день
+  // Percentage ratio of tasks per day
 
   const todoByDayPercentage =
     totalTasksByDay === 0
@@ -153,7 +154,7 @@ const StatisticsChart = () => {
 
   let chartLabelListlineHeight;
 
-  //в залежності від ширини екрану застосовуються відповідні стилі
+  // Depending on the width of the screen, appropriate styles are applied
 
   switch (true) {
     case windowWidth <= device.mobile:
@@ -222,17 +223,6 @@ const StatisticsChart = () => {
       window.removeEventListener('resize', handleResize);
     };
   }, []);
-
-  // useEffect(() => {
-
-  //     dispatch(
-  //       fetchTasks({
-  //         monthStart: monthStart,
-  //         monthEnd: monthEnd,
-  //       })
-  //     );
-  //   }
-  // , [formattedDate, monthStart, monthEnd, dispatch, dateStatistics]);
 
   return (
     <ContainerSecondWrapper>

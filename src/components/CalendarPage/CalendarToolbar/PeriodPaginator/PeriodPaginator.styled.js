@@ -31,10 +31,9 @@ export const Date = styled.button`
   align-items: center;
   white-space: nowrap;
   justify-content: center;
-  min-width: 109px;
   height: 30px;
-
   padding: 6px 12px 6px 12px;
+  min-width: 165px;
   border-radius: 8px;
   background-color: #3e85f3;
   color: #ffffff;
@@ -48,9 +47,7 @@ export const Date = styled.button`
   @media (min-width: 376px) and (max-width: 768px) {
     padding: 8px 12px 8px 12px;
     margin-right: 8px;
-    min-width: 121px;
     height: 34px;
-
     font-size: 16px;
     line-height: 1.1;
   }
@@ -58,7 +55,6 @@ export const Date = styled.button`
   @media (min-width: 769px) {
     padding: 8px 12px 8px 12px;
     margin-right: 8px;
-    min-width: 125px;
     height: 34px;
 
     font-size: 16px;
@@ -113,9 +109,9 @@ export const ButtonIncrease = styled.button`
 `;
 
 export const IconLeft = styled.svg`
-  stroke: ${p => p.theme.chevronLeft};
-  opacity: ${p => p.theme.opacityChevron};
+  stroke: ${p => p.theme.mainTextColor};
 `;
+
 export const IconRight = styled.svg`
   stroke: ${p => p.theme.mainTextColor};
 `;
@@ -171,12 +167,8 @@ export const DatePickerWrapperStyles = createGlobalStyle`
   }
 }
 
-/* .react-datepicker-popper {
-  position: absolute;
-  z-index: 9999; /* При необходимости задайте другой z-index */
-  top: 100%; /* Позиционирование под инпутом */
-  left: 0; Выравнивание календаря с левой границей инпута */
-/* } */
+top: 100%; 
+left: 0;
 
 .react-datepicker {
   border: none !important;
@@ -218,7 +210,7 @@ export const DatePickerWrapperStyles = createGlobalStyle`
 
 .react-datepicker__day-name {
   font-size: 14px !important;
-  ine-height: 18px !important;
+  line-height: 18px !important;
 
   @media (min-width: ${tablet}px) {
     width: 48px !important;
@@ -372,4 +364,6 @@ input {
     font-size: 16px;
   }
 }
+
+
 `;

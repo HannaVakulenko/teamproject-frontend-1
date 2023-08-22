@@ -2,7 +2,6 @@ import styled from 'styled-components';
 
 import { device } from 'constants';
 
-
 export const ContainerSecondWrapper = styled.div`
   width: 100%;
   height: 413px;
@@ -26,7 +25,6 @@ export const ContainerSecondWrapper = styled.div`
 export const ContainerFirstWrapper = styled.div`
   width: calc(100% - 28px);
   height: calc(100% - 80px);
- 
 
   @media screen and (min-width: ${device.tablet}px) {
     width: calc(100% - 64px);

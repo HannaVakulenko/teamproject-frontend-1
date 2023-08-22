@@ -20,6 +20,7 @@ import icon from 'assets/icons/symbol-defs.svg';
 
 import { login, refreshUser } from 'redux/auth/operations';
 import { Trans, useTranslation } from 'react-i18next';
+import { emailRegExp } from 'constants';
 
 const schema = yup.object().shape({
   email: yup
@@ -29,9 +30,8 @@ const schema = yup.object().shape({
         Email address must contain an "@" sign
       </Trans>
     )
-
     .matches(
-      /^\w+([.-]?\w+)*@\w+([.-]?\w+)*\.\w{2,3}$/,
+      emailRegExp,
       'Must be a valid email'
     )
     .required(<Trans i18nKey="schema_email_req">Email is required</Trans>),

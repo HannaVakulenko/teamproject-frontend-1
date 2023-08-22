@@ -22,43 +22,6 @@ const initialState = {
   isRefreshing: false,
 };
 
-// const authSlice = createSlice({
-//   name: 'auth',
-//   initialState,
-//   extraReducers: {
-//     [register.fulfilled](state, action) {
-//       state.user = action.payload.user;
-//       state.token = action.payload.token;
-//       state.isLoggedIn = true;
-//     },
-//     [logout.fulfilled](state) {
-//       state.user = { name: null, email: null };
-//       state.token = null;
-//       state.isLoggedIn = false;
-//     },
-//     [login.fulfilled](state, action) {
-//       state.user = action.payload.user;
-//       state.token = action.payload.token;
-//       state.isLoggedIn = true;
-//     },
-//     [refreshUser.pending](state) {
-//       state.isRefreshing = true;
-//     },
-//     [refreshUser.fulfilled](state, action) {
-//       state.user = action.payload;
-//       state.isLoggedIn = true;
-//       state.isRefreshing = false;
-//     },
-//     [refreshUser.rejected](state) {
-//       state.isRefreshing = false;
-//     },
-//     [fetchUserAccount.fulfilled](state, action) {
-//       state.user = action.payload;
-//     },
-//   },
-// });
-// export const authReducer = authSlice.reducer;
-
 const authSlice = createSlice({
   name: 'auth',
   initialState,
@@ -95,7 +58,6 @@ const authSlice = createSlice({
         state.user = action.payload;
       })
       .addCase(updateUserAccount.fulfilled, (state, action) => {
-        // console.log(action);
         state.user = action.payload;
       });
   },

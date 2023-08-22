@@ -35,10 +35,7 @@ import { useRef } from 'react';
 import { updateUserAccount } from 'redux/auth/operations';
 import Swal from 'sweetalert2';
 import { Trans, useTranslation } from 'react-i18next';
-
-// import axios from 'axios'; // Assuming you're using Axios for HTTP requests
-
-// const formData = new FormData();
+import { phoneRegExp } from 'constants/phoneValidation';
 
 const UserForm = () => {
   const { t } = useTranslation();
@@ -49,9 +46,13 @@ const UserForm = () => {
       .min(2, <Trans i18nKey="user_name_min">Min 2 characters</Trans>),
     email: yup
       .string()
+      .matches(
+        /^\w+([.-]?\w+)*@\w+([.-]?\w+)*\.\w{2,3}$/,
+        'Must be a valid email'
+      )
       .email(<Trans i18nKey="email_invalid">Invalid email</Trans>),
     birthday: yup.date(),
-    phone: yup.string(),
+    phone: yup.string().matches(phoneRegExp, 'Phone number is not valid'),
     skype: yup
       .string()
       .max(16, <Trans i18nKey="skype_max">Max 16 characters</Trans>)
@@ -66,76 +67,71 @@ const UserForm = () => {
       ),
   });
 
+  const dispatch = useDispatch();
   const user = useSelector(selectUser);
+
   let dataNorm;
   if (!user.birthday) {
     dataNorm = new Date();
   } else {
     dataNorm = new Date(user.birthday);
   }
-  const dispatch = useDispatch();
+
   const [formSubmitted, setFormSubmitted] = useState(false);
-
   const [userBirthday, setUserBirthday] = useState(dataNorm);
-
   const [userAvatar, setUserAvatar] = useState(user.avatarURL);
   const [userAvatarLocal, setUserAvatarLocal] = useState(user.avatarURL);
 
   const handleSubmit = async values => {
-    // const updateUser = {
-    //   name: values.userName,
-    //   email: values.email,
-    //   birthday: userBirthday,
-    //   phone: values.phone,
-    //   skype: values.skype,
-    //   avatar: userAvatar,
-    //   password: values.password,
-    // };
-
-    // console.log(userAvatar);
     const formData = new FormData();
+
+    Object.entries(values).forEach(([key, value]) => {
+      if (value) {
+        if (key === 'userName') {
+          formData.append('name', value);
+          return;
+        }
+        formData.append(key, value);
+      }
+    });
+
     if (typeof userAvatar !== 'string') {
       formData.append('avatar', userAvatar);
     }
-    if (values.email) {
-      formData.append('email', values.email);
-    }
+    // if (values.email) {
+    //   formData.append('email', values.email);
+    // }
 
-    if (values.phone) {
-      formData.append('phone', values.phone);
-    }
-    if (values.userName) {
-      formData.append('name', values.userName);
-    }
-    if (values.password) {
-      formData.append('password', values.password);
-    }
-    if (values.skype) {
-      formData.append('skype', values.skype);
-    }
+    // if (values.phone) {
+    //   formData.append('phone', values.phone);
+    // }
+    // if (values.userName) {
+    //   formData.append('name', values.userName);
+    // }
+    // if (values.password) {
+    //   formData.append('password', values.password);
+    // }
+    // if (values.skype) {
+    //   formData.append('skype', values.skype);
+    // }
     if (userBirthday) {
       formData.append('birthday', userBirthday);
     }
 
-    // Object.entries(updateUser).forEach(([key, value]) => {
-    //   if (value) {
-    //     if (typeof value === 'string') {
-    //       formData.append(key, value.trim());
-    //     } else {
-    //       formData.append(key, value);
-    //     }
-    //   } else if (key === 'birthday') {
-    //     const date = format(new Date(userBirthday), 'yyyy-MM-dd');
-    //     formData.append('birthday', date);
-    //   }
-    // });
-
-    // console.log(formData.getAll('avatar'));
+    // for (let [name, value] of formData) {
+    //   console.log(`${name} = ${value}`);
+    // }
 
     setFormSubmitted(true);
 
     try {
       dispatch(updateUserAccount(formData));
+      Swal.fire({
+        icon: 'success',
+        title: 'Success',
+        text: 'Your information has been successfully updated!',
+        confirmButtonColor: '#3E85F3',
+      });
     } catch (error) {
       if (error.response && error.response.status === 409) {
         Swal.fire({
@@ -145,7 +141,6 @@ const UserForm = () => {
           confirmButtonColor: '#3E85F3',
         });
       }
-      console.error('Submission error:', error);
     } finally {
       setFormSubmitted(false);
     }
@@ -223,158 +218,192 @@ const UserForm = () => {
           handleSubmit(values);
         }}
       >
-        <Form autoComplete="off">
-          <BoxWrap>
-            <InputWrapperL className="left-column">
-              <FieldWrap>
-                <Label>{t('user_name')}:</Label>
-                <Input
-                  type="text"
-                  name="userName"
-                  placeholder={t('user_name')}
-                />
-                <ErrorText name="userName" component="div" />
-              </FieldWrap>
-
-              <FieldWrap>
-                <Label>{t('birthday')}:</Label>
-                <StyledDatePickerInputWrapper>
-                  <DatePicker
-                    name="birthday"
-                    ref={datePickerRef}
-                    formatWeekDay={nameOfDay => nameOfDay.substr(0, 1)}
-                    selected={userBirthday}
-                    onChange={date => {
-                      setUserBirthday(date);
-                      // console.log(userBirthday);
-                    }}
-                    locale="en-GB"
-                    dateFormat="dd/MM/yyyy"
-                    calendarStartDay={1}
-                    placeholderText={`Select your birthday (current date: ${currentDateString})`}
-                    onChangeRaw={e => {
-                      e.preventDefault();
-
-                      setUserBirthday(new Date(e.target.value));
-                    }}
-                    renderCustomHeader={({
-                      date,
-                      changeYear,
-                      changeMonth,
-                      decreaseMonth,
-                      increaseMonth,
-                      prevMonthButtonDisabled,
-                      nextMonthButtonDisabled,
-                    }) => (
-                      <div className="datepicker_nav">
-                        <button
-                          className="datepicker_btn"
-                          type="button"
-                          onClick={decreaseMonth}
-                          disabled={prevMonthButtonDisabled}
-                        >
-                          {'<'}
-                        </button>
-                        <select
-                          className="datepicker_select"
-                          value={getYear(date)}
-                          onChange={({ target: { value } }) =>
-                            changeYear(value)
-                          }
-                        >
-                          {years.map(option => (
-                            <option key={option} value={getYear(option)}>
-                              {getYear(option)}
-                            </option>
-                          ))}
-                        </select>
-                        <select
-                          className="datepicker_select"
-                          value={months[getMonth(date)]}
-                          onChange={({ target: { value } }) =>
-                            changeMonth(months.indexOf(value))
-                          }
-                        >
-                          {months.map(option => (
-                            <option key={option} value={option}>
-                              {option}
-                            </option>
-                          ))}
-                        </select>
-                        <button
-                          className="datepicker_btn"
-                          type="button"
-                          onClick={increaseMonth}
-                          disabled={nextMonthButtonDisabled}
-                        >
-                          {'>'}
-                        </button>
-                      </div>
-                    )}
+        {formik => (
+          <Form autoComplete="off">
+            <BoxWrap>
+              <InputWrapperL className="left-column">
+                <FieldWrap
+                  className={`${
+                    formik.touched.userName && formik.errors.userName
+                      ? 'error'
+                      : ''
+                  }`}
+                >
+                  <Label>{t('user_name')}:</Label>
+                  <Input
+                    id="userName"
+                    name="userName"
+                    placeholder={t('user_name')}
                   />
-                  <button
-                    className="datepicker_icon_button"
-                    type="button"
-                    onClick={() => {
-                      if (datePickerRef.current) {
-                        datePickerRef.current.setOpen(true);
-                      }
-                    }}
-                  ></button>
-                  <BdayIcon>
-                    <use href={icon + '#icon-chevron-down'}></use>
-                  </BdayIcon>
-                </StyledDatePickerInputWrapper>
-                <ErrorText name="birthday" component="div" />
-              </FieldWrap>
+                  <ErrorText name="userName" component="div" />
+                </FieldWrap>
 
-              <FieldWrap>
-                <Label>{t('email')}:</Label>
-                <Input type="email" name="email" placeholder={t('email')} />
-                <ErrorText name="email" component="div" />
-              </FieldWrap>
-            </InputWrapperL>
+                <FieldWrap>
+                  <Label>{t('birthday')}:</Label>
+                  <StyledDatePickerInputWrapper>
+                    <DatePicker
+                      className={`${
+                        formik.touched.birthday && formik.errors.birthday
+                          ? 'error'
+                          : formik.touched.birthday && !formik.errors.birthday
+                          ? 'success'
+                          : ''
+                      }`}
+                      id="birthday"
+                      name="birthday"
+                      type="birthday"
+                      ref={datePickerRef}
+                      formatWeekDay={nameOfDay => nameOfDay.substr(0, 1)}
+                      selected={userBirthday}
+                      onChange={date => {
+                        setUserBirthday(date);
+                      }}
+                      locale="en-GB"
+                      dateFormat="dd/MM/yyyy"
+                      calendarStartDay={1}
+                      placeholderText={`Select your birthday (current date: ${currentDateString})`}
+                      onChangeRaw={e => {
+                        e.preventDefault();
 
-            <InputWrapperR className="right-column">
-              <FieldWrap>
-                <Label>{t('phone')}:</Label>
-                <Input
-                  type="text"
-                  name="phone"
-                  placeholder="38 (097) 256 34 77"
-                />
-                <ErrorText name="phone" component="div" />
-              </FieldWrap>
+                        setUserBirthday(new Date(e.target.value));
+                      }}
+                      renderCustomHeader={({
+                        date,
+                        changeYear,
+                        changeMonth,
+                        decreaseMonth,
+                        increaseMonth,
+                        prevMonthButtonDisabled,
+                        nextMonthButtonDisabled,
+                      }) => (
+                        <div className="datepicker_nav">
+                          <button
+                            className="datepicker_btn"
+                            type="button"
+                            onClick={decreaseMonth}
+                            disabled={prevMonthButtonDisabled}
+                          >
+                            {'<'}
+                          </button>
+                          <select
+                            className="datepicker_select"
+                            value={getYear(date)}
+                            onChange={({ target: { value } }) =>
+                              changeYear(value)
+                            }
+                          >
+                            {years.map(option => (
+                              <option key={option} value={getYear(option)}>
+                                {getYear(option)}
+                              </option>
+                            ))}
+                          </select>
+                          <select
+                            className="datepicker_select"
+                            value={months[getMonth(date)]}
+                            onChange={({ target: { value } }) =>
+                              changeMonth(months.indexOf(value))
+                            }
+                          >
+                            {months.map(option => (
+                              <option key={option} value={option}>
+                                {option}
+                              </option>
+                            ))}
+                          </select>
+                          <button
+                            className="datepicker_btn"
+                            type="button"
+                            onClick={increaseMonth}
+                            disabled={nextMonthButtonDisabled}
+                          >
+                            {'>'}
+                          </button>
+                        </div>
+                      )}
+                    />
+                    <button
+                      className="datepicker_icon_button"
+                      type="button"
+                      onClick={() => {
+                        if (datePickerRef.current) {
+                          datePickerRef.current.setOpen(true);
+                        }
+                      }}
+                    ></button>
+                    <BdayIcon>
+                      <use href={icon + '#icon-chevron-down'}></use>
+                    </BdayIcon>
+                  </StyledDatePickerInputWrapper>
+                  <ErrorText name="birthday" component="div" />
+                </FieldWrap>
 
-              <FieldWrap>
-                <Label>{t('skype')}:</Label>
-                <Input
-                  type="text"
-                  name="skype"
-                  placeholder={t('enter_skype')}
-                />
-                <ErrorText name="skype" component="div" />
-              </FieldWrap>
+                <FieldWrap
+                  className={`${
+                    formik.touched.email && formik.errors.email ? 'error' : ''
+                  }`}
+                >
+                  <Label>{t('email')}:</Label>
+                  <Input type="text" name="email" placeholder={t('email')} />
+                  <ErrorText name="email" component="div" />
+                </FieldWrap>
+              </InputWrapperL>
 
-              <FieldWrap>
-                <Label htmlFor="password">{t('password')}:</Label>
-                <Input
-                  id="password"
-                  name="password"
-                  type="password"
-                  placeholder={t('change_pass')}
-                />
-                <ErrorText name="password" component="div" />
-              </FieldWrap>
-            </InputWrapperR>
-          </BoxWrap>
+              <InputWrapperR className="right-column">
+                <FieldWrap
+                  className={`${
+                    formik.touched.phone && formik.errors.phone ? 'error' : ''
+                  }`}
+                >
+                  <Label>{t('phone')}:</Label>
+                  <Input
+                    type="phone"
+                    name="phone"
+                    placeholder="38 (097) 256 34 77"
+                  />
+                  <ErrorText name="phone" component="div" />
+                </FieldWrap>
 
-          <SaveChangesBtn type="submit" disabled={formSubmitted}>
+                <FieldWrap
+                  className={`${
+                    formik.touched.skype && formik.errors.skype ? 'error' : ''
+                  }`}
+                >
+                  <Label>{t('skype')}:</Label>
+                  <Input
+                    name="skype"
+                    type="text"
+                    placeholder={t('enter_skype')}
+                  />
+                  <ErrorText name="skype" component="div" />
+                </FieldWrap>
+
+                <FieldWrap
+                  className={`${
+                    formik.touched.password && formik.errors.password
+                      ? 'error'
+                      : ''
+                  }`}
+                >
+                  <Label htmlFor="password">{t('password')}:</Label>
+                  <Input
+                    id="password"
+                    name="password"
+                    type="password"
+                    placeholder={t('change_pass')}
+                  />
+                  <ErrorText name="password" component="div" />
+                </FieldWrap>
+              </InputWrapperR>
+            </BoxWrap>
+
+            <SaveChangesBtn type="submit" disabled={formSubmitted}>
             {t('save_changes')}
-          </SaveChangesBtn>
+            </SaveChangesBtn>
 
-          <DatePickerWrapperStyles />
-        </Form>
+            <DatePickerWrapperStyles />
+          </Form>
+        )}
       </Formik>
     </FormWrap>
   );

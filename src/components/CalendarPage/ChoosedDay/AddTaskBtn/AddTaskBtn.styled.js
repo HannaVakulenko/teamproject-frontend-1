@@ -19,11 +19,10 @@ export const Button = styled.button`
 
   @media screen and (min-width: ${device.tablet}px) {
     margin-top: 32px;
-  };
-
+  }
 
   &:hover {
-    background-color: #CAE8FF;
+    background-color: #cae8ff;
   }
 `;
 
