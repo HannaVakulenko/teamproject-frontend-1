@@ -33,5 +33,3 @@ const ColumnHeadBar = ({ title, category }) => {
   );
 };
 export default ColumnHeadBar;
-
-// props category = "to-do", "in-progress", "done"

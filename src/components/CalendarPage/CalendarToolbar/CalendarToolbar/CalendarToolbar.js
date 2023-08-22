@@ -26,13 +26,6 @@ const CalendarToolbar = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  // const { currentDate } = useParams();
-  // const { currentDay } = useParams();
-
-  // const dayDate = currentDate || currentDay;
-
-  // const currentMonth = new Date().getMonth() + 1;
-
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const forFetchData = () => {
     const monthFromURL = parseISO(dayDate);
@@ -66,12 +59,12 @@ const CalendarToolbar = () => {
     getAllTasks();
   }, [dayDate, dispatch, forFetchData]);
 
-    useEffect(() => {
-      if (dayDate) {
-        const newDate = new Date(dayDate);
-        setDate(newDate);
-      }
-    }, [dayDate]);
+  useEffect(() => {
+    if (dayDate) {
+      const newDate = new Date(dayDate);
+      setDate(newDate);
+    }
+  }, [dayDate]);
 
   const changeDate = e => {
     const newDate = new Date(date);

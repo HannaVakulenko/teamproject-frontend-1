@@ -128,11 +128,11 @@ export const Section = styled.section`
 
 export const SliderWrapper = styled.div`
   margin-bottom: 8px;
-   @media (min-width: ${device.tablet}px) {
+  @media (min-width: ${device.tablet}px) {
     margin-bottom: 18px;
   }
-   @media (min-width: ${device.desktop}px) {
-   margin-bottom: 32px;
+  @media (min-width: ${device.desktop}px) {
+    margin-bottom: 32px;
   }
 `;
 
@@ -157,18 +157,18 @@ export const Container = styled.div`
 
   @media (min-width: ${device.mobile}px) {
     width: 375px;
-    padding-bottom:64px;
+    padding-bottom: 64px;
   }
   @media (min-width: ${device.tablet}px) {
     width: 768px;
     padding-left: 32px;
     padding-right: 32px;
-     padding-bottom:100px;
+    padding-bottom: 100px;
   }
   @media (min-width: ${device.desktop}px) {
     width: 1440px;
     padding-left: 128px;
     padding-right: 128px;
-     padding-bottom:118x;
+    padding-bottom: 118x;
   }
 `;

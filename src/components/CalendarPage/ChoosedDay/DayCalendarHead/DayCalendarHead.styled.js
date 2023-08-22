@@ -46,7 +46,7 @@ export const WeekDay = styled.p`
   @media screen and (min-width: ${device.tablet}px) {
     font-size: 14px;
     line-height: 1.28;
-  };
+  }
 `;
 
 export const WeekDate = styled.p`
@@ -60,10 +60,10 @@ export const WeekDate = styled.p`
   @media screen and (min-width: ${device.tablet}px) {
     font-size: 16px;
     line-height: 1.12;
-  };
+  }
 
   &.current-day {
     color: #fff;
     background-color: ${p => p.theme.mainAccentColor};
-  };
+  }
 `;

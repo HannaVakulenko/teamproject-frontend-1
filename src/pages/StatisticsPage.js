@@ -3,7 +3,7 @@ import { StatisticsPageComponent } from '../components/StatisticsPage';
 
 const StatisticsPage = () => {
   return (
-      <StatisticSection>
+    <StatisticSection>
       <StatisticsPageComponent />
     </StatisticSection>
   );

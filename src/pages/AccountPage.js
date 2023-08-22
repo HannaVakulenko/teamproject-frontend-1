@@ -1,8 +1,8 @@
-import { UserForm } from "components/AccountPage";
+import { UserForm } from 'components/AccountPage';
 
 const AccountPage = () => (
   <>
-    <UserForm/>
+    <UserForm />
   </>
 );
 
