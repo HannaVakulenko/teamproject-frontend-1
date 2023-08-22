@@ -151,8 +151,4 @@ background-color: ${({ theme }) => theme.mainTextColor};
   background-color: transparent !important;
 }
 
-.css-3bmhjh-MuiPaper-root-MuiPopover-paper {
-  background-color: transparent !important;
-}
-
 `;

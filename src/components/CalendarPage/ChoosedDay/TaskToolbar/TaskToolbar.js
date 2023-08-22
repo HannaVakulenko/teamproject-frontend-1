@@ -77,6 +77,11 @@ const TaskToolbar = ({ task }) => {
             vertical: 'bottom',
             horizontal: 'right',
           }}
+          sx={{
+            '& .MuiPopover-paper': {
+              backgroundColor: 'transparent',
+            },
+          }}
         >
           <WrapperMenu>
             <ButtonMenu onClick={() => replaceTask(availableCategories[0])}>
