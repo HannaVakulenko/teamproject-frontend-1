@@ -31,10 +31,9 @@ export const Date = styled.button`
   align-items: center;
   white-space: nowrap;
   justify-content: center;
-  min-width: 109px;
   height: 30px;
-
   padding: 6px 12px 6px 12px;
+  min-width: 165px;
   border-radius: 8px;
   background-color: #3e85f3;
   color: #ffffff;
@@ -48,9 +47,7 @@ export const Date = styled.button`
   @media (min-width: 376px) and (max-width: 768px) {
     padding: 8px 12px 8px 12px;
     margin-right: 8px;
-    min-width: 121px;
     height: 34px;
-
     font-size: 16px;
     line-height: 1.1;
   }
@@ -58,7 +55,6 @@ export const Date = styled.button`
   @media (min-width: 769px) {
     padding: 8px 12px 8px 12px;
     margin-right: 8px;
-    min-width: 125px;
     height: 34px;
 
     font-size: 16px;
