@@ -56,7 +56,7 @@ const RegisterForm = () => {
   const handleSubmit = async (values, { resetForm }) => {
     try {
       await dispatch(register(values)).unwrap();
-      await dispatch(refreshUser()).unwrap();
+      // await dispatch(refreshUser()).unwrap();
       resetForm();
     } catch (error) {
       if (error.response.status === 409) {
