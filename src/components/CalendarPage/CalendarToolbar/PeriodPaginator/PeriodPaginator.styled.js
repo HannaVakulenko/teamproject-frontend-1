@@ -111,6 +111,7 @@ export const ButtonIncrease = styled.button`
 export const IconLeft = styled.svg`
   stroke: ${p => p.theme.mainTextColor};
 `;
+
 export const IconRight = styled.svg`
   stroke: ${p => p.theme.mainTextColor};
 `;
@@ -165,6 +166,9 @@ export const DatePickerWrapperStyles = createGlobalStyle`
     width: 50px !important;
   }
 }
+
+top: 100%; 
+left: 0;
 
 .react-datepicker {
   border: none !important;
@@ -360,4 +364,6 @@ input {
     font-size: 16px;
   }
 }
+
+
 `;
