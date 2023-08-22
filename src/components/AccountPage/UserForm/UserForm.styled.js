@@ -189,9 +189,9 @@ export const Upload = styled.input`
   z-index: 3;
 
    @media (min-width: ${tablet}px) {
-        width: 18px;
+        width: 24px;
     
-    height: 18px;
+    height: 24px;
 }
 `;
 
@@ -209,8 +209,8 @@ export const Icon = styled.svg`
   z-index: 2;
 
    @media (min-width: ${tablet}px) {
-    width: 18px;
-    height: 18px;
+    width: 24px;
+    height: 24px;
      bottom: -3%;
   left: 70%;
 }
