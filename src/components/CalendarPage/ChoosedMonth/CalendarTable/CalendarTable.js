@@ -1,6 +1,5 @@
 import React from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-// import { useLocation, useNavigate } from 'react-router-dom';
 import {
   format,
   lastDayOfMonth,
@@ -81,7 +80,6 @@ const CalendarTable = () => {
   });
 
   const tasks = useSelector(selectTasks);
-// setHours(endDayOfMonth.getHours() + 3);
   const handleClick = day => {
     const endDayOfMonthLocal = new Date(
       new Date(endDayOfMonth).setHours(new Date(endDayOfMonth).getHours() + 3)

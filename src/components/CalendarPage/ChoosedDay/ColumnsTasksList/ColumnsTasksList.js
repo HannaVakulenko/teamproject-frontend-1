@@ -1,5 +1,5 @@
-import TaskColumnCard from "../TaskColumnCard/TaskColumnCard";
-import { Wrapper } from "./ColumnsTasksList.styled";
+import TaskColumnCard from '../TaskColumnCard/TaskColumnCard';
+import { Wrapper } from './ColumnsTasksList.styled';
 
 const ColumnsTasksList = ({ tasks }) => {
   return (

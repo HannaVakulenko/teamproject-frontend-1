@@ -1,12 +1,11 @@
-import { LogoutButton, IconLogout } from "./LogoutBtn.styled";
+import { LogoutButton, IconLogout } from './LogoutBtn.styled';
 import { logout } from 'redux/auth/operations';
 import icon from 'assets/icons/symbol-defs.svg';
-import {  useNavigate } from 'react-router-dom';
-import { useDispatch} from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 const LogoutBtn = () => {
   const dispatch = useDispatch();
-   const navigate = useNavigate();
-
+  const navigate = useNavigate();
 
   return (
     <LogoutButton

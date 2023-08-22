@@ -1,4 +1,4 @@
-import { Wrapper, AuthLink } from "./AuthNavigate.styled";
+import { Wrapper, AuthLink } from './AuthNavigate.styled';
 
 const AuthNavigate = ({ route, text }) => {
   return (

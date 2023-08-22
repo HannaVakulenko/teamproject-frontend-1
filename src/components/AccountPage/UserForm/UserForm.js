@@ -43,7 +43,8 @@ const UserForm = () => {
       .max(16, 'Max 16 characters')
       .min(2, 'Min 2 characters')
       .required('Name is required'),
-    email: yup.string()
+    email: yup
+      .string()
       .email('Email address must contain an "@" sign')
       .matches(
         /^\w+([.-]?\w+)*@\w+([.-]?\w+)*\.\w{2,3}$/,
@@ -53,9 +54,7 @@ const UserForm = () => {
     birthday: yup.date(),
     phone: yup.string().matches(phoneRegExp, 'Phone number is not valid'),
     skype: yup.string().max(16, 'Max 16 characters').min(5, 'Min 5 characters'),
-    password: yup
-      .string()
-      .min(7, 'Must be at least 7 characters long'),
+    password: yup.string().min(7, 'Must be at least 7 characters long'),
   });
 
   const user = useSelector(selectUser);
@@ -74,7 +73,6 @@ const UserForm = () => {
   const [userAvatarLocal, setUserAvatarLocal] = useState(user.avatarURL);
 
   const handleSubmit = async values => {
-
     const formData = new FormData();
     if (typeof userAvatar !== 'string') {
       formData.append('avatar', userAvatar);
@@ -104,11 +102,11 @@ const UserForm = () => {
     try {
       dispatch(updateUserAccount(formData));
       Swal.fire({
-      icon: 'success',
-      title: 'Success',
-      text: 'Your information has been successfully updated!',
-      confirmButtonColor: '#3E85F3',
-    });
+        icon: 'success',
+        title: 'Success',
+        text: 'Your information has been successfully updated!',
+        confirmButtonColor: '#3E85F3',
+      });
     } catch (error) {
       if (error.response && error.response.status === 409) {
         Swal.fire({
@@ -200,25 +198,33 @@ const UserForm = () => {
           <Form autoComplete="off">
             <BoxWrap>
               <InputWrapperL className="left-column">
-                <FieldWrap className={`${formik.touched.userName && formik.errors.userName
-                  ? 'error'
-                  : ''
-                  }`}>
+                <FieldWrap
+                  className={`${
+                    formik.touched.userName && formik.errors.userName
+                      ? 'error'
+                      : ''
+                  }`}
+                >
                   <Label>User Name:</Label>
-                  <Input id="userName" name="userName" placeholder="User Name" />
+                  <Input
+                    id="userName"
+                    name="userName"
+                    placeholder="User Name"
+                  />
                   <ErrorText name="userName" component="div" />
                 </FieldWrap>
 
                 <FieldWrap>
                   <Label>Birthday:</Label>
                   <StyledDatePickerInputWrapper>
-                    <DatePicker className={`${formik.touched.birthday && formik.errors.birthday
-                      ? 'error'
-                      : formik.touched.birthday && !formik.errors.birthday
-                        ? 'success'
-                        : ''
+                    <DatePicker
+                      className={`${
+                        formik.touched.birthday && formik.errors.birthday
+                          ? 'error'
+                          : formik.touched.birthday && !formik.errors.birthday
+                          ? 'success'
+                          : ''
                       }`}
-
                       id="birthday"
                       name="birthday"
                       type="birthday"
@@ -308,10 +314,11 @@ const UserForm = () => {
                   <ErrorText name="birthday" component="div" />
                 </FieldWrap>
 
-                <FieldWrap className={`${formik.touched.email && formik.errors.email
-                  ? 'error'
-                  : ''
-                  }`}>
+                <FieldWrap
+                  className={`${
+                    formik.touched.email && formik.errors.email ? 'error' : ''
+                  }`}
+                >
                   <Label>Email:</Label>
                   <Input type="text" name="email" placeholder="Email" />
                   <ErrorText name="email" component="div" />
@@ -319,10 +326,11 @@ const UserForm = () => {
               </InputWrapperL>
 
               <InputWrapperR className="right-column">
-                <FieldWrap className={`${formik.touched.phone && formik.errors.phone
-                  ? 'error'
-                  : ''
-                  }`}>
+                <FieldWrap
+                  className={`${
+                    formik.touched.phone && formik.errors.phone ? 'error' : ''
+                  }`}
+                >
                   <Label>Phone:</Label>
                   <Input
                     type="phone"
@@ -332,10 +340,11 @@ const UserForm = () => {
                   <ErrorText name="phone" component="div" />
                 </FieldWrap>
 
-                <FieldWrap className={`${formik.touched.skype && formik.errors.skype
-                  ? 'error'
-                  : ''
-                  }`}>
+                <FieldWrap
+                  className={`${
+                    formik.touched.skype && formik.errors.skype ? 'error' : ''
+                  }`}
+                >
                   <Label>Skype:</Label>
                   <Input
                     name="skype"
@@ -345,10 +354,13 @@ const UserForm = () => {
                   <ErrorText name="skype" component="div" />
                 </FieldWrap>
 
-                <FieldWrap className={`${formik.touched.password && formik.errors.password
-                  ? 'error'
-                  : ''
-                  }`}>
+                <FieldWrap
+                  className={`${
+                    formik.touched.password && formik.errors.password
+                      ? 'error'
+                      : ''
+                  }`}
+                >
                   <Label htmlFor="password">Password:</Label>
                   <Input
                     id="password"

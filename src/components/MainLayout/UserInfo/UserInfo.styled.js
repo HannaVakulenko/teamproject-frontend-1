@@ -29,7 +29,7 @@ export const UserNameStyled = styled.span`
   font-size: 14px;
   font-weight: 700;
   line-height: 1.28;
-  
+
   @media (min-width: ${device.tablet}px) {
     font-size: 18px;
     line-height: 100%;
