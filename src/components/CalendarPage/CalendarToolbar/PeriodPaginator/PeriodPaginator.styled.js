@@ -166,13 +166,6 @@ export const DatePickerWrapperStyles = createGlobalStyle`
   }
 }
 
-/* .react-datepicker-popper {
-  position: absolute;
-  z-index: 9999; /* При необходимости задайте другой z-index */
-  top: 100%; /* Позиционирование под инпутом */
-  left: 0; Выравнивание календаря с левой границей инпута */
-/* } */
-
 .react-datepicker {
   border: none !important;
   border-radius: 16px !important;
@@ -213,7 +206,7 @@ export const DatePickerWrapperStyles = createGlobalStyle`
 
 .react-datepicker__day-name {
   font-size: 14px !important;
-  ine-height: 18px !important;
+  line-height: 18px !important;
 
   @media (min-width: ${tablet}px) {
     width: 48px !important;
