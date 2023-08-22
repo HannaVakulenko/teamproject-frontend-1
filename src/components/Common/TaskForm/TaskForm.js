@@ -19,6 +19,7 @@ import {
   RadioSpan,
   RadioWrapper,
   TimeWrapper,
+  Icon,
 } from './TaskForm.styled';
 
 import icon from 'assets/icons/symbol-defs.svg';
@@ -168,9 +169,9 @@ const TaskForm = ({ onClose, action, column, priority, taskToEdit }) => {
           aria-label="close button"
           onClick={onClose}
         >
-          <svg width="24" height="24">
-            <use href={icon + '#icon-x-close'} stroke="#111111"></use>
-          </svg>
+          <Icon width="24" height="24">
+            <use href={icon + '#icon-x-close'}></use>
+          </Icon>
         </ButtonCloseWrap>
       </Form>
     </Formik>

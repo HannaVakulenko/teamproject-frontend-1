@@ -245,10 +245,16 @@ export const ButtonCloseWrap = styled.button`
   border: none;
   background-color: transparent;
   cursor: pointer;
-  &:hover svg use,
-  &:focus svg use {
-    stroke: lightgray;
+  &:hover svg {
+    stroke: ${p => p.theme.mainAccentColorActive};
   }
+`;
+
+export const Icon = styled.svg`
+  fill: none;
+  color: ${p => p.theme.mainTextColor};
+  stroke: currentColor;
+  transition: stroke 250ms cubic-bezier(0.4, 0, 0.2, 1);
 `;
 
 export const ErrorMessage = styled(FormikErrorMessage)`
