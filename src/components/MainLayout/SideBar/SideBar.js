@@ -3,7 +3,6 @@ import {
   Sidebar,
   TopSection,
   LogoAndTitle,
-  LogoLink,
   Logo,
   LogoTitle,
   LogoSpan,
@@ -111,45 +110,43 @@ const SideBar = ({ isOpen, toggleSidebar, mainLayoutRef }) => {
       <Sidebar $isOpen={isOpen} $windowHeight={windowHeight} ref={sidebarRef}>
         <TopSection>
           <LogoAndTitle>
-            <LogoLink to="/">
-              <picture>
-                {/* Webp */}
-                <source
-                  srcSet={`${logo.desk1xWebp} 1x, ${logo.desk2xWebp} 2x, ${logo.desk3xWebp} 3x`}
-                  type="image/webp"
-                  media={`(min-width: ${device.desktop}px)`}
-                />
-                <source
-                  srcSet={`${logo.tabl1xWebp} 1x, ${logo.tabl2xWebp} 2x, ${logo.tabl3xWebp} 3x`}
-                  type="image/webp"
-                  media={`(min-width: ${device.tablet}px)`}
-                />
-                <source
-                  srcSet={`${logo.mob1xWebp} 1x, ${logo.mob2xWebp} 2x, ${logo.mob3xWebp} 3x`}
-                  type="image/webp"
-                  media={`(min-width: 150px)`}
-                />
+            <picture>
+              {/* Webp */}
+              <source
+                srcSet={`${logo.desk1xWebp} 1x, ${logo.desk2xWebp} 2x, ${logo.desk3xWebp} 3x`}
+                type="image/webp"
+                media={`(min-width: ${device.desktop}px)`}
+              />
+              <source
+                srcSet={`${logo.tabl1xWebp} 1x, ${logo.tabl2xWebp} 2x, ${logo.tabl3xWebp} 3x`}
+                type="image/webp"
+                media={`(min-width: ${device.tablet}px)`}
+              />
+              <source
+                srcSet={`${logo.mob1xWebp} 1x, ${logo.mob2xWebp} 2x, ${logo.mob3xWebp} 3x`}
+                type="image/webp"
+                media={`(min-width: 150px)`}
+              />
 
-                {/* Png */}
-                <source
-                  srcSet={`${logo.desk1xPng} 1x, ${logo.desk2xPng} 2x, ${logo.desk3xPng} 3x`}
-                  media={`(min-width: ${device.desktop}px)`}
-                />
-                <source
-                  srcSet={`${logo.tabl1xPng} 1x, ${logo.tabl2xPng} 2x, ${logo.tabl3xPng} 3x`}
-                  media={`(min-width: ${device.tablet}px)`}
-                />
-                <source
-                  srcSet={`${logo.mob1xPng} 1x, ${logo.mob2xPng} 2x, ${logo.mob3xPng} 3x`}
-                  media={`(min-width: 150px)`}
-                />
+              {/* Png */}
+              <source
+                srcSet={`${logo.desk1xPng} 1x, ${logo.desk2xPng} 2x, ${logo.desk3xPng} 3x`}
+                media={`(min-width: ${device.desktop}px)`}
+              />
+              <source
+                srcSet={`${logo.tabl1xPng} 1x, ${logo.tabl2xPng} 2x, ${logo.tabl3xPng} 3x`}
+                media={`(min-width: ${device.tablet}px)`}
+              />
+              <source
+                srcSet={`${logo.mob1xPng} 1x, ${logo.mob2xPng} 2x, ${logo.mob3xPng} 3x`}
+                media={`(min-width: 150px)`}
+              />
 
-                <Logo src={logo.desk1xPng} alt="Logo" />
-              </picture>
-              <LogoTitle>
-                G<LogoSpan>oo</LogoSpan>seTrack
-              </LogoTitle>
-            </LogoLink>
+              <Logo src={logo.desk1xPng} alt="Logo" />
+            </picture>
+            <LogoTitle>
+              G<LogoSpan>oo</LogoSpan>seTrack
+            </LogoTitle>
             <CloseButton onClick={closeSidebar}>
               <CloseIcon width="34" height="34">
                 <use href={icon + '#icon-x-close'}></use>
