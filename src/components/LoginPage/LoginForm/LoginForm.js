@@ -19,13 +19,14 @@ import {
 import icon from 'assets/icons/symbol-defs.svg';
 
 import { login, refreshUser } from 'redux/auth/operations';
+import { emailRegExp } from 'constants';
 
 const schema = yup.object().shape({
   email: yup
     .string()
     .email('Email address must contain an "@" sign')
     .matches(
-      /^\w+([.-]?\w+)*@\w+([.-]?\w+)*\.\w{2,3}$/,
+      emailRegExp,
       'Must be a valid email'
     )
     .required('Email is required'),
