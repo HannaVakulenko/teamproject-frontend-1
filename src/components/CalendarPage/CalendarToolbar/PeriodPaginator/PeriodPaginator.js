@@ -41,8 +41,6 @@ const PeriodPaginator = ({ date, getTasks, isOpen, setIsOpen, setDate }) => {
     setIsOpen(!isOpen);
   };
 
-  // console.log(date);
-
   return (
     <>
       <ForDatePicker>
