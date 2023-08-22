@@ -19,12 +19,13 @@ import {
 import icon from 'assets/icons/symbol-defs.svg';
 
 import { register, refreshUser } from 'redux/auth/operations';
+import { nameRegExp, emailRegExp } from 'constants';
 
 const schema = yup.object().shape({
   name: yup
     .string()
     .matches(
-      /^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$/,
+      nameRegExp,
       'Name may contain only letters, apostrophe, dash and spaces'
     )
     .min(2, 'Must be at least 2 characters long')
@@ -33,7 +34,7 @@ const schema = yup.object().shape({
     .string()
     .email('Email address must contain an "@" sign')
     .matches(
-      /^\w+([.-]?\w+)*@\w+([.-]?\w+)*\.\w{2,3}$/,
+      emailRegExp,
       'Must be a valid email'
     )
     .required('Email is required'),
