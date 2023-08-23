@@ -238,7 +238,7 @@ const StatisticsChart = () => {
             margin={{
               top: 40,
               right: 0,
-              left: -10,
+              left: 0,
               bottom: 0,
             }}
           >
@@ -271,7 +271,7 @@ const StatisticsChart = () => {
               <Label
                 position="top"
                 dy={-24}
-                dx={-2}
+               
                 fontSize={14}
                 fontWeight={600}
                 lineHeight={1.5}
