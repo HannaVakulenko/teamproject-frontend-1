@@ -1,10 +1,10 @@
 {
   "files": {
     "main.css": "/teamproject-frontend-1/static/css/main.500c5882.css",
-    "main.js": "/teamproject-frontend-1/static/js/main.5f8ed5d2.js",
+    "main.js": "/teamproject-frontend-1/static/js/main.3c9a6b97.js",
     "static/js/35.06cfef0d.chunk.js": "/teamproject-frontend-1/static/js/35.06cfef0d.chunk.js",
     "static/js/656.06dfa347.chunk.js": "/teamproject-frontend-1/static/js/656.06dfa347.chunk.js",
-    "static/js/673.ae80426b.chunk.js": "/teamproject-frontend-1/static/js/673.ae80426b.chunk.js",
+    "static/js/673.8f1f6107.chunk.js": "/teamproject-frontend-1/static/js/673.8f1f6107.chunk.js",
     "static/js/304.cd8065c7.chunk.js": "/teamproject-frontend-1/static/js/304.cd8065c7.chunk.js",
     "static/media/mainpage-calendar-tabl@3x.png": "/teamproject-frontend-1/static/media/mainpage-calendar-tabl@3x.589377ec1ea92f785c22.png",
     "static/media/mainpage-calendar-desk@3x.png": "/teamproject-frontend-1/static/media/mainpage-calendar-desk@3x.7eb92153619fd464b254.png",
@@ -387,14 +387,14 @@
     "static/media/bd.svg": "/teamproject-frontend-1/static/media/bd.0ad8c443ef4d47ea0497.svg",
     "static/media/id.svg": "/teamproject-frontend-1/static/media/id.f624e2c8444a7794b357.svg",
     "main.500c5882.css.map": "/teamproject-frontend-1/static/css/main.500c5882.css.map",
-    "main.5f8ed5d2.js.map": "/teamproject-frontend-1/static/js/main.5f8ed5d2.js.map",
+    "main.3c9a6b97.js.map": "/teamproject-frontend-1/static/js/main.3c9a6b97.js.map",
     "35.06cfef0d.chunk.js.map": "/teamproject-frontend-1/static/js/35.06cfef0d.chunk.js.map",
     "656.06dfa347.chunk.js.map": "/teamproject-frontend-1/static/js/656.06dfa347.chunk.js.map",
-    "673.ae80426b.chunk.js.map": "/teamproject-frontend-1/static/js/673.ae80426b.chunk.js.map",
+    "673.8f1f6107.chunk.js.map": "/teamproject-frontend-1/static/js/673.8f1f6107.chunk.js.map",
     "304.cd8065c7.chunk.js.map": "/teamproject-frontend-1/static/js/304.cd8065c7.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.500c5882.css",
-    "static/js/main.5f8ed5d2.js"
+    "static/js/main.3c9a6b97.js"
   ]
 }
