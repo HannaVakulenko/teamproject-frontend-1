@@ -18,7 +18,8 @@ import {
 } from './RegisterForm.styled';
 import icon from 'assets/icons/symbol-defs.svg';
 
-import { register, refreshUser } from 'redux/auth/operations';
+
+import { register } from 'redux/auth/operations';
 import { Trans, useTranslation } from 'react-i18next';
 import { nameRegExp, emailRegExp } from 'constants';
 
@@ -38,10 +39,7 @@ const schema = yup.object().shape({
         Email address must contain an "@" sign
       </Trans>
     )
-    .matches(
-      emailRegExp,
-      'Must be a valid email'
-    )
+    .matches(emailRegExp, 'Must be a valid email')
     .required(<Trans i18nKey="schema_email_req">Email is required</Trans>),
   password: yup
     .string()
@@ -68,8 +66,13 @@ const RegisterForm = () => {
   const handleSubmit = async (values, { resetForm }) => {
     try {
       await dispatch(register(values)).unwrap();
-      await dispatch(refreshUser()).unwrap();
       resetForm();
+      Swal.fire({
+        icon: 'success',
+        title: 'Info',
+        text: 'Email has been sent',
+        confirmButtonColor: '#3E85F3',
+      });
     } catch (error) {
       if (error.response.status === 409) {
         Swal.fire({

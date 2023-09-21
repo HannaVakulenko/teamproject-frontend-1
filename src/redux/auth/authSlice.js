@@ -6,6 +6,8 @@ import {
   refreshUser,
   fetchUserAccount,
   updateUserAccount,
+  verify,
+  verificationEmail,
 } from './operations';
 
 const initialState = {
@@ -28,10 +30,15 @@ const authSlice = createSlice({
   reducers: {},
   extraReducers: builder => {
     builder
-      .addCase(register.fulfilled, (state, action) => {
-        state.user = action.payload.user;
-        state.token = action.payload.token;
-        state.isLoggedIn = true;
+      .addCase(register.fulfilled, (_, __) => {
+        // state.user = action.payload.user;
+        // state.token = action.payload.token;
+        // state.isLoggedIn = true;
+      })
+      .addCase(verificationEmail.fulfilled, (_, __) => {
+        // state.user = action.payload.user;
+        // state.token = action.payload.token;
+        // state.isLoggedIn = true;
       })
       .addCase(logout.fulfilled, state => {
         state.user = { name: null, email: null };
@@ -39,6 +46,11 @@ const authSlice = createSlice({
         state.isLoggedIn = false;
       })
       .addCase(login.fulfilled, (state, action) => {
+        state.user = action.payload.user;
+        state.token = action.payload.token;
+        state.isLoggedIn = true;
+      })
+      .addCase(verify.fulfilled, (state, action) => {
         state.user = action.payload.user;
         state.token = action.payload.token;
         state.isLoggedIn = true;
