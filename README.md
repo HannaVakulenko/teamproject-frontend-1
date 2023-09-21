@@ -21,10 +21,10 @@ Ability to display tasks in a list by completition category
 ## Deploy
 
 The frontend part of the web-app is deployed on gh-pages.
-[Live version of the app](https://hannavakulenko.github.io/teamproject-frontend-1/) is avaliable by the web-address
+[Live version of the app](https://darkswarp.github.io/teamproject-frontend-1/) is avaliable by the web-address
 
 ```javascript
-"https://hannavakulenko.github.io/teamproject-frontend-1/";
+"https://darkswarp.github.io/teamproject-frontend-1/";
 ```
 
 ### The technology stack used in the project:
