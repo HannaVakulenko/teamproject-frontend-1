@@ -398,7 +398,7 @@ const UserForm = () => {
             </BoxWrap>
 
             <SaveChangesBtn type="submit" disabled={formSubmitted}>
-            {t('save_changes')}
+              {t('save_changes')}
             </SaveChangesBtn>
 
             <DatePickerWrapperStyles />

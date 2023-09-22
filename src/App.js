@@ -12,6 +12,7 @@ import { refreshUser } from 'redux/auth/operations';
 import LoginPage from 'pages/LoginPage';
 import MainPage from 'pages/MainPage';
 import RegisterPage from 'pages/RegisterPage';
+import SendEmailPage from 'pages/SendEmailPage';
 import NotFoundPage from 'pages/NotFoundPage';
 import { ChoosedDay, ChoosedMonth } from 'components/CalendarPage';
 const AccountPage = lazy(() => import('pages/AccountPage'));
@@ -37,20 +38,20 @@ export const App = () => {
           index
         />
         <Route
+          path="/:verificationToken"
+          element={
+            <RestrictedRoute redirectTo="/calendar" component={<MainPage />} />
+          }
+          index
+        />
+        <Route
           path="/login"
           element={
             <RestrictedRoute redirectTo="/calendar" component={<LoginPage />} />
           }
         />
-        <Route
-          path="/register"
-          element={
-            <RestrictedRoute
-              redirectTo="/calendar"
-              component={<RegisterPage />}
-            />
-          }
-        />
+        <Route path="/register" element={<RegisterPage />} />
+        <Route path="/sendemail" element={<SendEmailPage />} />
         <Route
           path="/"
           element={<PrivateRoute redirectTo="/login" component={<Layout />} />}
