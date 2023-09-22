@@ -3,11 +3,11 @@ import { Route, Routes } from 'react-router-dom';
 import Layout from 'components/MainLayout/MainLayout/MainLayout';
 import { PrivateRoute } from 'components/PrivateRoute';
 import { RestrictedRoute } from 'components/RestrictedRoute';
-// import { useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 import { selectIsRefreshing } from 'redux/auth/selectors';
-// import { useEffect } from 'react';
-// import { refreshUser } from 'redux/auth/operations';
+import { useEffect } from 'react';
+import { refreshUser } from 'redux/auth/operations';
 
 import LoginPage from 'pages/LoginPage';
 import MainPage from 'pages/MainPage';
@@ -20,12 +20,12 @@ const CalendarPage = lazy(() => import('pages/CalendarPage'));
 const StatisticsPage = lazy(() => import('pages/StatisticsPage'));
 
 export const App = () => {
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
   const isRefreshing = useSelector(selectIsRefreshing);
 
-  // useEffect(() => {
-  //   dispatch(refreshUser());
-  // }, [dispatch]);
+  useEffect(() => {
+    dispatch(refreshUser());
+  }, [dispatch]);
 
   return (
     !isRefreshing && (
